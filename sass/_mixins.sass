@@ -1,0 +1,23 @@
+@import "compass/css3"
+
+@import "_variables.sass"
+
+//************************************
+// Sprites
+//************************************
+
+// simple sprite
+@mixin sprite($left, $top, $img: "sprite.png", $repeat: no-repeat)
+  background-image: url(/images/#{$img})
+  background-position: $left $top
+  background-repeat: $repeat
+
+// text replacing sprite
+// $img file name
+@mixin sprite-block($width, $height, $left, $top, $img: "sprite.png", $repeat: no-repeat)
+  width: $width
+  height: $height
+  display: block
+  text-indent: -1000em
+  overflow: hidden
+  @include sprite($left, $top, $img, $repeat)
