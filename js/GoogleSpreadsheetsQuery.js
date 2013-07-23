@@ -61,24 +61,26 @@ function GoogleSpreadsheetsQuery(filters, callback) {
 
       // Update/set the values
       _.each(response.table.rows, function(cols){
-        var row = {active: false};
+        //var row = [];
+        var row = {};
         _.each(cols.c, function(item, index) {
           var col = that.colId2Int(response.table.cols[index].id);
           if (col < startCol) { 
             row[response.table.cols[index].label] = item.v;
+            //row[col] = item.v;
           }
           else if (item.v != '') {
             var previous = null;
             var value = [];
             _.each(that.filters.fields, function(field, fieldName) {
-              if (col > that.colId2Int(field.startCol) || previous == null) {
+              if (col >= that.colId2Int(field.startCol) || previous == null) {
                 previous = fieldName;
               }
             });
             if (row[previous] == undefined) {
               row[previous] = [];
             }
-            row[previous].push(response.table.cols[index].label);
+            row[previous].push(response.table.cols[index].label.replace(previous+' ', ''));
           }
         });
 

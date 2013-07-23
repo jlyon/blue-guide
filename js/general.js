@@ -13,13 +13,17 @@ window.onload=function(){
   else {
     googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
       locache.set('blueGuideData', data);
+          console.log(data);
+
       query = new JsonQuery('body', data);
     });
     googleQuery.get('select *');
-    $('body').on('queryUpdate', function() {
-      map.drawMarkers(query.active());
-    });
+
   }
+
+  $('body').on('queryUpdate', function() {
+    map.drawMarkers(query.active());
+  });
 
   map = new Map({
     id: 'map',

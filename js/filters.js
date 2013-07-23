@@ -87,7 +87,7 @@ function Filters() {
         'STI Testing, Treatment, & Prevention',
         'Health Care for Military Veterans',
         'Health Care for Disabilities or Special Needs',
-        'LGBT Services',
+        'LGBT Health Services',
         'Immunizations',
         'Medicaid Enrollment',
         'Connect for Health Colorado Enrollment Assistance',
