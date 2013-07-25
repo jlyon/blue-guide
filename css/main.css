@@ -49,6 +49,71 @@ body,
   display: block;
 }
 
+/* line 44, ../sass/components/_style.sass */
+#tabs a {
+  font-weight: bold;
+}
+/* line 47, ../sass/components/_style.sass */
+#tabs a.tab-orange {
+  color: #f59630;
+}
+/* line 49, ../sass/components/_style.sass */
+#tabs a.tab-green {
+  color: #72af26;
+}
+/* line 51, ../sass/components/_style.sass */
+#tabs a.tab-purple {
+  color: #d252b9;
+}
+/* line 53, ../sass/components/_style.sass */
+#tabs a.tab-red {
+  color: #d53e2a;
+}
+/* line 55, ../sass/components/_style.sass */
+#tabs a.tab-blue {
+  color: #37a8da;
+}
+/* line 57, ../sass/components/_style.sass */
+#tabs a.tab-darkblue {
+  color: #0066a3;
+}
+/* line 59, ../sass/components/_style.sass */
+#tabs a.tab-cadetblue {
+  color: #426877;
+}
+/* line 62, ../sass/components/_style.sass */
+#tabs a.active {
+  color: white;
+}
+/* line 65, ../sass/components/_style.sass */
+#tabs a.active.tab-orange {
+  background-color: #f59630;
+}
+/* line 67, ../sass/components/_style.sass */
+#tabs a.active.tab-green {
+  background-color: #72af26;
+}
+/* line 69, ../sass/components/_style.sass */
+#tabs a.active.tab-purple {
+  background-color: #d252b9;
+}
+/* line 71, ../sass/components/_style.sass */
+#tabs a.active.tab-red {
+  background-color: #d53e2a;
+}
+/* line 73, ../sass/components/_style.sass */
+#tabs a.active.tab-blue {
+  background-color: #37a8da;
+}
+/* line 75, ../sass/components/_style.sass */
+#tabs a.active.tab-darkblue {
+  background-color: #0066a3;
+}
+/* line 77, ../sass/components/_style.sass */
+#tabs a.active.tab-cadetblue {
+  background-color: #426877;
+}
+
 @font-face {
   font-family: "fontawesome";
   src: url("/fonts/fontawesome.eot");

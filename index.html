@@ -11,6 +11,8 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
     <script src='http://underscorejs.org/underscore-min.js'></script>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">-->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 
     <link href="assets/bootstrap-select/bootstrap-select.css" rel="stylesheet">
@@ -35,6 +37,8 @@
     <script src="js/filters.js"></script>
     <script src="js/map.js"></script>
     <script src="js/general.js"></script>
+    
+    <!--<script data-main="js/main" src="assets/require/require.js"></script>-->
 
     <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">-->
 
@@ -122,7 +126,7 @@
 <script id="tabs" type="text/html">
   <ul class="nav nav-tabs nav-stacked">
     {{#tabs}}
-      <li class="tab-{{color}}"><a href="#" rel="{{title}}">{{title}}</a></li>
+      <li><a href="#" rel="{{title}}" class="tab-{{color}}">{{title}}</a></li>
     {{/tabs}}
   </ul>
 </script>
