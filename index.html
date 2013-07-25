@@ -21,7 +21,9 @@
     
     <script src='http://api.tiles.mapbox.com/mapbox.js/v1.1.0/mapbox.js'></script>
     <script src="assets/L.GeoSearch/src/js/l.control.geosearch.js"></script>
-    <script src="assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
+    <script src="assets/L.GeoSearch/src/js/l.geosearch.provider.google.js"></script>   
+
+    <script src="assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
     <script src="assets/locache/locache.min.js"></script>
     <script src="assets/bootstrap-select/bootstrap-select.js"></script>
     <script src="assets/icanhaz/ICanHaz.min.js"></script>
@@ -73,30 +75,57 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="row-fluid">
 
-        <div class="span3 left-sidebar">
-          <div class="well" id="results">
-          </div>
+      <div class="span3 left-sidebar">
+        <div class="" id="results">
         </div>
-
-        <div class="span6 main-content">
-          <div id="map"></div>
-        </div>
-
-        <div class="span3 right-sidebar">
-          <div class="well" id="filters">
-          </div>
-        </div>
-
       </div>
-    </div><!--/.fluid-container-->
+
+      <div class="span6 main-content">
+        <div id="map"></div>
+      </div>
+
+      <div class="span3 right-sidebar">
+        <div class="" id="filters">
+        </div>
+      </div>
+
+    </div>
 
   </body>
 </html>
 
 
+
+
+<script id="accordion" type="text/html">
+  <div class="accordion" id="filters-accordion" data-toggle="false">
+    {{#sections}}
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#filters-accordion" href="#{{id}}">
+            {{title}}
+          </a>
+        </div>
+        <div id="{{id}}" class="accordion-body collapse {{open}}">
+          <div class="accordion-inner">
+            {{{content}}}
+          </div>
+        </div>
+      </div>
+    {{/sections}}
+  </div>
+</script>
+
+
+<script id="tabs" type="text/html">
+  <ul class="nav nav-tabs nav-stacked">
+    {{#tabs}}
+      <li class="tab-{{color}}"><a href="#" rel="{{title}}">{{title}}</a></li>
+    {{/tabs}}
+  </ul>
+</script>
 
 
 <script id="select" type="text/html">
@@ -108,24 +137,48 @@
   </select>
 </script>
 
+<script id="search" type="text/html">
+  <div class="form-inline">
+    <input type="text" class="span2">
+    <button type="submit" class="btn">Search</button>
+  </form>
+</script>
+
 
 <script id="listItem" type="text/html">
   <div class="item" rel="{{id}}">
-    <h3>{{Clinic Name}}</h3>
-    <p>
-      {{Full Address}}<br/>
-      {{Phone Number}} | <a href="{{Website}}" target="_blank">View website</a>
-    </p>
+    {{>marker}}
+    <div class="summary">
+      <h3><a href="#">{{Clinic Name}} <span>({{distance}} miles)</a></span></h3>
+      <p>
+        {{Address Line 1}}, {{City}}, {{State}}<br/>
+        {{Phone Number}} | <a href="{{Website}}" target="_blank">View website</a>
+      </p>
+    </div>
+    <button class="btn not-primary" rel="{{Latitude}},{{Longitude}}">Get Directions</button>
+    <div class="fields">{{{fields}}}</div>
   </div>
 </script>
 
+<script id="marker" class="partial" type="text/html">
+  <a href="#" class="static-marker awesome-marker-icon-{{color}} awesome-marker">
+    <strong class="icon-white">{{letter}}</strong>
+  </a>
+</script>
+
+<script id="fieldItem" type="text/html">
+  <div class="field {{primary}}">
+    <span class="label">{{label}}</span>
+    <span class="value">{{{value}}}</span>
+  </div>
+</script>
 
 <script id="popupItem" type="text/html">
   <div class="item">
     <h3>{{Clinic Name}}</h3>
     <p>
       {{Full Address}}<br/>
-      {{Phone Number}} | <a href="{{Website}}" target="_blank">View website</a>
+      {{{Phone Number}}} | <a href="{{Website}}" target="_blank">View website</a>
     </p>
   </div>
 </script>

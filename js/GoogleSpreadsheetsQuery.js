@@ -57,16 +57,18 @@ function GoogleSpreadsheetsQuery(filters, callback) {
     var status = data ? true : false;
     var startCol = this.colId2Int(this.filters.fields['Safety-Net Type'].startCol);
     data = data ? data : [];
+    var fields;
     if (response.table != undefined) {
 
       // Update/set the values
       _.each(response.table.rows, function(cols){
-        //var row = [];
-        var row = {};
+        var row = {active: false};
+        var arrRow = [];
         _.each(cols.c, function(item, index) {
           var col = that.colId2Int(response.table.cols[index].id);
           if (col < startCol) { 
-            row[response.table.cols[index].label] = item.v;
+            row[response.table.cols[index].label.replace(/Clinic Information |Service Access |Address and Contact Information |Appointment Requirements |SEP Requirements /gi, '')] = item.v;
+
             //row[col] = item.v;
           }
           else if (item.v != '') {
@@ -84,18 +86,26 @@ function GoogleSpreadsheetsQuery(filters, callback) {
           }
         });
 
+        if (fields == undefined) {
+          fields = _.keys(row);
+        }
+        _.each(row, function(val, key) {
+          arrRow[fields.indexOf(key)] = val;
+        });
+
         // Filling arr for first time
         if (!status) {
-          data.push(row);
+          data.push(arrRow);
         }
         // Just extending values, or setting active
-        else {
-          var index = _.find(data, function(item){ return (row.Latitude == item.Latitude && row.Longitude == item.Longitude); });
-          index = _.extend(index, row);
-        }
+        //else {
+        //  var index = _.find(data, function(item){ return (row.Latitude == item.Latitude && row.Longitude == item.Longitude); });
+        //  index = _.extend(index, row);
+        //}
 
       });
-      this.data = data;
+      this.data = {rev: rev, cols: fields, rows: data};
+      console.log(this.data);
 
     }
     this.status = false;

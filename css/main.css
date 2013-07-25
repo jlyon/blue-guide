@@ -1,26 +1,52 @@
 /* line 1, ../sass/components/_style.sass */
 html,
 body,
-.container-fluid,
 .row-fluid {
   height: 100%;
 }
 
-/* line 8, ../sass/components/_style.sass */
-.container-fluid .row-fluid {
-  margin-top: 60px;
+/* line 7, ../sass/components/_style.sass */
+.row-fluid {
+  margin-top: 40px;
 }
 
-/* line 11, ../sass/components/_style.sass */
+/* line 10, ../sass/components/_style.sass */
 .main-content {
   height: 100%;
   width: 100%;
 }
 
-/* line 16, ../sass/components/_style.sass */
+/* line 15, ../sass/components/_style.sass */
 #map {
   height: 100%;
   width: 100%;
+}
+
+/* line 20, ../sass/components/_style.sass */
+#results {
+  padding-bottom: 50%;
+}
+/* line 25, ../sass/components/_style.sass */
+#results .item .not-primary {
+  display: none;
+}
+/* line 28, ../sass/components/_style.sass */
+#results .item .static-marker {
+  position: absolute;
+  left: inherit;
+  top: inherit;
+}
+/* line 33, ../sass/components/_style.sass */
+#results .item .summary {
+  margin-left: 40px;
+}
+/* line 36, ../sass/components/_style.sass */
+#results .item.active {
+  background: #eef5fb;
+}
+/* line 39, ../sass/components/_style.sass */
+#results .item.active .not-primary {
+  display: block;
 }
 
 @font-face {

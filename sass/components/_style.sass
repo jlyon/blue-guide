@@ -1,12 +1,11 @@
 html,
 body,
-.container-fluid,
 .row-fluid
   height: 100%
 
 
-.container-fluid .row-fluid
-  margin-top: 60px 
+.row-fluid
+  margin-top: $topnav-height 
 
 .main-content
   height: 100%
@@ -16,3 +15,27 @@ body,
 #map
   height: 100%
   width: 100%
+
+
+#results
+  padding-bottom: 50%
+  
+  .item
+
+    .not-primary
+      display: none
+
+    .static-marker
+      position: absolute
+      left: inherit
+      top: inherit
+
+    .summary
+      margin-left: 40px
+
+    &.active
+      background: $light-blue
+
+      .not-primary
+        display: block
+    

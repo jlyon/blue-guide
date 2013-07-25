@@ -4,16 +4,40 @@ function Filters() {
   var that = this;
 
   this.draw = function(selector) {
-    var html = '';
     var i = 0;
-    var $selector = $(selector);
+    //var $selector = $(selector);
+    $(selector).html('');
+
+    var filters = ich.search({}, true);
     _.each(this.fields, function(field, index) {
       field.label = field.label != undefined ? field.label : index;
       field.id = 'field-' + i;
-      $selector.append(ich.select(field));
+      filters += ich.select(field, true);
       i++;
-    });    
+    }); 
+
+    ich.accordion({sections: [
+      {
+        id: 'tabs',
+        open: 'in',
+        title: 'Type of Care',
+        content: ich.tabs({tabs: this.tabs}, true)
+      },
+      {
+        id: 'advanced',
+        title: 'Advanced Filters',
+        content: filters
+      }
+    ]}).appendTo(selector);
+
     $(selector + ' select').selectpicker().bind('change', this.constructQuery);
+
+    $(selector + ' #tabs a').bind('click', function() {
+      $(this).addClass('active');
+      activeTab = $(this).attr('rel');
+      that.constructQuery();
+      return false;
+    });
 
   }
 
@@ -27,8 +51,78 @@ function Filters() {
       }
       i++;      
     });
+    if (activeTab != undefined && activeTab != 'All') {
+      values['Services Provided'] = _.filter(this.tabs, function(tab) {return tab.title == activeTab})[0].services;
+    }
+    console.log(values);
     query.constructActive(values);
   }
+
+  this.tabs = [
+    {
+      title: 'All',
+      color: 'orange',
+      services: []
+    },
+    {
+      title: 'General Health',
+      color: 'green',
+      services: [
+        'Primary Health Care',
+        "Women's Health",
+        "Children's Health",
+        'Adolescent Care',
+        'Immunizations',
+        'Chronic Disease Mgmt',
+        'STI Testing, Treatment, & Prevention',
+        'HIV/AIDS Treatment & Care',
+        'Health Care for Military Veterans',
+        'LGBT Health Services'
+      ]
+    },
+    {
+      title: 'Mental / Behavioral',
+      color: 'purple',
+      services: [
+        'Substance Abuse Treatment',
+        'Mental/Behavioral Health Care'
+      ]
+    },
+    {
+      title: 'Access Assistance',
+      color: 'red',
+      services: [
+        'Case Management',
+        'Chronic Disease Mgmt',
+        'Medicaid Enrollment',
+        'Connect for Health Colorado Enrollment Assistance'
+      ]
+    },
+    {
+      title: 'Oral / Dental',
+      color: 'blue',
+      services: [
+        'Dental Care'
+      ]
+    },
+    {
+      title: 'Disability & Elder Care',
+      color: 'dark',
+      services: [
+        'Health Care for Disabilities or Special Needs',
+        'Adult Day Services',
+        'Respite Care'
+      ]
+    },
+    {
+      title: 'Other',
+      color: 'cadetblue',
+      services: [
+        'Vision Care',
+        'Other'
+      ]
+    }
+  ];
 
   this.fields = {
     'Safety-Net Type': {
@@ -63,7 +157,7 @@ function Filters() {
         'Other Dental Clinic',
         'Other Mental Health Clinic',
         'Other Community-based Organization'
-        ]
+      ]
     },
 
     'Services Provided': {
@@ -92,7 +186,7 @@ function Filters() {
         'Medicaid Enrollment',
         'Connect for Health Colorado Enrollment Assistance',
         'Other'
-        ]
+      ]
     },
 
     'Age Groups Served': {
@@ -105,7 +199,7 @@ function Filters() {
         'Teens (13+)',
         'Adults (18+)',
         'Elderly (65+)'
-        ]
+      ]
     },
 
     'Populations Served (Specialization)': {
@@ -124,7 +218,7 @@ function Filters() {
         'Disability & Special Needs',
         'Rural',
         'Other'
-        ]
+      ]
     },
 
     'Languages Spoken': {
@@ -141,7 +235,7 @@ function Filters() {
         'Arabic',
         'Phone Translation Services',
         'Other'
-        ]
+      ]
     },
 
     'Payment Assistance & Special Accommodations': {
@@ -156,10 +250,18 @@ function Filters() {
         'Other Discount Services',
         'Open Late / Weekends',
         'Other ?'
-        ]
+      ]
     }
-  };
+  }
 
+  this.displayFields = [
+    {label: 'Hours', col: 'Hours', primary: true},
+    {label: 'Services', col: 'Services Provided', primary: true},
+    {label: 'Ages Served', col: 'Age Groups Served'},
+    {label: 'Pop. Served', col: 'Populations Served (Specialization)'},
+    {label: 'Languages', col: 'Languages Spoken'},
+    {label: 'Sponsor', col: 'Sponsor Name'}
+  ]
  
 }
 
