@@ -385,6 +385,7 @@
 
   /* line 45, ../sass/components/_layout-mobile.sass */
   .right-sidebar {
+    display: none;
     right: -280px;
     width: 0;
     top: 64px;
@@ -396,16 +397,16 @@
     transition: right, 1s;
   }
 
-  /* line 53, ../sass/components/_layout-mobile.sass */
+  /* line 54, ../sass/components/_layout-mobile.sass */
   #showFilters {
     margin-right: 5px;
   }
-  /* line 56, ../sass/components/_layout-mobile.sass */
+  /* line 57, ../sass/components/_layout-mobile.sass */
   #showFilters i {
     margin-right: 0;
   }
 
-  /* line 62, ../sass/components/_layout-mobile.sass */
+  /* line 63, ../sass/components/_layout-mobile.sass */
   .left-sidebar-active .left-sidebar {
     top: 80%;
     -webkit-transition: top, 1s;
@@ -414,7 +415,7 @@
     transition: top, 1s;
   }
 
-  /* line 69, ../sass/components/_layout-mobile.sass */
+  /* line 70, ../sass/components/_layout-mobile.sass */
   .right-sidebar-active .main-content {
     left: -280px;
     -webkit-transition: left, 1s;
@@ -422,8 +423,9 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 73, ../sass/components/_layout-mobile.sass */
+  /* line 74, ../sass/components/_layout-mobile.sass */
   .right-sidebar-active .right-sidebar {
+    display: block;
     right: 0;
     -webkit-transition: right, 1s;
     -moz-transition: right, 1s;
