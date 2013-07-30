@@ -3,7 +3,7 @@ var Filters;
 Filters = function() {
   var that;
   that = this;
-  this.draw = function(selector, btnSelector) {
+  this.draw = function(selector, btnSelector, responsive) {
     var filters, i;
     i = 0;
     console.log(btnSelector);
@@ -43,10 +43,14 @@ Filters = function() {
       that.constructQuery();
       return false;
     });
-    return $(btnSelector).bind("click", function() {
+    $(btnSelector).bind("click", function() {
       $(this).toggleClass("active");
       return $("body").toggleClass("right-sidebar-active");
     });
+    if (responsive !== "mobile") {
+      $("body").addClass("right-sidebar-active");
+      return $(btnSelector).addClass("active");
+    }
   };
   this.constructQuery = function() {
     var i, val, values;

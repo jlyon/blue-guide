@@ -36,7 +36,7 @@ window.onload = function() {
   MQ.init(queries);
   filters = new Filters();
   data = locache.get("blueGuideData");
-  filters.draw("#filters", "#showFilters");
+  filters.draw("#filters", "#showFilters", responsive);
   if (data && data.rev && data.rev === rev) {
     query = new JsonQuery("body", data);
   } else {

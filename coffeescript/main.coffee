@@ -28,7 +28,7 @@ window.onload = ->
   # Add filters
   filters = new Filters()
   data = locache.get("blueGuideData")
-  filters.draw "#filters", "#showFilters"
+  filters.draw "#filters", "#showFilters", responsive
 
   # Get data if we need to
   if data and data.rev and data.rev is rev
@@ -55,9 +55,7 @@ window.onload = ->
     params.geosearch =
       provider: "Google"
       settings:
-        zoomLevel: 13
-
-  
+        zoomLevel: 13 
 
   # Add map
   map = new Map params
