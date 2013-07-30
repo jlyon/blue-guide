@@ -35,7 +35,7 @@ Map = (options) ->
         # @todo!
         that.updateLocation new L.LatLng(e.Location.Y, e.Location.X)
 
-    
+    console.log @options
     # Add the locate button
     unless @options.locate is `undefined`
       locateUser = ->

@@ -30,6 +30,7 @@ Map = function(options) {
         return that.updateLocation(new L.LatLng(e.Location.Y, e.Location.X));
       });
     }
+    console.log(this.options);
     if (this.options.locate !== undefined) {
       locateUser = function() {
         return this.map.locate(settings);

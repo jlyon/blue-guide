@@ -3,9 +3,10 @@ var Filters;
 Filters = function() {
   var that;
   that = this;
-  this.draw = function(selector) {
+  this.draw = function(selector, btnSelector) {
     var filters, i;
     i = 0;
+    console.log(btnSelector);
     $(selector).html("");
     filters = ich.search({}, true);
     _.each(this.fields, function(field, index) {
@@ -35,12 +36,16 @@ Filters = function() {
     $(selector + " #field-search").bind("change", this.constructQuery);
     $(selector + " .btn").bind("click", this.constructQuery);
     $(selector + " select").selectpicker().bind("change", this.constructQuery);
-    return $(selector + " #tabs a").bind("click", function() {
+    $(selector + " #tabs a").bind("click", function() {
       $(selector + " #tabs a").removeClass("active");
       $(this).addClass("active");
       activeTab = $(this).attr("rel");
       that.constructQuery();
       return false;
+    });
+    return $(btnSelector).bind("click", function() {
+      $(this).toggleClass("active");
+      return $("body").toggleClass("right-sidebar-active");
     });
   };
   this.constructQuery = function() {

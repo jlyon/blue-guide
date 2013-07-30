@@ -1,0 +1,84 @@
+@media screen and (min-width:480px)
+  
+  html
+    font-family: "desktop"
+
+    body:after
+      content: "desktop"
+
+  html,
+  body,
+  .row-fluid
+    height: 100%
+
+  .main-content
+    height: 100%
+    position: fixed
+    right: 0
+    left: 0
+    +transition(left)
+    +transition(right)
+    overflow: hidden
+    border-right: $border-width solid $grey
+
+    #map
+      height: 100%
+
+  .left-sidebar
+    width: 0
+    +transition(width)
+    float: left
+    background-color: $white
+    border-right: $border-width solid $grey
+    overflow: hidden
+    min-height: 100%
+
+  .right-sidebar
+    width: 0
+    +transition(width)
+    right: 0
+    position: fixed
+    background-color: $white
+    overflow: hidden
+
+
+  .left-sidebar-active
+
+    .main-content
+      left: $left-sidebar-width
+      +transition(left, $trans-time)
+
+      #map
+        margin-left: -$left-sidebar-width/2
+        +transition(margin-left, $trans-time)
+
+        .leaflet-left,
+        .leaflet-top.leaflet-center
+          padding-left: $left-sidebar-width/2
+          +transition(padding-left, $trans-time)
+
+    .left-sidebar
+      width: $left-sidebar-width
+      +transition(width, $trans-time)
+
+
+  .right-sidebar-active
+
+    .main-content
+      right: $right-sidebar-width
+      +transition(right, $trans-time)
+
+      #map
+        margin-right: -$right-sidebar-width/2
+        +transition(margin-right, $trans-time)
+
+    .right-sidebar
+      width: $right-sidebar-width
+      +transition(width, $trans-time)
+      overflow: visible
+
+  .right-sidebar-active.left-sidebar-active
+    .main-content
+      +transition(left, $trans-time, right, $trans-time)
+
+

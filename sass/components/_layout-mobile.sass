@@ -1,0 +1,80 @@
+@media screen and (max-width:480px)
+
+  html
+    font-family: "mobile"
+
+    body:after
+      content: "mobile"
+
+  html,
+  body,
+  .row-fluid,
+  .main-content
+    height: 100%
+    padding: 0
+
+  .navbar .nav,
+  #showFilters span,
+  .leaflet-control-geosearch
+    display: none
+
+  .main-content
+    top: 0
+    position: absolute
+    width: 100%
+    left: 0
+    +transition(left, $trans-time)
+
+    #map
+      width: 100%
+      height: 100%
+      margin-top: $topnav-height
+
+      .leaflet-top.leaflet-center
+        width: 160px
+
+  .left-sidebar
+    position: relative
+    top: 100%
+    height: 400px
+    z-index: 100
+    background-color: $white
+    +transition(top, $trans-time)
+
+  .right-sidebar
+    right: -280px
+    width: 0
+    top: $topnav-height
+    position: absolute
+    width: 280px
+    +transition(right, $trans-time)
+
+  #showFilters
+    margin-right: 5px
+
+    i
+      margin-right: 0
+
+
+  .left-sidebar-active
+
+    .left-sidebar
+      top: 80%
+      +transition(top, $trans-time)
+
+
+  .right-sidebar-active
+
+    .main-content
+      left: -280px
+      +transition(left, $trans-time)
+
+    .right-sidebar
+      right: 0
+      +transition(right, $trans-time)
+
+
+  
+
+
+

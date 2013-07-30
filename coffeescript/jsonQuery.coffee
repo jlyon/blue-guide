@@ -10,9 +10,7 @@ JsonQuery = (selector, data) ->
       _.each fields, (vals, field) ->
         if field is "search"
           vals = vals.toLowerCase()
-          matches[field] = true if that.val(row, "Clinic Name").toLowerCase().indexOf(vals) isnt -1 
-            or that.val(row, "Sponsor Name").toLowerCase().indexOf(vals) isnt -1
-            or that.val(row, "Full Address").toLowerCase().indexOf(vals) isnt -1
+          matches[field] = true if that.val(row, "Clinic Name").toLowerCase().indexOf(vals) isnt -1 or that.val(row, "Sponsor Name").toLowerCase().indexOf(vals) isnt -1 or that.val(row, "Full Address").toLowerCase().indexOf(vals) isnt -1
         else
           _.each vals, (val) ->
             matches[field] = true  if that.val(row, field)? and that.val(row, field).indexOf(val) isnt -1

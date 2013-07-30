@@ -13,7 +13,7 @@ JsonQuery = function(selector, data) {
       _.each(fields, function(vals, field) {
         if (field === "search") {
           vals = vals.toLowerCase();
-          if (that.val(row, "Clinic Name").toLowerCase().indexOf(vals) !== -1 || that.val(row, "Sponsor Name").toLowerCase().indexOf(vals) !== -1) {
+          if (that.val(row, "Clinic Name").toLowerCase().indexOf(vals) !== -1 || that.val(row, "Sponsor Name").toLowerCase().indexOf(vals) !== -1 || that.val(row, "Full Address").toLowerCase().indexOf(vals) !== -1) {
             return matches[field] = true;
           }
         } else {

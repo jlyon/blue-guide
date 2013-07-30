@@ -1,8 +1,8 @@
 Filters = ->
   that = this
-  @draw = (selector) ->
+  @draw = (selector, btnSelector) ->
     i = 0
-
+    console.log(btnSelector)
     #var $selector = $(selector);
     $(selector).html ""
     filters = ich.search({}, true)
@@ -27,16 +27,24 @@ Filters = ->
       content: filters
     ]).appendTo selector
 
+    # Update events for search field, buttons, selects
     $(selector + " #field-search").bind "change", @constructQuery
     $(selector + " .btn").bind "click", @constructQuery
-
     $(selector + " select").selectpicker().bind "change", @constructQuery
+
+    # Click events for "tabs"
     $(selector + " #tabs a").bind "click", ->
       $(selector + " #tabs a").removeClass "active"
       $(this).addClass "active"
       `activeTab = $(this).attr("rel")`
       that.constructQuery()
       false
+
+    # Click event for "Show Filters" btn
+    $(btnSelector).bind "click", ->
+      $(this).toggleClass "active"
+      $("body").toggleClass "right-sidebar-active"
+
 
 
   @constructQuery = ->

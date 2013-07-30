@@ -9,7 +9,7 @@ rev = 0.1;
 activeTab = void 0;
 
 window.onload = function() {
-  var data, filters, map, updateMarkers;
+  var data, filters, map, params, queries, responsive, updateMarkers;
   updateMarkers = function() {
     $('#show-markers').addClass("icon-spin");
     map.drawMarkers(query.active(map.markerBounds(map.map.getBounds())));
@@ -19,9 +19,24 @@ window.onload = function() {
     }
     return console.log("update");
   };
+  responsive = void 0;
+  queries = [
+    {
+      context: "mobile",
+      match: function() {
+        return responsive = "mobile";
+      }
+    }, {
+      context: "desktop",
+      match: function() {
+        return responsive = "desktop";
+      }
+    }
+  ];
+  MQ.init(queries);
   filters = new Filters();
   data = locache.get("blueGuideData");
-  filters.draw("#filters");
+  filters.draw("#filters", "#showFilters");
   if (data && data.rev && data.rev === rev) {
     query = new JsonQuery("body", data);
   } else {
@@ -31,7 +46,7 @@ window.onload = function() {
     });;
     googleQuery.get("select *");
   }
-  map = new Map({
+  params = {
     id: "map",
     updateSelector: "body",
     draw: true,
@@ -41,16 +56,19 @@ window.onload = function() {
     locate: {
       html: ich.locateBtn()
     },
-    geosearch: {
+    layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-idkom5ru/{z}/{x}/{y}.png",
+    fields: filters.displayFields,
+    tabs: filters.tabs
+  };
+  if (responsive !== "mobile" || 1 === 1) {
+    params.geosearch = {
       provider: "Google",
       settings: {
         zoomLevel: 13
       }
-    },
-    layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-idkom5ru/{z}/{x}/{y}.png",
-    fields: filters.displayFields,
-    tabs: filters.tabs
-  });
+    };
+  }
+  map = new Map(params);
   $("body").bind("queryUpdate", function() {
     return updateMarkers();
   });
