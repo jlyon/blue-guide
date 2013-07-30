@@ -338,16 +338,17 @@
   .main-content {
     height: 100%;
     padding: 0;
+    overflow: hidden;
   }
 
-  /* line 16, ../sass/components/_layout-mobile.sass */
+  /* line 17, ../sass/components/_layout-mobile.sass */
   .navbar .nav,
   #showFilters span,
   .leaflet-control-geosearch {
     display: none;
   }
 
-  /* line 21, ../sass/components/_layout-mobile.sass */
+  /* line 22, ../sass/components/_layout-mobile.sass */
   .main-content {
     top: 0;
     position: absolute;
@@ -358,18 +359,18 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 28, ../sass/components/_layout-mobile.sass */
+  /* line 29, ../sass/components/_layout-mobile.sass */
   .main-content #map {
     width: 100%;
     height: 100%;
     margin-top: 64px;
   }
-  /* line 33, ../sass/components/_layout-mobile.sass */
+  /* line 34, ../sass/components/_layout-mobile.sass */
   .main-content #map .leaflet-top.leaflet-center {
     width: 160px;
   }
 
-  /* line 36, ../sass/components/_layout-mobile.sass */
+  /* line 37, ../sass/components/_layout-mobile.sass */
   .left-sidebar {
     position: relative;
     top: 100%;
@@ -382,7 +383,7 @@
     transition: top, 1s;
   }
 
-  /* line 44, ../sass/components/_layout-mobile.sass */
+  /* line 45, ../sass/components/_layout-mobile.sass */
   .right-sidebar {
     right: -280px;
     width: 0;
@@ -395,16 +396,16 @@
     transition: right, 1s;
   }
 
-  /* line 52, ../sass/components/_layout-mobile.sass */
+  /* line 53, ../sass/components/_layout-mobile.sass */
   #showFilters {
     margin-right: 5px;
   }
-  /* line 55, ../sass/components/_layout-mobile.sass */
+  /* line 56, ../sass/components/_layout-mobile.sass */
   #showFilters i {
     margin-right: 0;
   }
 
-  /* line 61, ../sass/components/_layout-mobile.sass */
+  /* line 62, ../sass/components/_layout-mobile.sass */
   .left-sidebar-active .left-sidebar {
     top: 80%;
     -webkit-transition: top, 1s;
@@ -413,7 +414,7 @@
     transition: top, 1s;
   }
 
-  /* line 68, ../sass/components/_layout-mobile.sass */
+  /* line 69, ../sass/components/_layout-mobile.sass */
   .right-sidebar-active .main-content {
     left: -280px;
     -webkit-transition: left, 1s;
@@ -421,7 +422,7 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 72, ../sass/components/_layout-mobile.sass */
+  /* line 73, ../sass/components/_layout-mobile.sass */
   .right-sidebar-active .right-sidebar {
     right: 0;
     -webkit-transition: right, 1s;
