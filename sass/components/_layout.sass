@@ -1,0 +1,70 @@
+html,
+body,
+.row-fluid
+  height: 100%
+
+.main-content
+  height: 100%
+  position: fixed
+  right: 0
+  left: 0
+  overflow: hidden
+  border-right: $border-width solid $grey
+
+  #map
+    height: 100%
+
+.left-sidebar
+  width: 0
+  float: left
+  display: none
+  z-index: 10
+  background-color: $white
+  border-right: $border-width solid $grey
+
+.right-sidebar
+  width: $right-sidebar-width
+  right: 0
+  position: fixed
+  background-color: $white
+  display: none
+
+.left-sidebar-active
+
+  .main-content
+    left: $left-sidebar-width
+    +transition(left)
+
+    #map
+      margin-left: -$left-sidebar-width/2
+      +transition(margin-left)
+
+      .leaflet-left,
+      .leaflet-top.leaflet-center
+        padding-left: $left-sidebar-width/2
+        +transition(padding-left)
+
+  .left-sidebar
+    display: block
+    width: $left-sidebar-width
+    +transition(width)
+
+
+.right-sidebar-active
+
+  .main-content
+    right: $right-sidebar-width
+    +transition(right)
+
+    #map
+      margin-right: -$right-sidebar-width/2
+      +transition(margin-right)
+
+  .right-sidebar
+    display: block
+    width: $right-sidebar-width
+    +transition(width)
+
+
+
+

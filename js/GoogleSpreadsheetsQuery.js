@@ -121,11 +121,12 @@ GoogleSpreadsheetsQuery = function(filters, callback) {
       return String.fromCharCode(base + Math.floor(id / 26) - 1, base + id % 26);
     }
   };
-  return this.active = function() {
+  this.active = function() {
     return _.filter(this.data, function(item) {
       return item.active;
     });
   };
+  return this;
 };
 
 googleQuery = void 0;

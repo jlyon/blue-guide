@@ -1,80 +1,71 @@
-html,
+
 body,
-.row-fluid
-  height: 100%
+input,
+button,
+select,
+textarea
+  +sans-serif
 
+h1,
+h2,
+h3
+  +serif
+  font-size: 18px
+  line-height: 1.2em
 
-.row-fluid
-  margin-top: $topnav-height 
-
-.main-content
-  height: 100%
-  width: 100%
-
-
-#map
-  height: 100%
-  width: 100%
-
-
-#results
-  padding-bottom: 50%
-
-  .item
-
-    .not-primary
-      display: none
-
-    .static-marker
-      position: absolute
-      left: inherit
-      top: inherit
-
-    .summary
-      margin-left: 40px
-
-    &.active
-      background: $light-blue
-
-      .not-primary
-        display: block
-
-
-#tabs
   a
-    font-weight: bold
+    color: $black
+  
+[class^="icon-"]:not(.icon-ok), [class*=" icon-"]:not(.icon-ok)
+  background-image: none
 
-    &.tab-orange
-      color: $marker-orange
-    &.tab-green
-      color: $marker-green
-    &.tab-purple
-      color: $marker-purple
-    &.tab-red
-      color: $marker-red
-    &.tab-blue
-      color: $marker-blue
-    &.tab-darkblue
-      color: $marker-darkblue
-    &.tab-cadetblue
-      color: $marker-cadetblue
+button.btn-normal,
+button.btn-dark
+  height: 38px
+  +border-radius(3px)
+  +background-image(linear-gradient($btn-blue, tint($btn-blue, 10)))
+  border: none
+  +box-shadow($btn-blue-shadow 0 1px 1px)
+  color: $white
+  +text-shadow(none)
+  font-weight: bold
 
-    &.active
-      color: #fff
+  &:focus,
+  &:hover
+    background-color: tint($btn-blue, 7)
+    color: $white
 
-      &.tab-orange
-        background-color: $marker-orange
-      &.tab-green
-        background-color: $marker-green
-      &.tab-purple
-        background-color: $marker-purple
-      &.tab-red
-        background-color: $marker-red
-      &.tab-blue
-        background-color: $marker-blue
-      &.tab-darkblue
-        background-color: $marker-darkblue
-      &.tab-cadetblue
-        background-color: $marker-cadetblue
+  i
+    margin-top: 2px
+    margin-right: 5px
+    font-size: 16px
+
+  &.btn-search i
+    margin-right: 0
+
+  &.btn-dark
+    +background-image(linear-gradient($btn-blue-shadow, tint($btn-blue-shadow, 10)))
+
+    &:focus,
+    &:hover
+      background-color: tint($btn-blue-shadow, 7)
+
+
+input[type="text"]
+  height: 38px !important
+  border: 1px solid $orange !important
+  +box-shadow(inset 0 1px 4px $grey)
+
+  &:focus
+    +box-shadow(inset 0 1px 4px $grey)
+
+label
+  font-weight: bold
+  display block
+  margin-top: 1em
+  clear: left
+
+.icon-spin
+  +spin
 
 

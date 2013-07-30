@@ -6,11 +6,20 @@ window.onload = function() {
 		el.innerHTML = '<span style="font-family: \'icomoon\'">' + entity + '</span>' + html;
 	}
 	var icons = {
-			'icon-play' : '&#xe000;',
-			'icon-map-marker' : '&#xf041;',
-			'icon-location' : '&#xe002;',
-			'icon-pin' : '&#xe003;',
-			'icon-pause' : '&#xe001;'
+			'icon-cog' : '&#xf013;',
+			'icon-caret-right' : '&#xf0da;',
+			'icon-caret-down' : '&#xf0d7;',
+			'icon-search' : '&#xf002;',
+			'icon-location' : '&#xe000;',
+			'icon-disability' : '&#xe006;',
+			'icon-other' : '&#xe005;',
+			'icon-access' : '&#xe004;',
+			'icon-mentalbehavioural' : '&#xe003;',
+			'icon-alltypes' : '&#xe001;',
+			'icon-generalhealth' : '&#xe002;',
+			'icon-dentaloral' : '&#xe008;',
+			'icon-spinner' : '&#xe009;',
+			'icon-directions' : '&#xe007;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

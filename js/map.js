@@ -22,7 +22,7 @@ Map = function(options) {
     this.markerLayer.addTo(this.map);
     if (this.options.geosearch !== undefined) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
-        zoomLevel: 13
+        zoomLevel: 15
       });
       settings.provider = new L.GeoSearch.Provider[this.options.geosearch.provider]();
       new L.Control.GeoSearch(settings).addTo(this.map);
@@ -35,12 +35,12 @@ Map = function(options) {
         return this.map.locate(settings);
       };
       settings = _.extend((this.options.locate.settings === undefined ? {} : this.options.locate.settings), {
-        setView: true
+        setView: true,
+        maxZoom: 15
       });
-      jQuery("<button class=\"btn\" id=\"geocode\" onclick=\"locateUser();\"><span class=\"icon-map-marker\"></span>Get my location</button>").appendTo("#map .leaflet-top.leaflet-center");
-      this.map.on("locationfound", function(e) {
-        return console.log(e.latlng);
-      });
+      jQuery(this.options.locate.html).bind("click", function(e) {
+        return that.map.locate(settings);
+      }).appendTo("#map .leaflet-top.leaflet-center");
     }
   };
   this.updateLocation = function(latlng) {
@@ -59,14 +59,34 @@ Map = function(options) {
       return a.distance - b.distance;
     });
     $results = $(this.options.resultsSelector);
-    activeColor = ((typeof activeTab !== "undefined" && activeTab !== null) && activeTab !== "All" ? _.filter(this.options.tabs, function(tab) {
+    activeColor = ((typeof activeTab !== "undefined" && activeTab !== null) && activeTab !== "All Types" ? _.filter(this.options.tabs, function(tab) {
       return tab.title === activeTab;
     })[0].color : false);
     $results.html("");
     _.each(data, function(item, index) {
       var $resultItem, marker;
-      if (item.Latitude !== undefined && item.Longitude !== undefined && index <= 1025) {
+      if (item.Latitude !== undefined && item.Longitude !== undefined && index <= 25) {
+        item.fields = "";
+        item.primaryFields = "";
+        _.each(that.options.fields, function(field) {
+          var html, val;
+          if ((item[field.col] != null) && item[field.col] !== "") {
+            val = (typeof item[field.col] === "string" ? item[field.col] : item[field.col].join(", "));
+            html = ich.fieldItem({
+              label: field.label,
+              value: val,
+              primary: (field.primary ? "primary" : "not-primary")
+            }, true);
+            item.fields += html;
+            if (field.primary) {
+              return item.primaryFields += html;
+            }
+          }
+        });
         item.color = (activeColor ? activeColor : that.iconColor(item["Services Provided"]));
+        if (item["Phone Number"] !== "") {
+          item["Phone Number"] = item["Phone Number"] + " |";
+        }
         marker = L.marker([item.Latitude, item.Longitude], {
           icon: L.AwesomeMarkers.icon({
             text: index,
@@ -89,28 +109,20 @@ Map = function(options) {
           $item = $results.find(".item[rel=" + this._leaflet_id + "]");
           return $item.removeClass("active");
         }).addTo(that.markerLayer);
-        item.fields = "";
-        _.each(that.options.fields, function(field) {
-          var val;
-          if (item[field.col] != null) {
-            val = (typeof item[field.col] === "string" ? item[field.col] : item[field.col].join(", "));
-            return item.fields += ich.fieldItem({
-              label: field.label,
-              value: val,
-              primary: (field.primary ? "primary" : "not-primary")
-            }, true);
-          }
-        });
         item.id = marker._leaflet_id;
         item.letter = marker.options.icon.num2letter(index);
+        item.distance = Math.round(item.distance * 10) / 10;
         $resultItem = ich.listItem(item);
         $resultItem.find(".static-marker, h3 a").bind("click", function() {
-          that.markerLayer._layers[$(this).parents(".item").attr("rel")].openPopup();
+          marker = that.markerLayer._layers[$(this).parents(".item").attr("rel")];
+          marker.openPopup();
+          that.map.panTo(marker._latlng);
           return false;
         });
         return $results.append($resultItem);
       }
     });
+    $(this.options.updateSelector).addClass("left-sidebar-active");
     this.lastBounds = this.map.getBounds();
   };
   this.markerBounds = function(bounds, factor) {
@@ -132,9 +144,10 @@ Map = function(options) {
     };
   };
   this.iconColor = function(services) {
-    var color;
+    var color, service;
     color = "";
-    if (typeof services === "array") {
+    if (typeof services === "object") {
+      service = services[0];
       _.each(this.options.tabs, function(tab) {
         if (tab.services.indexOf(service) !== -1) {
           return color = tab.color;

@@ -1,0 +1,50 @@
+#results
+  padding: 5px
+  padding-bottom: 50%
+  margin-top: $topnav-height
+
+  .item
+    padding: 1em 5px
+    margin-top: 10px
+
+    h3
+      a
+        text-decoration: none
+
+      span
+        color: $grey
+        +sans-serif
+        font-size: .8em
+
+    .not-primary
+      display: none
+
+    .static-marker
+      position: absolute
+      left: inherit
+      top: inherit
+
+    .summary
+      margin-left: 40px
+
+      .btn-directions
+        margin: 1em 0
+
+    &.active
+      background: $blue-light
+
+      .not-primary
+        display: block
+
+.fields
+  .title
+    width: 6.5em
+    text-align: right
+    position: absolute
+    font-weight: bold
+
+  .value
+    margin-left: 7em
+    display: block
+    margin-bottom: .2em
+

@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-play, .icon-map-marker, .icon-location, .icon-pin, .icon-pause {
+.icon-cog, .icon-caret-right, .icon-caret-down, .icon-search, .icon-location, .icon-disability, .icon-other, .icon-access, .icon-mentalbehavioural, .icon-alltypes, .icon-generalhealth, .icon-dentaloral, .icon-spinner, .icon-directions {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -37,18 +37,45 @@ you can use the generic selector below, but it's slower:
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
-.icon-play:before {
-	content: "\e000";
+.icon-cog:before {
+	content: "\f013";
 }
-.icon-map-marker:before {
-	content: "\f041";
+.icon-caret-right:before {
+	content: "\f0da";
+}
+.icon-caret-down:before {
+	content: "\f0d7";
+}
+.icon-search:before {
+	content: "\f002";
 }
 .icon-location:before {
-	content: "\e002";
+	content: "\e000";
 }
-.icon-pin:before {
+.icon-disability:before {
+	content: "\e006";
+}
+.icon-other:before {
+	content: "\e005";
+}
+.icon-access:before {
+	content: "\e004";
+}
+.icon-mentalbehavioural:before {
 	content: "\e003";
 }
-.icon-pause:before {
+.icon-alltypes:before {
 	content: "\e001";
+}
+.icon-generalhealth:before {
+	content: "\e002";
+}
+.icon-dentaloral:before {
+	content: "\e008";
+}
+.icon-spinner:before {
+	content: "\e009";
+}
+.icon-directions:before {
+	content: "\e007";
 }

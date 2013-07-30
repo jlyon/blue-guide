@@ -11,13 +11,20 @@ JsonQuery = function(selector, data) {
       var matches;
       matches = {};
       _.each(fields, function(vals, field) {
-        return _.each(vals, function(val) {
-          if ((that.val(row, field) != null) && that.val(row, field).indexOf(val) !== -1) {
+        if (field === "search") {
+          vals = vals.toLowerCase();
+          if (that.val(row, "Clinic Name").toLowerCase().indexOf(vals) !== -1 || that.val(row, "Sponsor Name").toLowerCase().indexOf(vals) !== -1) {
             return matches[field] = true;
           }
-        });
+        } else {
+          return _.each(vals, function(val) {
+            if ((that.val(row, field) != null) && that.val(row, field).indexOf(val) !== -1) {
+              return matches[field] = true;
+            }
+          });
+        }
       });
-      if (matches !== undefined && _.keys(matches).length === _.keys(fields).length) {
+      if ((matches !== undefined && _.keys(matches).length === _.keys(fields).length) || _.keys(fields).length === 0) {
         return that.setVal(row, "active", true);
       } else {
         return that.setVal(row, "active", false);

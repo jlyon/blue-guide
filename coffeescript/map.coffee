@@ -26,7 +26,7 @@ Map = (options) ->
     # Add the geosearch control
     unless @options.geosearch is `undefined`
       settings = _.extend((if @options.geosearch.settings is `undefined` then {} else @options.geosearch.settings),
-        zoomLevel: 13
+        zoomLevel: 15
       )
       settings.provider = new L.GeoSearch.Provider[@options.geosearch.provider]()
       new L.Control.GeoSearch(settings).addTo @map
@@ -42,12 +42,11 @@ Map = (options) ->
         @map.locate settings
       settings = _.extend((if @options.locate.settings is `undefined` then {} else @options.locate.settings),
         setView: true
+        maxZoom: 15
       )
-      jQuery("<button class=\"btn\" id=\"geocode\" onclick=\"locateUser();\"><span class=\"icon-map-marker\"></span>Get my location</button>").appendTo "#map .leaflet-top.leaflet-center"
-      @map.on "locationfound", (e) ->
-        
-        # @todo!
-        console.log e.latlng
+      jQuery(@options.locate.html).bind "click", (e) ->
+        that.map.locate settings
+      .appendTo "#map .leaflet-top.leaflet-center"
 
     return
 
@@ -56,7 +55,6 @@ Map = (options) ->
     $(@options.updateSelector).trigger "locationUpdate"
 
   @drawMarkers = (data) ->
-    #this.map.removeLayer(this.markerLayer);
     @markerLayer.clearLayers()
     
     # Re-order data array by distance to this.location
@@ -70,15 +68,33 @@ Map = (options) ->
 
     # Add new markers and update results
     $results = $(@options.resultsSelector)
-    activeColor = (if (activeTab? and activeTab isnt "All") then _.filter(@options.tabs, (tab) ->
+    activeColor = (if (activeTab? and activeTab isnt "All Types") then _.filter(@options.tabs, (tab) ->
       tab.title is activeTab
     )[0].color else false)
 
     # Cycle through each item and add a marker
     $results.html ""
     _.each data, (item, index) ->
-      if item.Latitude isnt `undefined` and item.Longitude isnt `undefined` and index <= 1025
+      if item.Latitude isnt `undefined` and item.Longitude isnt `undefined` and index <= 25
+
+        # Build the fields html
+        item.fields = ""
+        item.primaryFields = ""
+        _.each that.options.fields, (field) ->
+          if item[field.col]? and item[field.col] isnt ""
+            val = (if (typeof item[field.col] is "string") then item[field.col] else item[field.col].join(", "))
+            html = ich.fieldItem(
+              label: field.label
+              value: val
+              primary: (if field.primary then "primary" else "not-primary")
+            ,
+            true)
+            item.fields += html
+            item.primaryFields += html if field.primary
+
+        # Add the marker
         item.color = (if activeColor then activeColor else that.iconColor(item["Services Provided"]))
+        item["Phone Number"] = item["Phone Number"] + " |" if item["Phone Number"] isnt ""
         
         marker = L.marker([item.Latitude, item.Longitude],
           icon: L.AwesomeMarkers.icon(
@@ -110,25 +126,19 @@ Map = (options) ->
         .addTo(that.markerLayer)
         
         # Add the item to the results sidebar
-        item.fields = ""
-        _.each that.options.fields, (field) ->
-          if item[field.col]?
-            val = (if (typeof item[field.col] is "string") then item[field.col] else item[field.col].join(", "))
-            item.fields += ich.fieldItem(
-              label: field.label
-              value: val
-              primary: (if field.primary then "primary" else "not-primary")
-            , true)
-
         item.id = marker._leaflet_id
         item.letter = marker.options.icon.num2letter(index)
+        item.distance = Math.round(item.distance * 10) / 10
         $resultItem = ich.listItem(item)
         $resultItem.find(".static-marker, h3 a").bind "click", ->
-          that.markerLayer._layers[$(this).parents(".item").attr("rel")].openPopup()
+          marker = that.markerLayer._layers[$(this).parents(".item").attr("rel")]
+          marker.openPopup()
+          that.map.panTo(marker._latlng)
           false
 
         $results.append $resultItem
 
+    $(@options.updateSelector).addClass "left-sidebar-active"
     @lastBounds = @map.getBounds()
     return
 
@@ -147,7 +157,8 @@ Map = (options) ->
 
   @iconColor = (services) ->
     color = ""
-    if typeof services is "array"
+    if typeof services is "object"
+      service = services[0]
       _.each @options.tabs, (tab) ->
         color = tab.color  unless tab.services.indexOf(service) is -1
     color
@@ -161,3 +172,4 @@ Map = (options) ->
     @drawMarkers @options.draw  unless typeof @options.draw is "boolean"
   
   @
+  

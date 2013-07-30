@@ -9,9 +9,14 @@ rev = 0.1;
 activeTab = void 0;
 
 window.onload = function() {
-  var data, filters, googleQuery, map, updateMarkers;
+  var data, filters, map, updateMarkers;
   updateMarkers = function() {
+    $('#show-markers').addClass("icon-spin");
     map.drawMarkers(query.active(map.markerBounds(map.map.getBounds())));
+    $('#show-markers').addClass("icon-spin");
+    if (activeTab == null) {
+      $("#tabs a:eq(0)").addClass("active");
+    }
     return console.log("update");
   };
   filters = new Filters();
@@ -22,9 +27,8 @@ window.onload = function() {
   } else {
     googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
       locache.set("blueGuideData", data);
-      console.log(data);
-      return query = new JsonQuery("body", data);
-    });
+      query = new JsonQuery("body", data);
+    });;
     googleQuery.get("select *");
   }
   map = new Map({
@@ -34,7 +38,9 @@ window.onload = function() {
     resultsSelector: "#results",
     startLat: 38.659777730712534,
     startLng: -105.8203125,
-    locate: true,
+    locate: {
+      html: ich.locateBtn()
+    },
     geosearch: {
       provider: "Google",
       settings: {
@@ -54,13 +60,19 @@ window.onload = function() {
     });
     return updateMarkers();
   });
-  return map.map.on("moveend", function() {
+  map.map.on("locationfound", function(e) {
+    return updateMarkers();
+  });
+  map.map.on("dragend", function() {
     if ((map.lastBounds == null) || !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1.5))) {
       return updateMarkers();
     }
   });
+  return map.map.on("zoomend", function() {
+    return updateMarkers();
+  });
 };
 
 /*
-//@ sourceMappingURL=general.js.map
+//@ sourceMappingURL=main.js.map
 */

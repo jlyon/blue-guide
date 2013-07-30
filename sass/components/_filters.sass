@@ -1,0 +1,112 @@
+#filters
+
+  .accordion-group,
+  .accordion-inner
+    border: none
+
+  .accordion-heading
+    +serif
+    background-color: $blue-light
+    margin: 5px
+    padding: 5px 0
+
+    a
+      text-decoration: none
+
+      &:after
+        +icon
+        float: right
+        font-size: 20px
+        content: "\f0d7"
+
+      &.collapsed:after
+        content: "\f0da"
+
+  .accordion-body.in
+    overflow: visible
+
+  #tabs
+    ul
+      margin-bottom: 0
+
+    a
+      font-weight: bold
+      +border-radius(5px)
+      border: none
+      line-height: 24px
+      margin-bottom: .75em
+
+      &.tab-orange
+        color: $marker-orange
+      &.tab-green
+        color: $marker-green
+      &.tab-purple
+        color: $marker-purple
+      &.tab-red
+        color: $marker-red
+      &.tab-blue
+        color: $marker-blue
+      &.tab-darkblue
+        color: $marker-darkblue
+      &.tab-cadetblue
+        color: $marker-cadetblue
+
+      &.active
+        color: #fff
+
+        &.tab-orange
+          background-color: $marker-orange
+        &.tab-green
+          background-color: $marker-green
+        &.tab-purple
+          background-color: $marker-purple
+        &.tab-red
+          background-color: $marker-red
+        &.tab-blue
+          background-color: $marker-blue
+        &.tab-darkblue
+          background-color: $marker-darkblue
+        &.tab-cadetblue
+          background-color: $marker-cadetblue
+
+      i
+        font-size: 24px
+        width: 24px
+        height: 24px
+        background: none
+        margin-top: -4px
+        margin-right: 5px
+
+  .text-search
+    width: 178px
+
+  .dropdown-menu
+    right: -20px
+
+    li
+      a
+        padding-left: 1.5em
+        text-indent: -1em
+        position: relative
+
+        span.text
+          white-space: normal
+          display: block
+          padding: 0
+          margin: 0
+          font-size: 12px
+          line-height: 1.4em
+
+        i
+          position: absolute
+          top: 0
+          right: 5px
+
+  .submit-btns
+    margin-top: 2em
+
+    .btn-reset
+      margin-left: +1em
+
+
+

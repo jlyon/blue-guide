@@ -120,6 +120,8 @@ GoogleSpreadsheetsQuery = (filters, callback) ->
     _.filter @data, (item) ->
       item.active
 
+  @
+
 googleQuery = undefined
 start = new Date()
 
