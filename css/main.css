@@ -364,11 +364,11 @@
 
   /* line 65, ../sass/components/_layout-mobile.sass */
   .left-sidebar-active .left-sidebar {
-    top: 80%;
+    top: 60%;
   }
   /* line 68, ../sass/components/_layout-mobile.sass */
   .left-sidebar-active .main-content {
-    height: 80%;
+    height: 60%;
   }
 
   /* line 74, ../sass/components/_layout-mobile.sass */
