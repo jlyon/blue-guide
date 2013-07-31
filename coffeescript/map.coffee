@@ -148,14 +148,15 @@ Map = (options) ->
 
         $resultItem.find(".static-marker, h3 a").bind "click", ->
           $item = $(this).parents(".item")
-          $item.addClass "active"
           marker = that.markerLayer._layers[$item.attr("rel")]
           marker.openPopup()
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
+            $item.parent().find('.item').removeClass "active"
             $("html, body").animate
               scrollTop: $item.offset().top - 70
             , 1000
+          $item.addClass "active"
           false
 
         $resultItem.find(".close").bind "click", ->
