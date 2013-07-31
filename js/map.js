@@ -112,7 +112,7 @@ Map = function(options) {
           $item = $results.find(".item[rel=" + this._leaflet_id + "]");
           $item.addClass("active");
           return $("html, body").animate({
-            scrollTop: $item.offset().top - 66
+            scrollTop: $item.offset().top - 70
           }, 1000);
         });
         if (that.options.showPopup) {
@@ -138,7 +138,7 @@ Map = function(options) {
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
             $("html, body").animate({
-              scrollTop: $item.offset().top - 66
+              scrollTop: $item.offset().top - 70
             }, 1000);
           }
           return false;

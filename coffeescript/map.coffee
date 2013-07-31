@@ -124,7 +124,7 @@ Map = (options) ->
           $item = $results.find(".item[rel=" + @_leaflet_id + "]")
           $item.addClass "active"
           $("html, body").animate
-            scrollTop: $item.offset().top - 66
+            scrollTop: $item.offset().top - 70
           , 1000
         )
 
@@ -154,7 +154,7 @@ Map = (options) ->
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
             $("html, body").animate
-              scrollTop: $item.offset().top - 66
+              scrollTop: $item.offset().top - 70
             , 1000
           false
 
