@@ -49,7 +49,6 @@ Filters = ->
       $(btnSelector).addClass "active"
 
 
-
   @constructQuery = ->
     i = 0
     values = {}

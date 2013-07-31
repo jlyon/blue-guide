@@ -195,16 +195,17 @@
   /* line 6, ../sass/components/_layout-desktop.sass */
   html body:after {
     content: "desktop";
+    display: none;
   }
 
-  /* line 9, ../sass/components/_layout-desktop.sass */
+  /* line 10, ../sass/components/_layout-desktop.sass */
   html,
   body,
   .row-fluid {
     height: 100%;
   }
 
-  /* line 14, ../sass/components/_layout-desktop.sass */
+  /* line 15, ../sass/components/_layout-desktop.sass */
   .main-content {
     height: 100%;
     position: fixed;
@@ -221,12 +222,12 @@
     overflow: hidden;
     border-right: 2px solid #cccccc;
   }
-  /* line 24, ../sass/components/_layout-desktop.sass */
+  /* line 25, ../sass/components/_layout-desktop.sass */
   .main-content #map {
     height: 100%;
   }
 
-  /* line 27, ../sass/components/_layout-desktop.sass */
+  /* line 28, ../sass/components/_layout-desktop.sass */
   .left-sidebar {
     width: 0;
     -webkit-transition: width;
@@ -240,7 +241,7 @@
     min-height: 100%;
   }
 
-  /* line 36, ../sass/components/_layout-desktop.sass */
+  /* line 37, ../sass/components/_layout-desktop.sass */
   .right-sidebar {
     width: 0;
     -webkit-transition: width;
@@ -253,7 +254,7 @@
     overflow: hidden;
   }
 
-  /* line 47, ../sass/components/_layout-desktop.sass */
+  /* line 48, ../sass/components/_layout-desktop.sass */
   .left-sidebar-active .main-content {
     left: 320px;
     -webkit-transition: left, 1s;
@@ -261,7 +262,7 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 51, ../sass/components/_layout-desktop.sass */
+  /* line 52, ../sass/components/_layout-desktop.sass */
   .left-sidebar-active .main-content #map {
     margin-left: -160px;
     -webkit-transition: margin-left, 1s;
@@ -269,7 +270,7 @@
     -o-transition: margin-left, 1s;
     transition: margin-left, 1s;
   }
-  /* line 55, ../sass/components/_layout-desktop.sass */
+  /* line 56, ../sass/components/_layout-desktop.sass */
   .left-sidebar-active .main-content #map .leaflet-left,
   .left-sidebar-active .main-content #map .leaflet-top.leaflet-center {
     padding-left: 160px;
@@ -278,7 +279,7 @@
     -o-transition: padding-left, 1s;
     transition: padding-left, 1s;
   }
-  /* line 60, ../sass/components/_layout-desktop.sass */
+  /* line 61, ../sass/components/_layout-desktop.sass */
   .left-sidebar-active .left-sidebar {
     width: 320px;
     -webkit-transition: width, 1s;
@@ -287,7 +288,7 @@
     transition: width, 1s;
   }
 
-  /* line 67, ../sass/components/_layout-desktop.sass */
+  /* line 68, ../sass/components/_layout-desktop.sass */
   .right-sidebar-active .main-content {
     right: 260px;
     -webkit-transition: right, 1s;
@@ -295,7 +296,7 @@
     -o-transition: right, 1s;
     transition: right, 1s;
   }
-  /* line 71, ../sass/components/_layout-desktop.sass */
+  /* line 72, ../sass/components/_layout-desktop.sass */
   .right-sidebar-active .main-content #map {
     margin-right: -130px;
     -webkit-transition: margin-right, 1s;
@@ -303,7 +304,7 @@
     -o-transition: margin-right, 1s;
     transition: margin-right, 1s;
   }
-  /* line 75, ../sass/components/_layout-desktop.sass */
+  /* line 76, ../sass/components/_layout-desktop.sass */
   .right-sidebar-active .right-sidebar {
     width: 260px;
     -webkit-transition: width, 1s;
@@ -313,7 +314,7 @@
     overflow: visible;
   }
 
-  /* line 81, ../sass/components/_layout-desktop.sass */
+  /* line 82, ../sass/components/_layout-desktop.sass */
   .right-sidebar-active.left-sidebar-active .main-content {
     -webkit-transition: left, 1s, right, 1s;
     -moz-transition: left, 1s, right, 1s;
@@ -329,26 +330,33 @@
   /* line 6, ../sass/components/_layout-mobile.sass */
   html body:after {
     content: "mobile";
+    display: none;
   }
 
-  /* line 9, ../sass/components/_layout-mobile.sass */
+  /* line 10, ../sass/components/_layout-mobile.sass */
   html,
   body,
   .row-fluid,
   .main-content {
     height: 100%;
     padding: 0;
-    overflow: hidden;
   }
 
   /* line 17, ../sass/components/_layout-mobile.sass */
+  .row-fluid {
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* line 22, ../sass/components/_layout-mobile.sass */
   .navbar .nav,
   #showFilters span,
   .leaflet-control-geosearch {
     display: none;
   }
 
-  /* line 22, ../sass/components/_layout-mobile.sass */
+  /* line 27, ../sass/components/_layout-mobile.sass */
   .main-content {
     top: 0;
     position: absolute;
@@ -359,78 +367,66 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 29, ../sass/components/_layout-mobile.sass */
+  /* line 34, ../sass/components/_layout-mobile.sass */
   .main-content #map {
     width: 100%;
     height: 100%;
-    margin-top: 64px;
   }
-  /* line 34, ../sass/components/_layout-mobile.sass */
+  /* line 38, ../sass/components/_layout-mobile.sass */
   .main-content #map .leaflet-top.leaflet-center {
     width: 160px;
   }
 
-  /* line 37, ../sass/components/_layout-mobile.sass */
+  /* line 41, ../sass/components/_layout-mobile.sass */
   .left-sidebar {
     position: relative;
     top: 100%;
     height: 400px;
     z-index: 100;
-    background-color: white;
-    -webkit-transition: top, 1s;
-    -moz-transition: top, 1s;
-    -o-transition: top, 1s;
-    transition: top, 1s;
+    background-color: red;
+    -webkit-transition: all, 1s;
+    -moz-transition: all, 1s;
+    -o-transition: all, 1s;
+    transition: all, 1s;
   }
 
-  /* line 45, ../sass/components/_layout-mobile.sass */
+  /* line 49, ../sass/components/_layout-mobile.sass */
   .right-sidebar {
-    display: none;
     right: -280px;
-    width: 0;
-    top: 64px;
+    top: 0;
     position: absolute;
     width: 280px;
-    -webkit-transition: right, 1s;
-    -moz-transition: right, 1s;
-    -o-transition: right, 1s;
-    transition: right, 1s;
+    -webkit-transition: all, 1s;
+    -moz-transition: all, 1s;
+    -o-transition: all, 1s;
+    transition: all, 1s;
   }
 
-  /* line 54, ../sass/components/_layout-mobile.sass */
+  /* line 56, ../sass/components/_layout-mobile.sass */
   #showFilters {
     margin-right: 5px;
   }
-  /* line 57, ../sass/components/_layout-mobile.sass */
+  /* line 59, ../sass/components/_layout-mobile.sass */
   #showFilters i {
     margin-right: 0;
   }
 
-  /* line 63, ../sass/components/_layout-mobile.sass */
+  /* line 65, ../sass/components/_layout-mobile.sass */
   .left-sidebar-active .left-sidebar {
     top: 80%;
-    -webkit-transition: top, 1s;
-    -moz-transition: top, 1s;
-    -o-transition: top, 1s;
-    transition: top, 1s;
+    -webkit-transition: all, 1s;
+    -moz-transition: all, 1s;
+    -o-transition: all, 1s;
+    transition: all, 1s;
   }
 
-  /* line 70, ../sass/components/_layout-mobile.sass */
+  /* line 72, ../sass/components/_layout-mobile.sass */
   .right-sidebar-active .main-content {
     left: -280px;
-    -webkit-transition: left, 1s;
-    -moz-transition: left, 1s;
-    -o-transition: left, 1s;
-    transition: left, 1s;
   }
-  /* line 74, ../sass/components/_layout-mobile.sass */
+  /* line 75, ../sass/components/_layout-mobile.sass */
   .right-sidebar-active .right-sidebar {
-    display: block;
     right: 0;
-    -webkit-transition: right, 1s;
-    -moz-transition: right, 1s;
-    -o-transition: right, 1s;
-    transition: right, 1s;
   }
 }
 /* line 1, ../sass/components/_map.sass */
