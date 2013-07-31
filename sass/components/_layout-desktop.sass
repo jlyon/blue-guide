@@ -17,8 +17,7 @@
     position: fixed
     right: 0
     left: 0
-    +transition(left)
-    +transition(right)
+    +transition(all, $trans-time)
     overflow: hidden
     border-right: $border-width solid $grey
 
@@ -27,7 +26,7 @@
 
   .left-sidebar
     width: 0
-    +transition(width)
+    +transition(all, $trans-time)
     float: left
     background-color: $white
     border-right: $border-width solid $grey
@@ -36,7 +35,7 @@
 
   .right-sidebar
     width: 0
-    +transition(width)
+    +transition(all, $trans-time)
     right: 0
     position: fixed
     background-color: $white
@@ -47,39 +46,31 @@
 
     .main-content
       left: $left-sidebar-width
-      +transition(left, $trans-time)
 
       #map
-        margin-left: -$left-sidebar-width/2
-        +transition(margin-left, $trans-time)
+        //margin-left: -$left-sidebar-width/2
+        //+transition(margin-left, $trans-time)
 
         .leaflet-left,
         .leaflet-top.leaflet-center
           padding-left: $left-sidebar-width/2
-          +transition(padding-left, $trans-time)
 
     .left-sidebar
       width: $left-sidebar-width
-      +transition(width, $trans-time)
 
 
   .right-sidebar-active
 
     .main-content
       right: $right-sidebar-width
-      +transition(right, $trans-time)
+      //+transition(all, $trans-time)
 
       #map
-        margin-right: -$right-sidebar-width/2
-        +transition(margin-right, $trans-time)
+        //margin-right: -$right-sidebar-width/2
+        //+transition(all, $trans-time)
 
     .right-sidebar
       width: $right-sidebar-width
-      +transition(width, $trans-time)
+      //+transition(all, $trans-time)
       overflow: visible
-
-  .right-sidebar-active.left-sidebar-active
-    .main-content
-      +transition(left, $trans-time, right, $trans-time)
-
 

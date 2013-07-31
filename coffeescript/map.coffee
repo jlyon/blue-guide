@@ -9,10 +9,13 @@ Map = (options) ->
     startLat: 0
     startLng: 0
     startZoom: 8
+    maxMarkers: 25
   , options)
   
   #this.markers = {};
   @markerLayer = new L.FeatureGroup()
+  @homeMarkerLayer = new L.FeatureGroup()
+
   @drawMap = ->
     
     # Create the map
@@ -22,7 +25,8 @@ Map = (options) ->
       layers: new L.TileLayer(@options.layerUrl)
     )
     @markerLayer.addTo @map
-    
+    @homeMarkerLayer.addTo @map
+
     # Add the geosearch control
     unless @options.geosearch is `undefined`
       settings = _.extend((if @options.geosearch.settings is `undefined` then {} else @options.geosearch.settings),
@@ -30,12 +34,7 @@ Map = (options) ->
       )
       settings.provider = new L.GeoSearch.Provider[@options.geosearch.provider]()
       new L.Control.GeoSearch(settings).addTo @map
-      @map.on "geosearch_showlocation", (e) ->
-        
-        # @todo!
-        that.updateLocation new L.LatLng(e.Location.Y, e.Location.X)
 
-    console.log @options
     # Add the locate button
     unless @options.locate is `undefined`
       locateUser = ->
@@ -52,7 +51,17 @@ Map = (options) ->
 
   @updateLocation = (latlng) ->
     @location = latlng
-    $(@options.updateSelector).trigger "locationUpdate"
+    #$(@options.updateSelector).trigger "locationUpdate"
+
+  @addMarker = (latlng) ->
+    @homeMarkerLayer.clearLayers()
+    marker = L.marker(latlng,
+      icon: L.AwesomeMarkers.icon(
+        color: "orange"
+        icon: "home"
+      )
+      title: "Home"
+    ).addTo @homeMarkerLayer
 
   @drawMarkers = (data) ->
     @markerLayer.clearLayers()
@@ -72,8 +81,14 @@ Map = (options) ->
       tab.title is activeTab
     )[0].color else false)
 
-    # Cycle through each item and add a marker
+    # Prep the #results div
     $results.html ""
+    if data.length is 0
+      $results.append ich.noResults() 
+    #else
+    #  $results.append ich.resultSummary
+
+    # Cycle through each item and add a marker
     _.each data, (item, index) ->
       if item.Latitude isnt `undefined` and item.Longitude isnt `undefined` and index <= 25
 
@@ -105,40 +120,63 @@ Map = (options) ->
           title: item["Clinic Name"]
         )
 
-        .bindPopup(ich.popupItem(item).html(),
-          closeButton: true
-        )
-
-        .on("popupopen", (e) ->
-          console.log e
+        .on("click", (e) ->
           $item = $results.find(".item[rel=" + @_leaflet_id + "]")
           $item.addClass "active"
           $("html, body").animate
-            scrollTop: $item.offset().top - 60
+            scrollTop: $item.offset().top - 66
           , 1000
         )
 
-        .on("popupclose", (e) ->
-          $item = $results.find(".item[rel=" + @_leaflet_id + "]")
-          $item.removeClass "active"
-        )
+        if that.options.showPopup
+          marker.bindPopup(ich.popupItem(item).html(),
+            closeButton: true
+          )
 
-        .addTo(that.markerLayer)
+          .on("popupclose", (e) ->
+            $item = $results.find(".item[rel=" + @_leaflet_id + "]")
+            $item.removeClass "active"
+          )
+
+        marker.addTo(that.markerLayer)
         
         # Add the item to the results sidebar
         item.id = marker._leaflet_id
         item.letter = marker.options.icon.num2letter(index)
         item.distance = Math.round(item.distance * 10) / 10
         $resultItem = ich.listItem(item)
+
         $resultItem.find(".static-marker, h3 a").bind "click", ->
-          marker = that.markerLayer._layers[$(this).parents(".item").attr("rel")]
+          $item = $(this).parents(".item")
+          $item.addClass "active"
+          marker = that.markerLayer._layers[$item.attr("rel")]
           marker.openPopup()
           that.map.panTo(marker._latlng)
+          if window.responsive is "mobile"
+            $("html, body").animate
+              scrollTop: $item.offset().top - 66
+            , 1000
           false
+
+        $resultItem.find(".close").bind "click", ->
+          $item = $(this).parents(".item")
+          $item.removeClass "active"
+          if window.responsive isnt "mobile"
+            that.markerLayer._layers[$item.attr("rel")].closePopup()
+          else
+            console.log(that.updateSelector);
+            $(that.updateSelector).removeClass "left-sidebar-big"
+            $("html, body").animate
+              scrollTop: -66
+            , 500
+
+        $resultItem.find(".btn-directions").bind "click", ->
+          window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
+
+
 
         $results.append $resultItem
 
-    $(@options.updateSelector).addClass "left-sidebar-active"
     @lastBounds = @map.getBounds()
     return
 

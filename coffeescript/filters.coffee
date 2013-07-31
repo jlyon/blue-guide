@@ -1,6 +1,6 @@
 Filters = ->
   that = this
-  @draw = (selector, btnSelector, responsive) ->
+  @draw = (selector, btnSelector) ->
     i = 0
     console.log(btnSelector)
     #var $selector = $(selector);
@@ -44,7 +44,7 @@ Filters = ->
     $(btnSelector).bind "click", ->
       $(this).toggleClass "active"
       $("body").toggleClass "right-sidebar-active"
-    if responsive isnt "mobile"
+    if window.responsive isnt "mobile"
       $("body").addClass "right-sidebar-active" 
       $(btnSelector).addClass "active"
 

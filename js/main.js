@@ -9,34 +9,24 @@ rev = 0.1;
 activeTab = void 0;
 
 window.onload = function() {
-  var data, filters, map, params, queries, responsive, updateMarkers;
-  updateMarkers = function() {
-    $('#show-markers').addClass("icon-spin");
-    map.drawMarkers(query.active(map.markerBounds(map.map.getBounds())));
-    $('#show-markers').addClass("icon-spin");
-    if (activeTab == null) {
-      $("#tabs a:eq(0)").addClass("active");
-    }
-    return console.log("update");
-  };
-  responsive = void 0;
+  var data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
   queries = [
     {
       context: "mobile",
       match: function() {
-        return responsive = "mobile";
+        return window.responsive = "mobile";
       }
     }, {
       context: "desktop",
       match: function() {
-        return responsive = "desktop";
+        return window.responsive = "desktop";
       }
     }
   ];
   MQ.init(queries);
   filters = new Filters();
   data = locache.get("blueGuideData");
-  filters.draw("#filters", "#showFilters", responsive);
+  filters.draw("#filters", "#showFilters");
   if (data && data.rev && data.rev === rev) {
     query = new JsonQuery("body", data);
   } else {
@@ -51,6 +41,7 @@ window.onload = function() {
     updateSelector: "body",
     draw: true,
     resultsSelector: "#results",
+    showPopup: window.responsive !== "mobile",
     startLat: 38.659777730712534,
     startLng: -105.8203125,
     locate: {
@@ -60,7 +51,7 @@ window.onload = function() {
     fields: filters.displayFields,
     tabs: filters.tabs
   };
-  if (responsive !== "mobile" || 1 === 1) {
+  if (window.responsive !== "mobile" || 1 === 1) {
     params.geosearch = {
       provider: "Google",
       settings: {
@@ -70,25 +61,47 @@ window.onload = function() {
   }
   map = new Map(params);
   $("body").bind("queryUpdate", function() {
-    return updateMarkers();
+    updateMarkers();
+    return $("body").addClass("left-sidebar-active");
   });
-  $("body").bind("locationUpdate", function() {
-    _.each(query.data.rows, function(row) {
-      return query.setVal(row, "active", true);
-    });
-    return updateMarkers();
+  map.map.on("geosearch_showlocation", function(e) {
+    return locationUpdated(new L.LatLng(e.Location.Y, e.Location.X));
   });
   map.map.on("locationfound", function(e) {
-    return updateMarkers();
+    return locationUpdated(e.latlng);
   });
   map.map.on("dragend", function() {
     if ((map.lastBounds == null) || !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1.5))) {
       return updateMarkers();
     }
   });
-  return map.map.on("zoomend", function() {
+  map.map.on("zoomend", function() {
     return updateMarkers();
   });
+  updateMarkers = function() {
+    $('#show-markers').addClass("icon-spin");
+    map.drawMarkers(query.active(map.markerBounds(map.map.getBounds())));
+    $('#show-markers').addClass("icon-spin");
+    if (activeTab == null) {
+      $("#tabs a:eq(0)").addClass("active");
+    }
+    return console.log("update");
+  };
+  locationUpdated = function(latlng) {
+    map.addMarker(latlng);
+    map.updateLocation(latlng);
+    query.fillActive();
+    updateMarkers();
+    $("body").addClass("left-sidebar-active");
+    return resizeMap();
+  };
+  resizeMap = function() {
+    return window.setTimeout(function() {
+      return map.map.invalidateSize({
+        animate: true
+      });
+    }, 500);
+  };
 };
 
 /*

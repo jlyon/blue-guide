@@ -43,6 +43,10 @@ JsonQuery = (selector, data) ->
     row[@data.cols.indexOf(key)] = val
     val
 
+  @fillActive = ->
+    _.each query.data.rows, (row) ->
+      query.setVal row, "active", true
+
   @arr2obj = (data) ->
     obj = []
     _.each data, (item) ->

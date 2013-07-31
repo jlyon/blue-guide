@@ -9,9 +9,11 @@ Map = function(options) {
     style: "popup",
     startLat: 0,
     startLng: 0,
-    startZoom: 8
+    startZoom: 8,
+    maxMarkers: 25
   }, options);
   this.markerLayer = new L.FeatureGroup();
+  this.homeMarkerLayer = new L.FeatureGroup();
   this.drawMap = function() {
     var locateUser, settings;
     this.map = new L.Map(this.options.id, {
@@ -20,17 +22,14 @@ Map = function(options) {
       layers: new L.TileLayer(this.options.layerUrl)
     });
     this.markerLayer.addTo(this.map);
+    this.homeMarkerLayer.addTo(this.map);
     if (this.options.geosearch !== undefined) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
         zoomLevel: 15
       });
       settings.provider = new L.GeoSearch.Provider[this.options.geosearch.provider]();
       new L.Control.GeoSearch(settings).addTo(this.map);
-      this.map.on("geosearch_showlocation", function(e) {
-        return that.updateLocation(new L.LatLng(e.Location.Y, e.Location.X));
-      });
     }
-    console.log(this.options);
     if (this.options.locate !== undefined) {
       locateUser = function() {
         return this.map.locate(settings);
@@ -45,8 +44,18 @@ Map = function(options) {
     }
   };
   this.updateLocation = function(latlng) {
-    this.location = latlng;
-    return $(this.options.updateSelector).trigger("locationUpdate");
+    return this.location = latlng;
+  };
+  this.addMarker = function(latlng) {
+    var marker;
+    this.homeMarkerLayer.clearLayers();
+    return marker = L.marker(latlng, {
+      icon: L.AwesomeMarkers.icon({
+        color: "orange",
+        icon: "home"
+      }),
+      title: "Home"
+    }).addTo(this.homeMarkerLayer);
   };
   this.drawMarkers = function(data) {
     var $results, activeColor, location;
@@ -64,6 +73,9 @@ Map = function(options) {
       return tab.title === activeTab;
     })[0].color : false);
     $results.html("");
+    if (data.length === 0) {
+      $results.append(ich.noResults());
+    }
     _.each(data, function(item, index) {
       var $resultItem, marker;
       if (item.Latitude !== undefined && item.Longitude !== undefined && index <= 25) {
@@ -95,35 +107,62 @@ Map = function(options) {
             color: item.color
           }),
           title: item["Clinic Name"]
-        }).bindPopup(ich.popupItem(item).html(), {
-          closeButton: true
-        }).on("popupopen", function(e) {
+        }).on("click", function(e) {
           var $item;
-          console.log(e);
           $item = $results.find(".item[rel=" + this._leaflet_id + "]");
           $item.addClass("active");
           return $("html, body").animate({
-            scrollTop: $item.offset().top - 60
+            scrollTop: $item.offset().top - 66
           }, 1000);
-        }).on("popupclose", function(e) {
-          var $item;
-          $item = $results.find(".item[rel=" + this._leaflet_id + "]");
-          return $item.removeClass("active");
-        }).addTo(that.markerLayer);
+        });
+        if (that.options.showPopup) {
+          marker.bindPopup(ich.popupItem(item).html(), {
+            closeButton: true
+          }).on("popupclose", function(e) {
+            var $item;
+            $item = $results.find(".item[rel=" + this._leaflet_id + "]");
+            return $item.removeClass("active");
+          });
+        }
+        marker.addTo(that.markerLayer);
         item.id = marker._leaflet_id;
         item.letter = marker.options.icon.num2letter(index);
         item.distance = Math.round(item.distance * 10) / 10;
         $resultItem = ich.listItem(item);
         $resultItem.find(".static-marker, h3 a").bind("click", function() {
-          marker = that.markerLayer._layers[$(this).parents(".item").attr("rel")];
+          var $item;
+          $item = $(this).parents(".item");
+          $item.addClass("active");
+          marker = that.markerLayer._layers[$item.attr("rel")];
           marker.openPopup();
           that.map.panTo(marker._latlng);
+          if (window.responsive === "mobile") {
+            $("html, body").animate({
+              scrollTop: $item.offset().top - 66
+            }, 1000);
+          }
           return false;
+        });
+        $resultItem.find(".close").bind("click", function() {
+          var $item;
+          $item = $(this).parents(".item");
+          $item.removeClass("active");
+          if (window.responsive !== "mobile") {
+            return that.markerLayer._layers[$item.attr("rel")].closePopup();
+          } else {
+            console.log(that.updateSelector);
+            $(that.updateSelector).removeClass("left-sidebar-big");
+            return $("html, body").animate({
+              scrollTop: -66
+            }, 500);
+          }
+        });
+        $resultItem.find(".btn-directions").bind("click", function() {
+          return window.open("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]);
         });
         return $results.append($resultItem);
       }
     });
-    $(this.options.updateSelector).addClass("left-sidebar-active");
     this.lastBounds = this.map.getBounds();
   };
   this.markerBounds = function(bounds, factor) {

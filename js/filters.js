@@ -3,7 +3,7 @@ var Filters;
 Filters = function() {
   var that;
   that = this;
-  this.draw = function(selector, btnSelector, responsive) {
+  this.draw = function(selector, btnSelector) {
     var filters, i;
     i = 0;
     console.log(btnSelector);
@@ -47,7 +47,7 @@ Filters = function() {
       $(this).toggleClass("active");
       return $("body").toggleClass("right-sidebar-active");
     });
-    if (responsive !== "mobile") {
+    if (window.responsive !== "mobile") {
       $("body").addClass("right-sidebar-active");
       return $(btnSelector).addClass("active");
     }

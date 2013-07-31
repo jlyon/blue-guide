@@ -16,11 +16,11 @@ h3
   a
     color: $black
   
-[class^="icon-"]:not(.icon-ok), [class*=" icon-"]:not(.icon-ok)
+[class^="icon-"]:not(.icon-ok, .icon-home), [class*=" icon-"]:not(.icon-ok)
   background-image: none
 
-button.btn-normal,
-button.btn-dark
+.btn-normal,
+.btn-dark
   height: 38px
   +border-radius(3px)
   +background-image(linear-gradient($btn-blue, tint($btn-blue, 10)))

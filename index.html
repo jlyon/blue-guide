@@ -85,8 +85,7 @@
     <div class="row-fluid">
 
       <div class="left-sidebar">
-        <div class="" id="results">
-        </div>
+        <div class="" id="results"></div>
       </div>
 
       <div class="main-content">
@@ -158,9 +157,18 @@
   </form>
 </script>
 
+<script id="noResults" type="text/html">
+  <div>
+    <h3>Sorry</h3>
+    We could not find any clinics near you.  Try changing your filters
+    or zooming out.
+  </div>
+</script>
+
 <script id="listItem" type="text/html">
   <div class="item" rel="{{id}}">
     {{>marker}}
+    <button type="button" class="close not-primary">&times;</button>
     <div class="summary">
       <h3><a href="#">{{Clinic Name}} <span>({{distance}} miles)</a></span></h3>
       <p>

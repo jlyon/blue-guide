@@ -56,6 +56,11 @@ JsonQuery = function(selector, data) {
     row[this.data.cols.indexOf(key)] = val;
     return val;
   };
+  this.fillActive = function() {
+    return _.each(query.data.rows, function(row) {
+      return query.setVal(row, "active", true);
+    });
+  };
   this.arr2obj = function(data) {
     var obj;
     obj = [];
