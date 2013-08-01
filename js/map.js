@@ -188,7 +188,7 @@ Map = function(options) {
   this.iconColor = function(services) {
     var color, service;
     color = "";
-    if (typeof services === "object") {
+    if (typeof services === "object" && services.length > 0) {
       service = services[0];
       _.each(this.options.tabs, function(tab) {
         if (tab.services.indexOf(service) !== -1) {

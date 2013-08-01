@@ -40,10 +40,11 @@ window.onload = ->
     startLat: 38.659777730712534
     startLng: -105.8203125
     startZoom: 7
-    params.geosearch:
-      provider: "Google"
-      settings:
-        zoomLevel: 13 
+    params:
+      geosearch:
+        provider: "Google"
+        settings:
+          zoomLevel: 13 
     locate: {html: ich.locateBtn()}   
     layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-i5m0mag7/{z}/{x}/{y}.png"
     fields: filters.displayFields

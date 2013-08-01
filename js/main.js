@@ -45,6 +45,14 @@ window.onload = function() {
     startLat: 38.659777730712534,
     startLng: -105.8203125,
     startZoom: 7,
+    params: {
+      geosearch: {
+        provider: "Google",
+        settings: {
+          zoomLevel: 13
+        }
+      }
+    },
     locate: {
       html: ich.locateBtn()
     },
@@ -52,14 +60,6 @@ window.onload = function() {
     fields: filters.displayFields,
     tabs: filters.tabs
   };
-  if (window.responsive !== "mobile" || 1 === 1) {
-    params.geosearch = {
-      provider: "Google",
-      settings: {
-        zoomLevel: 13
-      }
-    };
-  }
   map = new Map(params);
   $("body").bind("queryUpdate", function() {
     updateMarkers();

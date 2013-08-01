@@ -197,7 +197,7 @@ Map = (options) ->
 
   @iconColor = (services) ->
     color = ""
-    if typeof services is "object"
+    if typeof services is "object" and services.length > 0
       service = services[0]
       _.each @options.tabs, (tab) ->
         color = tab.color  unless tab.services.indexOf(service) is -1
