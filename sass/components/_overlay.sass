@@ -1,0 +1,39 @@
+#mapOverlay,
+#about
+  display: none
+
+#mapOverlay
+  +opacity(0)
+  +transition(opacity, $trans-time*5)
+
+#about
+  padding: 5em 7em
+
+.overlay-active
+
+  #mapOverlay,
+  #about
+    display: block
+    width: 100%
+    height: 100%
+    z-index: 1
+    position: absolute
+    top: 0
+    left: 0
+
+  
+
+  #mapOverlay
+    background-color: $white
+    +opacity(.85)
+
+  #map
+    border-right: none !important
+
+    .leaflet-left
+      +opacity(.2)
+
+    .leaflet-top.leaflet-center
+      margin-left: 7em
+      margin-top: 12em
+      width: 120%
