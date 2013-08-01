@@ -9,7 +9,7 @@ rev = 0.1;
 activeTab = void 0;
 
 window.onload = function() {
-  var data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
+  var activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
   queries = [
     {
       context: "mobile",
@@ -63,7 +63,7 @@ window.onload = function() {
   map = new Map(params);
   $("body").bind("queryUpdate", function() {
     updateMarkers();
-    return $("body").addClass("left-sidebar-active");
+    return activate();
   });
   map.map.on("geosearch_showlocation", function(e) {
     return locationUpdated(new L.LatLng(e.Location.Y, e.Location.X));
@@ -88,13 +88,16 @@ window.onload = function() {
     }
     return console.log("update");
   };
+  activate = function() {
+    $("body").addClass("left-sidebar-active").removeClass("overlay-active");
+    return resizeMap();
+  };
   locationUpdated = function(latlng) {
     map.addMarker(latlng);
     map.updateLocation(latlng);
     query.fillActive();
     updateMarkers();
-    $("body").addClass("left-sidebar-active");
-    return resizeMap();
+    return activate();
   };
   resizeMap = function() {
     return window.setTimeout(function() {

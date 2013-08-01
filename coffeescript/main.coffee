@@ -40,15 +40,15 @@ window.onload = ->
     startLat: 38.659777730712534
     startLng: -105.8203125
     startZoom: 7
+    params.geosearch:
+      provider: "Google"
+      settings:
+        zoomLevel: 13 
     locate: {html: ich.locateBtn()}   
     layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-i5m0mag7/{z}/{x}/{y}.png"
     fields: filters.displayFields
     tabs: filters.tabs
-  if window.responsive isnt "mobile" or 1 is 1
-    params.geosearch =
-      provider: "Google"
-      settings:
-        zoomLevel: 13 
+  #if window.responsive isnt "mobile" or 1 is 1 
 
   # Add map
   map = new Map params
@@ -56,7 +56,7 @@ window.onload = ->
   # Add binds
   $("body").bind "queryUpdate", ->
     updateMarkers()
-    $("body").addClass "left-sidebar-active"
+    activate()
 
   map.map.on "geosearch_showlocation", (e) ->
     locationUpdated(new L.LatLng(e.Location.Y, e.Location.X))
@@ -84,13 +84,19 @@ window.onload = ->
     $("#tabs a:eq(0)").addClass("active") if !activeTab?
     console.log "update"
 
+  activate = ->
+    $("body")
+      .addClass("left-sidebar-active")
+      .removeClass("overlay-active")
+    resizeMap()
+
   locationUpdated = (latlng) ->
     map.addMarker(latlng)
     map.updateLocation latlng
     query.fillActive()
     updateMarkers()
-    $("body").addClass "left-sidebar-active"
-    resizeMap()
+    activate()
+    
     
   resizeMap = ->
     window.setTimeout ->

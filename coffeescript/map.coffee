@@ -26,6 +26,7 @@ Map = (options) ->
     )
     @markerLayer.addTo @map
     @homeMarkerLayer.addTo @map
+    $("#map .leaflet-control-container").append ich.about()
 
     # Add the geosearch control
     unless @options.geosearch is `undefined`

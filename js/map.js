@@ -23,6 +23,7 @@ Map = function(options) {
     });
     this.markerLayer.addTo(this.map);
     this.homeMarkerLayer.addTo(this.map);
+    $("#map .leaflet-control-container").append(ich.about());
     if (this.options.geosearch !== undefined) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
         zoomLevel: 15
