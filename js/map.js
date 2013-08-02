@@ -7,6 +7,7 @@ Map = function(options) {
   this.options = _.extend({
     draw: false,
     style: "popup",
+    resultNum: 25,
     startLat: 0,
     startLng: 0,
     startZoom: 8,
@@ -14,6 +15,7 @@ Map = function(options) {
   }, options);
   this.markerLayer = new L.FeatureGroup();
   this.homeMarkerLayer = new L.FeatureGroup();
+  this.resultNum = this.options.resultNum;
   this.drawMap = function() {
     var locateUser, settings;
     this.map = new L.Map(this.options.id, {
@@ -59,7 +61,7 @@ Map = function(options) {
     }).addTo(this.homeMarkerLayer);
   };
   this.drawMarkers = function(data) {
-    var $results, activeColor, location;
+    var $results, $text, activeColor, location;
     this.markerLayer.clearLayers();
     location = (this.location !== undefined ? this.location : this.map.getCenter());
     _.each(data, function(item, index) {
@@ -76,10 +78,33 @@ Map = function(options) {
     $results.html("");
     if (data.length === 0) {
       $results.append(ich.noResults());
+    } else {
+      if (this.resultNum === 100000) {
+        $text = ich.resultSummaryAll({
+          num: data.length,
+          smaller: this.options.resultNum
+        });
+      } else if (data.length <= this.resultNum) {
+        $text = ich.resultSummaryMatching({
+          num: data.length
+        });
+      } else {
+        $text = ich.resultSummary({
+          num: this.resultNum,
+          total: data.length,
+          location: this.locationType != null ? this.locationType : "center of your map"
+        });
+      }
+      $text.find("a").bind("click", function() {
+        that.resultNum = parseInt($(this).attr("rel"));
+        that.drawMarkers(data);
+        return false;
+      });
+      $results.append($text);
     }
     _.each(data, function(item, index) {
       var $resultItem, marker;
-      if (item.Latitude !== undefined && item.Longitude !== undefined && index <= 25) {
+      if (item.Latitude !== undefined && item.Longitude !== undefined && index <= that.resultNum) {
         item.fields = "";
         item.primaryFields = "";
         _.each(that.options.fields, function(field) {
@@ -188,7 +213,7 @@ Map = function(options) {
   this.iconColor = function(services) {
     var color, service;
     color = "";
-    if (typeof services === "object" && services.length > 0) {
+    if ((services != null) && (services.length != null) && services.length > 0) {
       service = services[0];
       _.each(this.options.tabs, function(tab) {
         if (tab.services.indexOf(service) !== -1) {

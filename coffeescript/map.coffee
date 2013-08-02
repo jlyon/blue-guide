@@ -4,7 +4,7 @@ Map = (options) ->
   @options = _.extend(
     draw: false
     style: "popup"
-    
+    resultNum: 25
     #layerUrl,
     startLat: 0
     startLng: 0
@@ -15,6 +15,7 @@ Map = (options) ->
   #this.markers = {};
   @markerLayer = new L.FeatureGroup()
   @homeMarkerLayer = new L.FeatureGroup()
+  @resultNum = @options.resultNum
 
   @drawMap = ->
     
@@ -85,13 +86,29 @@ Map = (options) ->
     # Prep the #results div
     $results.html ""
     if data.length is 0
-      $results.append ich.noResults() 
-    #else
-    #  $results.append ich.resultSummary
+      $results.append ich.noResults()
+    else
+      if @resultNum is 100000
+        $text = ich.resultSummaryAll
+          num: data.length
+          smaller: @options.resultNum
+      else if data.length <= @resultNum 
+        $text = ich.resultSummaryMatching
+          num: data.length
+      else
+        $text = ich.resultSummary
+          num: @resultNum
+          total: data.length # @todo: _.keys? ; filter data to only those w lat/lon?
+          location: if @locationType? then @locationType else "center of your map"
+      $text.find("a").bind "click", ->
+        that.resultNum = parseInt $(this).attr "rel"
+        that.drawMarkers data
+        false
+      $results.append $text
 
     # Cycle through each item and add a marker
     _.each data, (item, index) ->
-      if item.Latitude isnt `undefined` and item.Longitude isnt `undefined` and index <= 25
+      if item.Latitude isnt `undefined` and item.Longitude isnt `undefined` and index <= that.resultNum
 
         # Build the fields html
         item.fields = ""
@@ -175,8 +192,6 @@ Map = (options) ->
         $resultItem.find(".btn-directions").bind "click", ->
           window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
 
-
-
         $results.append $resultItem
 
     @lastBounds = @map.getBounds()
@@ -197,7 +212,7 @@ Map = (options) ->
 
   @iconColor = (services) ->
     color = ""
-    if typeof services is "object" and services.length > 0
+    if services? and services.length? and services.length > 0
       service = services[0]
       _.each @options.tabs, (tab) ->
         color = tab.color  unless tab.services.indexOf(service) is -1

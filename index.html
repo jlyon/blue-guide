@@ -169,6 +169,26 @@
   </div>
 </script>
 
+<script id="resultSummaryMatching" type="text/html">
+  <div class="result-summary">
+    {{num}} matching results. Zoom out to see more.
+  </div>
+</script>
+
+<script id="resultSummary" type="text/html">
+  <div class="result-summary">
+    Displaying the {{num}} closest clinics to {{location}} matching your filters.
+    <a href="#" id="resultsShow" rel="100000">See all {{total}}</a>.
+  </div>
+</script>
+
+<script id="resultSummaryAll" type="text/html">
+  <div class="result-summary">
+    Displaying all {{num}} clinics matching your filters.
+    <a href="#" id="resultsShow" rel="{{smaller}}">Only show the closest {{smaller}}</a>.
+  </div>
+</script>
+
 <script id="listItem" type="text/html">
   <div class="item" rel="{{id}}">
     {{>marker}}

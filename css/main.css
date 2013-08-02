@@ -288,8 +288,7 @@
 }
 /* line 33, ../sass/components/_overlay.sass */
 .overlay-active #map .leaflet-left {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
-  opacity: 0.2;
+  display: none;
 }
 /* line 36, ../sass/components/_overlay.sass */
 .overlay-active #map .leaflet-top.leaflet-center {
@@ -521,62 +520,68 @@
   padding-bottom: 45em;
 }
 /* line 5, ../sass/components/_results.sass */
+#results .result-summary {
+  color: #999999;
+  font-size: 0.9em;
+  font-style: italic;
+}
+/* line 10, ../sass/components/_results.sass */
 #results .item {
   padding: 1em 5px;
   margin-top: 10px;
   position: relative;
 }
-/* line 11, ../sass/components/_results.sass */
+/* line 16, ../sass/components/_results.sass */
 #results .item h3 a {
   text-decoration: none;
 }
-/* line 14, ../sass/components/_results.sass */
+/* line 19, ../sass/components/_results.sass */
 #results .item h3 span {
   color: #cccccc;
   font-family: "open-sans", sans-serif;
   font-size: 0.8em;
 }
-/* line 19, ../sass/components/_results.sass */
+/* line 24, ../sass/components/_results.sass */
 #results .item .not-primary {
   display: none;
 }
-/* line 22, ../sass/components/_results.sass */
+/* line 27, ../sass/components/_results.sass */
 #results .item .static-marker {
   position: absolute;
   left: inherit;
   top: inherit;
 }
-/* line 27, ../sass/components/_results.sass */
+/* line 32, ../sass/components/_results.sass */
 #results .item button.close {
   position: absolute;
   top: 5px;
   right: 5px;
 }
-/* line 32, ../sass/components/_results.sass */
+/* line 37, ../sass/components/_results.sass */
 #results .item .summary {
   margin-left: 40px;
 }
-/* line 35, ../sass/components/_results.sass */
+/* line 40, ../sass/components/_results.sass */
 #results .item .summary .btn-directions {
   margin: 1em 0;
 }
-/* line 38, ../sass/components/_results.sass */
+/* line 43, ../sass/components/_results.sass */
 #results .item.active {
   background: #eef5fb;
 }
-/* line 41, ../sass/components/_results.sass */
+/* line 46, ../sass/components/_results.sass */
 #results .item.active .not-primary {
   display: block;
 }
 
-/* line 45, ../sass/components/_results.sass */
+/* line 50, ../sass/components/_results.sass */
 .fields .title {
   width: 6.5em;
   text-align: right;
   position: absolute;
   font-weight: bold;
 }
-/* line 51, ../sass/components/_results.sass */
+/* line 56, ../sass/components/_results.sass */
 .fields .value {
   margin-left: 7em;
   display: block;

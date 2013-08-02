@@ -40,11 +40,10 @@ window.onload = ->
     startLat: 38.659777730712534
     startLng: -105.8203125
     startZoom: 7
-    params:
-      geosearch:
-        provider: "Google"
-        settings:
-          zoomLevel: 13 
+    geosearch:
+      provider: "Google"
+      settings:
+        zoomLevel: 13 
     locate: {html: ich.locateBtn()}   
     layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-i5m0mag7/{z}/{x}/{y}.png"
     fields: filters.displayFields
@@ -60,10 +59,10 @@ window.onload = ->
     activate()
 
   map.map.on "geosearch_showlocation", (e) ->
-    locationUpdated(new L.LatLng(e.Location.Y, e.Location.X))
-
+    locationUpdated(new L.LatLng(e.Location.Y, e.Location.X), e.Location.Label)
+ 
   map.map.on "locationfound", (e) ->
-    locationUpdated(e.latlng)
+    locationUpdated(e.latlng, "your location")
 
   map.map.on "dragend", ->
     if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds map.lastBounds, 1.5)
@@ -91,7 +90,8 @@ window.onload = ->
       .removeClass("overlay-active")
     resizeMap()
 
-  locationUpdated = (latlng) ->
+  locationUpdated = (latlng, locationType) ->
+    map.locationType = locationType
     map.addMarker(latlng)
     map.updateLocation latlng
     query.fillActive()

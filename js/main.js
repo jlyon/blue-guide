@@ -45,12 +45,10 @@ window.onload = function() {
     startLat: 38.659777730712534,
     startLng: -105.8203125,
     startZoom: 7,
-    params: {
-      geosearch: {
-        provider: "Google",
-        settings: {
-          zoomLevel: 13
-        }
+    geosearch: {
+      provider: "Google",
+      settings: {
+        zoomLevel: 13
       }
     },
     locate: {
@@ -66,10 +64,10 @@ window.onload = function() {
     return activate();
   });
   map.map.on("geosearch_showlocation", function(e) {
-    return locationUpdated(new L.LatLng(e.Location.Y, e.Location.X));
+    return locationUpdated(new L.LatLng(e.Location.Y, e.Location.X), e.Location.Label);
   });
   map.map.on("locationfound", function(e) {
-    return locationUpdated(e.latlng);
+    return locationUpdated(e.latlng, "your location");
   });
   map.map.on("dragend", function() {
     if ((map.lastBounds == null) || !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1.5))) {
@@ -92,7 +90,8 @@ window.onload = function() {
     $("body").addClass("left-sidebar-active").removeClass("overlay-active");
     return resizeMap();
   };
-  locationUpdated = function(latlng) {
+  locationUpdated = function(latlng, locationType) {
+    map.locationType = locationType;
     map.addMarker(latlng);
     map.updateLocation(latlng);
     query.fillActive();
