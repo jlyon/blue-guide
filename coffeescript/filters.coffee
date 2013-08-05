@@ -2,7 +2,6 @@ Filters = ->
   that = this
   @draw = (selector, btnSelector) ->
     i = 0
-    console.log(btnSelector)
     #var $selector = $(selector);
     $(selector).html ""
     filters = ich.search({}, true)
@@ -29,8 +28,12 @@ Filters = ->
 
     # Update events for search field, buttons, selects
     $(selector + " #field-search").bind "change", @constructQuery
-    $(selector + " .btn").bind "click", @constructQuery
+    $(selector + " .btn:not(#reset)").bind "click", @constructQuery
     $(selector + " select").selectpicker().bind "change", @constructQuery
+    $(selector + " #reset").bind "click", ->
+      $(selector + " #field-search").val ""
+      $(selector + " select").selectpicker "val", ""
+      false
 
     # Click events for "tabs"
     $(selector + " #tabs a").bind "click", ->

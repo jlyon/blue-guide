@@ -6,7 +6,6 @@ Filters = function() {
   this.draw = function(selector, btnSelector) {
     var filters, i;
     i = 0;
-    console.log(btnSelector);
     $(selector).html("");
     filters = ich.search({}, true);
     _.each(this.fields, function(field, index) {
@@ -34,8 +33,13 @@ Filters = function() {
       ]
     }).appendTo(selector);
     $(selector + " #field-search").bind("change", this.constructQuery);
-    $(selector + " .btn").bind("click", this.constructQuery);
+    $(selector + " .btn:not(#reset)").bind("click", this.constructQuery);
     $(selector + " select").selectpicker().bind("change", this.constructQuery);
+    $(selector + " #reset").bind("click", function() {
+      $(selector + " #field-search").val("");
+      $(selector + " select").selectpicker("val", "");
+      return false;
+    });
     $(selector + " #tabs a").bind("click", function() {
       $(selector + " #tabs a").removeClass("active");
       $(this).addClass("active");
