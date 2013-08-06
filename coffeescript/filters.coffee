@@ -160,8 +160,8 @@ Filters = ->
     label: "Ages Served"
     col: "Age Groups Served"
   ,
-    label: "Pop. Served"
-    col: "Populations Served (Specialization)"
+    label: "Open to"
+    col: "Area or Population Served"
   ,
     label: "Languages"
     col: "Languages Spoken"
