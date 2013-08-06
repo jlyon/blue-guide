@@ -11,6 +11,8 @@ Map = function(options) {
     startLat: 0,
     startLng: 0,
     startZoom: 8,
+    maxZoom: 14,
+    pagerSize: 25,
     maxMarkers: 25
   }, options);
   this.markerLayer = new L.FeatureGroup();
@@ -28,7 +30,7 @@ Map = function(options) {
     $("#map .leaflet-control-container").append(ich.about());
     if (this.options.geosearch !== undefined) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
-        zoomLevel: 15
+        zoomLevel: this.options.maxZoom
       });
       settings.provider = new L.GeoSearch.Provider[this.options.geosearch.provider]();
       new L.Control.GeoSearch(settings).addTo(this.map);
@@ -39,7 +41,7 @@ Map = function(options) {
       };
       settings = _.extend((this.options.locate.settings === undefined ? {} : this.options.locate.settings), {
         setView: true,
-        maxZoom: 15
+        maxZoom: this.options.maxZoom
       });
       jQuery(this.options.locate.html).bind("click", function(e) {
         return that.map.locate(settings);
@@ -60,9 +62,10 @@ Map = function(options) {
       title: "Home"
     }).addTo(this.homeMarkerLayer);
   };
-  this.drawMarkers = function(data) {
-    var $results, $text, activeColor, location;
+  this.drawMarkers = function(data, pagerStart) {
+    var $resultItem, $results, $text, activeColor, index, item, location, marker, pagerEnd, _i, _ref;
     this.markerLayer.clearLayers();
+    this.pagerStart = pagerStart != null ? pagerStart : 0;
     location = (this.location !== undefined ? this.location : this.map.getCenter());
     _.each(data, function(item, index) {
       item.id = index;
@@ -75,36 +78,46 @@ Map = function(options) {
     activeColor = ((typeof activeTab !== "undefined" && activeTab !== null) && activeTab !== "All Types" ? _.filter(this.options.tabs, function(tab) {
       return tab.title === activeTab;
     })[0].color : false);
+    /*
+    $results.html ""
+    if data.length is 0
+      $results.append ich.noResults()
+    else
+      if @resultNum is 100000
+        $text = ich.resultSummaryAll
+          num: data.length
+          smaller: @options.resultNum
+      else if data.length <= @resultNum 
+        $text = ich.resultSummaryMatching
+          num: data.length
+      else
+        $text = ich.resultSummary
+          num: @resultNum
+          total: data.length # @todo: _.keys? ; filter data to only those w lat/lon?
+          location: if @locationType? then @locationType else "center of your map"
+      $text.find("a").bind "click", ->
+        that.resultNum = parseInt $(this).attr "rel"
+        that.drawMarkers data
+        false
+      $results.append $text
+    */
+
     $results.html("");
     if (data.length === 0) {
       $results.append(ich.noResults());
     } else {
-      if (this.resultNum === 100000) {
-        $text = ich.resultSummaryAll({
-          num: data.length,
-          smaller: this.options.resultNum
-        });
-      } else if (data.length <= this.resultNum) {
+      if (data.length <= this.resultNum) {
         $text = ich.resultSummaryMatching({
           num: data.length
         });
       } else {
-        $text = ich.resultSummary({
-          num: this.resultNum,
-          total: data.length,
-          location: this.locationType != null ? this.locationType : "center of your map"
-        });
+        this.drawPager(data).appendTo($results);
       }
-      $text.find("a").bind("click", function() {
-        that.resultNum = parseInt($(this).attr("rel"));
-        that.drawMarkers(data);
-        return false;
-      });
-      $results.append($text);
     }
-    _.each(data, function(item, index) {
-      var $resultItem, marker;
-      if (item.Latitude !== undefined && item.Longitude !== undefined && index <= that.resultNum) {
+    pagerEnd = this.pagerStart + this.options.pagerSize < data.length ? this.pagerStart + this.options.pagerSize : data.length;
+    for (index = _i = _ref = this.pagerStart; _ref <= pagerEnd ? _i <= pagerEnd : _i >= pagerEnd; index = _ref <= pagerEnd ? ++_i : --_i) {
+      item = data[index];
+      if ((item != null) && (item.Latitude != null) && (item.Longitude != null)) {
         item.fields = "";
         item.primaryFields = "";
         _.each(that.options.fields, function(field) {
@@ -177,7 +190,6 @@ Map = function(options) {
           if (window.responsive !== "mobile") {
             return that.markerLayer._layers[$item.attr("rel")].closePopup();
           } else {
-            console.log(that.updateSelector);
             $(that.updateSelector).removeClass("left-sidebar-big");
             return $("html, body").animate({
               scrollTop: -66
@@ -187,16 +199,60 @@ Map = function(options) {
         $resultItem.find(".btn-directions").bind("click", function() {
           return window.open("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]);
         });
-        return $results.append($resultItem);
+        $results.append($resultItem);
       }
-    });
+    }
+    if (data.length > this.resultNum) {
+      this.drawPager(data).appendTo($results);
+    }
     this.lastBounds = this.map.getBounds();
+    this.forceZoom = void 0;
+  };
+  this.drawPager = function(data) {
+    var $item, $pager, $text, endPages, i, max, min, _i, _ref;
+    $text = ich.pager({
+      start: this.pagerStart,
+      end: this.pagerStart + this.options.pagerSize < data.length ? this.pagerStart + this.options.pagerSize : data.length,
+      total: data.length
+    });
+    $pager = $text.find("ul");
+    if (this.pagerStart > this.options.pagerSize * 2) {
+      min = this.pagerStart - this.options.pagerSize * 2;
+      endPages = 2;
+    } else {
+      min = 0;
+      endPages = 4 - this.pagerStart / this.options.pagerSize;
+    }
+    max = (data.length < this.pagerStart + this.options.pagerSize * endPages ? data.length : this.pagerStart + this.options.pagerSize * endPages);
+    if (this.pagerStart > 0) {
+      ich.pagerItem({
+        num: "&laquo;",
+        rel: this.pagerStart - this.options.pagerSize
+      }).appendTo($pager);
+    }
+    for (i = _i = min, _ref = this.options.pagerSize; _ref > 0 ? _i <= max : _i >= max; i = _i += _ref) {
+      $item = ich.pagerItem({
+        num: i / this.options.pagerSize + 1,
+        rel: i,
+        "class": this.pagerStart === i ? "active" : ""
+      });
+      $item.appendTo($pager);
+    }
+    if (this.pagerStart + this.options.pagerSize < data.length) {
+      ich.pagerItem({
+        num: "&raquo;",
+        rel: this.pagerStart + this.options.pagerSize
+      }).appendTo($pager);
+    }
+    $text.find('a').bind("click", function() {
+      that.drawMarkers(data, parseInt($(this).attr("rel")));
+      return false;
+    });
+    return $text;
   };
   this.markerBounds = function(bounds, factor) {
-    var lat, lng, _ref;
-    factor = (_ref = factor != null) != null ? _ref : factor - {
-      1: 1
-    };
+    var lat, lng;
+    factor = factor != null ? factor - 1 : 1;
     lat = Math.abs(bounds._southWest.lat - bounds._northEast.lat) * factor;
     lng = Math.abs(bounds._southWest.lng - bounds._northEast.lng) * factor;
     return {

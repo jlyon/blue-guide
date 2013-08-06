@@ -1,6 +1,6 @@
 query = undefined
 tab = undefined
-rev = 0.1
+rev = 0.11
 activeTab = undefined
 window.onload = ->
 
@@ -19,10 +19,11 @@ window.onload = ->
   # Add filters
   filters = new Filters()
   data = locache.get("blueGuideData")
+  #data = null
   filters.draw "#filters", "#showFilters"
 
   # Get data if we need to
-  if data and data.rev and data.rev is rev
+  if data? and data.rev? and data.rev is rev
     query = new JsonQuery("body", data)
   else
     `googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
@@ -65,11 +66,11 @@ window.onload = ->
     locationUpdated(e.latlng, "your location")
 
   map.map.on "dragend", ->
-    if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds map.lastBounds, 1.5)
+    if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))
       updateMarkers()
 
   map.map.on "zoomend", ->
-    updateMarkers()
+    updateMarkers map.pagerStart
 
 
   #$('.left-sidebar').bind "click", ->
@@ -77,12 +78,17 @@ window.onload = ->
   #  resizeMap()
 
   # Called when markers are updated
-  updateMarkers = ->
+  updateMarkers = (pagerStart) ->
     $('#show-markers').addClass "icon-spin"
-    map.drawMarkers query.active(map.markerBounds(map.map.getBounds()))
-    $('#show-markers').addClass "icon-spin"
-    $("#tabs a:eq(0)").addClass("active") if !activeTab?
-    console.log "update"
+    data = query.active(map.markerBounds(map.map.getBounds()))
+    if map.forceZoom? and data.length < map.options.pagerSize*.8 and map.forceZoom < 4
+      newZoom = map.map.getZoom()-1
+      map.map.setZoom newZoom
+      map.forceZoom = parseInt(map.forceZoom) + 1
+    else 
+      map.drawMarkers data, pagerStart
+      $('#show-markers').addClass "icon-spin"
+      $("#tabs a:eq(0)").addClass("active") if !activeTab?
 
   activate = ->
     $("body")
@@ -94,8 +100,9 @@ window.onload = ->
     map.locationType = locationType
     map.addMarker(latlng)
     map.updateLocation latlng
+    map.forceZoom = 1
     query.fillActive()
-    updateMarkers()
+    updateMarkers undefined
     activate()
     
     

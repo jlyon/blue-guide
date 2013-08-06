@@ -9,7 +9,9 @@ Map = (options) ->
     startLat: 0
     startLng: 0
     startZoom: 8
-    maxMarkers: 25
+    maxZoom: 14
+    pagerSize: 25
+    maxMarkers: 25 #@todo: rm
   , options)
   
   #this.markers = {};
@@ -32,7 +34,7 @@ Map = (options) ->
     # Add the geosearch control
     unless @options.geosearch is `undefined`
       settings = _.extend((if @options.geosearch.settings is `undefined` then {} else @options.geosearch.settings),
-        zoomLevel: 15
+        zoomLevel: @options.maxZoom
       )
       settings.provider = new L.GeoSearch.Provider[@options.geosearch.provider]()
       new L.Control.GeoSearch(settings).addTo @map
@@ -43,7 +45,7 @@ Map = (options) ->
         @map.locate settings
       settings = _.extend((if @options.locate.settings is `undefined` then {} else @options.locate.settings),
         setView: true
-        maxZoom: 15
+        maxZoom: @options.maxZoom
       )
       jQuery(@options.locate.html).bind "click", (e) ->
         that.map.locate settings
@@ -65,8 +67,9 @@ Map = (options) ->
       title: "Home"
     ).addTo @homeMarkerLayer
 
-  @drawMarkers = (data) ->
+  @drawMarkers = (data, pagerStart) ->
     @markerLayer.clearLayers()
+    @pagerStart = if pagerStart? then pagerStart else 0
     
     # Re-order data array by distance to this.location
     location = (if @location isnt `undefined` then @location else @map.getCenter())
@@ -84,6 +87,7 @@ Map = (options) ->
     )[0].color else false)
 
     # Prep the #results div
+    ###
     $results.html ""
     if data.length is 0
       $results.append ich.noResults()
@@ -105,10 +109,26 @@ Map = (options) ->
         that.drawMarkers data
         false
       $results.append $text
+###
 
     # Cycle through each item and add a marker
-    _.each data, (item, index) ->
-      if item.Latitude isnt `undefined` and item.Longitude isnt `undefined` and index <= that.resultNum
+    $results.html ""
+    if data.length is 0
+      $results.append ich.noResults()
+    else
+      if data.length <= @resultNum 
+        $text = ich.resultSummaryMatching
+          num: data.length
+      else
+        @drawPager(data).appendTo $results
+
+
+    # Cycle through each item and add a marker
+    pagerEnd = if @pagerStart+@options.pagerSize < data.length then @pagerStart+@options.pagerSize else data.length
+
+    for index in [@pagerStart..pagerEnd]
+      item = data[index];
+      if item? and item.Latitude? and item.Longitude?
 
         # Build the fields html
         item.fields = ""
@@ -183,7 +203,6 @@ Map = (options) ->
           if window.responsive isnt "mobile"
             that.markerLayer._layers[$item.attr("rel")].closePopup()
           else
-            console.log(that.updateSelector);
             $(that.updateSelector).removeClass "left-sidebar-big"
             $("html, body").animate
               scrollTop: -66
@@ -194,12 +213,39 @@ Map = (options) ->
 
         $results.append $resultItem
 
+    if data.length > @resultNum then @drawPager(data).appendTo $results
     @lastBounds = @map.getBounds()
+    @forceZoom = undefined
     return
 
+  @drawPager = (data) ->
+    $text = ich.pager
+      start: @pagerStart
+      end: if (@pagerStart + @options.pagerSize < data.length) then @pagerStart + @options.pagerSize else data.length
+      total: data.length
+    $pager = $text.find "ul"
+    if @pagerStart > @options.pagerSize*2
+      min = @pagerStart - @options.pagerSize*2
+      endPages = 2
+    else
+      min = 0
+      endPages = 4 - @pagerStart/@options.pagerSize
+    max = (if data.length < @pagerStart + @options.pagerSize*endPages then data.length else @pagerStart + @options.pagerSize*endPages)
+    ich.pagerItem(num: "&laquo;", rel: @pagerStart-@options.pagerSize).appendTo $pager if @pagerStart > 0
+    for i in [min..max] by @options.pagerSize
+      $item = ich.pagerItem
+        num: i/@options.pagerSize + 1
+        rel: i
+        class: if @pagerStart == i then "active" else ""
+      $item.appendTo $pager
+    ich.pagerItem(num: "&raquo;", rel: @pagerStart+@options.pagerSize).appendTo $pager if @pagerStart + @options.pagerSize < data.length
+    $text.find('a').bind "click", ->
+      that.drawMarkers data, parseInt $(this).attr "rel"
+      false
+    $text
 
   @markerBounds = (bounds, factor) ->
-    factor = factor? ? factor-1 : 1
+    factor = if factor? then factor-1 else 1
     lat = Math.abs(bounds._southWest.lat - bounds._northEast.lat) * factor
     lng = Math.abs(bounds._southWest.lng - bounds._northEast.lng) * factor
     "_southWest":

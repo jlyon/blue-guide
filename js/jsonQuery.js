@@ -24,7 +24,7 @@ JsonQuery = function(selector, data) {
           });
         }
       });
-      if ((matches !== undefined && _.keys(matches).length === _.keys(fields).length) || _.keys(fields).length === 0) {
+      if (((matches != null) && _.keys(matches).length === _.keys(fields).length) || _.keys(fields).length === 0) {
         return that.setVal(row, "active", true);
       } else {
         return that.setVal(row, "active", false);

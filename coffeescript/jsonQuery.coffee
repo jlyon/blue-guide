@@ -13,9 +13,9 @@ JsonQuery = (selector, data) ->
           matches[field] = true if that.val(row, "Clinic Name").toLowerCase().indexOf(vals) isnt -1 or that.val(row, "Sponsor Name").toLowerCase().indexOf(vals) isnt -1 or that.val(row, "Full Address").toLowerCase().indexOf(vals) isnt -1
         else
           _.each vals, (val) ->
-            matches[field] = true  if that.val(row, field)? and that.val(row, field).indexOf(val) isnt -1
+            matches[field] = true if that.val(row, field)? and that.val(row, field).indexOf(val) isnt -1
 
-      if (matches isnt `undefined` and _.keys(matches).length is _.keys(fields).length) or _.keys(fields).length is 0
+      if (matches? and _.keys(matches).length is _.keys(fields).length) or _.keys(fields).length is 0
         that.setVal row, "active", true
       else
         that.setVal row, "active", false

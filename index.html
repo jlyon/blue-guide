@@ -205,6 +205,17 @@
   </div>
 </script>
 
+<script id="pager" type="text/html">
+  <div class="pagination" id="{{id}}">
+    <div class="result-summary">Showing {{start}} - {{end}} of {{total}} clinics.</div>
+    <ul></ul>
+  </div>
+</script>
+
+<script id="pagerItem" type="text/html">
+  <li class="{{class}}"><a href="#" rel="{{rel}}">{{num}}</a></li>
+ </script>
+
 <script id="listItem" type="text/html">
   <div class="item" rel="{{id}}">
     {{>marker}}

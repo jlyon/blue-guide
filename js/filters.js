@@ -37,7 +37,8 @@ Filters = function() {
     $(selector + " select").selectpicker().bind("change", this.constructQuery);
     $(selector + " #reset").bind("click", function() {
       $(selector + " #field-search").val("");
-      $(selector + " select").selectpicker("val", "");
+      $(selector + " select").val("val", []).selectpicker("render");
+      that.constructQuery();
       return false;
     });
     $(selector + " #tabs a").bind("click", function() {
@@ -76,7 +77,6 @@ Filters = function() {
       }
       return i++;
     });
-    console.log(values);
     return query.constructActive(values);
   };
   this.tabs = [
@@ -122,37 +122,37 @@ Filters = function() {
       type: "select",
       msg: "Select type of care",
       startCol: "Y",
-      options: ["Community Health Center (CHC) / Federally Qualified Health Center (FQHC)", "Community-funded Safety Net Clinic (CSNC)", "Local Public Health Department and Public Nursing Services", "Rural Health Clinics (RHC)", "School-based Health Center (SBHC)", "Human/Social Services Agency", "Certified Medicaid/CHP+ Application Assistance Site", "Connect for Health Colorado Assistance Site", "WIC Clinic Site", "HCP Pediatric Specialty Clinics", "Planned Parenthood Clinic", "Veteran's Association Health Center", "Community Mental Health Clinic", "Community-based Dental Clinic", "Community-based Vision Clinics", "Critical Access Hospital", "Emergency Department", "CICP Provider", "Community Centered Boards (CCB)", "Residency Program", "Voluntary Health Organization ", "Migrant Health Center", "Refugee Health Site", "Certified Center for Independent Living", "AIDS Service Organization (ASO)", "Other Community-based Clinic", "Other Dental Clinic", "Other Mental Health Clinic", "Other Community-based Organization"]
+      options: ["Community Health Center (CHC) / Federally Qualified Health Center (FQHC)", "Community-funded Safety Net Clinic (CSNC)", "Local Public Health Department and Public Nursing Services", "Rural Health Clinics (RHC)", "School-based Health Center (SBHC)", "Human/Social Services Agency", "Certified Medicaid/CHP+ Application Assistance Site", "Connect for Health Colorado Assistance Site", "WIC Clinic Site", "HCP Pediatric Specialty Clinic", "Planned Parenthood Clinic", "Veteran's Association Health Center", "Community Mental Health Clinic", "Community-based Dental Clinic", "Community-based Vision Clinic", "Critical Access Hospital", "Emergency Department", "CICP Provider", "Community Centered Boards (CCB)", "Residency Program", "Voluntary Health Organization ", "Migrant Health Center", "Refugee Health Site", "Certified Center for Independent Living", "AIDS Service Organization (ASO)", "Other Community-based Clinic", "Other Dental Clinic", "Other Mental Health Clinic", "Other Community-based Organization"]
     },
     "Services Provided": {
       type: "select",
       msg: "Select services",
-      startCol: "AZ",
+      startCol: "BB",
       options: ["Primary Health Care", "Dental Care", "Vision Care", "Mental/Behavioral Health Care", "Women's Health", "Children's Health", "Adolescent Care", "Adult Day Services", "Respite Care", "Substance Abuse Treatment", "Case Management", "Chronic Disease Mgmt", "HIV/AIDS Treatment & Care", "STI Testing, Treatment, & Prevention", "Health Care for Military Veterans", "Health Care for Disabilities or Special Needs", "LGBT Health Services", "Immunizations", "Medicaid Enrollment", "Connect for Health Colorado Enrollment Assistance", "Other"]
     },
     "Age Groups Served": {
       type: "select",
       msg: "Select age groups",
-      startCol: "BU",
+      startCol: "BW",
       options: ["Infants (0-3)", "Children (3+)", "Teens (13+)", "Adults (18+)", "Elderly (65+)"]
     },
-    "Populations Served (Specialization)": {
+    "Works With": {
       label: "Populations Served",
       type: "select",
       msg: "Select a specialization",
-      startCol: "BZ",
+      startCol: "CB",
       options: ["Migrant Farmworkers", "Homeless", "LGBT", "Refugee", "American Indian", "Military Veterans", "HIV/AIDS", "Disability & Special Needs", "Rural", "Other"]
     },
     "Languages Spoken": {
       type: "select",
       msg: "Select specific populations",
-      startCol: "CJ",
+      startCol: "CL",
       options: ["Spanish", "German", "French", "Vietnamese", "Korean", "Chinese", "Arabic", "Phone Translation Services", "Other"]
     },
     "Payment Assistance & Special Accommodations": {
       type: "select",
       msg: "Select one",
-      startCol: "CS",
+      startCol: "CU",
       options: ["Sliding Scale for Primary Care", "Cash/Time of Service Discount", "CICP Services", "Medicaid/CHP+ Accepted", "Other Discount Services", "Open Late / Weekends", "Other ?"]
     }
   };
@@ -170,7 +170,7 @@ Filters = function() {
       col: "Age Groups Served"
     }, {
       label: "Open to",
-      col: "Area or Population Served"
+      col: "Works With"
     }, {
       label: "Languages",
       col: "Languages Spoken"

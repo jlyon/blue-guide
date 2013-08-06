@@ -57,7 +57,7 @@ GoogleSpreadsheetsQuery = function(filters, callback) {
     startCol = this.colId2Int(this.filters.fields["Safety-Net Type"].startCol);
     data = (data ? data : []);
     fields = void 0;
-    if (response.table !== undefined) {
+    if (response.table != null) {
       _.each(response.table.rows, function(cols) {
         var arrRow, row;
         row = {
@@ -68,7 +68,7 @@ GoogleSpreadsheetsQuery = function(filters, callback) {
           var col, previous, value;
           col = that.colId2Int(response.table.cols[index].id);
           if (col < startCol) {
-            return row[response.table.cols[index].label.replace(/Clinic Information |Service Access |Address and Contact Information |Appointment Requirements |SEP Requirements /g, "")] = item.v;
+            return row[response.table.cols[index].label.replace(/Clinic Information |Service Access |Address and Contact Information |Appointment Requirements |SEP Requirements |Safety-Net Type |Services Provided |Age Groups Served |Works With |Languages Spoken |Payment Assistance & Special Accommodations /g, "")] = item.v;
           } else if (item.v !== "") {
             previous = null;
             value = [];
@@ -77,7 +77,7 @@ GoogleSpreadsheetsQuery = function(filters, callback) {
                 return previous = fieldName;
               }
             });
-            if (row[previous] === undefined) {
+            if (row[previous] == null) {
               row[previous] = [];
             }
             return row[previous].push(response.table.cols[index].label.replace(previous + " ", ""));

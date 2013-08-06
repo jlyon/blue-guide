@@ -48,7 +48,7 @@ GoogleSpreadsheetsQuery = (filters, callback) ->
     startCol = @colId2Int(@filters.fields["Safety-Net Type"].startCol)
     data = (if data then data else [])
     fields = undefined
-    unless response.table is `undefined`
+    if response.table?
       
       # Update/set the values
       _.each response.table.rows, (cols) ->
@@ -57,7 +57,7 @@ GoogleSpreadsheetsQuery = (filters, callback) ->
         _.each cols.c, (item, index) ->
           col = that.colId2Int(response.table.cols[index].id)
           if col < startCol
-            row[response.table.cols[index].label.replace(/Clinic Information |Service Access |Address and Contact Information |Appointment Requirements |SEP Requirements /g, "")] = item.v
+            row[response.table.cols[index].label.replace(/Clinic Information |Service Access |Address and Contact Information |Appointment Requirements |SEP Requirements |Safety-Net Type |Services Provided |Age Groups Served |Works With |Languages Spoken |Payment Assistance & Special Accommodations /g, "")] = item.v
           
           #row[col] = item.v;
           else unless item.v is ""
@@ -66,17 +66,15 @@ GoogleSpreadsheetsQuery = (filters, callback) ->
             _.each that.filters.fields, (field, fieldName) ->
               previous = fieldName  if col >= that.colId2Int(field.startCol) or not previous?
 
-            row[previous] = []  if row[previous] is `undefined`
+            row[previous] = [] if !row[previous]?
             row[previous].push response.table.cols[index].label.replace(previous + " ", "")
 
-        fields = _.keys(row)  if fields is undefined
+        fields = _.keys(row) if fields is undefined
         _.each row, (val, key) ->
           arrRow[fields.indexOf(key)] = val
-
         
         # Filling arr for first time
-        data.push arrRow  unless status
-
+        data.push arrRow unless status
       
       # Just extending values, or setting active
       #else {

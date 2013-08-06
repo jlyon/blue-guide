@@ -4,7 +4,7 @@ query = void 0;
 
 tab = void 0;
 
-rev = 0.1;
+rev = 0.15;
 
 activeTab = void 0;
 
@@ -27,7 +27,7 @@ window.onload = function() {
   filters = new Filters();
   data = locache.get("blueGuideData");
   filters.draw("#filters", "#showFilters");
-  if (data && data.rev && data.rev === rev) {
+  if ((data != null) && (data.rev != null) && data.rev === rev) {
     query = new JsonQuery("body", data);
   } else {
     googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
@@ -70,21 +70,28 @@ window.onload = function() {
     return locationUpdated(e.latlng, "your location");
   });
   map.map.on("dragend", function() {
-    if ((map.lastBounds == null) || !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1.5))) {
+    if ((map.lastBounds == null) || !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))) {
       return updateMarkers();
     }
   });
   map.map.on("zoomend", function() {
-    return updateMarkers();
+    return updateMarkers(map.pagerStart);
   });
-  updateMarkers = function() {
+  updateMarkers = function(pagerStart) {
+    var newZoom;
     $('#show-markers').addClass("icon-spin");
-    map.drawMarkers(query.active(map.markerBounds(map.map.getBounds())));
-    $('#show-markers').addClass("icon-spin");
-    if (activeTab == null) {
-      $("#tabs a:eq(0)").addClass("active");
+    data = query.active(map.markerBounds(map.map.getBounds()));
+    if ((map.forceZoom != null) && data.length < map.options.pagerSize * .8 && map.forceZoom < 4) {
+      newZoom = map.map.getZoom() - 1;
+      map.map.setZoom(newZoom);
+      return map.forceZoom = parseInt(map.forceZoom) + 1;
+    } else {
+      map.drawMarkers(data, pagerStart);
+      $('#show-markers').addClass("icon-spin");
+      if (activeTab == null) {
+        return $("#tabs a:eq(0)").addClass("active");
+      }
     }
-    return console.log("update");
   };
   activate = function() {
     $("body").addClass("left-sidebar-active").removeClass("overlay-active");
@@ -94,8 +101,9 @@ window.onload = function() {
     map.locationType = locationType;
     map.addMarker(latlng);
     map.updateLocation(latlng);
+    map.forceZoom = 1;
     query.fillActive();
-    updateMarkers();
+    updateMarkers(void 0);
     return activate();
   };
   resizeMap = function() {
