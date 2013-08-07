@@ -338,7 +338,7 @@
   width: 120%;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 560px) {
   /* line 2, ../sass/components/_responsive-desktop.sass */
   .no-desktop {
     display: none;
@@ -431,7 +431,7 @@
     overflow: visible;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   /* line 2, ../sass/components/_responsive-mobile.sass */
   .no-mobile {
     display: none;
