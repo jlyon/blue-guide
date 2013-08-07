@@ -210,7 +210,7 @@ Map = (options) ->
             , 750
 
         $resultItem.find(".btn-directions").bind "click", ->
-          document.location = 'gps:' + item["Latitude"] + "," + item["Longitude"]
+          window.location = 'gps:' + item["Latitude"] + "," + item["Longitude"]
           #window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
 
         $results.append $resultItem
