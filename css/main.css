@@ -486,18 +486,15 @@
     width: 100%;
     height: 100%;
   }
-  /* line 41, ../sass/components/_responsive-mobile.sass */
-  .main-content #map .leaflet-top.leaflet-center {
-    width: 160px;
-  }
-  /* line 44, ../sass/components/_responsive-mobile.sass */
+  /* line 43, ../sass/components/_responsive-mobile.sass */
   .main-content #map .leaflet-top.leaflet-center .leaflet-control-geosearch {
     width: 96%;
   }
-  /* line 46, ../sass/components/_responsive-mobile.sass */
+  /* line 45, ../sass/components/_responsive-mobile.sass */
   .main-content #map .leaflet-top.leaflet-center .leaflet-control-geosearch input {
-    width: 75%;
-    float: none;
+    width: 64.4%;
+    float: left;
+    margin-right: 3%;
   }
   /* line 50, ../sass/components/_responsive-mobile.sass */
   .main-content #map .leaflet-top.leaflet-center .leaflet-control-locate {

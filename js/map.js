@@ -19,7 +19,7 @@ Map = function(options) {
   this.homeMarkerLayer = new L.FeatureGroup();
   this.resultNum = this.options.resultNum;
   this.drawMap = function() {
-    var locateUser, settings;
+    var $btn, locateUser, settings;
     this.map = new L.Map(this.options.id, {
       center: new L.LatLng(this.options.startLat, this.options.startLng),
       zoom: this.options.startZoom,
@@ -28,14 +28,22 @@ Map = function(options) {
     this.markerLayer.addTo(this.map);
     this.homeMarkerLayer.addTo(this.map);
     $("#map .leaflet-control-container").append(ich.about());
-    if (this.options.geosearch !== undefined) {
+    if (this.options.geosearch != null) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
         zoomLevel: this.options.maxZoom
       });
       settings.provider = new L.GeoSearch.Provider[this.options.geosearch.provider]();
       new L.Control.GeoSearch(settings).addTo(this.map);
+      $btn = ich.searchBtn();
+      $btn.bind('click', function() {
+        return $('#leaflet-control-geosearch-qry').trigger("keypress", {
+          keyCode: 13
+        });
+      });
+      console.log(this.options.id + ' .leaflet-control-geosearch');
+      $btn.appendTo(' .leaflet-control-geosearch');
     }
-    if (this.options.locate !== undefined) {
+    if (this.options.locate != null) {
       locateUser = function() {
         return this.map.locate(settings);
       };
@@ -43,10 +51,11 @@ Map = function(options) {
         setView: true,
         maxZoom: this.options.maxZoom
       });
-      jQuery(this.options.locate.html).bind("click", function(e) {
+      $(this.options.locate.html).bind("click", function(e) {
         return that.map.locate(settings);
       }).appendTo("#map .leaflet-top.leaflet-center");
     }
+    console.log(this.map);
   };
   this.updateLocation = function(latlng) {
     return this.location = latlng;

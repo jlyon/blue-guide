@@ -132,6 +132,7 @@ L.Control.GeoSearch = L.Control.extend({
     _onKeyUp: function (e) {
         var escapeKey = 27;
         var enterKey = 13;
+        console.log(e)
 
         if (e.keyCode === escapeKey) {
             $('#leaflet-control-geosearch-qry').val('');

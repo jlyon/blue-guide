@@ -32,25 +32,31 @@ Map = (options) ->
     $("#map .leaflet-control-container").append ich.about()
 
     # Add the geosearch control
-    unless @options.geosearch is `undefined`
+    if @options.geosearch?
       settings = _.extend((if @options.geosearch.settings is `undefined` then {} else @options.geosearch.settings),
         zoomLevel: @options.maxZoom
       )
       settings.provider = new L.GeoSearch.Provider[@options.geosearch.provider]()
       new L.Control.GeoSearch(settings).addTo @map
+      $btn = ich.searchBtn()
+      $btn.bind 'click', ->
+        $('#leaflet-control-geosearch-qry').trigger "keypress", {keyCode: 13}
+        #L.Control.GeoSearch.geosearch $('#leaflet-control-geosearch-qry').val()
+      console.log @options.id+' .leaflet-control-geosearch'
+      $btn.appendTo ' .leaflet-control-geosearch'
 
     # Add the locate button
-    unless @options.locate is `undefined`
+    if @options.locate?
       locateUser = ->
         @map.locate settings
       settings = _.extend((if @options.locate.settings is `undefined` then {} else @options.locate.settings),
         setView: true
         maxZoom: @options.maxZoom
       )
-      jQuery(@options.locate.html).bind "click", (e) ->
+      $(@options.locate.html).bind "click", (e) ->
         that.map.locate settings
       .appendTo "#map .leaflet-top.leaflet-center"
-
+    console.log @map
     return
 
   @updateLocation = (latlng) ->

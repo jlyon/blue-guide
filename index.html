@@ -167,8 +167,12 @@
 <script id="search" type="text/html">
   <div class="form-inline">
     <input type="text" id="field-search" class="text-search span9" placeholder="Keyword Search" />
-    <button type="submit" class="btn btn-normal btn-search"><i class="icon-search"></i></button>
+    {{>searchBtn}}
   </form>
+</script>
+
+<script id="searchBtn" type="text/html">
+  <button type="submit" class="btn btn-normal btn-search"><i class="icon-search"></i></button>
 </script>
 
 <script id="submitBtns" type="text/html">
