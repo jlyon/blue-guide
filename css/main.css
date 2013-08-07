@@ -507,7 +507,7 @@
   /* line 52, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center {
     margin-left: 60px;
-    width: 110%;
+    width: 100%;
     display: none;
   }
   /* line 57, ../sass/components/_responsive-mobile.sass */
@@ -599,6 +599,10 @@
     padding: 1em 2em;
   }
   /* line 129, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about .summary .logos {
+    margin: 0 -1em;
+  }
+  /* line 132, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
   }
@@ -630,25 +634,24 @@
     width: 90px;
     background-position: -205px 0;
   }
-  /* line 133, ../sass/components/_responsive-mobile.sass */
+  /* line 136, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     margin-top: 1em;
   }
-  /* line 138, ../sass/components/_responsive-mobile.sass */
+  /* line 141, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
     display: block;
     position: absolute;
-    width: 90%;
   }
-  /* line 145, ../sass/components/_responsive-mobile.sass */
+  /* line 147, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center input {
     height: 28px !important;
   }
-  /* line 148, ../sass/components/_responsive-mobile.sass */
+  /* line 150, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate {
     display: none;
   }

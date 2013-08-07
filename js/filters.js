@@ -45,6 +45,8 @@ Filters = function() {
       $(selector + " #tabs a").removeClass("active");
       $(this).addClass("active");
       activeTab = $(this).attr("rel");
+      $(btnSelector).toggleClass("active");
+      $("body").toggleClass("right-sidebar-active");
       that.constructQuery();
       return false;
     });

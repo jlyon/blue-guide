@@ -51,7 +51,7 @@
 
     .leaflet-top.leaflet-center
       margin-left: 60px
-      width: 110%
+      width: 100%
       display: none
 
       .locate-active &
@@ -126,9 +126,12 @@
     #about
       padding: 1em 2em
 
-      .summary .logos li
-        margin-right: 5px
-        +logos($sponsor-logos-mobile-scale)
+      .summary .logos
+        margin: 0 -1em
+        
+        li
+          margin-right: 5px
+          +logos($sponsor-logos-mobile-scale)
 
       .supported
         text-align: center
@@ -140,7 +143,6 @@
         top: 9em
         display: block
         position: absolute
-        width: 90%
 
         input
           height: 28px !important

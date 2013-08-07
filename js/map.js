@@ -168,17 +168,27 @@ Map = function(options) {
         item.letter = marker.options.icon.num2letter(index);
         item.distance = Math.round(item.distance * 10) / 10;
         $resultItem = ich.listItem(item);
-        $resultItem.find(".static-marker, h3 a").bind("click", function() {
+        $resultItem.find(".static-marker, h3 a").bind("click", function(e) {
           var $item;
           $item = $(this).parents(".item");
           marker = that.markerLayer._layers[$item.attr("rel")];
-          marker.openPopup();
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
-            $item.parent().find('.item').removeClass("active");
-            $("html, body").animate({
-              scrollTop: $item.offset().top - 70
-            }, 1000);
+            console.log(typeof e.currentTarget.className.indexOf("static-marker"));
+            if (e.currentTarget.className.indexOf("static-marker" === -1)) {
+              console.log("item");
+              $item.parent().find('.item').removeClass("active");
+              $("html, body").animate({
+                scrollTop: $item.offset().top - 70
+              }, 1000);
+            } else {
+              console.log("top");
+              $("html, body").animate({
+                scrollTop: 0
+              });
+            }
+          } else {
+            marker.openPopup();
           }
           $item.addClass("active");
           return false;
@@ -197,8 +207,24 @@ Map = function(options) {
           }
         });
         $resultItem.find(".btn-directions").bind("click", function() {
-          return window.open("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]);
+          if (window.os === "android") {
+            return navigator.app.loadUrl("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"], {
+              openExternal: true
+            });
+          } else if (window.os === "ios") {
+            return window.location = 'maps:' + item["Latitude"] + "," + item["Longitude"];
+          } else {
+            return window.open("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]);
+          }
         });
+        if (window.os === "android" || window.os === "ios") {
+          $resultItem.find(".website").bind("click", function() {
+            navigator.app.loadUrl($(this).attr("href", {
+              openExternal: true
+            }));
+            return false;
+          });
+        }
         $results.append($resultItem);
       }
     }

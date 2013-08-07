@@ -184,16 +184,25 @@ Map = (options) ->
         item.distance = Math.round(item.distance * 10) / 10
         $resultItem = ich.listItem(item)
 
-        $resultItem.find(".static-marker, h3 a").bind "click", ->
+        $resultItem.find(".static-marker, h3 a").bind "click", (e) ->
           $item = $(this).parents(".item")
           marker = that.markerLayer._layers[$item.attr("rel")]
-          marker.openPopup()
+          #marker.zIndexOffset 1000
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
-            $item.parent().find('.item').removeClass "active"
-            $("html, body").animate
-              scrollTop: $item.offset().top - 70
-            , 1000
+            console.log typeof e.currentTarget.className.indexOf "static-marker"
+            if e.currentTarget.className.indexOf "static-marker" is -1
+              console.log "item"
+              $item.parent().find('.item').removeClass "active"
+              $("html, body").animate
+                scrollTop: $item.offset().top - 70
+              , 1000
+            else
+              console.log "top"
+              $("html, body").animate
+                scrollTop: 0
+          else
+            marker.openPopup()
           $item.addClass "active"
           false
 
@@ -209,8 +218,18 @@ Map = (options) ->
             , 750
 
         $resultItem.find(".btn-directions").bind "click", ->
-          #window.location = 'gps:' + item["Latitude"] + "," + item["Longitude"]
-          window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
+          if window.os is "android"
+            navigator.app.loadUrl "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"], { openExternal: true } 
+            #window.location = 'gps:' + item["Latitude"] + "," + item["Longitude"]
+          else if window.os is "ios"
+            window.location = 'maps:' + item["Latitude"] + "," + item["Longitude"]
+          else
+            window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
+
+        if window.os is "android" or window.os is "ios"
+          $resultItem.find(".website").bind "click", ->
+            navigator.app.loadUrl $(this).attr "href", { openExternal: true }
+            false
 
         $results.append $resultItem
 
