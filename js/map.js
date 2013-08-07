@@ -199,7 +199,7 @@ Map = function(options) {
           }
         });
         $resultItem.find(".btn-directions").bind("click", function() {
-          return document.location = 'gps:' + item["Latitude"] + "," + item["Longitude"];
+          return window.open("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]);
         });
         $results.append($resultItem);
       }
