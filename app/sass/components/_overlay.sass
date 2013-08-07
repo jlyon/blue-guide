@@ -1,0 +1,73 @@
+#mapOverlay,
+#about
+  display: none
+
+#mapOverlay
+  +opacity(0)
+  +transition(opacity, $trans-time*5)
+
+.overlay-active
+
+  #mapOverlay,
+  #about
+    display: block
+    height: 100%
+    z-index: 1
+    position: absolute
+    top: 0
+    left: 0
+  
+  #mapOverlay
+    background-color: $white
+    +opacity(.85)
+    width: 100%
+
+  #about
+    padding: 5em 0 5em 7em
+    max-width: 800px
+
+    .summary
+      margin-top: 10em
+
+      .logos
+        margin: 0
+
+        li
+          float: left
+          list-style: none
+          margin-right: 20px
+
+
+          a
+            display: block
+            height: 100px
+            text-indent: -1000em
+            overflow: hidden
+            background: url(../images/sponsors.png) 0 0 no-repeat
+
+            &.cchi
+              width: 72px
+
+            &.caring
+              width: 130px
+              background-position: -100px 0
+
+            &.piton
+              width: 140px
+              background-position: -250px 0
+
+            &.connect
+              width: 180px
+              background-position: -410px 0
+
+
+  #map
+    border-right: none !important
+
+    .leaflet-left
+      display: none
+
+    .leaflet-top.leaflet-center
+      margin-left: 7em
+      margin-top: 12em
+      width: 120%

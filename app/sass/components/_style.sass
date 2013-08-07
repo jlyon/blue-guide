@@ -1,0 +1,77 @@
+
+body,
+input,
+button,
+select,
+textarea
+  +sans-serif
+
+h1,
+h2,
+h3
+  +serif
+  font-size: 18px
+  line-height: 1.2em
+
+  a
+    color: $black
+ 
+h2
+  color: $blue
+  font-size: 32px
+
+[class^="icon-"]:not(.icon-ok, .icon-home), [class*=" icon-"]:not(.icon-ok)
+  background-image: none
+
+.btn-normal,
+.btn-dark,
+#leaflet-control-geosearch-submit
+  height: 38px
+  +border-radius(3px)
+  +background-image(linear-gradient($btn-blue, tint($btn-blue, 10)))
+  border: none
+  +box-shadow($btn-blue-shadow 0 1px 1px)
+  color: $white
+  +text-shadow(none)
+  font-weight: bold
+
+  &:focus,
+  &:hover,
+  &.active
+    background-color: tint($btn-blue, 7)
+    color: $white
+
+  i
+    margin-top: 2px
+    margin-right: 5px
+    font-size: 16px
+
+  &.btn-search i
+    margin-right: 0
+
+  &.btn-dark
+    +background-image(linear-gradient($btn-blue-shadow, tint($btn-blue-shadow, 10)))
+
+    &:focus,
+    &:hover
+      background-color: tint($btn-blue-shadow, 7)
+
+
+input[type="text"]
+  height: 38px !important
+  border: 1px solid $orange !important
+  +box-shadow(inset 0 1px 4px $grey)
+
+  &:focus
+    +box-shadow(inset 0 1px 4px $grey)
+
+label
+  font-weight: bold
+  display block
+  margin-top: 1em
+  clear: left
+
+.icon-spin
+  +spin
+
+

@@ -1,32 +1,270 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title></title>
-        <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Blue Guide - A resource from the Colorado Consumer Health Initiative</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Albatross Digital, LLC">
 
-        <link rel="stylesheet" href="styles/index.css"/>
-    </head>
-    <body>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+    <script src='http://underscorejs.org/underscore-min.js'></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">-->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//use.typekit.net/rqb6bts.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-    <!-- Main container. -->
-    <div role="main" id="main" class="container"></div>
+    <link href="assets/bootstrap-select/bootstrap-select.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    <link href='assets/L.GeoSearch/src/css/l.geosearch.css' rel='stylesheet' />
+    <link href='assets/icomoon/style.css' rel='stylesheet' />
+    <link href='assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css' rel='stylesheet' />
+    <link href='assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css' rel='stylesheet' />
 
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+    <script src="assets/L.GeoSearch/src/js/l.control.geosearch.js"></script>
+    <script src="assets/L.GeoSearch/src/js/l.geosearch.provider.google.js"></script>   
 
-        <!-- Add your site or application content here -->
+    <script src="assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
+    <script src="assets/locache/locache.min.js"></script>
+    <script src="assets/bootstrap-select/bootstrap-select.js"></script>
+    <script src="assets/icanhaz/ICanHaz.min.js"></script>
+    <script src="assets/locache/locache.min.js"></script>
+    <script type="text/javascript" src="assets/on-media-query/js/onmediaquery.min.js"></script>
 
-        <script type="text/javascript" src="scripts/libs/cordova-2.2.0.js"></script>
+    <link href='css/main.css' rel='stylesheet' />
+    <script src="js/jsonQuery.js"></script>
+    <script src="js/GoogleSpreadsheetsQuery.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/main.js"></script>
 
-        <!-- 
-            NB. In the Ripple emulator (as recommended by PhoneGap) the following issues are evident: 
-                1. Require throws non-fatal exception (https://github.com/blackberry/Ripple-UI/issues/354)
-                2. onDeviceReady event is fired twice (http://supportforums.blackberry.com/t5/Ripple-Contributions/Onload-event-fires-twice-and-deviceready-does-not-fire-at-all/td-p/2003555) 
-        -->
+    <!--temp!!-->
+    <script src="http://127.0.0.1:35729/livereload.js?ext=Chrome&amp;extver=2.0.9"></script>
+    
+    <!--<script data-main="js/main" src="assets/require/require.js"></script>-->
 
-        <!-- build:js scripts/amd-app.js -->
-        <script data-main="scripts/config" src="scripts/libs/require.js"></script>
-        <!-- endbuild -->
+    <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">-->
 
-    </body>
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body class="overlay-active">
+
+    <div class="navbar navbar-fixed-top">
+        
+        <div class="container-fluid">
+          <a class="brand" href=""><img src="images/logo.png" width="197" height="44" alt="The Blue Guide logo" /></a>
+          
+          <div class="links">
+            <button id="showFilters" class="pull-right btn btn-normal"><i class="icon-cog"></i><span> Show Filters</span></button>
+
+            <button id="showLocate" class="no-desktop pull-right btn btn-normal"><i class="icon-search"></i></button>
+
+            <ul class="nav nav-pills pull-right">
+              <li><a href="http://cohealthinitiative.org/health-coverage-resources" target="_blank">Coverage Resources</a></li>
+              <li><a href="http://cohealthinitiative.org/blue-guide-download" target="_blank">Download the Guide</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+    </div>
+
+    <div class="row-fluid">
+
+      <div class="left-sidebar">
+        <div class="" id="results"></div>
+      </div>
+
+      <div class="main-content">
+        <div id="map"></div>
+      </div>
+
+      <div class="right-sidebar">
+        <div class="" id="filters">
+        </div>
+      </div>
+
+    </div>
+
+  </body>
 </html>
+
+
+
+        
+<script id="about" type="text/html">
+  <div id="mapOverlay"></div>
+  <div id="about">
+    <h2>Find A Provider</h2>
+    <p>Search Nearby - or - Select an Option from the menu to get started.<p>
+    <div class="summary">
+      <p class="no-mobile">The purpose of this guide is to help uninsured individuals and families, health care providers,
+      and community organizations locate the healthcare options and resources that are available for 
+      uninsured and underinsured Coloradans. This online guide provides information about your local 
+      health care providers and health care access assistance sites that can help Coloradans apply for
+      and enroll in Medicaid, CHP+, and private insurance through the new online insurance marketplace, 
+      Connect for Health Colorado.</p>
+      <p class="no-mobile">This guide was prepared by the <a class="cchi" href="http://www.cohealthinitiative.org/" target="_blank">Colorado Consumer Health Initiative</a> with support from the 
+      <a class="caring" href="http://www.caringforcolorado.org/" target="_blank">Caring for Colorado Foundation</a>, <a class="piton" href="http://www.piton.org/" target="_blank">the Piton Foundation</a>, and <a class="connect" href="http://www.connectforhealthco.com/" target="_blank">Connect for Health Colorado.</a> </p>
+      <p class="no-desktop supported">Supported by:</p>
+      <ul class="logos">
+        <li><a class="cchi" href="http://www.cohealthinitiative.org/" target="_blank" title="Colorado Consumer Health Initiative">Colorado Consumer Health Initiative</a></li>
+        <li><a class="caring" href="http://www.caringforcolorado.org/" target="_blank" title="Caring for Colorado Foundation">Caring for Colorado Foundation</a></li>
+        <li><a class="piton" href="http://www.piton.org/" target="_blank" title="The Piton Foundation">The Piton Foundation</a></li>
+        <li><a class="connect" href="http://www.connectforhealthco.com/" target="_blank" title="Connect for Health Colorado">Connect for Health Colorado</a></li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+
+<script id="accordion" type="text/html">
+  <div class="accordion" id="filters-accordion" data-toggle="false">
+    {{#sections}}
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle {{collapsed}}" data-toggle="collapse" data-parent="#filters-accordion" href="#{{id}}">
+            {{title}}
+          </a>
+        </div>
+        <div id="{{id}}" class="accordion-body collapse {{open}}">
+          <div class="accordion-inner">
+            {{{content}}}
+          </div>
+        </div>
+      </div>
+    {{/sections}}
+  </div>
+</script>
+
+
+<script id="tabs" type="text/html">
+  <ul class="nav nav-tabs nav-stacked">
+    {{#tabs}}
+      <li><a href="#" rel="{{title}}" class="tab-{{color}}"><i class="{{icon}} tab-{{color}}"></i> {{title}}</a></li>
+    {{/tabs}}
+  </ul>
+</script>
+
+
+<script id="select" type="text/html">
+  <label>{{label}}</label>
+  <select id="{{id}}" multiple title="{{msg}}" class="field">
+    {{#options}}
+      <option>{{{.}}}</option>
+    {{/options}}
+  </select>
+</script>
+
+<script id="search" type="text/html">
+  <div class="form-inline">
+    <input type="text" id="field-search" class="text-search span9" placeholder="Keyword Search" />
+    {{>searchBtn}}
+  </form>
+</script>
+
+<script id="searchBtn" type="text/html">
+  <button type="submit" class="btn btn-normal btn-search"><i class="icon-search"></i></button>
+</script>
+
+<script id="submitBtns" type="text/html">
+  <div class="form-inline submit-btns">
+    <button type="submit" class="btn btn-normal span7">Apply Filter</button>
+    <button type="submit" class="btn btn-dark span4 btn-reset" id="reset">Reset</button>
+  </form>
+</script>
+
+<script id="noResults" type="text/html">
+  <div>
+    <h3>Sorry</h3>
+    We could not find any clinics near you.  Try changing your filters
+    or zooming out.
+  </div>
+</script>
+
+<script id="resultSummaryMatching" type="text/html">
+  <div class="result-summary">
+    {{num}} matching results. Zoom out to see more.
+  </div>
+</script>
+
+<script id="resultSummary" type="text/html">
+  <div class="result-summary">
+    Displaying the {{num}} closest clinics to {{location}} matching your filters.
+    <a href="#" id="resultsShow" rel="100000">See all {{total}}</a>.
+  </div>
+</script>
+
+<script id="resultSummaryAll" type="text/html">
+  <div class="result-summary">
+    Displaying all {{num}} clinics matching your filters.
+    <a href="#" id="resultsShow" rel="{{smaller}}">Only show the closest {{smaller}}</a>.
+  </div>
+</script>
+
+<script id="pager" type="text/html">
+  <div class="pagination" id="{{id}}">
+    <div class="result-summary">Showing {{start}} - {{end}} of {{total}} clinics.</div>
+    <ul></ul>
+  </div>
+</script>
+
+<script id="pagerItem" type="text/html">
+  <li class="{{class}}"><a href="#" rel="{{rel}}">{{num}}</a></li>
+ </script>
+
+<script id="listItem" type="text/html">
+  <div class="item" rel="{{id}}">
+    {{>marker}}
+    <button type="button" class="close not-primary">&times;</button>
+    <div class="summary">
+      <h3><a href="#">{{Clinic Name}} <span> ({{distance}} miles)</a></span></h3>
+      <p>
+        {{Address Line 1}}, {{City}}, {{State}}<br/>
+        {{Phone Number}} <a href="{{Website}}" target="_blank">View website</a>
+      </p>
+      <button class="btn btn-normal not-primary btn-directions" rel="{{Latitude}},{{Longitude}}"><i class="icon-directions"></i> Get Directions</button>
+    </div>
+    <div class="fields">{{{fields}}}</div>
+  </div>
+</script>
+
+<script id="marker" class="partial" type="text/html">
+  <a href="#" class="static-marker awesome-marker-icon-{{color}} awesome-marker">
+    <strong class="icon-white">{{letter}}</strong>
+  </a>
+</script>
+
+<script id="fieldItem" type="text/html">
+  <div class="field {{primary}}">
+    <span class="title">{{label}}:</span>
+    <span class="value">{{{value}}}</span>
+  </div>
+</script>
+
+<script id="popupItem" type="text/html">
+  <div class="item">
+    <h3>{{Clinic Name}}</h3>
+    <p>
+      {{Full Address}}<br/>
+      {{{Phone Number}}} <a href="{{Website}}" target="_blank">View website</a>
+    </p>
+    <div class="fields">{{{primaryFields}}}</div>
+  </div>
+</script>
+
+<script id="locateBtn" type="text/html">
+  <button class="btn btn-dark leaflet-control leaflet-control-locate" id="geocode"><i class="icon-location"></i>Get my location</button>
+</script>
+

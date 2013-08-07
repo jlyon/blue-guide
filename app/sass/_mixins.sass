@@ -1,0 +1,81 @@
+@import "compass/css3"
+
+@import "_variables.sass"
+
+//************************************
+// Sprites
+//************************************
+
+// simple sprite
+@mixin sprite($left, $top, $img: "sprite.png", $repeat: no-repeat)
+  background-image: url(/images/#{$img})
+  background-position: $left $top
+  background-repeat: $repeat
+
+// text replacing sprite
+// $img file name
+@mixin sprite-block($width, $height, $left, $top, $img: "sprite.png", $repeat: no-repeat)
+  width: $width
+  height: $height
+  display: block
+  text-indent: -1000em
+  overflow: hidden
+  @include sprite($left, $top, $img, $repeat)
+
+@mixin sans-serif
+  font-family: $sans-serif
+
+@mixin serif
+  font-family: $serif
+  font-weight: bold
+
+//@mixin transition($property)
+//  +transition-property($property)
+//  +transition-duration(1s)
+
+@mixin spin
+  display: inline-block
+  -moz-animation: spin 2s infinite linear
+  -o-animation: spin 2s infinite linear
+  -webkit-animation: spin 2s infinite linear
+  animation: spin 2s infinite linear
+
+  @-moz-keyframes spin 
+    0% 
+      -moz-transform: rotate(0deg)
+    100% 
+      -moz-transform: rotate(359deg)
+
+  @-webkit-keyframes spin 
+    0% 
+      -webkit-transform: rotate(0deg)
+    100% 
+      -webkit-transform: rotate(359deg)
+
+  @-o-keyframes spin 
+    0% 
+      -o-transform: rotate(0deg)
+    100% 
+      -o-transform: rotate(359deg)
+
+  @-ms-keyframes spin 
+    0% 
+      -ms-transform: rotate(0deg)
+    100% 
+      -ms-transform: rotate(359deg)
+
+  @keyframes spin 
+    0% 
+      transform: rotate(0deg)
+    100% 
+      transform: rotate(359deg)
+
+@mixin icon
+  font-family: 'icomoon'
+  speak: none
+  font-style: normal
+  font-weight: normal
+  font-variant: normal
+  text-transform: none
+  line-height: 1
+  -webkit-font-smoothing: antialiased
