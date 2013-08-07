@@ -72,6 +72,11 @@ window.onload = ->
   map.map.on "zoomend", ->
     updateMarkers map.pagerStart
 
+  # Click event for "Show Locate" btn
+  $("#showLocate").bind "click", ->
+    $(this).toggleClass "active"
+    $("body").toggleClass "locate-active"
+
 
   #$('.left-sidebar').bind "click", ->
   #  $('body').addClass "left-sidebar-big"

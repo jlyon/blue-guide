@@ -34,7 +34,8 @@ L.Control.GeoSearch = L.Control.extend({
             'searchLabel': options.searchLabel || 'search for address...',
             'notFoundMessage' : options.notFoundMessage || 'Sorry, that address could not be found.',
             'messageHideDelay': options.messageHideDelay || 3000,
-            'zoomLevel': options.zoomLevel || 18
+            'zoomLevel': options.zoomLevel || 18,
+            'submitButton': options.submitButton || false
         };
     },
 
@@ -54,6 +55,16 @@ L.Control.GeoSearch = L.Control.extend({
         searchbox.type = 'text';
         searchbox.placeholder = this._config.searchLabel;
         this._searchbox = searchbox;
+        
+        var searchbtn = document.createElement('button');
+        searchbtn.id = 'leaflet-control-geosearch-submit';
+        searchbtn.className = 'btn';
+        searchbtn.innerHTML = '<i class="icon-search"></i>';
+        var that = this;
+        searchbtn.addEventListener('click', function() {
+          that._onKeyUp({keyCode: 13});
+        }, false);
+        this._searchbtn = searchbtn;
 
         var msgbox = document.createElement('div');
         msgbox.id = 'leaflet-control-geosearch-msg';
@@ -66,6 +77,11 @@ L.Control.GeoSearch = L.Control.extend({
 
         $(this._msgbox).append(this._resultslist);
         $(this._container).append(this._searchbox, this._msgbox);
+        console.log(this._config)
+        if (this._config.submitButton) {
+          $(this._container).append(this._searchbtn);
+        }
+        
 
         L.DomEvent
           .addListener(this._container, 'click', L.DomEvent.stop)
@@ -132,7 +148,6 @@ L.Control.GeoSearch = L.Control.extend({
     _onKeyUp: function (e) {
         var escapeKey = 27;
         var enterKey = 13;
-        console.log(e)
 
         if (e.keyCode === escapeKey) {
             $('#leaflet-control-geosearch-qry').val('');

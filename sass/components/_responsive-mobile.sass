@@ -50,11 +50,20 @@
 
       .leaflet-top.leaflet-center
         margin-left: 60px
-        width: 120%
+        width: 110%
         display: none
+
+        .locate-active &
+          display: block
 
         .leaflet-control-geosearch
           width: 96%
+
+          input
+            width: 64.3%
+            margin-right: 3%
+            float: left
+
         .leaflet-control-locate
           width: 72.7%
 
@@ -66,6 +75,12 @@
     z-index: 100
     background-color: $white
     +transition(all, $trans-time)
+
+    #results
+      padding-bottom: 4em
+
+      .pagination
+        margin: .5em 0 -1.5em 0
 
   .right-sidebar
     right: -280px
@@ -107,10 +122,15 @@
     #map
       
       #about
-        padding: 1em 1em
+        padding: 1em 2em
+
+        .supported
+          text-align: center
+          font-style: italic
+          margin-top: 1em
 
       .leaflet-top.leaflet-center
-        margin-left: 1em
+        margin-left: 2em
         margin-top: 9em
         display: block
 

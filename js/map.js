@@ -19,7 +19,7 @@ Map = function(options) {
   this.homeMarkerLayer = new L.FeatureGroup();
   this.resultNum = this.options.resultNum;
   this.drawMap = function() {
-    var $btn, locateUser, settings;
+    var locateUser, settings;
     this.map = new L.Map(this.options.id, {
       center: new L.LatLng(this.options.startLat, this.options.startLng),
       zoom: this.options.startZoom,
@@ -30,18 +30,11 @@ Map = function(options) {
     $("#map .leaflet-control-container").append(ich.about());
     if (this.options.geosearch != null) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
-        zoomLevel: this.options.maxZoom
+        zoomLevel: this.options.maxZoom,
+        submitButton: true
       });
       settings.provider = new L.GeoSearch.Provider[this.options.geosearch.provider]();
       new L.Control.GeoSearch(settings).addTo(this.map);
-      $btn = ich.searchBtn();
-      $btn.bind('click', function() {
-        return $('#leaflet-control-geosearch-qry').trigger("keypress", {
-          keyCode: 13
-        });
-      });
-      console.log(this.options.id + ' .leaflet-control-geosearch');
-      $btn.appendTo(' .leaflet-control-geosearch');
     }
     if (this.options.locate != null) {
       locateUser = function() {
@@ -201,11 +194,12 @@ Map = function(options) {
           } else {
             $(that.updateSelector).removeClass("left-sidebar-big");
             return $("html, body").animate({
-              scrollTop: -66
-            }, 500);
+              scrollTop: 0
+            }, 750);
           }
         });
         $resultItem.find(".btn-directions").bind("click", function() {
+          console.log('dirs');
           return window.open("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]);
         });
         $results.append($resultItem);

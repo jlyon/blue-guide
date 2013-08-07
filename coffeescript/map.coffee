@@ -35,15 +35,10 @@ Map = (options) ->
     if @options.geosearch?
       settings = _.extend((if @options.geosearch.settings is `undefined` then {} else @options.geosearch.settings),
         zoomLevel: @options.maxZoom
+        submitButton: true
       )
       settings.provider = new L.GeoSearch.Provider[@options.geosearch.provider]()
       new L.Control.GeoSearch(settings).addTo @map
-      $btn = ich.searchBtn()
-      $btn.bind 'click', ->
-        $('#leaflet-control-geosearch-qry').trigger "keypress", {keyCode: 13}
-        #L.Control.GeoSearch.geosearch $('#leaflet-control-geosearch-qry').val()
-      console.log @options.id+' .leaflet-control-geosearch'
-      $btn.appendTo ' .leaflet-control-geosearch'
 
     # Add the locate button
     if @options.locate?
@@ -211,10 +206,11 @@ Map = (options) ->
           else
             $(that.updateSelector).removeClass "left-sidebar-big"
             $("html, body").animate
-              scrollTop: -66
-            , 500
+              scrollTop: 0
+            , 750
 
         $resultItem.find(".btn-directions").bind "click", ->
+          console.log 'dirs'
           window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
 
         $results.append $resultItem

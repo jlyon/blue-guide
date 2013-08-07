@@ -77,6 +77,10 @@ window.onload = function() {
   map.map.on("zoomend", function() {
     return updateMarkers(map.pagerStart);
   });
+  $("#showLocate").bind("click", function() {
+    $(this).toggleClass("active");
+    return $("body").toggleClass("locate-active");
+  });
   updateMarkers = function(pagerStart) {
     var newZoom;
     $('#show-markers').addClass("icon-spin");
