@@ -85,7 +85,6 @@ window.onload = function() {
   if (window.responsive === "mobile") {
     $about = ich.about();
     $search = $("#map .leaflet-top.leaflet-center").clone();
-    $search.find('.leaflet-control-geosearch').removeClass("leaflet-control-geosearch");
     $search.find('#leaflet-control-geosearch-submit').bind("click", function() {
       $("#map #leaflet-control-geosearch-qry").val($(this).parent().find("#leaflet-control-geosearch-qry").val());
       return $("#map #leaflet-control-geosearch-submit").trigger("click");

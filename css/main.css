@@ -199,13 +199,14 @@
 #map #geocode {
   z-index: 10;
 }
+
 /* line 7, ../sass/components/_map.sass */
-#map .leaflet-top.leaflet-center {
+.leaflet-top.leaflet-center {
   width: 100%;
   margin-left: 50px;
 }
 /* line 11, ../sass/components/_map.sass */
-#map .leaflet-top.leaflet-center .leaflet-control-geosearch {
+.leaflet-top.leaflet-center .leaflet-control-geosearch {
   background: none;
   float: left;
   width: auto;
@@ -214,18 +215,18 @@
   width: 350px;
 }
 /* line 19, ../sass/components/_map.sass */
-#map .leaflet-top.leaflet-center .leaflet-control-geosearch input {
+.leaflet-top.leaflet-center .leaflet-control-geosearch input {
   background: white;
   width: 290px;
   float: left;
   margin-right: 10px;
 }
 /* line 26, ../sass/components/_map.sass */
-#map .leaflet-top.leaflet-center .leaflet-control-geosearch #leaflet-control-geosearch-submit i {
+.leaflet-top.leaflet-center .leaflet-control-geosearch #leaflet-control-geosearch-submit i {
   margin: 0;
 }
 /* line 29, ../sass/components/_map.sass */
-#map .leaflet-top.leaflet-center .leaflet-control-locate {
+.leaflet-top.leaflet-center .leaflet-control-locate {
   clear: none;
 }
 
@@ -510,27 +511,27 @@
     height: 100%;
   }
   /* line 54, ../sass/components/_responsive-mobile.sass */
-  .main-content #map .leaflet-top.leaflet-center {
+  .main-content .leaflet-top.leaflet-center {
     margin-left: 60px;
     width: 110%;
     display: none;
   }
   /* line 59, ../sass/components/_responsive-mobile.sass */
-  .locate-active .main-content #map .leaflet-top.leaflet-center {
+  .locate-active .main-content .leaflet-top.leaflet-center {
     display: block;
   }
   /* line 62, ../sass/components/_responsive-mobile.sass */
-  .main-content #map .leaflet-top.leaflet-center .leaflet-control-geosearch {
+  .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
     width: 96%;
   }
   /* line 65, ../sass/components/_responsive-mobile.sass */
-  .main-content #map .leaflet-top.leaflet-center .leaflet-control-geosearch input {
+  .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch input {
     width: 64.3%;
     margin-right: 3%;
     float: left;
   }
   /* line 70, ../sass/components/_responsive-mobile.sass */
-  .main-content #map .leaflet-top.leaflet-center .leaflet-control-locate {
+  .main-content .leaflet-top.leaflet-center .leaflet-control-locate {
     width: 72.7%;
   }
 
@@ -610,12 +611,17 @@
     margin-top: 1em;
   }
   /* line 136, ../sass/components/_responsive-mobile.sass */
-  .overlay-active .leaflet-top.leaflet-center {
-    margin-left: 2em;
-    margin-top: 9em;
+  .overlay-active #about .leaflet-top.leaflet-center {
+    margin-left: 0;
+    top: 9em;
     display: block;
+    position: absolute;
   }
-  /* line 141, ../sass/components/_responsive-mobile.sass */
+  /* line 142, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about .leaflet-top.leaflet-center input {
+    height: 28px !important;
+  }
+  /* line 145, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate {
     display: none;
   }

@@ -83,7 +83,7 @@ window.onload = ->
   if window.responsive is "mobile"
     $about = ich.about()
     $search = $("#map .leaflet-top.leaflet-center").clone()
-    $search.find('.leaflet-control-geosearch').removeClass "leaflet-control-geosearch"
+    #$search.find('.leaflet-control-geosearch').removeClass "leaflet-control-geosearch"
     $search.find('#leaflet-control-geosearch-submit').bind "click", ->
       $("#map #leaflet-control-geosearch-qry").val $(this).parent().find("#leaflet-control-geosearch-qry").val()
       $("#map #leaflet-control-geosearch-submit").trigger "click"

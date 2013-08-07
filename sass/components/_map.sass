@@ -4,30 +4,30 @@
   #geocode
     z-index: 10
 
-  .leaflet-top.leaflet-center
-    width: 100%
-    margin-left: 50px
+.leaflet-top.leaflet-center
+  width: 100%
+  margin-left: 50px
 
-    .leaflet-control-geosearch
-      background: none
+  .leaflet-control-geosearch
+    background: none
+    float: left
+    width: auto
+    padding: 0
+    margin-right: 1em
+    width: 350px
+
+    input
+      background: $white
+      width: 290px
       float: left
-      width: auto
-      padding: 0
-      margin-right: 1em
-      width: 350px
+      margin-right: 10px
+      
 
-      input
-        background: $white
-        width: 290px
-        float: left
-        margin-right: 10px
-        
+    #leaflet-control-geosearch-submit i
+      margin: 0
 
-      #leaflet-control-geosearch-submit i
-        margin: 0
-
-    .leaflet-control-locate
-      clear: none
+  .leaflet-control-locate
+    clear: none
 
 
 .leaflet-container
