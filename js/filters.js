@@ -99,7 +99,7 @@ Filters = function() {
       title: "Access Assistance",
       color: "red",
       icon: "icon-mentalbehavioural",
-      services: ["Chronic Disease Mgmt", "Medicaid Enrollment", "Connect for Health Colorado Enrollment Assistance"]
+      services: ["Medicaid Enrollment", "Connect for Health Colorado Enrollment Assistance"]
     }, {
       title: "Oral / Dental",
       color: "blue",

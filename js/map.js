@@ -27,7 +27,6 @@ Map = function(options) {
     });
     this.markerLayer.addTo(this.map);
     this.homeMarkerLayer.addTo(this.map);
-    $("#map .leaflet-control-container").append(ich.about());
     if (this.options.geosearch != null) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
         zoomLevel: this.options.maxZoom,
@@ -48,7 +47,6 @@ Map = function(options) {
         return that.map.locate(settings);
       }).appendTo("#map .leaflet-top.leaflet-center");
     }
-    console.log(this.map);
   };
   this.updateLocation = function(latlng) {
     return this.location = latlng;

@@ -29,7 +29,6 @@ Map = (options) ->
     )
     @markerLayer.addTo @map
     @homeMarkerLayer.addTo @map
-    $("#map .leaflet-control-container").append ich.about()
 
     # Add the geosearch control
     if @options.geosearch?
@@ -51,7 +50,7 @@ Map = (options) ->
       $(@options.locate.html).bind "click", (e) ->
         that.map.locate settings
       .appendTo "#map .leaflet-top.leaflet-center"
-    console.log @map
+
     return
 
   @updateLocation = (latlng) ->

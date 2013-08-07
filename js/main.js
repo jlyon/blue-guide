@@ -9,7 +9,7 @@ rev = 0.11;
 activeTab = void 0;
 
 window.onload = function() {
-  var activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
+  var $about, $search, activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
   queries = [
     {
       context: "mobile",
@@ -81,6 +81,20 @@ window.onload = function() {
     $(this).toggleClass("active");
     return $("body").toggleClass("locate-active");
   });
+  console.log("asdf");
+  if (window.responsive === "mobile") {
+    $about = ich.about();
+    $search = $("#map .leaflet-top.leaflet-center").clone();
+    $search.find('.leaflet-control-geosearch').removeClass("leaflet-control-geosearch");
+    $search.find('#leaflet-control-geosearch-submit').bind("click", function() {
+      $("#map #leaflet-control-geosearch-qry").val($(this).parent().find("#leaflet-control-geosearch-qry").val());
+      return $("#map #leaflet-control-geosearch-submit").trigger("click");
+    });
+    $("#main").append($about);
+    $("#main #about").append($search);
+  } else {
+    $("#map .leaflet-control-container").prepend(ich.about());
+  }
   updateMarkers = function(pagerStart) {
     var newZoom;
     $('#show-markers').addClass("icon-spin");

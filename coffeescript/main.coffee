@@ -77,6 +77,22 @@ window.onload = ->
     $(this).toggleClass "active"
     $("body").toggleClass "locate-active"
 
+  console.log "asdf"
+
+  # Add overlay (for start page)
+  if window.responsive is "mobile"
+    $about = ich.about()
+    $search = $("#map .leaflet-top.leaflet-center").clone()
+    $search.find('.leaflet-control-geosearch').removeClass "leaflet-control-geosearch"
+    $search.find('#leaflet-control-geosearch-submit').bind "click", ->
+      $("#map #leaflet-control-geosearch-qry").val $(this).parent().find("#leaflet-control-geosearch-qry").val()
+      $("#map #leaflet-control-geosearch-submit").trigger "click"
+    $("#main").append $about
+    $("#main #about").append $search
+  else
+    $("#map .leaflet-control-container").prepend ich.about()
+
+
 
   #$('.left-sidebar').bind "click", ->
   #  $('body').addClass "left-sidebar-big"

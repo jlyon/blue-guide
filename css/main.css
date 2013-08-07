@@ -211,27 +211,30 @@
   width: auto;
   padding: 0;
   margin-right: 1em;
-}
-/* line 18, ../sass/components/_map.sass */
-#map .leaflet-top.leaflet-center .leaflet-control-geosearch input {
-  background: white;
   width: 350px;
 }
-/* line 22, ../sass/components/_map.sass */
+/* line 19, ../sass/components/_map.sass */
+#map .leaflet-top.leaflet-center .leaflet-control-geosearch input {
+  background: white;
+  width: 290px;
+  float: left;
+  margin-right: 10px;
+}
+/* line 26, ../sass/components/_map.sass */
 #map .leaflet-top.leaflet-center .leaflet-control-geosearch #leaflet-control-geosearch-submit i {
   margin: 0;
 }
-/* line 25, ../sass/components/_map.sass */
+/* line 29, ../sass/components/_map.sass */
 #map .leaflet-top.leaflet-center .leaflet-control-locate {
   clear: none;
 }
 
-/* line 29, ../sass/components/_map.sass */
+/* line 33, ../sass/components/_map.sass */
 .leaflet-container {
   font-family: "open-sans", sans-serif;
   font-size: 14px;
 }
-/* line 33, ../sass/components/_map.sass */
+/* line 37, ../sass/components/_map.sass */
 .leaflet-container .leaflet-popup-content-wrapper {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -239,11 +242,11 @@
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 37, ../sass/components/_map.sass */
+/* line 41, ../sass/components/_map.sass */
 .leaflet-container .leaflet-popup-content-wrapper .fields .title {
   width: 4.5em;
 }
-/* line 40, ../sass/components/_map.sass */
+/* line 44, ../sass/components/_map.sass */
 .leaflet-container .leaflet-popup-content-wrapper .fields .value {
   margin-left: 5.5em;
 }
@@ -592,23 +595,27 @@
     right: 0;
   }
 
-  /* line 127, ../sass/components/_responsive-mobile.sass */
-  .overlay-active #map #about {
+  /* line 125, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #map {
+    display: none;
+  }
+  /* line 128, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about {
     padding: 1em 2em;
   }
-  /* line 130, ../sass/components/_responsive-mobile.sass */
-  .overlay-active #map #about .supported {
+  /* line 131, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     margin-top: 1em;
   }
-  /* line 135, ../sass/components/_responsive-mobile.sass */
-  .overlay-active #map .leaflet-top.leaflet-center {
+  /* line 136, ../sass/components/_responsive-mobile.sass */
+  .overlay-active .leaflet-top.leaflet-center {
     margin-left: 2em;
     margin-top: 9em;
     display: block;
   }
-  /* line 140, ../sass/components/_responsive-mobile.sass */
+  /* line 141, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate {
     display: none;
   }
