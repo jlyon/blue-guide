@@ -27,6 +27,16 @@
   #showFilters span
     display: none
 
+  .navbar
+    .links
+      margin-right: 20px
+      
+      i
+        margin-right: 0
+
+      #showLocate
+        margin-right: 20px
+
   .main-content
     top: $topnav-height
     position: absolute
@@ -39,14 +49,12 @@
       height: 100%
 
       .leaflet-top.leaflet-center
+        margin-left: 60px
+        width: 120%
+        display: none
 
         .leaflet-control-geosearch
           width: 96%
-          input
-            width: 64.4%
-            float: left
-            margin-right: 3%
-
         .leaflet-control-locate
           width: 72.7%
 
@@ -66,21 +74,13 @@
     width: 280px
     +transition(all, $trans-time)
 
-  #showFilters
-    position: absolute
-    right: 25px
-
-    i
-      margin-right: 0
-
-
   .left-sidebar-active
 
     .left-sidebar
-      top: 60%
+      top: 70%
 
     .main-content
-      height: 60%
+      height: 70%
 
 
   .left-sidebar-big
@@ -112,5 +112,8 @@
       .leaflet-top.leaflet-center
         margin-left: 1em
         margin-top: 9em
-        width: 120%
+        display: block
+
+    #showLocate
+      display: none
 

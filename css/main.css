@@ -470,7 +470,20 @@
     display: none;
   }
 
-  /* line 30, ../sass/components/_responsive-mobile.sass */
+  /* line 31, ../sass/components/_responsive-mobile.sass */
+  .navbar .links {
+    margin-right: 20px;
+  }
+  /* line 34, ../sass/components/_responsive-mobile.sass */
+  .navbar .links i {
+    margin-right: 0;
+  }
+  /* line 37, ../sass/components/_responsive-mobile.sass */
+  .navbar .links #showLocate {
+    margin-right: 20px;
+  }
+
+  /* line 40, ../sass/components/_responsive-mobile.sass */
   .main-content {
     top: 64px;
     position: absolute;
@@ -481,27 +494,27 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 37, ../sass/components/_responsive-mobile.sass */
+  /* line 47, ../sass/components/_responsive-mobile.sass */
   .main-content #map {
     width: 100%;
     height: 100%;
   }
-  /* line 43, ../sass/components/_responsive-mobile.sass */
+  /* line 51, ../sass/components/_responsive-mobile.sass */
+  .main-content #map .leaflet-top.leaflet-center {
+    margin-left: 60px;
+    width: 120%;
+    display: none;
+  }
+  /* line 56, ../sass/components/_responsive-mobile.sass */
   .main-content #map .leaflet-top.leaflet-center .leaflet-control-geosearch {
     width: 96%;
   }
-  /* line 45, ../sass/components/_responsive-mobile.sass */
-  .main-content #map .leaflet-top.leaflet-center .leaflet-control-geosearch input {
-    width: 64.4%;
-    float: left;
-    margin-right: 3%;
-  }
-  /* line 50, ../sass/components/_responsive-mobile.sass */
+  /* line 58, ../sass/components/_responsive-mobile.sass */
   .main-content #map .leaflet-top.leaflet-center .leaflet-control-locate {
     width: 72.7%;
   }
 
-  /* line 54, ../sass/components/_responsive-mobile.sass */
+  /* line 62, ../sass/components/_responsive-mobile.sass */
   .left-sidebar {
     position: relative;
     top: 100%;
@@ -514,7 +527,7 @@
     transition: all, 1s;
   }
 
-  /* line 62, ../sass/components/_responsive-mobile.sass */
+  /* line 70, ../sass/components/_responsive-mobile.sass */
   .right-sidebar {
     right: -280px;
     top: 64px;
@@ -526,23 +539,13 @@
     transition: all, 1s;
   }
 
-  /* line 69, ../sass/components/_responsive-mobile.sass */
-  #showFilters {
-    position: absolute;
-    right: 25px;
-  }
-  /* line 73, ../sass/components/_responsive-mobile.sass */
-  #showFilters i {
-    margin-right: 0;
-  }
-
   /* line 79, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
-    top: 60%;
+    top: 70%;
   }
   /* line 82, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .main-content {
-    height: 60%;
+    height: 70%;
   }
 
   /* line 88, ../sass/components/_responsive-mobile.sass */
@@ -572,7 +575,11 @@
   .overlay-active #map .leaflet-top.leaflet-center {
     margin-left: 1em;
     margin-top: 9em;
-    width: 120%;
+    display: block;
+  }
+  /* line 117, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #showLocate {
+    display: none;
   }
 }
 /* line 1, ../sass/components/_results.sass */
