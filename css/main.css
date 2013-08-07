@@ -616,12 +616,13 @@
     top: 9em;
     display: block;
     position: absolute;
+    width: 90%;
   }
-  /* line 142, ../sass/components/_responsive-mobile.sass */
+  /* line 143, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center input {
     height: 28px !important;
   }
-  /* line 145, ../sass/components/_responsive-mobile.sass */
+  /* line 146, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate {
     display: none;
   }
