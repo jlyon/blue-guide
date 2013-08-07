@@ -1,6 +1,6 @@
 @media screen and (max-width:560px)
   .no-mobile
-    display: none
+    //display: none
 
   html
     font-family: "mobile"
@@ -23,8 +23,6 @@
     position: relative
     //overflow-x: hidden
     width: 100%
-    max-width: 100%
-    overflow-x: hidden
 
   .navbar .nav,
   #showFilters span
@@ -83,7 +81,7 @@
       padding-bottom: 4em
 
       .pagination
-        margin: .5em 0 -1.5em 0
+        margin: .5em 0 0 0
 
   .right-sidebar
     right: -280px
@@ -127,6 +125,10 @@
       
     #about
       padding: 1em 2em
+
+      .summary .logos li
+        margin-right: 5px
+        +logos($sponsor-logos-mobile-scale)
 
       .supported
         text-align: center
