@@ -87,6 +87,8 @@ window.onload = ->
     $search.find('#leaflet-control-geosearch-submit').bind "click", ->
       $("#map #leaflet-control-geosearch-qry").val $(this).parent().find("#leaflet-control-geosearch-qry").val()
       $("#map #leaflet-control-geosearch-submit").trigger "click"
+    $search.find('#geocode').bind "click", ->
+      $("#map #geocode").trigger "click"
     $("#main").append $about
     $("#main #about").append $search
   else

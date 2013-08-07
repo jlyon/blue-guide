@@ -89,6 +89,9 @@ window.onload = function() {
       $("#map #leaflet-control-geosearch-qry").val($(this).parent().find("#leaflet-control-geosearch-qry").val());
       return $("#map #leaflet-control-geosearch-submit").trigger("click");
     });
+    $search.find('#geocode').bind("click", function() {
+      return $("#map #geocode").trigger("click");
+    });
     $("#main").append($about);
     $("#main #about").append($search);
   } else {
