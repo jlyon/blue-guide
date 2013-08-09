@@ -18,6 +18,7 @@
 
   html,
   body,
+  .row-fluid,
   .main-content
     height: 100%
     padding: 0
@@ -48,6 +49,29 @@
       #showLocate
         margin-right: 15px
 
+  // form inputs
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  .uneditable-input
+    +box-sizing(border-box)
+    max-width: 100%
+    min-height: 30px
+    width: 100%
+
   .main-content
     top: $topnav-height
     position: absolute
@@ -60,23 +84,37 @@
       height: 100%
 
     .leaflet-top.leaflet-center
-      margin-left: 60px
-      width: 80%
+      +box-sizing(border-box)
+      margin: 0px
+      padding-left: 60px
+      padding-right: 60px
+      width: 100%
       display: none
 
       .locate-active &
         display: block
 
       .leaflet-control-geosearch
-        width: 90%
+        +box-sizing(border-box)
+        position: relative
+        margin-right: 0
+        padding-right: 48px
+        width: 100%
 
         input
-          width: 64.3%
-          margin-right: 3%
+
+          max-width: 100%
+          width: 100%
+          margin-right: 0
           float: left
 
+      #leaflet-control-geosearch-submit
+        position: absolute
+        top: 0
+        right: 0
+
       .leaflet-control-locate
-        width: 72.7%
+        width: 100%
 
 
   .left-sidebar
@@ -166,9 +204,11 @@
         top: 9em
         display: block
         position: absolute
-
-        input
-          height: 28px !important
+        width: auto
+        left: 2em
+        right: 2em
+        padding-left: 0
+        padding-right: 0
 
     #showLocate,
     #mapOverlay,
