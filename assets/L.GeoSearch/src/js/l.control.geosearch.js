@@ -77,7 +77,6 @@ L.Control.GeoSearch = L.Control.extend({
 
         $(this._msgbox).append(this._resultslist);
         $(this._container).append(this._searchbox, this._msgbox);
-        console.log(this._config)
         if (this._config.submitButton) {
           $(this._container).append(this._searchbtn);
         }

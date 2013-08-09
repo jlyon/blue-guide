@@ -122,21 +122,25 @@
   margin-top: -4px;
   margin-right: 5px;
 }
-/* line 80, ../sass/components/_filters.sass */
+/* line 81, ../sass/components/_filters.sass */
+#filters #advanced .accordion-inner {
+  min-height: 575px;
+}
+/* line 85, ../sass/components/_filters.sass */
 #filters .text-search {
   width: 178px;
 }
-/* line 83, ../sass/components/_filters.sass */
+/* line 88, ../sass/components/_filters.sass */
 #filters .dropdown-menu {
   right: -20px;
 }
-/* line 87, ../sass/components/_filters.sass */
+/* line 92, ../sass/components/_filters.sass */
 #filters .dropdown-menu li a {
   padding-left: 1.5em;
   text-indent: -1em;
   position: relative;
 }
-/* line 92, ../sass/components/_filters.sass */
+/* line 97, ../sass/components/_filters.sass */
 #filters .dropdown-menu li a span.text {
   white-space: normal;
   display: block;
@@ -145,17 +149,17 @@
   font-size: 12px;
   line-height: 1.4em;
 }
-/* line 100, ../sass/components/_filters.sass */
+/* line 105, ../sass/components/_filters.sass */
 #filters .dropdown-menu li a i {
   position: absolute;
   top: 0;
   right: 5px;
 }
-/* line 105, ../sass/components/_filters.sass */
+/* line 110, ../sass/components/_filters.sass */
 #filters .submit-btns {
   margin-top: 2em;
 }
-/* line 108, ../sass/components/_filters.sass */
+/* line 113, ../sass/components/_filters.sass */
 #filters .submit-btns .btn-reset {
   margin-left: 1em;
 }
@@ -944,13 +948,13 @@ label {
 /* line 79, ../sass/components/_style.sass */
 ::-webkit-scrollbar-track {
   border-radius: 3px;
-  background-color: #eef5fb;
+  background-color: #cccccc;
 }
 
 /* line 83, ../sass/components/_style.sass */
 ::-webkit-scrollbar {
-  width: 6px;
-  background-color: #eef5fb;
+  width: 10px;
+  background-color: #cccccc;
 }
 
 /* line 87, ../sass/components/_style.sass */

@@ -120,7 +120,8 @@ Map = (options) ->
         $text = ich.resultSummaryMatching
           num: data.length
       else
-        @drawPager(data).appendTo $results
+        @drawPagerSummary(data).appendTo $results
+        #@drawPager(data).appendTo $results
 
 
     # Cycle through each item and add a marker
@@ -232,11 +233,14 @@ Map = (options) ->
     $(parent).animate({ scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top }, { duration: 'slow', easing: 'swing'})
   
 
-  @drawPager = (data) ->
-    $text = ich.pager
+  @drawPagerSummary = (data) ->
+    return ich.pager
       start: @pagerStart
       end: if (@pagerStart + @options.pagerSize < data.length) then @pagerStart + @options.pagerSize else data.length
       total: data.length
+
+  @drawPager = (data) ->
+    $text = @drawPagerSummary data
     $pager = $text.find "ul"
     if @pagerStart > @options.pagerSize*2
       min = @pagerStart - @options.pagerSize*2
