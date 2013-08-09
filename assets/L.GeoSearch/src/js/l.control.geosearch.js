@@ -61,9 +61,7 @@ L.Control.GeoSearch = L.Control.extend({
         searchbtn.className = 'btn';
         searchbtn.innerHTML = '<i class="icon-search"></i>';
         var that = this;
-        searchbtn.addEventListener('click', function() {
-          that._onKeyUp({keyCode: 13});
-        }, false);
+
         this._searchbtn = searchbtn;
 
         var msgbox = document.createElement('div');
@@ -79,8 +77,12 @@ L.Control.GeoSearch = L.Control.extend({
         $(this._container).append(this._searchbox, this._msgbox);
         if (this._config.submitButton) {
           $(this._container).append(this._searchbtn);
+          $btn = $(this._searchbtn);
+          $btn.bind('click', function(){
+            alert('aasdf');
+            that._onKeyUp({keyCode: 13});
+          })
         }
-        
 
         L.DomEvent
           .addListener(this._container, 'click', L.DomEvent.stop)
