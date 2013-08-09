@@ -684,7 +684,7 @@
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
-    margin-top: 3em;
+    padding-top: 2em;
   }
   /* line 164, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
