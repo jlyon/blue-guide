@@ -1,0 +1,45 @@
+#map
+  z-index: 0
+
+  #geocode
+    z-index: 10
+
+.leaflet-top.leaflet-center
+  width: 100%
+  margin-left: 50px
+
+  .leaflet-control-geosearch
+    background: none
+    float: left
+    width: auto
+    padding: 0
+    margin-right: 1em
+    width: 350px
+
+    input
+      background: $white
+      width: 290px
+      float: left
+      margin-right: 10px
+      
+
+    #leaflet-control-geosearch-submit i
+      margin: 0
+
+  .leaflet-control-locate
+    clear: none
+
+
+.leaflet-container
+  +sans-serif
+  font-size: 14px
+
+  .leaflet-popup-content-wrapper
+    +border-radius(0)
+
+    .fields
+      .title
+        width: 4.5em
+
+      .value
+        margin-left: 5.5em
