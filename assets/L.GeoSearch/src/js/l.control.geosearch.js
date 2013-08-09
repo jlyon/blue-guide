@@ -62,6 +62,7 @@ L.Control.GeoSearch = L.Control.extend({
         searchbtn.innerHTML = '<i class="icon-search"></i>';
         var that = this;
         //(document.ontouchstart!==null)?'click':'touchstart'
+        alert(document.ontouchstart);
         searchbtn.addEventListener('click', function() {
           that._onKeyUp({keyCode: 13});
         }, false);
