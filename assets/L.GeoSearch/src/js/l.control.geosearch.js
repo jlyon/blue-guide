@@ -78,7 +78,6 @@ L.Control.GeoSearch = L.Control.extend({
           $btn = $(this._searchbtn);
           var that = this;
           $btn.bind('click', function(){
-            alert(that);
             that.geosearch($('#leaflet-control-geosearch-qry').val());
           })
         }
