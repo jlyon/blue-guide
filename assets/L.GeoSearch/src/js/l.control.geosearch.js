@@ -60,8 +60,6 @@ L.Control.GeoSearch = L.Control.extend({
         searchbtn.id = 'leaflet-control-geosearch-submit';
         searchbtn.className = 'btn';
         searchbtn.innerHTML = '<i class="icon-search"></i>';
-        var that = this;
-
         this._searchbtn = searchbtn;
 
         var msgbox = document.createElement('div');
@@ -78,6 +76,7 @@ L.Control.GeoSearch = L.Control.extend({
         if (this._config.submitButton) {
           $(this._container).append(this._searchbtn);
           $btn = $(this._searchbtn);
+          var that = this;
           $btn.bind('click', function(){
             alert('aasdf');
             that._onKeyUp({keyCode: 13});
@@ -149,6 +148,7 @@ L.Control.GeoSearch = L.Control.extend({
     _onKeyUp: function (e) {
         var escapeKey = 27;
         var enterKey = 13;
+        alert('up');
 
         if (e.keyCode === escapeKey) {
             $('#leaflet-control-geosearch-qry').val('');
