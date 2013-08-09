@@ -453,25 +453,30 @@
   }
 }
 @media screen and (max-width: 560px) {
-  /* line 2, ../sass/components/_responsive-mobile.sass */
+  /* line 3, ../sass/components/_responsive-mobile.sass */
   .no-mobile {
     display: none;
   }
 
-  /* line 5, ../sass/components/_responsive-mobile.sass */
+  /* line 6, ../sass/components/_responsive-mobile.sass */
   html {
     font-family: "mobile";
     max-width: 100%;
     overflow-x: hidden;
     width: 100%;
   }
-  /* line 11, ../sass/components/_responsive-mobile.sass */
+  /* line 12, ../sass/components/_responsive-mobile.sass */
   html body:after {
     content: "mobile";
     display: none;
   }
 
-  /* line 15, ../sass/components/_responsive-mobile.sass */
+  /* line 16, ../sass/components/_responsive-mobile.sass */
+  button {
+    cursor: pointer !important;
+  }
+
+  /* line 19, ../sass/components/_responsive-mobile.sass */
   html,
   body,
   .main-content {
@@ -479,40 +484,40 @@
     padding: 0;
   }
 
-  /* line 21, ../sass/components/_responsive-mobile.sass */
+  /* line 25, ../sass/components/_responsive-mobile.sass */
   .row-fluid {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-  /* line 27, ../sass/components/_responsive-mobile.sass */
+  /* line 31, ../sass/components/_responsive-mobile.sass */
   .navbar .nav,
   #showFilters span {
     display: none;
   }
 
-  /* line 32, ../sass/components/_responsive-mobile.sass */
+  /* line 36, ../sass/components/_responsive-mobile.sass */
   .navbar .brand img {
     max-width: 140px;
     margin-top: 4px;
     height: auto;
     margin-left: 10px;
   }
-  /* line 38, ../sass/components/_responsive-mobile.sass */
+  /* line 42, ../sass/components/_responsive-mobile.sass */
   .navbar .links {
     margin-right: 10px;
   }
-  /* line 41, ../sass/components/_responsive-mobile.sass */
+  /* line 45, ../sass/components/_responsive-mobile.sass */
   .navbar .links i {
     margin-right: 0;
   }
-  /* line 44, ../sass/components/_responsive-mobile.sass */
+  /* line 48, ../sass/components/_responsive-mobile.sass */
   .navbar .links #showLocate {
     margin-right: 15px;
   }
 
-  /* line 47, ../sass/components/_responsive-mobile.sass */
+  /* line 51, ../sass/components/_responsive-mobile.sass */
   .main-content {
     top: 64px;
     position: absolute;
@@ -523,37 +528,37 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 54, ../sass/components/_responsive-mobile.sass */
+  /* line 58, ../sass/components/_responsive-mobile.sass */
   .main-content #map {
     width: 100%;
     height: 100%;
   }
-  /* line 58, ../sass/components/_responsive-mobile.sass */
+  /* line 62, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center {
     margin-left: 60px;
     width: 80%;
     display: none;
   }
-  /* line 63, ../sass/components/_responsive-mobile.sass */
+  /* line 67, ../sass/components/_responsive-mobile.sass */
   .locate-active .main-content .leaflet-top.leaflet-center {
     display: block;
   }
-  /* line 66, ../sass/components/_responsive-mobile.sass */
+  /* line 70, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
     width: 90%;
   }
-  /* line 69, ../sass/components/_responsive-mobile.sass */
+  /* line 73, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch input {
     width: 64.3%;
     margin-right: 3%;
     float: left;
   }
-  /* line 74, ../sass/components/_responsive-mobile.sass */
+  /* line 78, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-locate {
     width: 72.7%;
   }
 
-  /* line 78, ../sass/components/_responsive-mobile.sass */
+  /* line 82, ../sass/components/_responsive-mobile.sass */
   .left-sidebar {
     position: relative;
     top: 100%;
@@ -564,20 +569,20 @@
     -o-transition: all, 1s;
     transition: all, 1s;
   }
-  /* line 85, ../sass/components/_responsive-mobile.sass */
+  /* line 89, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results {
     padding-bottom: 4em;
   }
-  /* line 88, ../sass/components/_responsive-mobile.sass */
+  /* line 92, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination {
     margin: 0.5em 0 0 0;
   }
-  /* line 91, ../sass/components/_responsive-mobile.sass */
+  /* line 95, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination:eq(0) ul {
     display: none;
   }
 
-  /* line 94, ../sass/components/_responsive-mobile.sass */
+  /* line 98, ../sass/components/_responsive-mobile.sass */
   .right-sidebar {
     right: -280px;
     top: 64px;
@@ -589,56 +594,56 @@
     transition: all, 1s;
   }
 
-  /* line 103, ../sass/components/_responsive-mobile.sass */
+  /* line 107, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
     top: 70%;
   }
-  /* line 106, ../sass/components/_responsive-mobile.sass */
+  /* line 110, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .main-content {
     height: 70%;
   }
 
-  /* line 112, ../sass/components/_responsive-mobile.sass */
+  /* line 116, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-big .left-sidebar {
     top: 50%;
   }
-  /* line 115, ../sass/components/_responsive-mobile.sass */
+  /* line 119, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-big .main-content {
     height: 50%;
   }
 
-  /* line 121, ../sass/components/_responsive-mobile.sass */
+  /* line 125, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .main-content,
   .right-sidebar-active .left-sidebar {
     left: -280px;
   }
-  /* line 125, ../sass/components/_responsive-mobile.sass */
+  /* line 129, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .right-sidebar {
     right: 0;
   }
 
-  /* line 131, ../sass/components/_responsive-mobile.sass */
+  /* line 135, ../sass/components/_responsive-mobile.sass */
   .overlay-active .main-content {
     height: auto;
   }
-  /* line 134, ../sass/components/_responsive-mobile.sass */
+  /* line 138, ../sass/components/_responsive-mobile.sass */
   .overlay-active #map {
     display: none;
   }
-  /* line 137, ../sass/components/_responsive-mobile.sass */
+  /* line 141, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about {
     padding: 1em 2em;
     height: auto;
   }
-  /* line 141, ../sass/components/_responsive-mobile.sass */
+  /* line 145, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about h2 {
     font-size: 24px;
   }
-  /* line 144, ../sass/components/_responsive-mobile.sass */
+  /* line 148, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos {
     margin: 0 -1em;
   }
-  /* line 147, ../sass/components/_responsive-mobile.sass */
+  /* line 151, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
     width: 45%;
@@ -671,28 +676,28 @@
     width: 126.0px;
     background-position: -287px 0;
   }
-  /* line 152, ../sass/components/_responsive-mobile.sass */
+  /* line 156, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li a {
     margin: 0 auto;
   }
-  /* line 155, ../sass/components/_responsive-mobile.sass */
+  /* line 159, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     margin-top: 3em;
   }
-  /* line 160, ../sass/components/_responsive-mobile.sass */
+  /* line 164, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
     display: block;
     position: absolute;
   }
-  /* line 166, ../sass/components/_responsive-mobile.sass */
+  /* line 170, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center input {
     height: 28px !important;
   }
-  /* line 169, ../sass/components/_responsive-mobile.sass */
+  /* line 173, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate,
   .overlay-active #mapOverlay,
   .overlay-active .left-sidebar {
