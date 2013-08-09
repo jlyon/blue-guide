@@ -29,6 +29,11 @@
     display: none
 
   .navbar
+    .brand img
+      max-width: 150px
+      height: auto
+      margin-left: 10px
+      
     .links
       margin-right: 20px
       
@@ -83,6 +88,9 @@
       .pagination
         margin: .5em 0 0 0
 
+      .pagination:eq(0) ul
+        display: none
+
   .right-sidebar
     right: -280px
     top: $topnav-height
@@ -129,6 +137,9 @@
     #about
       padding: 1em 2em
       height: auto
+
+      h2
+        font-size: 24px
 
       .summary .logos
         margin: 0 -1em

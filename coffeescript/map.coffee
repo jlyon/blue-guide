@@ -120,8 +120,8 @@ Map = (options) ->
         $text = ich.resultSummaryMatching
           num: data.length
       else
-        @drawPagerSummary(data).appendTo $results
-        #@drawPager(data).appendTo $results
+        #@drawPagerSummary(data).appendTo $results
+        @drawPager(data).appendTo $results
 
 
     # Cycle through each item and add a marker

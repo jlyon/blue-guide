@@ -111,7 +111,7 @@ Map = function(options) {
           num: data.length
         });
       } else {
-        this.drawPagerSummary(data).appendTo($results);
+        this.drawPager(data).appendTo($results);
       }
     }
     pagerEnd = this.pagerStart + this.options.pagerSize < data.length ? this.pagerStart + this.options.pagerSize : data.length;
