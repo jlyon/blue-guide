@@ -378,7 +378,7 @@
     overflow: hidden;
   }
 
-  /* line 19, ../sass/components/_responsive-desktop.sass */
+  /* line 18, ../sass/components/_responsive-desktop.sass */
   .main-content {
     position: fixed;
     height: 100%;
@@ -390,12 +390,12 @@
     transition: all, 1s;
     overflow: hidden;
   }
-  /* line 27, ../sass/components/_responsive-desktop.sass */
+  /* line 26, ../sass/components/_responsive-desktop.sass */
   .main-content #map {
     height: 100%;
   }
 
-  /* line 30, ../sass/components/_responsive-desktop.sass */
+  /* line 29, ../sass/components/_responsive-desktop.sass */
   .left-sidebar #results,
   .right-sidebar {
     height: 100%;
@@ -403,7 +403,7 @@
     overflow-y: auto;
   }
 
-  /* line 36, ../sass/components/_responsive-desktop.sass */
+  /* line 35, ../sass/components/_responsive-desktop.sass */
   .left-sidebar {
     width: 0;
     -webkit-transition: all, 1s;
@@ -418,7 +418,7 @@
     height: 100%;
   }
 
-  /* line 46, ../sass/components/_responsive-desktop.sass */
+  /* line 45, ../sass/components/_responsive-desktop.sass */
   .right-sidebar {
     -webkit-transition: all, 1s;
     -moz-transition: all, 1s;
@@ -430,24 +430,24 @@
     background-color: white;
   }
 
-  /* line 56, ../sass/components/_responsive-desktop.sass */
+  /* line 55, ../sass/components/_responsive-desktop.sass */
   .left-sidebar-active .main-content {
     left: 320px;
   }
-  /* line 63, ../sass/components/_responsive-desktop.sass */
+  /* line 62, ../sass/components/_responsive-desktop.sass */
   .left-sidebar-active .left-sidebar {
     left: 0;
   }
 
-  /* line 69, ../sass/components/_responsive-desktop.sass */
+  /* line 68, ../sass/components/_responsive-desktop.sass */
   .right-sidebar-active .main-content {
     right: 260px;
   }
-  /* line 72, ../sass/components/_responsive-desktop.sass */
+  /* line 71, ../sass/components/_responsive-desktop.sass */
   .right-sidebar-active .main-content #map {
     border-right: 2px solid #cccccc;
   }
-  /* line 75, ../sass/components/_responsive-desktop.sass */
+  /* line 74, ../sass/components/_responsive-desktop.sass */
   .right-sidebar-active .right-sidebar {
     right: 0;
   }
