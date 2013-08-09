@@ -37,11 +37,15 @@
 #filters .accordion-body.in {
   overflow: visible;
 }
-/* line 29, ../sass/components/_filters.sass */
+/* line 28, ../sass/components/_filters.sass */
+#filters .accordion-body.in#advanced {
+  padding-bottom: 20px;
+}
+/* line 32, ../sass/components/_filters.sass */
 #filters #tabs ul {
   margin-bottom: 0;
 }
-/* line 32, ../sass/components/_filters.sass */
+/* line 35, ../sass/components/_filters.sass */
 #filters #tabs a {
   font-weight: bold;
   -webkit-border-radius: 5px;
@@ -51,67 +55,67 @@
   line-height: 24px;
   margin-bottom: 0.75em;
 }
-/* line 39, ../sass/components/_filters.sass */
+/* line 42, ../sass/components/_filters.sass */
 #filters #tabs a.tab-orange {
   color: #f59630;
 }
-/* line 41, ../sass/components/_filters.sass */
+/* line 44, ../sass/components/_filters.sass */
 #filters #tabs a.tab-green {
   color: #72af26;
 }
-/* line 43, ../sass/components/_filters.sass */
+/* line 46, ../sass/components/_filters.sass */
 #filters #tabs a.tab-purple {
   color: #d252b9;
 }
-/* line 45, ../sass/components/_filters.sass */
+/* line 48, ../sass/components/_filters.sass */
 #filters #tabs a.tab-red {
   color: #d53e2a;
 }
-/* line 47, ../sass/components/_filters.sass */
+/* line 50, ../sass/components/_filters.sass */
 #filters #tabs a.tab-blue {
   color: #37a8da;
 }
-/* line 49, ../sass/components/_filters.sass */
+/* line 52, ../sass/components/_filters.sass */
 #filters #tabs a.tab-darkblue {
   color: #0066a3;
 }
-/* line 51, ../sass/components/_filters.sass */
+/* line 54, ../sass/components/_filters.sass */
 #filters #tabs a.tab-cadetblue {
   color: #426877;
 }
-/* line 54, ../sass/components/_filters.sass */
+/* line 57, ../sass/components/_filters.sass */
 #filters #tabs a.active {
   color: white;
 }
-/* line 57, ../sass/components/_filters.sass */
+/* line 60, ../sass/components/_filters.sass */
 #filters #tabs a.active.tab-orange {
   background-color: #f59630;
 }
-/* line 59, ../sass/components/_filters.sass */
+/* line 62, ../sass/components/_filters.sass */
 #filters #tabs a.active.tab-green {
   background-color: #72af26;
 }
-/* line 61, ../sass/components/_filters.sass */
+/* line 64, ../sass/components/_filters.sass */
 #filters #tabs a.active.tab-purple {
   background-color: #d252b9;
 }
-/* line 63, ../sass/components/_filters.sass */
+/* line 66, ../sass/components/_filters.sass */
 #filters #tabs a.active.tab-red {
   background-color: #d53e2a;
 }
-/* line 65, ../sass/components/_filters.sass */
+/* line 68, ../sass/components/_filters.sass */
 #filters #tabs a.active.tab-blue {
   background-color: #37a8da;
 }
-/* line 67, ../sass/components/_filters.sass */
+/* line 70, ../sass/components/_filters.sass */
 #filters #tabs a.active.tab-darkblue {
   background-color: #0066a3;
 }
-/* line 69, ../sass/components/_filters.sass */
+/* line 72, ../sass/components/_filters.sass */
 #filters #tabs a.active.tab-cadetblue {
   background-color: #426877;
 }
-/* line 72, ../sass/components/_filters.sass */
+/* line 75, ../sass/components/_filters.sass */
 #filters #tabs a i {
   font-size: 24px;
   width: 24px;
@@ -120,25 +124,25 @@
   margin-top: -4px;
   margin-right: 5px;
 }
-/* line 81, ../sass/components/_filters.sass */
+/* line 84, ../sass/components/_filters.sass */
 #filters #advanced .accordion-inner {
   min-height: 575px;
 }
-/* line 85, ../sass/components/_filters.sass */
+/* line 88, ../sass/components/_filters.sass */
 #filters .text-search {
   width: 178px;
 }
-/* line 88, ../sass/components/_filters.sass */
+/* line 91, ../sass/components/_filters.sass */
 #filters .dropdown-menu {
   right: -20px;
 }
-/* line 92, ../sass/components/_filters.sass */
+/* line 95, ../sass/components/_filters.sass */
 #filters .dropdown-menu li a {
   padding-left: 1.5em;
   text-indent: -1em;
   position: relative;
 }
-/* line 97, ../sass/components/_filters.sass */
+/* line 100, ../sass/components/_filters.sass */
 #filters .dropdown-menu li a span.text {
   white-space: normal;
   display: block;
@@ -147,17 +151,17 @@
   font-size: 12px;
   line-height: 1.4em;
 }
-/* line 105, ../sass/components/_filters.sass */
+/* line 108, ../sass/components/_filters.sass */
 #filters .dropdown-menu li a i {
   position: absolute;
   top: 0;
   right: 5px;
 }
-/* line 110, ../sass/components/_filters.sass */
+/* line 113, ../sass/components/_filters.sass */
 #filters .submit-btns {
   margin-top: 2em;
 }
-/* line 113, ../sass/components/_filters.sass */
+/* line 116, ../sass/components/_filters.sass */
 #filters .submit-btns .btn-reset {
   margin-left: 1em;
 }
@@ -481,50 +485,58 @@
     padding: 0;
   }
 
-  /* line 26, ../sass/components/_responsive-mobile.sass */
-  .row-fluid {
+  /* line 27, ../sass/components/_responsive-mobile.sass */
+  body > .row-fluid {
     position: relative;
     width: 100%;
     height: 100%;
+    -webkit-transition: all, 1s;
+    -moz-transition: all, 1s;
+    -o-transition: all, 1s;
+    transition: all, 1s;
+  }
+  /* line 35, ../sass/components/_responsive-mobile.sass */
+  body.right-sidebar-active > .row-fluid {
+    right: 280px;
   }
 
-  /* line 32, ../sass/components/_responsive-mobile.sass */
+  /* line 39, ../sass/components/_responsive-mobile.sass */
   .navbar .nav,
   #showFilters span {
     display: none;
   }
 
-  /* line 36, ../sass/components/_responsive-mobile.sass */
+  /* line 43, ../sass/components/_responsive-mobile.sass */
   .navbar {
     margin-left: 0;
     margin-right: 0;
     max-width: 100%;
   }
-  /* line 41, ../sass/components/_responsive-mobile.sass */
+  /* line 48, ../sass/components/_responsive-mobile.sass */
   .navbar .container-fluid {
     padding: 0;
   }
-  /* line 44, ../sass/components/_responsive-mobile.sass */
+  /* line 51, ../sass/components/_responsive-mobile.sass */
   .navbar .brand img {
     max-width: 140px;
     margin-top: 4px;
     height: auto;
     margin-left: 10px;
   }
-  /* line 50, ../sass/components/_responsive-mobile.sass */
+  /* line 57, ../sass/components/_responsive-mobile.sass */
   .navbar .links {
     margin-right: 10px;
   }
-  /* line 53, ../sass/components/_responsive-mobile.sass */
+  /* line 60, ../sass/components/_responsive-mobile.sass */
   .navbar .links i {
     margin-right: 0;
   }
-  /* line 56, ../sass/components/_responsive-mobile.sass */
+  /* line 63, ../sass/components/_responsive-mobile.sass */
   .navbar .links #showLocate {
     margin-right: 15px;
   }
 
-  /* line 60, ../sass/components/_responsive-mobile.sass */
+  /* line 67, ../sass/components/_responsive-mobile.sass */
   select,
   textarea,
   input[type="text"],
@@ -550,23 +562,19 @@
     width: 100%;
   }
 
-  /* line 82, ../sass/components/_responsive-mobile.sass */
+  /* line 89, ../sass/components/_responsive-mobile.sass */
   .main-content {
     top: 64px;
     position: absolute;
     width: 100%;
     left: 0;
-    -webkit-transition: left, 1s;
-    -moz-transition: left, 1s;
-    -o-transition: left, 1s;
-    transition: left, 1s;
   }
-  /* line 89, ../sass/components/_responsive-mobile.sass */
+  /* line 96, ../sass/components/_responsive-mobile.sass */
   .main-content #map {
     width: 100%;
     height: 100%;
   }
-  /* line 93, ../sass/components/_responsive-mobile.sass */
+  /* line 100, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -577,11 +585,11 @@
     width: 100%;
     display: none;
   }
-  /* line 101, ../sass/components/_responsive-mobile.sass */
+  /* line 108, ../sass/components/_responsive-mobile.sass */
   .locate-active .main-content .leaflet-top.leaflet-center {
     display: block;
   }
-  /* line 104, ../sass/components/_responsive-mobile.sass */
+  /* line 111, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -591,114 +599,96 @@
     padding-right: 48px;
     width: 100%;
   }
-  /* line 111, ../sass/components/_responsive-mobile.sass */
+  /* line 118, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch input {
     max-width: 100%;
     width: 100%;
     margin-right: 0;
     float: left;
   }
-  /* line 118, ../sass/components/_responsive-mobile.sass */
+  /* line 125, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center #leaflet-control-geosearch-submit {
     position: absolute;
     top: 0;
     right: 0;
   }
-  /* line 123, ../sass/components/_responsive-mobile.sass */
+  /* line 130, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-locate {
     width: 100%;
   }
 
-  /* line 127, ../sass/components/_responsive-mobile.sass */
+  /* line 134, ../sass/components/_responsive-mobile.sass */
   .left-sidebar {
     position: relative;
     top: 100%;
     z-index: 100;
     background-color: white;
-    -webkit-transition: all, 1s;
-    -moz-transition: all, 1s;
-    -o-transition: all, 1s;
-    transition: all, 1s;
   }
-  /* line 134, ../sass/components/_responsive-mobile.sass */
+  /* line 141, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results {
     padding-bottom: 4em;
   }
-  /* line 137, ../sass/components/_responsive-mobile.sass */
+  /* line 144, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination {
     margin: 0.5em 0 0 0;
   }
-  /* line 141, ../sass/components/_responsive-mobile.sass */
+  /* line 148, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination:first-child + .item {
     padding-top: 0;
   }
-  /* line 144, ../sass/components/_responsive-mobile.sass */
+  /* line 151, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination:first-child ul {
     display: none;
   }
 
-  /* line 147, ../sass/components/_responsive-mobile.sass */
+  /* line 154, ../sass/components/_responsive-mobile.sass */
   .right-sidebar {
     right: -280px;
     top: 64px;
     position: absolute;
     width: 280px;
-    -webkit-transition: all, 1s;
-    -moz-transition: all, 1s;
-    -o-transition: all, 1s;
-    transition: all, 1s;
   }
 
-  /* line 156, ../sass/components/_responsive-mobile.sass */
+  /* line 163, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
     top: 70%;
   }
-  /* line 159, ../sass/components/_responsive-mobile.sass */
+  /* line 166, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .main-content {
     height: 70%;
   }
 
-  /* line 165, ../sass/components/_responsive-mobile.sass */
+  /* line 172, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-big .left-sidebar {
     top: 50%;
   }
-  /* line 168, ../sass/components/_responsive-mobile.sass */
+  /* line 175, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-big .main-content {
     height: 50%;
   }
 
-  /* line 174, ../sass/components/_responsive-mobile.sass */
-  .right-sidebar-active .main-content,
-  .right-sidebar-active .left-sidebar {
-    left: -280px;
-  }
-  /* line 178, ../sass/components/_responsive-mobile.sass */
-  .right-sidebar-active .right-sidebar {
-    right: 0;
-  }
-
-  /* line 184, ../sass/components/_responsive-mobile.sass */
+  /* line 191, ../sass/components/_responsive-mobile.sass */
   .overlay-active .main-content {
     height: auto;
   }
-  /* line 187, ../sass/components/_responsive-mobile.sass */
+  /* line 194, ../sass/components/_responsive-mobile.sass */
   .overlay-active #map {
     display: none;
   }
-  /* line 190, ../sass/components/_responsive-mobile.sass */
+  /* line 197, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about {
     padding: 1em 2em;
     height: auto;
   }
-  /* line 194, ../sass/components/_responsive-mobile.sass */
+  /* line 201, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about h2 {
     font-size: 24px;
   }
-  /* line 197, ../sass/components/_responsive-mobile.sass */
+  /* line 204, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos {
     margin: 0 -1em;
   }
-  /* line 200, ../sass/components/_responsive-mobile.sass */
+  /* line 207, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
     width: 45%;
@@ -731,17 +721,17 @@
     width: 126.0px;
     background-position: -287px 0;
   }
-  /* line 205, ../sass/components/_responsive-mobile.sass */
+  /* line 212, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li a {
     margin: 0 auto;
   }
-  /* line 208, ../sass/components/_responsive-mobile.sass */
+  /* line 215, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     padding-top: 2em;
   }
-  /* line 213, ../sass/components/_responsive-mobile.sass */
+  /* line 220, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
@@ -753,7 +743,7 @@
     padding-left: 0;
     padding-right: 0;
   }
-  /* line 224, ../sass/components/_responsive-mobile.sass */
+  /* line 231, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate,
   .overlay-active #mapOverlay,
   .overlay-active .left-sidebar {
@@ -886,6 +876,7 @@ h2 {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  background-color: #387cc0;
   background-image: -webkit-linear-gradient(#387cc0, #4b89c6);
   background-image: -moz-linear-gradient(#387cc0, #4b89c6);
   background-image: -o-linear-gradient(#387cc0, #4b89c6);
@@ -899,7 +890,7 @@ h2 {
   font-weight: bold;
   outline: 0;
 }
-/* line 39, ../sass/components/_style.sass */
+/* line 40, ../sass/components/_style.sass */
 .btn-normal:focus, .btn-normal:hover, .btn-normal.active,
 .btn-dark:focus,
 .btn-dark:hover,
@@ -914,7 +905,7 @@ h2 {
   color: white;
   outline: 0;
 }
-/* line 47, ../sass/components/_style.sass */
+/* line 48, ../sass/components/_style.sass */
 .btn-normal i,
 .btn-dark i,
 #leaflet-control-geosearch-submit i {
@@ -922,13 +913,13 @@ h2 {
   margin-right: 5px;
   font-size: 16px;
 }
-/* line 52, ../sass/components/_style.sass */
+/* line 53, ../sass/components/_style.sass */
 .btn-normal.btn-search i,
 .btn-dark.btn-search i,
 #leaflet-control-geosearch-submit.btn-search i {
   margin-right: 0;
 }
-/* line 55, ../sass/components/_style.sass */
+/* line 56, ../sass/components/_style.sass */
 .btn-normal.btn-dark,
 .btn-dark.btn-dark,
 #leaflet-control-geosearch-submit.btn-dark {
@@ -937,7 +928,7 @@ h2 {
   background-image: -o-linear-gradient(#1f4066, #355375);
   background-image: linear-gradient(#1f4066, #355375);
 }
-/* line 58, ../sass/components/_style.sass */
+/* line 59, ../sass/components/_style.sass */
 .btn-normal.btn-dark:focus, .btn-normal.btn-dark:hover,
 .btn-dark.btn-dark:focus,
 .btn-dark.btn-dark:hover,
@@ -946,7 +937,7 @@ h2 {
   background-color: #2e4d70;
 }
 
-/* line 63, ../sass/components/_style.sass */
+/* line 64, ../sass/components/_style.sass */
 input[type="text"] {
   height: 38px !important;
   border: 1px solid #f59630 !important;
@@ -954,21 +945,21 @@ input[type="text"] {
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
-/* line 68, ../sass/components/_style.sass */
+/* line 69, ../sass/components/_style.sass */
 input[type="text"]:focus {
   -webkit-box-shadow: inset 0 1px 4px #cccccc;
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
 
-/* line 71, ../sass/components/_style.sass */
+/* line 72, ../sass/components/_style.sass */
 label {
   font-weight: bold;
   margin-top: 1em;
   clear: left;
 }
 
-/* line 77, ../sass/components/_style.sass */
+/* line 78, ../sass/components/_style.sass */
 .icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
@@ -1037,19 +1028,19 @@ label {
 
 }
 
-/* line 81, ../sass/components/_style.sass */
+/* line 82, ../sass/components/_style.sass */
 ::-webkit-scrollbar-track {
   border-radius: 3px;
   background-color: #cccccc;
 }
 
-/* line 85, ../sass/components/_style.sass */
+/* line 86, ../sass/components/_style.sass */
 ::-webkit-scrollbar {
   width: 10px;
   background-color: #cccccc;
 }
 
-/* line 89, ../sass/components/_style.sass */
+/* line 90, ../sass/components/_style.sass */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #265288;
