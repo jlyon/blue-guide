@@ -161,9 +161,7 @@ Map = (options) ->
         .on("click", (e) ->
           $item = $results.find(".item[rel=" + @_leaflet_id + "]")
           $item.addClass "active"
-          $("html, body").animate
-            scrollTop: $item.offset().top - 70
-          , 1000
+          that.scroll $results, $item
         )
 
         if that.options.showPopup
@@ -194,13 +192,10 @@ Map = (options) ->
             if e.currentTarget.className.indexOf "static-marker" is -1
               console.log "item"
               $item.parent().find('.item').removeClass "active"
-              $("html, body").animate
-                scrollTop: $item.offset().top - 70
-              , 1000
+              that.scroll $results, $item
             else
               console.log "top"
-              $("html, body").animate
-                scrollTop: 0
+              that.scroll $results, $("#map")
           else
             marker.openPopup()
           $item.addClass "active"
@@ -213,9 +208,7 @@ Map = (options) ->
             that.markerLayer._layers[$item.attr("rel")].closePopup()
           else
             $(that.updateSelector).removeClass "left-sidebar-big"
-            $("html, body").animate
-              scrollTop: 0
-            , 750
+            that.scroll $results, $("#map")
 
         $resultItem.find(".btn-directions").bind "click", ->
           if window.os is "android"
@@ -237,6 +230,12 @@ Map = (options) ->
     @lastBounds = @map.getBounds()
     @forceZoom = undefined
     return
+
+  @scroll = (parent, element) ->
+    console.log element.html()
+    console.log "scroll"
+    $(parent).animate({ scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top }, { duration: 'slow', easing: 'swing'})
+  
 
   @drawPager = (data) ->
     $text = ich.pager

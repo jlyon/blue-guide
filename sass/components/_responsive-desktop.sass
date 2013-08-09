@@ -14,11 +14,12 @@
   .row-fluid
     height: 100%
     +box-sizing(border-box)
+    overflow: hidden
 
 
   .main-content
-    height: 100%
     position: fixed
+    height: 100%
     right: 0
     left: 0
     +transition(all, $trans-time)
@@ -27,22 +28,28 @@
     #map
       height: 100%
 
+  .left-sidebar #results,
+  .right-sidebar
+    height: 100%
+    overflow-x: hidden
+    overflow-y: auto
+
   .left-sidebar
     width: 0
     +transition(all, $trans-time)
-    float: left
+    position: absolute
+    left: -$left-sidebar-width
+    width: $left-sidebar-width
     background-color: $white
     border-right: $border-width solid $grey
-    overflow: hidden
-    min-height: 100%
-
+    height: 100%
+  
   .right-sidebar
-    width: 0
     +transition(all, $trans-time)
-    right: 0
+    right: -$right-sidebar-width
+    width: $right-sidebar-width
     position: fixed
     background-color: $white
-    overflow: hidden
 
 
   .left-sidebar-active
@@ -55,7 +62,7 @@
         //  padding-left: $left-sidebar-width/2
 
     .left-sidebar
-      width: $left-sidebar-width
+      left: 0
 
 
   .right-sidebar-active
@@ -67,6 +74,5 @@
         border-right: $border-width solid $grey
 
     .right-sidebar
-      width: $right-sidebar-width
-      overflow: visible
+      right: 0
 

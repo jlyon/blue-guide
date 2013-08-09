@@ -150,9 +150,7 @@ Map = function(options) {
           var $item;
           $item = $results.find(".item[rel=" + this._leaflet_id + "]");
           $item.addClass("active");
-          return $("html, body").animate({
-            scrollTop: $item.offset().top - 70
-          }, 1000);
+          return that.scroll($results, $item);
         });
         if (that.options.showPopup) {
           marker.bindPopup(ich.popupItem(item).html(), {
@@ -178,14 +176,10 @@ Map = function(options) {
             if (e.currentTarget.className.indexOf("static-marker" === -1)) {
               console.log("item");
               $item.parent().find('.item').removeClass("active");
-              $("html, body").animate({
-                scrollTop: $item.offset().top - 70
-              }, 1000);
+              that.scroll($results, $item);
             } else {
               console.log("top");
-              $("html, body").animate({
-                scrollTop: 0
-              });
+              that.scroll($results, $("#map"));
             }
           } else {
             marker.openPopup();
@@ -201,9 +195,7 @@ Map = function(options) {
             return that.markerLayer._layers[$item.attr("rel")].closePopup();
           } else {
             $(that.updateSelector).removeClass("left-sidebar-big");
-            return $("html, body").animate({
-              scrollTop: 0
-            }, 750);
+            return that.scroll($results, $("#map"));
           }
         });
         $resultItem.find(".btn-directions").bind("click", function() {
@@ -233,6 +225,16 @@ Map = function(options) {
     }
     this.lastBounds = this.map.getBounds();
     this.forceZoom = void 0;
+  };
+  this.scroll = function(parent, element) {
+    console.log(element.html());
+    console.log("scroll");
+    return $(parent).animate({
+      scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
+    }, {
+      duration: 'slow',
+      easing: 'swing'
+    });
   };
   this.drawPager = function(data) {
     var $item, $pager, $text, endPages, i, max, min, _i, _ref;
