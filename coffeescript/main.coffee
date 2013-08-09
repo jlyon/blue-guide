@@ -66,7 +66,7 @@ window.onload = ->
 
   map.map.on "dragend", ->
     if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))
-      console.log "update"
+      #console.log "update"
       updateMarkers()
 
   map.map.on "zoomend", ->
