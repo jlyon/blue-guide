@@ -13,14 +13,14 @@ Map = (options) ->
     pagerSize: 25
     maxMarkers: 25 #@todo: rm
   , options)
-  
+
   #this.markers = {};
   @markerLayer = new L.FeatureGroup()
   @homeMarkerLayer = new L.FeatureGroup()
   @resultNum = @options.resultNum
 
   @drawMap = ->
-    
+
     # Create the map
     @map = new L.Map(@options.id,
       center: new L.LatLng(@options.startLat, @options.startLng)
@@ -70,7 +70,7 @@ Map = (options) ->
   @drawMarkers = (data, pagerStart) ->
     @markerLayer.clearLayers()
     @pagerStart = if pagerStart? then pagerStart else 0
-    
+
     # Re-order data array by distance to this.location
     location = (if @location isnt `undefined` then @location else @map.getCenter())
     _.each data, (item, index) ->
@@ -96,7 +96,7 @@ Map = (options) ->
         $text = ich.resultSummaryAll
           num: data.length
           smaller: @options.resultNum
-      else if data.length <= @resultNum 
+      else if data.length <= @resultNum
         $text = ich.resultSummaryMatching
           num: data.length
       else
@@ -116,7 +116,7 @@ Map = (options) ->
     if data.length is 0
       $results.append ich.noResults()
     else
-      if data.length <= @resultNum 
+      if data.length <= @resultNum
         $text = ich.resultSummaryMatching
           num: data.length
       else
@@ -149,7 +149,7 @@ Map = (options) ->
         # Add the marker
         item.color = (if activeColor then activeColor else that.iconColor(item["Services Provided"]))
         item["Phone Number"] = item["Phone Number"] + " |" if item["Phone Number"] isnt "" and item["Phone Number"].indexOf "|" is -1
-        
+
         marker = L.marker([item.Latitude, item.Longitude],
           icon: L.AwesomeMarkers.icon(
             text: index
@@ -161,6 +161,7 @@ Map = (options) ->
 
         .on("click", (e) ->
           $item = $results.find(".item[rel=" + @_leaflet_id + "]")
+          $results.find('.item.active').removeClass "active"
           $item.addClass "active"
           that.scroll $results, $item
         )
@@ -173,10 +174,12 @@ Map = (options) ->
           .on("popupclose", (e) ->
             $item = $results.find(".item[rel=" + @_leaflet_id + "]")
             $item.removeClass "active"
+            console.log("close")
+
           )
 
         marker.addTo(that.markerLayer)
-        
+
         # Add the item to the results sidebar
         item.id = marker._leaflet_id
         item.letter = marker.options.icon.num2letter(index)
@@ -189,8 +192,7 @@ Map = (options) ->
           #marker.zIndexOffset 1000
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
-
-            $item.parent().find('.item').removeClass "active"
+            $item.parent().find('.item.active').removeClass "active"
             #that.scroll $results, $item
             ###
             if e.currentTarget.className.indexOf "static-marker" isnt 0
@@ -217,7 +219,7 @@ Map = (options) ->
 
         $resultItem.find(".btn-directions").bind "click", ->
           if window.os is "android"
-            navigator.app.loadUrl "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"], { openExternal: true } 
+            navigator.app.loadUrl "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"], { openExternal: true }
             #window.location = 'gps:' + item["Latitude"] + "," + item["Longitude"]
           else if window.os is "ios"
             window.location = 'maps:' + item["Latitude"] + "," + item["Longitude"]
@@ -237,11 +239,14 @@ Map = (options) ->
     return
 
   @scroll = (parent, element) ->
-    parent = "body" if window.responsive is "mobile"
-    top = if element is 0 then 0 else $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
-    top -= 75
+    console.log("scroll")
+    if window.responsive is "mobile"
+      parent = "body"
+      top = if element is 0 then 0 else $(element).offset().top - 75
+    else
+      top = if element is 0 then 0 else $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
     $(parent).animate({ scrollTop: top }, { duration: 'slow', easing: 'swing'})
-  
+
 
   @drawPagerSummary = (data) ->
     return ich.pager
@@ -301,6 +306,6 @@ Map = (options) ->
   if @options.draw
     @drawMap()
     @drawMarkers @options.draw  unless typeof @options.draw is "boolean"
-  
+
   @
-  
+

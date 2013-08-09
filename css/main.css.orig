@@ -307,7 +307,7 @@
   list-style: none;
   margin-right: 20px;
 }
-/* line 87, ../sass/_mixins.sass */
+/* line 84, ../sass/_mixins.sass */
 .overlay-active #about .summary .logos li a {
   display: block;
   height: 100px;
@@ -316,21 +316,21 @@
   background: url(../images/sponsors.png) 0 0 no-repeat;
   background-size: 589px auto;
 }
-/* line 95, ../sass/_mixins.sass */
+/* line 92, ../sass/_mixins.sass */
 .overlay-active #about .summary .logos li a.cchi {
   width: 72px;
 }
-/* line 98, ../sass/_mixins.sass */
+/* line 95, ../sass/_mixins.sass */
 .overlay-active #about .summary .logos li a.caring {
   width: 130px;
   background-position: -100px 0;
 }
-/* line 102, ../sass/_mixins.sass */
+/* line 99, ../sass/_mixins.sass */
 .overlay-active #about .summary .logos li a.piton {
   width: 140px;
   background-position: -250px 0;
 }
-/* line 106, ../sass/_mixins.sass */
+/* line 103, ../sass/_mixins.sass */
 .overlay-active #about .summary .logos li a.connect {
   width: 180px;
   background-position: -410px 0;
@@ -350,7 +350,7 @@
   width: 120%;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 560px) {
   /* line 2, ../sass/components/_responsive-desktop.sass */
   .no-desktop {
     display: none;
@@ -448,7 +448,7 @@
     right: 0;
   }
 }
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 560px) {
   /* line 3, ../sass/components/_responsive-mobile.sass */
   .no-mobile {
     display: none;
@@ -475,56 +475,65 @@
   /* line 19, ../sass/components/_responsive-mobile.sass */
   html,
   body,
-  .row-fluid,
   .main-content {
     height: 100%;
     padding: 0;
   }
 
-  /* line 26, ../sass/components/_responsive-mobile.sass */
+  /* line 25, ../sass/components/_responsive-mobile.sass */
   .row-fluid {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-  /* line 32, ../sass/components/_responsive-mobile.sass */
+  /* line 31, ../sass/components/_responsive-mobile.sass */
   .navbar .nav,
   #showFilters span {
     display: none;
   }
 
+<<<<<<< HEAD
   /* line 36, ../sass/components/_responsive-mobile.sass */
-  .navbar {
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 100%;
-  }
-  /* line 41, ../sass/components/_responsive-mobile.sass */
-  .navbar .container-fluid {
-    padding: 0;
-  }
-  /* line 44, ../sass/components/_responsive-mobile.sass */
   .navbar .brand img {
     max-width: 140px;
     margin-top: 4px;
     height: auto;
     margin-left: 10px;
   }
-  /* line 50, ../sass/components/_responsive-mobile.sass */
+  /* line 42, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 32, ../sass/components/_responsive-mobile.sass */
+  .navbar .brand {
+    padding-right: 0;
+  }
+  /* line 35, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .navbar .links {
     margin-right: 10px;
   }
-  /* line 53, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 45, ../sass/components/_responsive-mobile.sass */
   .navbar .links i {
     margin-right: 0;
   }
-  /* line 56, ../sass/components/_responsive-mobile.sass */
+  /* line 48, ../sass/components/_responsive-mobile.sass */
   .navbar .links #showLocate {
     margin-right: 15px;
   }
 
-  /* line 60, ../sass/components/_responsive-mobile.sass */
+  /* line 51, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 38, ../sass/components/_responsive-mobile.sass */
+  .navbar .links i {
+    margin-right: 0;
+  }
+  /* line 41, ../sass/components/_responsive-mobile.sass */
+  .navbar .links #showLocate {
+    margin-right: 3%;
+  }
+
+  /* line 45, ../sass/components/_responsive-mobile.sass */
   select,
   textarea,
   input[type="text"],
@@ -550,7 +559,8 @@
     width: 100%;
   }
 
-  /* line 82, ../sass/components/_responsive-mobile.sass */
+  /* line 67, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .main-content {
     top: 64px;
     position: absolute;
@@ -561,27 +571,48 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 89, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 58, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 74, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .main-content #map {
     width: 100%;
     height: 100%;
   }
-  /* line 93, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 62, ../sass/components/_responsive-mobile.sass */
+  .main-content .leaflet-top.leaflet-center {
+    margin-left: 60px;
+    width: 80%;
+    display: none;
+  }
+  /* line 67, ../sass/components/_responsive-mobile.sass */
+  .locate-active .main-content .leaflet-top.leaflet-center {
+    display: block;
+  }
+  /* line 70, ../sass/components/_responsive-mobile.sass */
+  .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
+    width: 90%;
+  }
+  /* line 73, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 78, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0px;
     padding-left: 60px;
-    padding-right: 10px;
+    padding-right: 60px;
     width: 100%;
     display: none;
   }
-  /* line 101, ../sass/components/_responsive-mobile.sass */
+  /* line 86, ../sass/components/_responsive-mobile.sass */
   .locate-active .main-content .leaflet-top.leaflet-center {
     display: block;
   }
-  /* line 104, ../sass/components/_responsive-mobile.sass */
+  /* line 89, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -591,25 +622,34 @@
     padding-right: 48px;
     width: 100%;
   }
-  /* line 111, ../sass/components/_responsive-mobile.sass */
+  /* line 96, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch input {
     max-width: 100%;
     width: 100%;
     margin-right: 0;
     float: left;
   }
-  /* line 118, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 78, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 103, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center #leaflet-control-geosearch-submit {
     position: absolute;
     top: 0;
     right: 0;
   }
-  /* line 123, ../sass/components/_responsive-mobile.sass */
+  /* line 108, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .main-content .leaflet-top.leaflet-center .leaflet-control-locate {
     width: 100%;
   }
 
-  /* line 127, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 82, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 112, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .left-sidebar {
     position: relative;
     top: 100%;
@@ -620,24 +660,32 @@
     -o-transition: all, 1s;
     transition: all, 1s;
   }
-  /* line 134, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 89, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results {
     padding-bottom: 4em;
   }
-  /* line 137, ../sass/components/_responsive-mobile.sass */
+  /* line 92, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 120, ../sass/components/_responsive-mobile.sass */
+  .left-sidebar #results {
+    padding-bottom: 4em;
+  }
+  /* line 123, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .left-sidebar #results .pagination {
     margin: 0.5em 0 0 0;
   }
-  /* line 141, ../sass/components/_responsive-mobile.sass */
-  .left-sidebar #results .pagination:first-child + .item {
-    padding-top: 0;
-  }
-  /* line 144, ../sass/components/_responsive-mobile.sass */
-  .left-sidebar #results .pagination:first-child ul {
+  /* line 95, ../sass/components/_responsive-mobile.sass */
+  .left-sidebar #results .pagination:eq(0) ul {
     display: none;
   }
 
-  /* line 147, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 98, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 126, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .right-sidebar {
     right: -280px;
     top: 64px;
@@ -649,61 +697,101 @@
     transition: all, 1s;
   }
 
-  /* line 156, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 107, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
     top: 70%;
   }
-  /* line 159, ../sass/components/_responsive-mobile.sass */
+  /* line 110, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 135, ../sass/components/_responsive-mobile.sass */
+  .left-sidebar-active .left-sidebar {
+    top: 70%;
+  }
+  /* line 138, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .left-sidebar-active .main-content {
     height: 70%;
   }
 
-  /* line 165, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 116, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-big .left-sidebar {
     top: 50%;
   }
-  /* line 168, ../sass/components/_responsive-mobile.sass */
+  /* line 119, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 144, ../sass/components/_responsive-mobile.sass */
+  .left-sidebar-big .left-sidebar {
+    top: 50%;
+  }
+  /* line 147, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .left-sidebar-big .main-content {
     height: 50%;
   }
 
-  /* line 174, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 125, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 153, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .right-sidebar-active .main-content,
   .right-sidebar-active .left-sidebar {
     left: -280px;
   }
-  /* line 178, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 129, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 157, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .right-sidebar-active .right-sidebar {
     right: 0;
   }
 
-  /* line 184, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 135, ../sass/components/_responsive-mobile.sass */
   .overlay-active .main-content {
     height: auto;
   }
-  /* line 187, ../sass/components/_responsive-mobile.sass */
+  /* line 138, ../sass/components/_responsive-mobile.sass */
   .overlay-active #map {
     display: none;
   }
-  /* line 190, ../sass/components/_responsive-mobile.sass */
+  /* line 141, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 163, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #map {
+    display: none;
+  }
+  /* line 166, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .overlay-active #about {
     padding: 1em 2em;
     height: auto;
   }
-  /* line 194, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 145, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about h2 {
     font-size: 24px;
   }
-  /* line 197, ../sass/components/_responsive-mobile.sass */
+  /* line 148, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos {
     margin: 0 -1em;
   }
-  /* line 200, ../sass/components/_responsive-mobile.sass */
+  /* line 151, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 169, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about .summary .logos {
+    margin: 0 -1em;
+  }
+  /* line 172, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
     width: 45%;
   }
-  /* line 87, ../sass/_mixins.sass */
+  /* line 84, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a {
     display: block;
     height: 70px;
@@ -712,36 +800,44 @@
     background: url(../images/sponsors.png) 0 0 no-repeat;
     background-size: 412.3px auto;
   }
-  /* line 95, ../sass/_mixins.sass */
+  /* line 92, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.cchi {
     width: 50.4px;
   }
-  /* line 98, ../sass/_mixins.sass */
+  /* line 95, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.caring {
     width: 91px;
     background-position: -70px 0;
   }
-  /* line 102, ../sass/_mixins.sass */
+  /* line 99, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.piton {
     width: 98px;
     background-position: -175px 0;
   }
-  /* line 106, ../sass/_mixins.sass */
+  /* line 103, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.connect {
     width: 126.0px;
     background-position: -287px 0;
   }
-  /* line 205, ../sass/components/_responsive-mobile.sass */
+  /* line 156, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li a {
     margin: 0 auto;
   }
-  /* line 208, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 159, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 176, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     padding-top: 2em;
   }
-  /* line 213, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 164, ../sass/components/_responsive-mobile.sass */
+=======
+  /* line 181, ../sass/components/_responsive-mobile.sass */
+>>>>>>> localedits
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
@@ -753,10 +849,19 @@
     padding-left: 0;
     padding-right: 0;
   }
-  /* line 224, ../sass/components/_responsive-mobile.sass */
+<<<<<<< HEAD
+  /* line 170, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about .leaflet-top.leaflet-center input {
+    height: 28px !important;
+  }
+  /* line 173, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate,
   .overlay-active #mapOverlay,
   .overlay-active .left-sidebar {
+=======
+  /* line 192, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #showLocate {
+>>>>>>> localedits
     display: none;
   }
 }

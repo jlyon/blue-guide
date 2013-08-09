@@ -87,7 +87,7 @@ Map = function(options) {
         $text = ich.resultSummaryAll
           num: data.length
           smaller: @options.resultNum
-      else if data.length <= @resultNum 
+      else if data.length <= @resultNum
         $text = ich.resultSummaryMatching
           num: data.length
       else
@@ -149,6 +149,7 @@ Map = function(options) {
         }).on("click", function(e) {
           var $item;
           $item = $results.find(".item[rel=" + this._leaflet_id + "]");
+          $results.find('.item.active').removeClass("active");
           $item.addClass("active");
           return that.scroll($results, $item);
         });
@@ -158,7 +159,8 @@ Map = function(options) {
           }).on("popupclose", function(e) {
             var $item;
             $item = $results.find(".item[rel=" + this._leaflet_id + "]");
-            return $item.removeClass("active");
+            $item.removeClass("active");
+            return console.log("close");
           });
         }
         marker.addTo(that.markerLayer);
@@ -172,7 +174,7 @@ Map = function(options) {
           marker = that.markerLayer._layers[$item.attr("rel")];
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
-            $item.parent().find('.item').removeClass("active");
+            $item.parent().find('.item.active').removeClass("active");
             /*
             if e.currentTarget.className.indexOf "static-marker" isnt 0
               console.log "marker"
@@ -230,11 +232,13 @@ Map = function(options) {
   };
   this.scroll = function(parent, element) {
     var top;
+    console.log("scroll");
     if (window.responsive === "mobile") {
       parent = "body";
+      top = element === 0 ? 0 : $(element).offset().top - 75;
+    } else {
+      top = element === 0 ? 0 : $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top;
     }
-    top = element === 0 ? 0 : $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top;
-    top -= 75;
     return $(parent).animate({
       scrollTop: top
     }, {

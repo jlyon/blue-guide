@@ -1,4 +1,4 @@
-@media screen and (max-width:560px)
+@media screen and (max-width:599px)
 
   .no-mobile
     display: none
@@ -34,6 +34,13 @@
     display: none
 
   .navbar
+    margin-left: 0
+    margin-right: 0
+    max-width: 100%
+
+    .container-fluid
+      padding: 0
+
     .brand img
       max-width: 140px
       margin-top: 4px
@@ -42,7 +49,7 @@
 
     .links
       margin-right: 10px
-      
+
       i
         margin-right: 0
 
@@ -67,7 +74,7 @@
   input[type="tel"],
   input[type="color"],
   .uneditable-input
-    +box-sizing(border-box)
+    +box()
     max-width: 100%
     min-height: 30px
     width: 100%
@@ -84,10 +91,10 @@
       height: 100%
 
     .leaflet-top.leaflet-center
-      +box-sizing(border-box)
+      +box()
       margin: 0px
       padding-left: 60px
-      padding-right: 60px
+      padding-right: 10px
       width: 100%
       display: none
 
@@ -95,7 +102,7 @@
         display: block
 
       .leaflet-control-geosearch
-        +box-sizing(border-box)
+        +box()
         position: relative
         margin-right: 0
         padding-right: 48px
@@ -130,8 +137,12 @@
       .pagination
         margin: .5em 0 0 0
 
-      .pagination:eq(0) ul
-        display: none
+        &:first-child
+          & + .item
+            padding-top: 0
+
+          ul
+            display: none
 
   .right-sidebar
     right: -280px
@@ -169,13 +180,13 @@
 
 
   .overlay-active
-    
+
     .main-content
       height: auto
 
     #map
       display: none
-      
+
     #about
       padding: 1em 2em
       height: auto
@@ -185,7 +196,7 @@
 
       .summary .logos
         margin: 0 -1em
-        
+
         li
           margin-right: 5px
           +logos($sponsor-logos-mobile-scale)
@@ -214,5 +225,5 @@
     #mapOverlay,
     .left-sidebar
       display: none
-      
+
 
