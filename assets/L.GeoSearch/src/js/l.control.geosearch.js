@@ -78,7 +78,7 @@ L.Control.GeoSearch = L.Control.extend({
           $btn = $(this._searchbtn);
           var that = this;
           $btn.bind('click', function(){
-            alert('aasdf');
+            alert(that);
             that._onKeyUp({keyCode: 13});
           })
         }
@@ -148,7 +148,6 @@ L.Control.GeoSearch = L.Control.extend({
     _onKeyUp: function (e) {
         var escapeKey = 27;
         var enterKey = 13;
-        alert('up');
 
         if (e.keyCode === escapeKey) {
             $('#leaflet-control-geosearch-qry').val('');
