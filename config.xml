@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "net.uk.sweet.helloPhonegap"
+        versionCode="10" 
+        version   = "0.0.1">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Blue Guide</name>
+
+    <description>
+        Find clinics near you with this handy guide from CCHI.
+    </description>
+
+    <author href="http://albatrossdigital.com" email="accounts@albatrossdigital.com">
+        Albatross Digital
+    </author>
+
+</widget>
