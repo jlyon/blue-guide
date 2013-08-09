@@ -72,6 +72,7 @@ window.onload = function() {
   });
   map.map.on("dragend", function() {
     if ((map.lastBounds == null) || !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))) {
+      console.log("update");
       return updateMarkers();
     }
   });

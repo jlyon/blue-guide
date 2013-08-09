@@ -173,7 +173,7 @@ Map = function(options) {
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
             console.log(e.currentTarget.className.indexOf("static-marker"));
-            if (e.currentTarget.className.indexOf("static-marker" === 0)) {
+            if (e.currentTarget.className.indexOf("static-marker" !== 0)) {
               console.log("marker");
               that.scroll($results, 0);
             } else {
@@ -289,6 +289,7 @@ Map = function(options) {
   this.markerBounds = function(bounds, factor) {
     var lat, lng;
     factor = factor != null ? factor - 1 : 1;
+    factor = 0;
     lat = Math.abs(bounds._southWest.lat - bounds._northEast.lat) * factor;
     lng = Math.abs(bounds._southWest.lng - bounds._northEast.lng) * factor;
     return {

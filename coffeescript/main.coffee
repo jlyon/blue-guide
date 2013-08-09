@@ -30,7 +30,7 @@ window.onload = ->
     jQuery.getJSON "json/data.json?rev="+rev, {}, (data) ->
       locache.set "blueGuideData", data
       query = new JsonQuery "body", data
-      
+
   params = 
     id: "map"
     updateSelector: "body"
@@ -66,6 +66,7 @@ window.onload = ->
 
   map.map.on "dragend", ->
     if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))
+      console.log "update"
       updateMarkers()
 
   map.map.on "zoomend", ->
