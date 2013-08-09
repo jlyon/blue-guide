@@ -98,7 +98,6 @@ GoogleSpreadsheetsQuery = function(filters, callback) {
         cols: fields,
         rows: data
       };
-      console.log(this.data);
     }
     this.status = false;
     return callback(this.data);

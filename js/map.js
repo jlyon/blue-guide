@@ -172,13 +172,10 @@ Map = function(options) {
           marker = that.markerLayer._layers[$item.attr("rel")];
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
-            console.log(typeof e.currentTarget.className.indexOf("static-marker"));
             if (e.currentTarget.className.indexOf("static-marker" === -1)) {
-              console.log("item");
               $item.parent().find('.item').removeClass("active");
               that.scroll($results, $item);
             } else {
-              console.log("top");
               that.scroll($results, $("#map"));
             }
           } else {
@@ -227,8 +224,6 @@ Map = function(options) {
     this.forceZoom = void 0;
   };
   this.scroll = function(parent, element) {
-    console.log(element.html());
-    console.log("scroll");
     return $(parent).animate({
       scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
     }, {

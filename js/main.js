@@ -4,7 +4,7 @@ query = void 0;
 
 tab = void 0;
 
-rev = 0.11;
+rev = 0.12;
 
 activeTab = void 0;
 
@@ -81,7 +81,6 @@ window.onload = function() {
     $(this).toggleClass("active");
     return $("body").toggleClass("locate-active");
   });
-  console.log("asdf");
   if (window.responsive === "mobile") {
     $about = ich.about();
     $search = $("#map .leaflet-top.leaflet-center").clone();

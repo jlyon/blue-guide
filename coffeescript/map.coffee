@@ -188,13 +188,10 @@ Map = (options) ->
           #marker.zIndexOffset 1000
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
-            console.log typeof e.currentTarget.className.indexOf "static-marker"
             if e.currentTarget.className.indexOf "static-marker" is -1
-              console.log "item"
               $item.parent().find('.item').removeClass "active"
               that.scroll $results, $item
             else
-              console.log "top"
               that.scroll $results, $("#map")
           else
             marker.openPopup()
@@ -232,8 +229,6 @@ Map = (options) ->
     return
 
   @scroll = (parent, element) ->
-    console.log element.html()
-    console.log "scroll"
     $(parent).animate({ scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top }, { duration: 'slow', easing: 'swing'})
   
 

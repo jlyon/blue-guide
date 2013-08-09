@@ -1,6 +1,6 @@
 query = undefined
 tab = undefined
-rev = 0.11
+rev = 0.12
 activeTab = undefined
 window.onload = ->
 
@@ -77,7 +77,6 @@ window.onload = ->
     $(this).toggleClass "active"
     $("body").toggleClass "locate-active"
 
-  console.log "asdf"
 
   # Add overlay (for start page)
   if window.responsive is "mobile"

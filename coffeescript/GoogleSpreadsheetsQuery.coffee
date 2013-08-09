@@ -86,7 +86,6 @@ GoogleSpreadsheetsQuery = (filters, callback) ->
         cols: fields
         rows: data
 
-      console.log @data
     @status = false
     callback @data
 
