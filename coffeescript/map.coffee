@@ -230,6 +230,7 @@ Map = (options) ->
     return
 
   @scroll = (parent, element) ->
+
     $(parent).animate({ scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top }, { duration: 'slow', easing: 'swing'})
   
 
@@ -259,6 +260,7 @@ Map = (options) ->
     ich.pagerItem(num: "&raquo;", rel: @pagerStart+@options.pagerSize).appendTo $pager if @pagerStart + @options.pagerSize < data.length
     $text.find('a').bind "click", ->
       that.drawMarkers data, parseInt $(this).attr "rel"
+      that.scroll $(that.options.resultsSelector), $("#map")
       false
     $text
 

@@ -272,6 +272,7 @@ Map = function(options) {
     }
     $text.find('a').bind("click", function() {
       that.drawMarkers(data, parseInt($(this).attr("rel")));
+      that.scroll($(that.options.resultsSelector), $("#map"));
       return false;
     });
     return $text;

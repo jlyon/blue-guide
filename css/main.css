@@ -453,6 +453,11 @@
   }
 }
 @media screen and (max-width: 560px) {
+  /* line 2, ../sass/components/_responsive-mobile.sass */
+  .no-mobile {
+    display: none;
+  }
+
   /* line 5, ../sass/components/_responsive-mobile.sass */
   html {
     font-family: "mobile";
@@ -519,7 +524,7 @@
   /* line 52, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center {
     margin-left: 60px;
-    width: 100%;
+    width: 80%;
     display: none;
   }
   /* line 57, ../sass/components/_responsive-mobile.sass */
@@ -528,7 +533,7 @@
   }
   /* line 60, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
-    width: 96%;
+    width: 90%;
   }
   /* line 63, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch input {
@@ -617,53 +622,58 @@
   /* line 132, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
+    width: 45%;
   }
   /* line 84, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a {
     display: block;
-    height: 50px;
+    height: 70px;
     text-indent: -1000em;
     overflow: hidden;
     background: url(../images/sponsors.png) 0 0 no-repeat;
-    background-size: 294.5px auto;
+    background-size: 412.3px auto;
   }
   /* line 92, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.cchi {
-    width: 36px;
+    width: 50.4px;
   }
   /* line 95, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.caring {
-    width: 65px;
-    background-position: -50px 0;
+    width: 91px;
+    background-position: -70px 0;
   }
   /* line 99, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.piton {
-    width: 70px;
-    background-position: -125px 0;
+    width: 98px;
+    background-position: -175px 0;
   }
   /* line 103, ../sass/_mixins.sass */
   .overlay-active #about .summary .logos li a.connect {
-    width: 90px;
-    background-position: -205px 0;
+    width: 126.0px;
+    background-position: -287px 0;
   }
-  /* line 136, ../sass/components/_responsive-mobile.sass */
+  /* line 137, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about .summary .logos li a {
+    margin: 0 auto;
+  }
+  /* line 140, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     margin-top: 1em;
   }
-  /* line 141, ../sass/components/_responsive-mobile.sass */
+  /* line 145, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
     display: block;
     position: absolute;
   }
-  /* line 147, ../sass/components/_responsive-mobile.sass */
+  /* line 151, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center input {
     height: 28px !important;
   }
-  /* line 150, ../sass/components/_responsive-mobile.sass */
+  /* line 154, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate {
     display: none;
   }

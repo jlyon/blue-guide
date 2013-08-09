@@ -1,6 +1,6 @@
 @media screen and (max-width:560px)
   .no-mobile
-    //display: none
+    display: none
 
   html
     font-family: "mobile"
@@ -51,14 +51,14 @@
 
     .leaflet-top.leaflet-center
       margin-left: 60px
-      width: 100%
+      width: 80%
       display: none
 
       .locate-active &
         display: block
 
       .leaflet-control-geosearch
-        width: 96%
+        width: 90%
 
         input
           width: 64.3%
@@ -132,6 +132,10 @@
         li
           margin-right: 5px
           +logos($sponsor-logos-mobile-scale)
+          width: 45%
+
+          a
+            margin: 0 auto
 
       .supported
         text-align: center
