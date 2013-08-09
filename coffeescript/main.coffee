@@ -19,19 +19,18 @@ window.onload = ->
   # Add filters
   filters = new Filters()
   data = locache.get("blueGuideData")
-  #data = null
+  data = null
+  locache.set("blueGuideData", data)
   filters.draw "#filters", "#showFilters"
 
   # Get data if we need to
   if data? and data.rev? and data.rev is rev
     query = new JsonQuery("body", data)
   else
-    `googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
-      locache.set("blueGuideData", data);
-      query = new JsonQuery("body", data);
-    });`
-    googleQuery.get "select *"
-
+    jQuery.getJSON "json/data.json?rev="+rev, {}, (data) ->
+      locache.set "blueGuideData", data
+      query = new JsonQuery "body", data
+      
   params = 
     id: "map"
     updateSelector: "body"

@@ -111,7 +111,7 @@ Map = function(options) {
           num: data.length
         });
       } else {
-        this.drawPager(data).appendTo($results);
+        this.drawPagerSummary(data).appendTo($results);
       }
     }
     pagerEnd = this.pagerStart + this.options.pagerSize < data.length ? this.pagerStart + this.options.pagerSize : data.length;
@@ -231,13 +231,16 @@ Map = function(options) {
       easing: 'swing'
     });
   };
-  this.drawPager = function(data) {
-    var $item, $pager, $text, endPages, i, max, min, _i, _ref;
-    $text = ich.pager({
+  this.drawPagerSummary = function(data) {
+    return ich.pager({
       start: this.pagerStart,
       end: this.pagerStart + this.options.pagerSize < data.length ? this.pagerStart + this.options.pagerSize : data.length,
       total: data.length
     });
+  };
+  this.drawPager = function(data) {
+    var $item, $pager, $text, endPages, i, max, min, _i, _ref;
+    $text = this.drawPagerSummary(data);
     $pager = $text.find("ul");
     if (this.pagerStart > this.options.pagerSize * 2) {
       min = this.pagerStart - this.options.pagerSize * 2;

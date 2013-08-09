@@ -26,15 +26,16 @@ window.onload = function() {
   MQ.init(queries);
   filters = new Filters();
   data = locache.get("blueGuideData");
+  data = null;
+  locache.set("blueGuideData", data);
   filters.draw("#filters", "#showFilters");
   if ((data != null) && (data.rev != null) && data.rev === rev) {
     query = new JsonQuery("body", data);
   } else {
-    googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
+    jQuery.getJSON("json/data.json?rev=" + rev, {}, function(data) {
       locache.set("blueGuideData", data);
-      query = new JsonQuery("body", data);
-    });;
-    googleQuery.get("select *");
+      return query = new JsonQuery("body", data);
+    });
   }
   params = {
     id: "map",
