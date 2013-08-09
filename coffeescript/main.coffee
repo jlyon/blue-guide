@@ -76,6 +76,10 @@ window.onload = ->
   $("#showLocate").bind "click", ->
     $(this).toggleClass "active"
     $("body").toggleClass "locate-active"
+    map.scroll "body", 0
+
+  $("#showFilters").bind "click", ->
+    map.scroll ".right-sidebar", 0
 
 
   # Add overlay (for start page)

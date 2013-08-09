@@ -81,7 +81,11 @@ window.onload = function() {
   });
   $("#showLocate").bind("click", function() {
     $(this).toggleClass("active");
-    return $("body").toggleClass("locate-active");
+    $("body").toggleClass("locate-active");
+    return map.scroll("body", 0);
+  });
+  $("#showFilters").bind("click", function() {
+    return map.scroll(".right-sidebar", 0);
   });
   if (window.responsive === "mobile") {
     $about = ich.about();
