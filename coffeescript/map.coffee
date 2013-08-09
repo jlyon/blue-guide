@@ -189,7 +189,10 @@ Map = (options) ->
           #marker.zIndexOffset 1000
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
-            console.log e.currentTarget.className.indexOf "static-marker"
+
+            $item.parent().find('.item').removeClass "active"
+            #that.scroll $results, $item
+            ###
             if e.currentTarget.className.indexOf "static-marker" isnt 0
               console.log "marker"
               that.scroll $results, 0
@@ -197,6 +200,7 @@ Map = (options) ->
               console.log "title"
               $item.parent().find('.item').removeClass "active"
               that.scroll $results, $item
+            ###
           else
             marker.openPopup()
           $item.addClass "active"

@@ -172,15 +172,17 @@ Map = function(options) {
           marker = that.markerLayer._layers[$item.attr("rel")];
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
-            console.log(e.currentTarget.className.indexOf("static-marker"));
-            if (e.currentTarget.className.indexOf("static-marker" !== 0)) {
-              console.log("marker");
-              that.scroll($results, 0);
-            } else {
-              console.log("title");
-              $item.parent().find('.item').removeClass("active");
-              that.scroll($results, $item);
-            }
+            $item.parent().find('.item').removeClass("active");
+            /*
+            if e.currentTarget.className.indexOf "static-marker" isnt 0
+              console.log "marker"
+              that.scroll $results, 0
+            else
+              console.log "title"
+              $item.parent().find('.item').removeClass "active"
+              that.scroll $results, $item
+            */
+
           } else {
             marker.openPopup();
           }
