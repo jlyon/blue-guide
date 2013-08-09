@@ -29,7 +29,6 @@ Map = (options) ->
     )
     @markerLayer.addTo @map
     @homeMarkerLayer.addTo @map
-    $("#map .leaflet-control-container").append ich.about()
 
     # Add the geosearch control
     if @options.geosearch?
@@ -51,7 +50,7 @@ Map = (options) ->
       $(@options.locate.html).bind "click", (e) ->
         that.map.locate settings
       .appendTo "#map .leaflet-top.leaflet-center"
-    console.log @map
+
     return
 
   @updateLocation = (latlng) ->
@@ -121,6 +120,7 @@ Map = (options) ->
         $text = ich.resultSummaryMatching
           num: data.length
       else
+        #@drawPagerSummary(data).appendTo $results
         @drawPager(data).appendTo $results
 
 
@@ -148,7 +148,7 @@ Map = (options) ->
 
         # Add the marker
         item.color = (if activeColor then activeColor else that.iconColor(item["Services Provided"]))
-        item["Phone Number"] = item["Phone Number"] + " |" if item["Phone Number"] isnt ""
+        item["Phone Number"] = item["Phone Number"] + " |" if item["Phone Number"] isnt "" and item["Phone Number"].indexOf "|" is -1
         
         marker = L.marker([item.Latitude, item.Longitude],
           icon: L.AwesomeMarkers.icon(
@@ -162,9 +162,7 @@ Map = (options) ->
         .on("click", (e) ->
           $item = $results.find(".item[rel=" + @_leaflet_id + "]")
           $item.addClass "active"
-          $("html, body").animate
-            scrollTop: $item.offset().top - 70
-          , 1000
+          that.scroll $results, $item
         )
 
         if that.options.showPopup
@@ -185,16 +183,26 @@ Map = (options) ->
         item.distance = Math.round(item.distance * 10) / 10
         $resultItem = ich.listItem(item)
 
-        $resultItem.find(".static-marker, h3 a").bind "click", ->
+        $resultItem.find(".static-marker, h3 a").bind "click", (e) ->
           $item = $(this).parents(".item")
           marker = that.markerLayer._layers[$item.attr("rel")]
-          marker.openPopup()
+          #marker.zIndexOffset 1000
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
+
             $item.parent().find('.item').removeClass "active"
-            $("html, body").animate
-              scrollTop: $item.offset().top - 70
-            , 1000
+            #that.scroll $results, $item
+            ###
+            if e.currentTarget.className.indexOf "static-marker" isnt 0
+              console.log "marker"
+              that.scroll $results, 0
+            else
+              console.log "title"
+              $item.parent().find('.item').removeClass "active"
+              that.scroll $results, $item
+            ###
+          else
+            marker.openPopup()
           $item.addClass "active"
           false
 
@@ -205,13 +213,21 @@ Map = (options) ->
             that.markerLayer._layers[$item.attr("rel")].closePopup()
           else
             $(that.updateSelector).removeClass "left-sidebar-big"
-            $("html, body").animate
-              scrollTop: 0
-            , 750
+            that.scroll $results, 0
 
         $resultItem.find(".btn-directions").bind "click", ->
-          window.location = 'gps:' + item["Latitude"] + "," + item["Longitude"]
-          #window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
+          if window.os is "android"
+            navigator.app.loadUrl "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"], { openExternal: true } 
+            #window.location = 'gps:' + item["Latitude"] + "," + item["Longitude"]
+          else if window.os is "ios"
+            window.location = 'maps:' + item["Latitude"] + "," + item["Longitude"]
+          else
+            window.open "http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]
+
+        if window.os is "android" or window.os is "ios"
+          $resultItem.find(".website").bind "click", ->
+            navigator.app.loadUrl $(this).attr "href", { openExternal: true }
+            false
 
         $results.append $resultItem
 
@@ -220,11 +236,21 @@ Map = (options) ->
     @forceZoom = undefined
     return
 
-  @drawPager = (data) ->
-    $text = ich.pager
+  @scroll = (parent, element) ->
+    parent = "body" if window.responsive is "mobile"
+    top = if element is 0 then 0 else $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
+    top -= 75
+    $(parent).animate({ scrollTop: top }, { duration: 'slow', easing: 'swing'})
+  
+
+  @drawPagerSummary = (data) ->
+    return ich.pager
       start: @pagerStart
       end: if (@pagerStart + @options.pagerSize < data.length) then @pagerStart + @options.pagerSize else data.length
       total: data.length
+
+  @drawPager = (data) ->
+    $text = @drawPagerSummary data
     $pager = $text.find "ul"
     if @pagerStart > @options.pagerSize*2
       min = @pagerStart - @options.pagerSize*2
@@ -243,11 +269,13 @@ Map = (options) ->
     ich.pagerItem(num: "&raquo;", rel: @pagerStart+@options.pagerSize).appendTo $pager if @pagerStart + @options.pagerSize < data.length
     $text.find('a').bind "click", ->
       that.drawMarkers data, parseInt $(this).attr "rel"
+      that.scroll $(that.options.resultsSelector), 0
       false
     $text
 
   @markerBounds = (bounds, factor) ->
     factor = if factor? then factor-1 else 1
+    factor = 0
     lat = Math.abs(bounds._southWest.lat - bounds._northEast.lat) * factor
     lng = Math.abs(bounds._southWest.lng - bounds._northEast.lng) * factor
     "_southWest":

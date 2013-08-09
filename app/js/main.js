@@ -4,12 +4,12 @@ query = void 0;
 
 tab = void 0;
 
-rev = 0.11;
+rev = 0.12;
 
 activeTab = void 0;
 
 window.onload = function() {
-  var activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
+  var $about, $search, activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
   queries = [
     {
       context: "mobile",
@@ -26,15 +26,16 @@ window.onload = function() {
   MQ.init(queries);
   filters = new Filters();
   data = locache.get("blueGuideData");
+  data = null;
+  locache.set("blueGuideData", data);
   filters.draw("#filters", "#showFilters");
   if ((data != null) && (data.rev != null) && data.rev === rev) {
     query = new JsonQuery("body", data);
   } else {
-    googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
+    jQuery.getJSON("json/data.json?rev=" + rev, {}, function(data) {
       locache.set("blueGuideData", data);
-      query = new JsonQuery("body", data);
-    });;
-    googleQuery.get("select *");
+      return query = new JsonQuery("body", data);
+    });
   }
   params = {
     id: "map",
@@ -79,8 +80,27 @@ window.onload = function() {
   });
   $("#showLocate").bind("click", function() {
     $(this).toggleClass("active");
-    return $("body").toggleClass("locate-active");
+    $("body").toggleClass("locate-active");
+    return map.scroll("body", 0);
   });
+  $("#showFilters").bind("click", function() {
+    return map.scroll(".right-sidebar", 0);
+  });
+  if (window.responsive === "mobile") {
+    $about = ich.about();
+    $search = $("#map .leaflet-top.leaflet-center").clone();
+    $search.find('#leaflet-control-geosearch-submit').bind("click", function() {
+      $("#map #leaflet-control-geosearch-qry").val($(this).parent().find("#leaflet-control-geosearch-qry").val());
+      return $("#map #leaflet-control-geosearch-submit").trigger("click");
+    });
+    $search.find('#geocode').bind("click", function() {
+      return $("#map #geocode").trigger("click");
+    });
+    $("#main").append($about);
+    $("#main #about").append($search);
+  } else {
+    $("#map .leaflet-control-container").prepend(ich.about());
+  }
   updateMarkers = function(pagerStart) {
     var newZoom;
     $('#show-markers').addClass("icon-spin");

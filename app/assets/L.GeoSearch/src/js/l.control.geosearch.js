@@ -60,10 +60,6 @@ L.Control.GeoSearch = L.Control.extend({
         searchbtn.id = 'leaflet-control-geosearch-submit';
         searchbtn.className = 'btn';
         searchbtn.innerHTML = '<i class="icon-search"></i>';
-        var that = this;
-        searchbtn.addEventListener('click', function() {
-          that._onKeyUp({keyCode: 13});
-        }, false);
         this._searchbtn = searchbtn;
 
         var msgbox = document.createElement('div');
@@ -77,11 +73,14 @@ L.Control.GeoSearch = L.Control.extend({
 
         $(this._msgbox).append(this._resultslist);
         $(this._container).append(this._searchbox, this._msgbox);
-        console.log(this._config)
         if (this._config.submitButton) {
           $(this._container).append(this._searchbtn);
+          $btn = $(this._searchbtn);
+          var that = this;
+          $btn.bind('click', function(){
+            that._onKeyUp({keyCode: 13});
+          })
         }
-        
 
         L.DomEvent
           .addListener(this._container, 'click', L.DomEvent.stop)

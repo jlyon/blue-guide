@@ -1,6 +1,6 @@
 query = undefined
 tab = undefined
-rev = 0.11
+rev = 0.12
 activeTab = undefined
 window.onload = ->
 
@@ -19,18 +19,17 @@ window.onload = ->
   # Add filters
   filters = new Filters()
   data = locache.get("blueGuideData")
-  #data = null
+  data = null
+  locache.set("blueGuideData", data)
   filters.draw "#filters", "#showFilters"
 
   # Get data if we need to
   if data? and data.rev? and data.rev is rev
     query = new JsonQuery("body", data)
   else
-    `googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
-      locache.set("blueGuideData", data);
-      query = new JsonQuery("body", data);
-    });`
-    googleQuery.get "select *"
+    jQuery.getJSON "json/data.json?rev="+rev, {}, (data) ->
+      locache.set "blueGuideData", data
+      query = new JsonQuery "body", data
 
   params = 
     id: "map"
@@ -67,6 +66,7 @@ window.onload = ->
 
   map.map.on "dragend", ->
     if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))
+      #console.log "update"
       updateMarkers()
 
   map.map.on "zoomend", ->
@@ -76,6 +76,27 @@ window.onload = ->
   $("#showLocate").bind "click", ->
     $(this).toggleClass "active"
     $("body").toggleClass "locate-active"
+    map.scroll "body", 0
+
+  $("#showFilters").bind "click", ->
+    map.scroll ".right-sidebar", 0
+
+
+  # Add overlay (for start page)
+  if window.responsive is "mobile"
+    $about = ich.about()
+    $search = $("#map .leaflet-top.leaflet-center").clone()
+    #$search.find('.leaflet-control-geosearch').removeClass "leaflet-control-geosearch"
+    $search.find('#leaflet-control-geosearch-submit').bind "click", ->
+      $("#map #leaflet-control-geosearch-qry").val $(this).parent().find("#leaflet-control-geosearch-qry").val()
+      $("#map #leaflet-control-geosearch-submit").trigger "click"
+    $search.find('#geocode').bind "click", ->
+      $("#map #geocode").trigger "click"
+    $("#main").append $about
+    $("#main #about").append $search
+  else
+    $("#map .leaflet-control-container").prepend ich.about()
+
 
 
   #$('.left-sidebar').bind "click", ->

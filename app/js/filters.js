@@ -45,6 +45,8 @@ Filters = function() {
       $(selector + " #tabs a").removeClass("active");
       $(this).addClass("active");
       activeTab = $(this).attr("rel");
+      $(btnSelector).toggleClass("active");
+      $("body").toggleClass("right-sidebar-active");
       that.constructQuery();
       return false;
     });
@@ -89,7 +91,7 @@ Filters = function() {
       title: "General Health",
       color: "green",
       icon: "icon-generalhealth",
-      services: ["Primary Health Care", "Women's Health", "Children's Health", "Adolescent Care", "Immunizations", "Chronic Disease Mgmt", "STI Testing, Treatment, & Prevention", "HIV/AIDS Treatment & Care", "Health Care for Military Veterans", "LGBT Health Services"]
+      services: ["Case Management", "Primary Health Care", "Women's Health", "Children's Health", "Adolescent Care", "Immunizations", "Chronic Disease Mgmt", "STI Testing, Treatment, & Prevention", "HIV/AIDS Treatment & Care", "Health Care for Military Veterans", "LGBT Health Services"]
     }, {
       title: "Mental / Behavioral",
       color: "purple",
@@ -99,7 +101,7 @@ Filters = function() {
       title: "Access Assistance",
       color: "red",
       icon: "icon-mentalbehavioural",
-      services: ["Case Management", "Chronic Disease Mgmt", "Medicaid Enrollment", "Connect for Health Colorado Enrollment Assistance"]
+      services: ["Medicaid Enrollment", "Connect for Health Colorado Enrollment Assistance"]
     }, {
       title: "Oral / Dental",
       color: "blue",

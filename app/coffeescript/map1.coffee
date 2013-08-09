@@ -66,7 +66,6 @@ Map = (options) ->
     ).addTo @homeMarkerLayer
 
   @drawMarkers = (data) ->
-    console.log(data)
     @markerLayer.clearLayers()
     @pagerStart = 0
     
@@ -98,12 +97,8 @@ Map = (options) ->
 
     # Cycle through each item and add a marker
     pagerEnd = if @pagerStart+@options.pagerSize > data.length then @pagerStart else data.length
-    console.log(@pagerStart)
-    console.log pagerEnd
-    console.log(data)
     for index in [@pagerStart..pagerEnd]
       item = data[index];
-      console.log item
       if item.Latitude isnt `undefined` and item.Longitude isnt `undefined` and index <= that.resultNum
 
         # Build the fields html
@@ -179,7 +174,6 @@ Map = (options) ->
           if window.responsive isnt "mobile"
             that.markerLayer._layers[$item.attr("rel")].closePopup()
           else
-            console.log(that.updateSelector);
             $(that.updateSelector).removeClass "left-sidebar-big"
             $("html, body").animate
               scrollTop: -66

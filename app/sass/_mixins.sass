@@ -79,3 +79,27 @@
   text-transform: none
   line-height: 1
   -webkit-font-smoothing: antialiased
+
+@mixin logos($scale)
+  a
+    display: block
+    height: 100px * $scale
+    text-indent: -1000em
+    overflow: hidden
+    background: url(../images/sponsors.png) 0 0 no-repeat
+    background-size: $sponsor-logos-width * $scale auto
+    
+    &.cchi
+      width: 72px * $scale
+
+    &.caring
+      width: 130px * $scale
+      background-position: -100px * $scale 0
+
+    &.piton
+      width: 140px * $scale
+      background-position: -250px * $scale 0
+
+    &.connect
+      width: 180px * $scale
+      background-position: -410px * $scale 0

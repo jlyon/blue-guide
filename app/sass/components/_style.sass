@@ -34,6 +34,7 @@ h2
   color: $white
   +text-shadow(none)
   font-weight: bold
+  outline: none
 
   &:focus,
   &:hover,
@@ -73,5 +74,20 @@ label
 
 .icon-spin
   +spin
+
+
+::-webkit-scrollbar-track
+  border-radius: 3px
+  background-color: $grey
+
+::-webkit-scrollbar
+  width: 10px
+  background-color: $grey
+
+::-webkit-scrollbar-thumb
+  border-radius: 10px
+  background-color: $blue-dark
+
+
 
 

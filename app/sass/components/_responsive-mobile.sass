@@ -1,4 +1,5 @@
 @media screen and (max-width:560px)
+
   .no-mobile
     display: none
 
@@ -12,9 +13,11 @@
       content: "mobile"
       display: none
 
+  button
+    cursor: pointer !important
+
   html,
   body,
-  .row-fluid,
   .main-content
     height: 100%
     padding: 0
@@ -23,20 +26,27 @@
     position: relative
     //overflow-x: hidden
     width: 100%
+    height: 100%
 
   .navbar .nav,
   #showFilters span
     display: none
 
   .navbar
+    .brand img
+      max-width: 140px
+      margin-top: 4px
+      height: auto
+      margin-left: 10px
+
     .links
-      margin-right: 20px
+      margin-right: 10px
       
       i
         margin-right: 0
 
       #showLocate
-        margin-right: 20px
+        margin-right: 15px
 
   .main-content
     top: $topnav-height
@@ -49,30 +59,29 @@
       width: 100%
       height: 100%
 
-      .leaflet-top.leaflet-center
-        margin-left: 60px
-        width: 110%
-        display: none
+    .leaflet-top.leaflet-center
+      margin-left: 60px
+      width: 80%
+      display: none
 
-        .locate-active &
-          display: block
+      .locate-active &
+        display: block
 
-        .leaflet-control-geosearch
-          width: 96%
+      .leaflet-control-geosearch
+        width: 90%
 
-          input
-            width: 64.3%
-            margin-right: 3%
-            float: left
+        input
+          width: 64.3%
+          margin-right: 3%
+          float: left
 
-        .leaflet-control-locate
-          width: 72.7%
+      .leaflet-control-locate
+        width: 72.7%
 
 
   .left-sidebar
     position: relative
     top: 100%
-    height: 400px
     z-index: 100
     background-color: $white
     +transition(all, $trans-time)
@@ -81,7 +90,10 @@
       padding-bottom: 4em
 
       .pagination
-        margin: .5em 0 -1.5em 0
+        margin: .5em 0 0 0
+
+      .pagination:eq(0) ul
+        display: none
 
   .right-sidebar
     right: -280px
@@ -120,21 +132,47 @@
 
   .overlay-active
     
-    #map
-      
-      #about
-        padding: 1em 2em
+    .main-content
+      height: auto
 
-        .supported
-          text-align: center
-          font-style: italic
-          margin-top: 1em
+    #map
+      display: none
+      
+    #about
+      padding: 1em 2em
+      height: auto
+
+      h2
+        font-size: 24px
+
+      .summary .logos
+        margin: 0 -1em
+        
+        li
+          margin-right: 5px
+          +logos($sponsor-logos-mobile-scale)
+          width: 45%
+
+          a
+            margin: 0 auto
+
+      .supported
+        text-align: center
+        font-style: italic
+        margin-top: 3em
 
       .leaflet-top.leaflet-center
-        margin-left: 2em
-        margin-top: 9em
+        margin-left: 0
+        top: 9em
         display: block
+        position: absolute
 
-    #showLocate
+        input
+          height: 28px !important
+
+    #showLocate,
+    #mapOverlay,
+    .left-sidebar
       display: none
+      
 

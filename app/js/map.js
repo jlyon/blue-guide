@@ -27,7 +27,6 @@ Map = function(options) {
     });
     this.markerLayer.addTo(this.map);
     this.homeMarkerLayer.addTo(this.map);
-    $("#map .leaflet-control-container").append(ich.about());
     if (this.options.geosearch != null) {
       settings = _.extend((this.options.geosearch.settings === undefined ? {} : this.options.geosearch.settings), {
         zoomLevel: this.options.maxZoom,
@@ -48,7 +47,6 @@ Map = function(options) {
         return that.map.locate(settings);
       }).appendTo("#map .leaflet-top.leaflet-center");
     }
-    console.log(this.map);
   };
   this.updateLocation = function(latlng) {
     return this.location = latlng;
@@ -138,7 +136,7 @@ Map = function(options) {
           }
         });
         item.color = (activeColor ? activeColor : that.iconColor(item["Services Provided"]));
-        if (item["Phone Number"] !== "") {
+        if (item["Phone Number"] !== "" && item["Phone Number"].indexOf("|" === -1)) {
           item["Phone Number"] = item["Phone Number"] + " |";
         }
         marker = L.marker([item.Latitude, item.Longitude], {
@@ -152,9 +150,7 @@ Map = function(options) {
           var $item;
           $item = $results.find(".item[rel=" + this._leaflet_id + "]");
           $item.addClass("active");
-          return $("html, body").animate({
-            scrollTop: $item.offset().top - 70
-          }, 1000);
+          return that.scroll($results, $item);
         });
         if (that.options.showPopup) {
           marker.bindPopup(ich.popupItem(item).html(), {
@@ -170,17 +166,25 @@ Map = function(options) {
         item.letter = marker.options.icon.num2letter(index);
         item.distance = Math.round(item.distance * 10) / 10;
         $resultItem = ich.listItem(item);
-        $resultItem.find(".static-marker, h3 a").bind("click", function() {
+        $resultItem.find(".static-marker, h3 a").bind("click", function(e) {
           var $item;
           $item = $(this).parents(".item");
           marker = that.markerLayer._layers[$item.attr("rel")];
-          marker.openPopup();
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
             $item.parent().find('.item').removeClass("active");
-            $("html, body").animate({
-              scrollTop: $item.offset().top - 70
-            }, 1000);
+            /*
+            if e.currentTarget.className.indexOf "static-marker" isnt 0
+              console.log "marker"
+              that.scroll $results, 0
+            else
+              console.log "title"
+              $item.parent().find('.item').removeClass "active"
+              that.scroll $results, $item
+            */
+
+          } else {
+            marker.openPopup();
           }
           $item.addClass("active");
           return false;
@@ -193,14 +197,28 @@ Map = function(options) {
             return that.markerLayer._layers[$item.attr("rel")].closePopup();
           } else {
             $(that.updateSelector).removeClass("left-sidebar-big");
-            return $("html, body").animate({
-              scrollTop: 0
-            }, 750);
+            return that.scroll($results, 0);
           }
         });
         $resultItem.find(".btn-directions").bind("click", function() {
-          return window.location = 'gps:' + item["Latitude"] + "," + item["Longitude"];
+          if (window.os === "android") {
+            return navigator.app.loadUrl("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"], {
+              openExternal: true
+            });
+          } else if (window.os === "ios") {
+            return window.location = 'maps:' + item["Latitude"] + "," + item["Longitude"];
+          } else {
+            return window.open("http://maps.google.com/maps?daddr=" + item["Latitude"] + "," + item["Longitude"]);
+          }
         });
+        if (window.os === "android" || window.os === "ios") {
+          $resultItem.find(".website").bind("click", function() {
+            navigator.app.loadUrl($(this).attr("href", {
+              openExternal: true
+            }));
+            return false;
+          });
+        }
         $results.append($resultItem);
       }
     }
@@ -210,13 +228,30 @@ Map = function(options) {
     this.lastBounds = this.map.getBounds();
     this.forceZoom = void 0;
   };
-  this.drawPager = function(data) {
-    var $item, $pager, $text, endPages, i, max, min, _i, _ref;
-    $text = ich.pager({
+  this.scroll = function(parent, element) {
+    var top;
+    if (window.responsive === "mobile") {
+      parent = "body";
+    }
+    top = element === 0 ? 0 : $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top;
+    top -= 75;
+    return $(parent).animate({
+      scrollTop: top
+    }, {
+      duration: 'slow',
+      easing: 'swing'
+    });
+  };
+  this.drawPagerSummary = function(data) {
+    return ich.pager({
       start: this.pagerStart,
       end: this.pagerStart + this.options.pagerSize < data.length ? this.pagerStart + this.options.pagerSize : data.length,
       total: data.length
     });
+  };
+  this.drawPager = function(data) {
+    var $item, $pager, $text, endPages, i, max, min, _i, _ref;
+    $text = this.drawPagerSummary(data);
     $pager = $text.find("ul");
     if (this.pagerStart > this.options.pagerSize * 2) {
       min = this.pagerStart - this.options.pagerSize * 2;
@@ -248,6 +283,7 @@ Map = function(options) {
     }
     $text.find('a').bind("click", function() {
       that.drawMarkers(data, parseInt($(this).attr("rel")));
+      that.scroll($(that.options.resultsSelector), 0);
       return false;
     });
     return $text;
@@ -255,6 +291,7 @@ Map = function(options) {
   this.markerBounds = function(bounds, factor) {
     var lat, lng;
     factor = factor != null ? factor - 1 : 1;
+    factor = 0;
     lat = Math.abs(bounds._southWest.lat - bounds._northEast.lat) * factor;
     lng = Math.abs(bounds._southWest.lng - bounds._northEast.lng) * factor;
     return {

@@ -62,7 +62,6 @@ Map = function(options) {
   };
   this.drawMarkers = function(data) {
     var $resultItem, $results, $text, activeColor, index, item, location, marker, pagerEnd, _i, _ref;
-    console.log(data);
     this.markerLayer.clearLayers();
     this.pagerStart = 0;
     location = (this.location !== undefined ? this.location : this.map.getCenter());
@@ -90,12 +89,8 @@ Map = function(options) {
       }
     }
     pagerEnd = this.pagerStart + this.options.pagerSize > data.length ? this.pagerStart : data.length;
-    console.log(this.pagerStart);
-    console.log(pagerEnd);
-    console.log(data);
     for (index = _i = _ref = this.pagerStart; _ref <= pagerEnd ? _i <= pagerEnd : _i >= pagerEnd; index = _ref <= pagerEnd ? ++_i : --_i) {
       item = data[index];
-      console.log(item);
       if (item.Latitude !== undefined && item.Longitude !== undefined && index <= that.resultNum) {
         item.fields = "";
         item.primaryFields = "";
@@ -169,7 +164,6 @@ Map = function(options) {
           if (window.responsive !== "mobile") {
             return that.markerLayer._layers[$item.attr("rel")].closePopup();
           } else {
-            console.log(that.updateSelector);
             $(that.updateSelector).removeClass("left-sidebar-big");
             return $("html, body").animate({
               scrollTop: -66
