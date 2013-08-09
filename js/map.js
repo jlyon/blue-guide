@@ -136,7 +136,7 @@ Map = function(options) {
           }
         });
         item.color = (activeColor ? activeColor : that.iconColor(item["Services Provided"]));
-        if (item["Phone Number"] !== "") {
+        if (item["Phone Number"] !== "" && item["Phone Number"].indexOf("|" === -1)) {
           item["Phone Number"] = item["Phone Number"] + " |";
         }
         marker = L.marker([item.Latitude, item.Longitude], {
@@ -172,11 +172,14 @@ Map = function(options) {
           marker = that.markerLayer._layers[$item.attr("rel")];
           that.map.panTo(marker._latlng);
           if (window.responsive === "mobile") {
-            if (e.currentTarget.className.indexOf("static-marker" === -1)) {
+            console.log(e.currentTarget.className.indexOf("static-marker"));
+            if (e.currentTarget.className.indexOf("static-marker" === 0)) {
+              console.log("marker");
+              that.scroll($results, 0);
+            } else {
+              console.log("title");
               $item.parent().find('.item').removeClass("active");
               that.scroll($results, $item);
-            } else {
-              that.scroll($results, $("#map"));
             }
           } else {
             marker.openPopup();
@@ -192,7 +195,7 @@ Map = function(options) {
             return that.markerLayer._layers[$item.attr("rel")].closePopup();
           } else {
             $(that.updateSelector).removeClass("left-sidebar-big");
-            return that.scroll($results, $("#map"));
+            return that.scroll($results, 0);
           }
         });
         $resultItem.find(".btn-directions").bind("click", function() {
@@ -224,8 +227,14 @@ Map = function(options) {
     this.forceZoom = void 0;
   };
   this.scroll = function(parent, element) {
+    var top;
+    if (window.responsive === "mobile") {
+      parent = "body";
+    }
+    top = element === 0 ? 0 : $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top;
+    top -= 75;
     return $(parent).animate({
-      scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
+      scrollTop: top
     }, {
       duration: 'slow',
       easing: 'swing'
@@ -272,7 +281,7 @@ Map = function(options) {
     }
     $text.find('a').bind("click", function() {
       that.drawMarkers(data, parseInt($(this).attr("rel")));
-      that.scroll($(that.options.resultsSelector), $("#map"));
+      that.scroll($(that.options.resultsSelector), 0);
       return false;
     });
     return $text;

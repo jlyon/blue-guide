@@ -148,7 +148,7 @@ Map = (options) ->
 
         # Add the marker
         item.color = (if activeColor then activeColor else that.iconColor(item["Services Provided"]))
-        item["Phone Number"] = item["Phone Number"] + " |" if item["Phone Number"] isnt ""
+        item["Phone Number"] = item["Phone Number"] + " |" if item["Phone Number"] isnt "" and item["Phone Number"].indexOf "|" is -1
         
         marker = L.marker([item.Latitude, item.Longitude],
           icon: L.AwesomeMarkers.icon(
@@ -189,11 +189,14 @@ Map = (options) ->
           #marker.zIndexOffset 1000
           that.map.panTo(marker._latlng)
           if window.responsive is "mobile"
-            if e.currentTarget.className.indexOf "static-marker" is -1
+            console.log e.currentTarget.className.indexOf "static-marker"
+            if e.currentTarget.className.indexOf "static-marker" is 0
+              console.log "marker"
+              that.scroll $results, 0
+            else
+              console.log "title"
               $item.parent().find('.item').removeClass "active"
               that.scroll $results, $item
-            else
-              that.scroll $results, $("#map")
           else
             marker.openPopup()
           $item.addClass "active"
@@ -206,7 +209,7 @@ Map = (options) ->
             that.markerLayer._layers[$item.attr("rel")].closePopup()
           else
             $(that.updateSelector).removeClass "left-sidebar-big"
-            that.scroll $results, $("#map")
+            that.scroll $results, 0
 
         $resultItem.find(".btn-directions").bind "click", ->
           if window.os is "android"
@@ -230,8 +233,10 @@ Map = (options) ->
     return
 
   @scroll = (parent, element) ->
-
-    $(parent).animate({ scrollTop: $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top }, { duration: 'slow', easing: 'swing'})
+    parent = "body" if window.responsive is "mobile"
+    top = if element is 0 then 0 else $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
+    top -= 75
+    $(parent).animate({ scrollTop: top }, { duration: 'slow', easing: 'swing'})
   
 
   @drawPagerSummary = (data) ->
@@ -260,7 +265,7 @@ Map = (options) ->
     ich.pagerItem(num: "&raquo;", rel: @pagerStart+@options.pagerSize).appendTo $pager if @pagerStart + @options.pagerSize < data.length
     $text.find('a').bind "click", ->
       that.drawMarkers data, parseInt $(this).attr "rel"
-      that.scroll $(that.options.resultsSelector), $("#map")
+      that.scroll $(that.options.resultsSelector), 0
       false
     $text
 
