@@ -46,8 +46,6 @@
   font-weight: bold;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
   border-radius: 5px;
   border: none;
   line-height: 24px;
@@ -239,8 +237,6 @@
 .leaflet-container .leaflet-popup-content-wrapper {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
   border-radius: 0;
 }
 /* line 41, ../sass/components/_map.sass */
@@ -484,19 +480,49 @@
   }
 
   /* line 32, ../sass/components/_responsive-mobile.sass */
+  .navbar .brand {
+    padding-right: 0;
+  }
+  /* line 35, ../sass/components/_responsive-mobile.sass */
   .navbar .links {
     margin-right: 20px;
   }
-  /* line 35, ../sass/components/_responsive-mobile.sass */
+  /* line 38, ../sass/components/_responsive-mobile.sass */
   .navbar .links i {
     margin-right: 0;
   }
-  /* line 38, ../sass/components/_responsive-mobile.sass */
+  /* line 41, ../sass/components/_responsive-mobile.sass */
   .navbar .links #showLocate {
-    margin-right: 20px;
+    margin-right: 3%;
   }
 
-  /* line 41, ../sass/components/_responsive-mobile.sass */
+  /* line 45, ../sass/components/_responsive-mobile.sass */
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  .uneditable-input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 30px;
+    width: 100%;
+  }
+
+  /* line 67, ../sass/components/_responsive-mobile.sass */
   .main-content {
     top: 64px;
     position: absolute;
@@ -507,37 +533,55 @@
     -o-transition: left, 1s;
     transition: left, 1s;
   }
-  /* line 48, ../sass/components/_responsive-mobile.sass */
+  /* line 74, ../sass/components/_responsive-mobile.sass */
   .main-content #map {
     width: 100%;
     height: 100%;
   }
-  /* line 52, ../sass/components/_responsive-mobile.sass */
+  /* line 78, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center {
-    margin-left: 60px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0px;
+    padding-left: 60px;
+    padding-right: 60px;
     width: 100%;
     display: none;
   }
-  /* line 57, ../sass/components/_responsive-mobile.sass */
+  /* line 86, ../sass/components/_responsive-mobile.sass */
   .locate-active .main-content .leaflet-top.leaflet-center {
     display: block;
   }
-  /* line 60, ../sass/components/_responsive-mobile.sass */
+  /* line 89, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
-    width: 96%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    margin-right: 0;
+    padding-right: 48px;
+    width: 100%;
   }
-  /* line 63, ../sass/components/_responsive-mobile.sass */
+  /* line 96, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch input {
-    width: 64.3%;
-    margin-right: 3%;
+    max-width: 100%;
+    width: 100%;
+    margin-right: 0;
     float: left;
   }
-  /* line 68, ../sass/components/_responsive-mobile.sass */
+  /* line 103, ../sass/components/_responsive-mobile.sass */
+  .main-content .leaflet-top.leaflet-center #leaflet-control-geosearch-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  /* line 108, ../sass/components/_responsive-mobile.sass */
   .main-content .leaflet-top.leaflet-center .leaflet-control-locate {
-    width: 72.7%;
+    width: 100%;
   }
 
-  /* line 72, ../sass/components/_responsive-mobile.sass */
+  /* line 112, ../sass/components/_responsive-mobile.sass */
   .left-sidebar {
     position: relative;
     top: 100%;
@@ -549,16 +593,16 @@
     -o-transition: all, 1s;
     transition: all, 1s;
   }
-  /* line 80, ../sass/components/_responsive-mobile.sass */
+  /* line 120, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results {
     padding-bottom: 4em;
   }
-  /* line 83, ../sass/components/_responsive-mobile.sass */
+  /* line 123, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination {
     margin: 0.5em 0 0 0;
   }
 
-  /* line 86, ../sass/components/_responsive-mobile.sass */
+  /* line 126, ../sass/components/_responsive-mobile.sass */
   .right-sidebar {
     right: -280px;
     top: 64px;
@@ -570,47 +614,47 @@
     transition: all, 1s;
   }
 
-  /* line 95, ../sass/components/_responsive-mobile.sass */
+  /* line 135, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
     top: 70%;
   }
-  /* line 98, ../sass/components/_responsive-mobile.sass */
+  /* line 138, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .main-content {
     height: 70%;
   }
 
-  /* line 104, ../sass/components/_responsive-mobile.sass */
+  /* line 144, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-big .left-sidebar {
     top: 50%;
   }
-  /* line 107, ../sass/components/_responsive-mobile.sass */
+  /* line 147, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-big .main-content {
     height: 50%;
   }
 
-  /* line 113, ../sass/components/_responsive-mobile.sass */
+  /* line 153, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .main-content,
   .right-sidebar-active .left-sidebar {
     left: -280px;
   }
-  /* line 117, ../sass/components/_responsive-mobile.sass */
+  /* line 157, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .right-sidebar {
     right: 0;
   }
 
-  /* line 123, ../sass/components/_responsive-mobile.sass */
+  /* line 163, ../sass/components/_responsive-mobile.sass */
   .overlay-active #map {
     display: none;
   }
-  /* line 126, ../sass/components/_responsive-mobile.sass */
+  /* line 166, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about {
     padding: 1em 2em;
   }
-  /* line 129, ../sass/components/_responsive-mobile.sass */
+  /* line 169, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos {
     margin: 0 -1em;
   }
-  /* line 132, ../sass/components/_responsive-mobile.sass */
+  /* line 172, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
   }
@@ -642,24 +686,25 @@
     width: 90px;
     background-position: -205px 0;
   }
-  /* line 136, ../sass/components/_responsive-mobile.sass */
+  /* line 176, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     margin-top: 1em;
   }
-  /* line 141, ../sass/components/_responsive-mobile.sass */
+  /* line 181, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
     display: block;
     position: absolute;
+    width: auto;
+    left: 2em;
+    right: 2em;
+    padding-left: 0;
+    padding-right: 0;
   }
-  /* line 147, ../sass/components/_responsive-mobile.sass */
-  .overlay-active #about .leaflet-top.leaflet-center input {
-    height: 28px !important;
-  }
-  /* line 150, ../sass/components/_responsive-mobile.sass */
+  /* line 192, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate {
     display: none;
   }
@@ -789,10 +834,7 @@ h2 {
   height: 38px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
   border-radius: 3px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #387cc0), color-stop(100%, #4b89c6));
   background-image: -webkit-linear-gradient(#387cc0, #4b89c6);
   background-image: -moz-linear-gradient(#387cc0, #4b89c6);
   background-image: -o-linear-gradient(#387cc0, #4b89c6);
@@ -804,7 +846,7 @@ h2 {
   color: white;
   text-shadow: none;
   font-weight: bold;
-  outline: none;
+  outline: 0;
 }
 /* line 39, ../sass/components/_style.sass */
 .btn-normal:focus, .btn-normal:hover, .btn-normal.active,
@@ -815,9 +857,13 @@ h2 {
 #leaflet-control-geosearch-submit:hover,
 #leaflet-control-geosearch-submit.active {
   background-color: #4585c4;
+  -webkit-box-shadow: #1f4066 0 1px 1px;
+  -moz-box-shadow: #1f4066 0 1px 1px;
+  box-shadow: #1f4066 0 1px 1px;
   color: white;
+  outline: 0;
 }
-/* line 45, ../sass/components/_style.sass */
+/* line 47, ../sass/components/_style.sass */
 .btn-normal i,
 .btn-dark i,
 #leaflet-control-geosearch-submit i {
@@ -825,23 +871,22 @@ h2 {
   margin-right: 5px;
   font-size: 16px;
 }
-/* line 50, ../sass/components/_style.sass */
+/* line 52, ../sass/components/_style.sass */
 .btn-normal.btn-search i,
 .btn-dark.btn-search i,
 #leaflet-control-geosearch-submit.btn-search i {
   margin-right: 0;
 }
-/* line 53, ../sass/components/_style.sass */
+/* line 55, ../sass/components/_style.sass */
 .btn-normal.btn-dark,
 .btn-dark.btn-dark,
 #leaflet-control-geosearch-submit.btn-dark {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1f4066), color-stop(100%, #355375));
   background-image: -webkit-linear-gradient(#1f4066, #355375);
   background-image: -moz-linear-gradient(#1f4066, #355375);
   background-image: -o-linear-gradient(#1f4066, #355375);
   background-image: linear-gradient(#1f4066, #355375);
 }
-/* line 56, ../sass/components/_style.sass */
+/* line 58, ../sass/components/_style.sass */
 .btn-normal.btn-dark:focus, .btn-normal.btn-dark:hover,
 .btn-dark.btn-dark:focus,
 .btn-dark.btn-dark:hover,
@@ -850,7 +895,7 @@ h2 {
   background-color: #2e4d70;
 }
 
-/* line 61, ../sass/components/_style.sass */
+/* line 63, ../sass/components/_style.sass */
 input[type="text"] {
   height: 38px !important;
   border: 1px solid #f59630 !important;
@@ -858,21 +903,21 @@ input[type="text"] {
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
-/* line 66, ../sass/components/_style.sass */
+/* line 68, ../sass/components/_style.sass */
 input[type="text"]:focus {
   -webkit-box-shadow: inset 0 1px 4px #cccccc;
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
 
-/* line 69, ../sass/components/_style.sass */
+/* line 71, ../sass/components/_style.sass */
 label {
   font-weight: bold;
   margin-top: 1em;
   clear: left;
 }
 
-/* line 75, ../sass/components/_style.sass */
+/* line 77, ../sass/components/_style.sass */
 .icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
@@ -941,19 +986,19 @@ label {
 
 }
 
-/* line 79, ../sass/components/_style.sass */
+/* line 81, ../sass/components/_style.sass */
 ::-webkit-scrollbar-track {
   border-radius: 3px;
   background-color: #eef5fb;
 }
 
-/* line 83, ../sass/components/_style.sass */
+/* line 85, ../sass/components/_style.sass */
 ::-webkit-scrollbar {
   width: 6px;
   background-color: #eef5fb;
 }
 
-/* line 87, ../sass/components/_style.sass */
+/* line 89, ../sass/components/_style.sass */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #265288;
