@@ -11,7 +11,7 @@ Map = (options) ->
     startZoom: 8
     maxZoom: 14
     pagerSize: 25
-    maxMarkers: 25 #@todo: rm
+    #maxMarkers: 25 #@todo: rm
   , options)
   
   #this.markers = {};

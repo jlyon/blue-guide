@@ -12,8 +12,7 @@ Map = function(options) {
     startLng: 0,
     startZoom: 8,
     maxZoom: 14,
-    pagerSize: 25,
-    maxMarkers: 25
+    pagerSize: 25
   }, options);
   this.markerLayer = new L.FeatureGroup();
   this.homeMarkerLayer = new L.FeatureGroup();

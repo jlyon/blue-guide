@@ -584,7 +584,7 @@
 
   /* line 98, ../sass/components/_responsive-mobile.sass */
   .right-sidebar {
-    right: -280px;
+    left: -280px;
     top: 64px;
     position: absolute;
     width: 280px;
@@ -615,11 +615,11 @@
   /* line 125, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .main-content,
   .right-sidebar-active .left-sidebar {
-    left: -280px;
+    left: 280px;
   }
   /* line 129, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .right-sidebar {
-    right: 0;
+    left: 0;
   }
 
   /* line 135, ../sass/components/_responsive-mobile.sass */

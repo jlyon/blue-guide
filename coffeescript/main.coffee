@@ -48,6 +48,7 @@ window.onload = ->
     layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-i5m0mag7/{z}/{x}/{y}.png"
     fields: filters.displayFields
     tabs: filters.tabs
+    pagerSize: if window.responsive isnt "mobile" then 25 else 10
   #if window.responsive isnt "mobile" or 1 is 1 
 
   # Add map

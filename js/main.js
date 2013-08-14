@@ -57,7 +57,8 @@ window.onload = function() {
     },
     layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-i5m0mag7/{z}/{x}/{y}.png",
     fields: filters.displayFields,
-    tabs: filters.tabs
+    tabs: filters.tabs,
+    pagerSize: window.responsive !== "mobile" ? 25 : 10
   };
   map = new Map(params);
   $("body").bind("queryUpdate", function() {
