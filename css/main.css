@@ -358,7 +358,7 @@
   width: 120%;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 620px) {
   /* line 2, ../sass/components/_responsive-desktop.sass */
   .no-desktop {
     display: none;
