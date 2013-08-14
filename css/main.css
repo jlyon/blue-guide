@@ -456,7 +456,7 @@
     right: 0;
   }
 }
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 620px) {
   /* line 3, ../sass/components/_responsive-mobile.sass */
   .no-mobile {
     display: none;
