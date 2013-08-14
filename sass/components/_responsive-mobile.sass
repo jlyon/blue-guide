@@ -23,18 +23,12 @@
     height: 100%
     padding: 0
 
-  body
-    > .row-fluid
-      position: relative
-      //overflow-x: hidden
-      width: 100%
-      height: 100%
-      +transition(all, $trans-time)
-
-    &.right-sidebar-active
-      > .row-fluid
-        right: 280px
-
+  .row-fluid
+    position: relative
+    //overflow-x: hidden
+    width: 100%
+    height: 100%
+    //+transition(all, $trans-time)
 
   .navbar .nav,
   #showFilters span
@@ -91,7 +85,7 @@
     position: absolute
     width: 100%
     left: 0
-    //+transition(all, $trans-time)
+    +transition(all, $trans-time)
 
     #map
       width: 100%
@@ -136,7 +130,7 @@
     top: 100%
     z-index: 100
     background-color: $white
-    //+transition(all, $trans-time)
+    +transition(all, $trans-time)
 
     #results
       padding-bottom: 4em
@@ -152,11 +146,11 @@
             display: none
 
   .right-sidebar
-    right: -280px
+    left: -280px
     top: $topnav-height
     position: absolute
     width: 280px
-    //+transition(all, $trans-time)
+    +transition(all, $trans-time)
 
   .left-sidebar-active
 
@@ -180,10 +174,10 @@
 
     .main-content,
     .left-sidebar
-      //left: -280px
+      left: 280px
 
     .right-sidebar
-      //right: 0
+      left: 0
 
 
   .overlay-active
