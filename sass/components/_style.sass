@@ -15,7 +15,7 @@ h3
 
   a
     color: $black
- 
+
 h2
   color: $blue
   font-size: 32px
@@ -28,19 +28,22 @@ h2
 #leaflet-control-geosearch-submit
   height: 38px
   +border-radius(3px)
+  background-color: $btn-blue
   +background-image(linear-gradient($btn-blue, tint($btn-blue, 10)))
   border: none
   +box-shadow($btn-blue-shadow 0 1px 1px)
   color: $white
   +text-shadow(none)
   font-weight: bold
-  outline: none
+  outline: 0
 
   &:focus,
   &:hover,
   &.active
     background-color: tint($btn-blue, 7)
+    +box-shadow($btn-blue-shadow 0 1px 1px)
     color: $white
+    outline: 0
 
   i
     margin-top: 2px

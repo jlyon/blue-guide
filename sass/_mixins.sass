@@ -40,34 +40,34 @@
   -webkit-animation: spin 2s infinite linear
   animation: spin 2s infinite linear
 
-  @-moz-keyframes spin 
-    0% 
+  @-moz-keyframes spin
+    0%
       -moz-transform: rotate(0deg)
-    100% 
+    100%
       -moz-transform: rotate(359deg)
 
-  @-webkit-keyframes spin 
-    0% 
+  @-webkit-keyframes spin
+    0%
       -webkit-transform: rotate(0deg)
-    100% 
+    100%
       -webkit-transform: rotate(359deg)
 
-  @-o-keyframes spin 
-    0% 
+  @-o-keyframes spin
+    0%
       -o-transform: rotate(0deg)
-    100% 
+    100%
       -o-transform: rotate(359deg)
 
-  @-ms-keyframes spin 
-    0% 
+  @-ms-keyframes spin
+    0%
       -ms-transform: rotate(0deg)
-    100% 
+    100%
       -ms-transform: rotate(359deg)
 
-  @keyframes spin 
-    0% 
+  @keyframes spin
+    0%
       transform: rotate(0deg)
-    100% 
+    100%
       transform: rotate(359deg)
 
 @mixin icon
@@ -80,6 +80,9 @@
   line-height: 1
   -webkit-font-smoothing: antialiased
 
+@mixin box()
+  +box-sizing(border-box)
+
 @mixin logos($scale)
   a
     display: block
@@ -88,7 +91,7 @@
     overflow: hidden
     background: url(../images/sponsors.png) 0 0 no-repeat
     background-size: $sponsor-logos-width * $scale auto
-    
+
     &.cchi
       width: 72px * $scale
 
