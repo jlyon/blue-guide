@@ -664,7 +664,7 @@
   }
   /* line 161, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active:not(.loading) .main-content {
-    height: 73%;
+    height: 100%;
   }
 
   /* line 167, ../sass/components/_responsive-mobile.sass */
