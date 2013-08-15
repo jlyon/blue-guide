@@ -759,6 +759,11 @@
 }
 @media only screen and (device-width: 320px) and (device-height: 480px) {
   /* line 226, ../sass/components/_responsive-mobile.sass */
+  body {
+    background-color: red;
+  }
+
+  /* line 229, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active:not(.loading) .left-sidebar {
     position: static;
   }
