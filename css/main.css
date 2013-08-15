@@ -659,43 +659,43 @@
   .left-sidebar-active:not(.loading) .left-sidebar {
     top: 70%;
   }
-  /* line 157, ../sass/components/_responsive-mobile.sass */
+  /* line 160, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active:not(.loading) .main-content {
     height: 70%;
   }
 
-  /* line 164, ../sass/components/_responsive-mobile.sass */
+  /* line 167, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .main-content,
   .right-sidebar-active .left-sidebar {
     left: 280px;
   }
-  /* line 168, ../sass/components/_responsive-mobile.sass */
+  /* line 171, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .right-sidebar {
     left: 0;
   }
 
-  /* line 174, ../sass/components/_responsive-mobile.sass */
+  /* line 177, ../sass/components/_responsive-mobile.sass */
   .overlay-active .main-content {
     height: auto;
   }
-  /* line 177, ../sass/components/_responsive-mobile.sass */
+  /* line 180, ../sass/components/_responsive-mobile.sass */
   .overlay-active #map {
     display: none;
   }
-  /* line 180, ../sass/components/_responsive-mobile.sass */
+  /* line 183, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about {
     padding: 1em 2em;
     height: auto;
   }
-  /* line 184, ../sass/components/_responsive-mobile.sass */
+  /* line 187, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about h2 {
     font-size: 24px;
   }
-  /* line 187, ../sass/components/_responsive-mobile.sass */
+  /* line 190, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos {
     margin: 0 -1em;
   }
-  /* line 190, ../sass/components/_responsive-mobile.sass */
+  /* line 193, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
     width: 45%;
@@ -728,17 +728,17 @@
     width: 126.0px;
     background-position: -287px 0;
   }
-  /* line 195, ../sass/components/_responsive-mobile.sass */
+  /* line 198, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li a {
     margin: 0 auto;
   }
-  /* line 198, ../sass/components/_responsive-mobile.sass */
+  /* line 201, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     padding-top: 2em;
   }
-  /* line 203, ../sass/components/_responsive-mobile.sass */
+  /* line 206, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
@@ -750,11 +750,17 @@
     padding-left: 0;
     padding-right: 0;
   }
-  /* line 214, ../sass/components/_responsive-mobile.sass */
+  /* line 217, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate,
   .overlay-active #mapOverlay,
   .overlay-active .left-sidebar {
     display: none;
+  }
+}
+@media only screen and (max-width: 620px) and (device-width: 320px) and (device-height: 480px) {
+  /* line 152, ../sass/components/_responsive-mobile.sass */
+  .left-sidebar-active:not(.loading) {
+    position: static;
   }
 }
 /* line 1, ../sass/components/_results.sass */
