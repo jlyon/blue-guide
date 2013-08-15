@@ -48,7 +48,8 @@ L.Control.GeoSearch = L.Control.extend({
         }
 
         this._map = map;
-        this._container = L.DomUtil.create('div', 'leaflet-control-geosearch');
+        this._container = L.DomUtil.create('form', 'leaflet-control-geosearch');
+        this._container.id = 'leaflet-control-geosearch-form';
 
         var searchbox = document.createElement('input');
         searchbox.id = 'leaflet-control-geosearch-qry';
@@ -56,7 +57,7 @@ L.Control.GeoSearch = L.Control.extend({
         searchbox.placeholder = this._config.searchLabel;
         this._searchbox = searchbox;
         
-        var searchbtn = document.createElement('button');
+        var searchbtn = document.createElement('submit');
         searchbtn.id = 'leaflet-control-geosearch-submit';
         searchbtn.className = 'btn';
         searchbtn.innerHTML = '<i class="icon-search"></i>';
@@ -79,7 +80,12 @@ L.Control.GeoSearch = L.Control.extend({
           var that = this;
           $btn.bind('click', function(){
             that.geosearch($('#leaflet-control-geosearch-qry').val());
-          })
+          });
+          $('#leaflet-control-geosearch-form').submit(function(){
+            alert('asdf');
+            that.geosearch($('#leaflet-control-geosearch-qry').val());
+            return false;
+          });
         }
 
         L.DomEvent
