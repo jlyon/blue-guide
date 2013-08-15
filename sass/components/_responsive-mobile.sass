@@ -18,17 +18,14 @@
 
   html,
   body,
-  .row-fluid,
   .main-content
     height: 100%
     padding: 0
 
   .row-fluid
     position: relative
-    //overflow-x: hidden
     width: 100%
     height: 100%
-    top: $topnav-height
     //+transition(all, $trans-time)
 
   .navbar .nav,
@@ -155,20 +152,11 @@
   .left-sidebar-active:not(.loading)
 
     .left-sidebar
-      position: static
-      margin-top: 100%
+      top: 70%
 
     .main-content
       height: 70%
 
-
-  .left-sidebar-big
-
-    .left-sidebar
-      top: 50%
-
-    .main-content
-      height: 50%
 
 
   .right-sidebar-active
