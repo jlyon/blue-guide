@@ -176,7 +176,7 @@ Map = function(options) {
           var $item;
           $item = $(this).parents(".item");
           if ($item.hasClass("active")) {
-            that.closeItem($item);
+            that.closeItem($item, true);
           } else {
             marker = that.markerLayer._layers[$item.attr("rel")];
             that.map.panTo(marker._latlng);
@@ -224,7 +224,6 @@ Map = function(options) {
   };
   this.scroll = function(parent, element) {
     var top;
-    console.log("scroll");
     if (window.responsive === "mobile") {
       parent = "body";
       top = element === 0 ? 0 : $(element).offset().top - 75;
@@ -238,13 +237,15 @@ Map = function(options) {
       easing: 'swing'
     });
   };
-  this.closeItem = function($item) {
+  this.closeItem = function($item, noScroll) {
     $item.removeClass("active");
     if (window.responsive !== "mobile") {
       return that.markerLayer._layers[$item.attr("rel")].closePopup();
     } else {
       $(that.updateSelector).removeClass("left-sidebar-big");
-      return that.scroll($results, 0);
+      if ((noScroll != null) && !noScroll) {
+        return that.scroll($results, 0);
+      }
     }
   };
   this.drawPagerSummary = function(data) {

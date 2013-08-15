@@ -194,7 +194,7 @@ Map = (options) ->
         $resultItem.find(".static-marker, h3 a").bind "click", (e) ->
           $item = $(this).parents(".item")
           if $item.hasClass "active"
-            that.closeItem $item
+            that.closeItem $item, true
           else
             marker = that.markerLayer._layers[$item.attr("rel")]
             #marker.zIndexOffset 1000
@@ -233,7 +233,6 @@ Map = (options) ->
     return
 
   @scroll = (parent, element) ->
-    console.log("scroll")
     if window.responsive is "mobile"
       parent = "body"
       top = if element is 0 then 0 else $(element).offset().top - 75
@@ -241,13 +240,14 @@ Map = (options) ->
       top = if element is 0 then 0 else $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
     $(parent).animate({ scrollTop: top }, { duration: 'slow', easing: 'swing'})
 
-  @closeItem = ($item) ->
+  @closeItem = ($item, noScroll) ->
     $item.removeClass "active"
     if window.responsive isnt "mobile"
       that.markerLayer._layers[$item.attr("rel")].closePopup()
     else
       $(that.updateSelector).removeClass "left-sidebar-big"
-      that.scroll $results, 0
+      if noScroll? and !noScroll
+        that.scroll $results, 0
 
   @drawPagerSummary = (data) ->
     return ich.pager
