@@ -17,6 +17,7 @@ Map = function(options) {
   this.markerLayer = new L.FeatureGroup();
   this.homeMarkerLayer = new L.FeatureGroup();
   this.resultNum = this.options.resultNum;
+  this.init = false;
   this.drawMap = function() {
     var locateUser, settings;
     this.map = new L.Map(this.options.id, {
@@ -63,6 +64,10 @@ Map = function(options) {
   };
   this.drawMarkers = function(data, pagerStart) {
     var $resultItem, $results, $text, activeColor, index, item, location, marker, pagerEnd, _i, _ref;
+    if (!this.init) {
+      this.init = true;
+      return;
+    }
     this.markerLayer.clearLayers();
     this.pagerStart = pagerStart != null ? pagerStart : 0;
     location = (this.location !== undefined ? this.location : this.map.getCenter());
@@ -170,36 +175,22 @@ Map = function(options) {
         $resultItem.find(".static-marker, h3 a").bind("click", function(e) {
           var $item;
           $item = $(this).parents(".item");
-          marker = that.markerLayer._layers[$item.attr("rel")];
-          that.map.panTo(marker._latlng);
-          if (window.responsive === "mobile") {
-            $item.parent().find('.item.active').removeClass("active");
-            /*
-            if e.currentTarget.className.indexOf "static-marker" isnt 0
-              console.log "marker"
-              that.scroll $results, 0
-            else
-              console.log "title"
-              $item.parent().find('.item').removeClass "active"
-              that.scroll $results, $item
-            */
-
+          if ($item.hasClass("active")) {
+            that.closeItem($item);
           } else {
-            marker.openPopup();
+            marker = that.markerLayer._layers[$item.attr("rel")];
+            that.map.panTo(marker._latlng);
+            if (window.responsive === "mobile") {
+              $item.parent().find('.item.active').removeClass("active");
+            } else {
+              marker.openPopup();
+            }
+            $item.addClass("active");
           }
-          $item.addClass("active");
           return false;
         });
         $resultItem.find(".close").bind("click", function() {
-          var $item;
-          $item = $(this).parents(".item");
-          $item.removeClass("active");
-          if (window.responsive !== "mobile") {
-            return that.markerLayer._layers[$item.attr("rel")].closePopup();
-          } else {
-            $(that.updateSelector).removeClass("left-sidebar-big");
-            return that.scroll($results, 0);
-          }
+          return that.closeItem($(this).parents(".item"));
         });
         $resultItem.find(".btn-directions").bind("click", function() {
           if (window.os === "android") {
@@ -228,6 +219,8 @@ Map = function(options) {
     }
     this.lastBounds = this.map.getBounds();
     this.forceZoom = void 0;
+    console.log("asdf");
+    $("body").removeClass("loading");
   };
   this.scroll = function(parent, element) {
     var top;
@@ -244,6 +237,15 @@ Map = function(options) {
       duration: 'slow',
       easing: 'swing'
     });
+  };
+  this.closeItem = function($item) {
+    $item.removeClass("active");
+    if (window.responsive !== "mobile") {
+      return that.markerLayer._layers[$item.attr("rel")].closePopup();
+    } else {
+      $(that.updateSelector).removeClass("left-sidebar-big");
+      return that.scroll($results, 0);
+    }
   };
   this.drawPagerSummary = function(data) {
     return ich.pager({

@@ -18,6 +18,7 @@ Map = (options) ->
   @markerLayer = new L.FeatureGroup()
   @homeMarkerLayer = new L.FeatureGroup()
   @resultNum = @options.resultNum
+  @init = false;
 
   @drawMap = ->
 
@@ -68,6 +69,10 @@ Map = (options) ->
     ).addTo @homeMarkerLayer
 
   @drawMarkers = (data, pagerStart) ->
+    if !@init
+      @init = true
+      return
+      
     @markerLayer.clearLayers()
     @pagerStart = if pagerStart? then pagerStart else 0
 
@@ -188,34 +193,21 @@ Map = (options) ->
 
         $resultItem.find(".static-marker, h3 a").bind "click", (e) ->
           $item = $(this).parents(".item")
-          marker = that.markerLayer._layers[$item.attr("rel")]
-          #marker.zIndexOffset 1000
-          that.map.panTo(marker._latlng)
-          if window.responsive is "mobile"
-            $item.parent().find('.item.active').removeClass "active"
-            #that.scroll $results, $item
-            ###
-            if e.currentTarget.className.indexOf "static-marker" isnt 0
-              console.log "marker"
-              that.scroll $results, 0
-            else
-              console.log "title"
-              $item.parent().find('.item').removeClass "active"
-              that.scroll $results, $item
-            ###
+          if $item.hasClass "active"
+            that.closeItem $item
           else
-            marker.openPopup()
-          $item.addClass "active"
+            marker = that.markerLayer._layers[$item.attr("rel")]
+            #marker.zIndexOffset 1000
+            that.map.panTo(marker._latlng)
+            if window.responsive is "mobile"
+              $item.parent().find('.item.active').removeClass "active"
+            else
+              marker.openPopup()
+            $item.addClass "active"
           false
 
         $resultItem.find(".close").bind "click", ->
-          $item = $(this).parents(".item")
-          $item.removeClass "active"
-          if window.responsive isnt "mobile"
-            that.markerLayer._layers[$item.attr("rel")].closePopup()
-          else
-            $(that.updateSelector).removeClass "left-sidebar-big"
-            that.scroll $results, 0
+          that.closeItem($(this).parents(".item"))
 
         $resultItem.find(".btn-directions").bind "click", ->
           if window.os is "android"
@@ -236,6 +228,8 @@ Map = (options) ->
     if data.length > @resultNum then @drawPager(data).appendTo $results
     @lastBounds = @map.getBounds()
     @forceZoom = undefined
+    console.log "asdf"
+    $("body").removeClass "loading"
     return
 
   @scroll = (parent, element) ->
@@ -247,6 +241,13 @@ Map = (options) ->
       top = if element is 0 then 0 else $(parent).scrollTop() + $(element).offset().top - $(parent).offset().top
     $(parent).animate({ scrollTop: top }, { duration: 'slow', easing: 'swing'})
 
+  @closeItem = ($item) ->
+    $item.removeClass "active"
+    if window.responsive isnt "mobile"
+      that.markerLayer._layers[$item.attr("rel")].closePopup()
+    else
+      $(that.updateSelector).removeClass "left-sidebar-big"
+      that.scroll $results, 0
 
   @drawPagerSummary = (data) ->
     return ich.pager

@@ -104,7 +104,7 @@ window.onload = function() {
   }
   updateMarkers = function(pagerStart) {
     var newZoom;
-    $('#show-markers').addClass("icon-spin");
+    $("body").addClass("loading");
     data = query.active(map.markerBounds(map.map.getBounds()));
     if ((map.forceZoom != null) && data.length < map.options.pagerSize * .8 && map.forceZoom < 4) {
       newZoom = map.map.getZoom() - 1;

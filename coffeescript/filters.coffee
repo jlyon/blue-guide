@@ -31,19 +31,22 @@ Filters = ->
     $(selector + " .btn:not(#reset)").bind "click", @constructQuery
     $(selector + " select").selectpicker().bind "change", @constructQuery
     $(selector + " #reset").bind "click", ->
+      $("body").addClass "loading"
       $(selector + " #field-search").val ""
       $(selector + " select").val("val", []).selectpicker("render")
       that.constructQuery()
+      if window.responsive is "mobile" then $("body").toggleClass "right-sidebar-active"
       false
 
     # Click events for "tabs"
     $(selector + " #tabs a").bind "click", ->
+      $("body").addClass "loading"
       $(selector + " #tabs a").removeClass "active"
       $(this).addClass "active"
       `activeTab = $(this).attr("rel")`
       $(btnSelector).toggleClass "active"
-      $("body").toggleClass "right-sidebar-active"
       that.constructQuery()
+      if window.responsive is "mobile" then $("body").toggleClass "right-sidebar-active"
       false
 
     # Click event for "Show Filters" btn
@@ -163,6 +166,9 @@ Filters = ->
     col: "Age Groups Served"
   ,
     label: "Open to"
+    col: "Area or Population Served"
+  ,
+    label: "Works With"
     col: "Works With"
   ,
     label: "Languages"

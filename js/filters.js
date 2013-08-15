@@ -36,18 +36,25 @@ Filters = function() {
     $(selector + " .btn:not(#reset)").bind("click", this.constructQuery);
     $(selector + " select").selectpicker().bind("change", this.constructQuery);
     $(selector + " #reset").bind("click", function() {
+      $("body").addClass("loading");
       $(selector + " #field-search").val("");
       $(selector + " select").val("val", []).selectpicker("render");
       that.constructQuery();
+      if (window.responsive === "mobile") {
+        $("body").toggleClass("right-sidebar-active");
+      }
       return false;
     });
     $(selector + " #tabs a").bind("click", function() {
+      $("body").addClass("loading");
       $(selector + " #tabs a").removeClass("active");
       $(this).addClass("active");
       activeTab = $(this).attr("rel");
       $(btnSelector).toggleClass("active");
-      $("body").toggleClass("right-sidebar-active");
       that.constructQuery();
+      if (window.responsive === "mobile") {
+        $("body").toggleClass("right-sidebar-active");
+      }
       return false;
     });
     $(btnSelector).bind("click", function() {
@@ -172,6 +179,9 @@ Filters = function() {
       col: "Age Groups Served"
     }, {
       label: "Open to",
+      col: "Area or Population Served"
+    }, {
+      label: "Works With",
       col: "Works With"
     }, {
       label: "Languages",

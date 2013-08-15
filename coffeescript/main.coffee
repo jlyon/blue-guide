@@ -106,7 +106,8 @@ window.onload = ->
 
   # Called when markers are updated
   updateMarkers = (pagerStart) ->
-    $('#show-markers').addClass "icon-spin"
+    $("body").addClass "loading"
+    #$('#show-markers').addClass "icon-spin"
     data = query.active(map.markerBounds(map.map.getBounds()))
     if map.forceZoom? and data.length < map.options.pagerSize*.8 and map.forceZoom < 4
       newZoom = map.map.getZoom()-1

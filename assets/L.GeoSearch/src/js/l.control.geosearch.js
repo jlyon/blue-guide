@@ -82,7 +82,7 @@ L.Control.GeoSearch = L.Control.extend({
           });
           $(this._searchbox).bind('change', function(){
             that.geosearch($('#leaflet-control-geosearch-qry').val());
-            alert('a');
+            //alert('a');
             return false;
           });
  
