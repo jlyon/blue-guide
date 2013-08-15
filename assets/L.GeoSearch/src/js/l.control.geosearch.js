@@ -48,7 +48,7 @@ L.Control.GeoSearch = L.Control.extend({
         }
 
         this._map = map;
-        this._container = L.DomUtil.create('form', 'leaflet-control-geosearch');
+        this._container = L.DomUtil.create('div', 'leaflet-control-geosearch');
         this._container.id = 'leaflet-control-geosearch-form';
 
         var searchbox = document.createElement('input');
@@ -76,15 +76,12 @@ L.Control.GeoSearch = L.Control.extend({
         $(this._container).append(this._searchbox, this._msgbox);
         if (this._config.submitButton) {
           $(this._container).append(this._searchbtn);
-          $btn = $(this._searchbtn);
           var that = this;
-          $btn.bind('click', function(){
+          $(this._searchbtn).bind('click', function(){
             that.geosearch($('#leaflet-control-geosearch-qry').val());
           });
-          $('#leaflet-control-geosearch-form').submit(function(){
+          $(this._searchbox).bind('change', function(){
             alert('asdf');
-            that.geosearch($('#leaflet-control-geosearch-qry').val());
-            return false;
           });
         }
 
