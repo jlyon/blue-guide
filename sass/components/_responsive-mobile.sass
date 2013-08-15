@@ -152,13 +152,14 @@
     width: 280px
     +transition(all, $trans-time)
 
-  .left-sidebar-active
+  .left-sidebar-active:not(.loading)
 
     .left-sidebar
-      top: 70%
+      position: static
+      margin-top: 100%
 
     .main-content
-      height: 70%
+      height: 73%
 
 
   .left-sidebar-big
