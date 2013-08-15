@@ -219,7 +219,7 @@ Map = function(options) {
     }
     this.lastBounds = this.map.getBounds();
     this.forceZoom = void 0;
-    console.log("asdf");
+    this.scroll("body", 0);
     $("body").removeClass("loading");
   };
   this.scroll = function(parent, element) {

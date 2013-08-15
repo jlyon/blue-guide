@@ -72,7 +72,7 @@ Map = (options) ->
     if !@init
       @init = true
       return
-      
+
     @markerLayer.clearLayers()
     @pagerStart = if pagerStart? then pagerStart else 0
 
@@ -228,7 +228,7 @@ Map = (options) ->
     if data.length > @resultNum then @drawPager(data).appendTo $results
     @lastBounds = @map.getBounds()
     @forceZoom = undefined
-    console.log "asdf"
+    @scroll "body", 0
     $("body").removeClass "loading"
     return
 
