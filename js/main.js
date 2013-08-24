@@ -4,7 +4,7 @@ query = void 0;
 
 tab = void 0;
 
-rev = 0.13;
+rev = 0.14;
 
 activeTab = void 0;
 
@@ -31,8 +31,19 @@ window.onload = function() {
   if ((data != null) && (data.rev != null) && data.rev === rev) {
     query = new JsonQuery("body", data);
   } else {
+    /*
+    `googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
+      locache.set("blueGuideData", data);
+      query = new JsonQuery("body", data);
+      console.log(data);
+    });`
+    googleQuery.get "select *"
+    console.log data
+    */
+
     jQuery.getJSON("json/data.json?rev=" + rev, {}, function(data) {
       locache.set("blueGuideData", data);
+      console.log(data);
       return query = new JsonQuery("body", data);
     });
   }

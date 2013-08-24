@@ -1,6 +1,6 @@
 query = undefined
 tab = undefined
-rev = 0.13
+rev = 0.14
 activeTab = undefined
 window.onload = ->
 
@@ -27,9 +27,20 @@ window.onload = ->
   if data? and data.rev? and data.rev is rev
     query = new JsonQuery("body", data)
   else
+    ###
+    `googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
+      locache.set("blueGuideData", data);
+      query = new JsonQuery("body", data);
+      console.log(data);
+    });`
+    googleQuery.get "select *"
+    console.log data
+    ###
     jQuery.getJSON "json/data.json?rev="+rev, {}, (data) ->
       locache.set "blueGuideData", data
+      console.log data
       query = new JsonQuery "body", data
+    
 
   params = 
     id: "map"

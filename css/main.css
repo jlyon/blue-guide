@@ -672,30 +672,31 @@
   /* line 168, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .right-sidebar {
     left: 0;
+    top: 10px;
   }
 
-  /* line 174, ../sass/components/_responsive-mobile.sass */
+  /* line 175, ../sass/components/_responsive-mobile.sass */
   .overlay-active .main-content {
     height: auto;
   }
-  /* line 177, ../sass/components/_responsive-mobile.sass */
+  /* line 178, ../sass/components/_responsive-mobile.sass */
   .overlay-active #map {
     display: none;
   }
-  /* line 180, ../sass/components/_responsive-mobile.sass */
+  /* line 181, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about {
     padding: 1em 2em;
     height: auto;
   }
-  /* line 184, ../sass/components/_responsive-mobile.sass */
+  /* line 185, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about h2 {
     font-size: 24px;
   }
-  /* line 187, ../sass/components/_responsive-mobile.sass */
+  /* line 188, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos {
     margin: 0 -1em;
   }
-  /* line 190, ../sass/components/_responsive-mobile.sass */
+  /* line 191, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
     width: 45%;
@@ -728,17 +729,17 @@
     width: 126.0px;
     background-position: -287px 0;
   }
-  /* line 195, ../sass/components/_responsive-mobile.sass */
+  /* line 196, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li a {
     margin: 0 auto;
   }
-  /* line 198, ../sass/components/_responsive-mobile.sass */
+  /* line 199, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     padding-top: 2em;
   }
-  /* line 203, ../sass/components/_responsive-mobile.sass */
+  /* line 204, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .leaflet-top.leaflet-center {
     margin-left: 0;
     top: 9em;
@@ -750,7 +751,7 @@
     padding-left: 0;
     padding-right: 0;
   }
-  /* line 214, ../sass/components/_responsive-mobile.sass */
+  /* line 215, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate,
   .overlay-active #mapOverlay,
   .overlay-active .left-sidebar {
@@ -758,7 +759,7 @@
   }
 }
 @media only screen and (device-width: 320px) and (device-height: 480px) {
-  /* line 227, ../sass/components/_responsive-mobile.sass */
+  /* line 228, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
     position: static !important;
   }
