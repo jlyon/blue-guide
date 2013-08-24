@@ -85,8 +85,6 @@ Map = (options) ->
     data.sort (a, b) ->
       a.distance - b.distance
 
-    console.log data.length
-
     # Add new markers and update results
     $results = $(@options.resultsSelector)
     activeColor = (if (activeTab? and activeTab isnt "All Types") then _.filter(@options.tabs, (tab) ->
@@ -156,8 +154,6 @@ Map = (options) ->
           .on("popupclose", (e) ->
             $item = $results.find(".item[rel=" + @_leaflet_id + "]")
             $item.removeClass "active"
-            console.log("close")
-
           )
 
         marker.addTo(that.markerLayer)

@@ -7,7 +7,6 @@ JsonQuery = function(selector, data) {
   this.status = false;
   this.selector = selector;
   this.constructActive = function(fields) {
-    console.log(fields);
     _.each(this.data.rows, function(row) {
       var matches;
       matches = {};

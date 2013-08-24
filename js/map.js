@@ -78,7 +78,6 @@ Map = function(options) {
     data.sort(function(a, b) {
       return a.distance - b.distance;
     });
-    console.log(data.length);
     $results = $(this.options.resultsSelector);
     activeColor = ((typeof activeTab !== "undefined" && activeTab !== null) && activeTab !== "All Types" ? _.filter(this.options.tabs, function(tab) {
       return tab.title === activeTab;
@@ -140,8 +139,7 @@ Map = function(options) {
           }).on("popupclose", function(e) {
             var $item;
             $item = $results.find(".item[rel=" + this._leaflet_id + "]");
-            $item.removeClass("active");
-            return console.log("close");
+            return $item.removeClass("active");
           });
         }
         marker.addTo(that.markerLayer);

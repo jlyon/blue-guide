@@ -76,7 +76,6 @@ Filters = ->
       val = $("#field-" + i).val()
       values[index] = val if val?
       i++
-    console.log values
     query.constructActive values
 
   @tabs = [
