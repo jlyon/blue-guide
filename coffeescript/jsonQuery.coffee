@@ -5,6 +5,7 @@ JsonQuery = (selector, data) ->
   @selector = selector
 
   @constructActive = (fields) ->
+    console.log fields
     _.each @data.rows, (row) ->
       matches = {}
       _.each fields, (vals, field) ->

@@ -78,34 +78,11 @@ Map = function(options) {
     data.sort(function(a, b) {
       return a.distance - b.distance;
     });
+    console.log(data.length);
     $results = $(this.options.resultsSelector);
     activeColor = ((typeof activeTab !== "undefined" && activeTab !== null) && activeTab !== "All Types" ? _.filter(this.options.tabs, function(tab) {
       return tab.title === activeTab;
     })[0].color : false);
-    /*
-    $results.html ""
-    if data.length is 0
-      $results.append ich.noResults()
-    else
-      if @resultNum is 100000
-        $text = ich.resultSummaryAll
-          num: data.length
-          smaller: @options.resultNum
-      else if data.length <= @resultNum
-        $text = ich.resultSummaryMatching
-          num: data.length
-      else
-        $text = ich.resultSummary
-          num: @resultNum
-          total: data.length # @todo: _.keys? ; filter data to only those w lat/lon?
-          location: if @locationType? then @locationType else "center of your map"
-      $text.find("a").bind "click", ->
-        that.resultNum = parseInt $(this).attr "rel"
-        that.drawMarkers data
-        false
-      $results.append $text
-    */
-
     $results.html("");
     if (data.length === 0) {
       $results.append(ich.noResults());

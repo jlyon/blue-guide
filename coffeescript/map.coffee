@@ -85,36 +85,13 @@ Map = (options) ->
     data.sort (a, b) ->
       a.distance - b.distance
 
+    console.log data.length
+
     # Add new markers and update results
     $results = $(@options.resultsSelector)
     activeColor = (if (activeTab? and activeTab isnt "All Types") then _.filter(@options.tabs, (tab) ->
       tab.title is activeTab
     )[0].color else false)
-
-    # Prep the #results div
-    ###
-    $results.html ""
-    if data.length is 0
-      $results.append ich.noResults()
-    else
-      if @resultNum is 100000
-        $text = ich.resultSummaryAll
-          num: data.length
-          smaller: @options.resultNum
-      else if data.length <= @resultNum
-        $text = ich.resultSummaryMatching
-          num: data.length
-      else
-        $text = ich.resultSummary
-          num: @resultNum
-          total: data.length # @todo: _.keys? ; filter data to only those w lat/lon?
-          location: if @locationType? then @locationType else "center of your map"
-      $text.find("a").bind "click", ->
-        that.resultNum = parseInt $(this).attr "rel"
-        that.drawMarkers data
-        false
-      $results.append $text
-###
 
     # Cycle through each item and add a marker
     $results.html ""

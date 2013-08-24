@@ -86,6 +86,7 @@ Filters = function() {
       }
       return i++;
     });
+    console.log(values);
     return query.constructActive(values);
   };
   this.tabs = [

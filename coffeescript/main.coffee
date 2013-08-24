@@ -1,6 +1,6 @@
 query = undefined
 tab = undefined
-rev = 0.12
+rev = 0.13
 activeTab = undefined
 window.onload = ->
 
@@ -19,7 +19,7 @@ window.onload = ->
   # Add filters
   filters = new Filters()
   data = locache.get("blueGuideData")
-  data = null
+  #data = null
   locache.set("blueGuideData", data)
   filters.draw "#filters", "#showFilters"
 
@@ -129,8 +129,8 @@ window.onload = ->
     map.addMarker(latlng)
     map.updateLocation latlng
     map.forceZoom = 1
-    query.fillActive()
-    updateMarkers undefined
+    filters.constructQuery()
+    #updateMarkers undefined
     activate()
     
     
