@@ -77,7 +77,6 @@ L.Control.GeoSearch = L.Control.extend({
         if (this._config.submitButton) {
           $(this._container).append(this._searchbtn);
           var that = this;
-<<<<<<< HEAD:assets/L.GeoSearch/src/js/l.control.geosearch.js
           $(this._searchbtn).bind('click', function(){
             that.geosearch($('#leaflet-control-geosearch-qry').val());
           });
@@ -87,15 +86,6 @@ L.Control.GeoSearch = L.Control.extend({
             return false;
           });
  
-=======
-          $btn.bind('click', function(){
-<<<<<<< HEAD:assets/L.GeoSearch/src/js/l.control.geosearch.js
-            that.geosearch($('#leaflet-control-geosearch-qry').val());
-=======
-            that._onKeyUp({keyCode: 13});
->>>>>>> c4c79d47b8c9db312ec0d4874de19015c5628840:app/assets/L.GeoSearch/src/js/l.control.geosearch.js
-          })
->>>>>>> 66d34141a4e1146eca2a26e6c0eb4fb01aa8fb8e:app/assets/L.GeoSearch/src/js/l.control.geosearch.js
         }
 
         L.DomEvent
