@@ -40,14 +40,13 @@
     <gap:splash gap:platform="ios" height="640" src="res/screen/iphone_retina_landscape.png" width="960" />
     <gap:splash gap:platform="ios" height="960" src="res/screen/iphone_retina_portrait.png" width="640" />
     <gap:splash gap:platform="winphone" height="800" src="res/screen/windows_phone_portrait.jpg" width="480" />
-    <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
     <preference name="phonegap-version" value="2.5.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="false" />
+    <preference name="fullscreen" value="true" />
     <preference name="load-url-timeout" value="35000" />
-    <access origin="*" />
     <access origin="http://mapbox.com" subdomains="true"/>
     <access origin="http://google.com" subdomains="true"/>
 </widget>
