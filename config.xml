@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-    <widget xmlns = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.albatrossdigital.blueguide"
-        versionCode="10" 
-        version   = "0.0.1">
-
-    <!-- versionCode is optional and Android only -->
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.imgfave"
+    version="2.0.0"
+    versionCode="1"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>Blue Guide</name>
 
@@ -17,20 +15,12 @@
         Albatross Digital
     </author>
 
-    <icon height="114" src="res/icon/cordova_ios_114.png" width="114" />
+    <icon height="114" src="res/icon/imgfave_114.png" width="114" />
     <icon height="512" src="res/icon/cordova_512.png" width="512" />
     <icon gap:platform="android" height="96" src="res/icon/cordova_android_96.png" width="96" />
-    <icon gap:platform="android" height="96" src="res/icon/cordova_ios_114.png" width="96" />
+    <icon gap:platform="android" height="96" src="res/icon/imgfave_114.png" width="96" />
     <icon gap:platform="blackberry" height="80" src="res/icon/cordova_bb_80.png" width="80" />
     <icon gap:platform="ios" height="144" src="res/icon/cordova_ios_144.png" width="144" />
-    <gap:splash gap:platform="android" height="480" src="res/screen/splash-landscape.png" width="800" />
-    <gap:splash gap:platform="android" height="800" src="res/screen/splash-portrait.png" width="480" />
-    <gap:splash gap:platform="android" height="200" src="res/screen/splash-landscape.png" width="320" />
-    <gap:splash gap:platform="android" height="320" src="res/screen/splash-portrait.png" width="200" />
-    <gap:splash gap:platform="android" height="320" src="res/screen/splash-landscape.png" width="480" />
-    <gap:splash gap:platform="android" height="480" src="res/screen/splash-portrait.png" width="320" />
-    <gap:splash gap:platform="android" height="720" src="res/screen/splash-landscape.png" width="1280" />
-    <gap:splash gap:platform="android" height="1280" src="res/screen/splash-portrait.png" width="720" />
     <gap:splash gap:platform="android" height="480" src="res/screen/android_hdpi_landscape.png" width="800" />
     <gap:splash gap:platform="android" height="800" src="res/screen/android_hdpi_portrait.png" width="480" />
     <gap:splash gap:platform="android" height="200" src="res/screen/android_ldpi_landscape.png" width="320" />
@@ -50,13 +40,13 @@
     <gap:splash gap:platform="ios" height="640" src="res/screen/iphone_retina_landscape.png" width="960" />
     <gap:splash gap:platform="ios" height="960" src="res/screen/iphone_retina_portrait.png" width="640" />
     <gap:splash gap:platform="winphone" height="800" src="res/screen/windows_phone_portrait.jpg" width="480" />
-    <preference name="phonegap-version" value="2.9.0" />
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <preference name="phonegap-version" value="2.5.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
     <preference name="load-url-timeout" value="35000" />
-    <feature name="http://api.phonegap.com/1.0/geolocation"/>
-    <feature name="http://api.phonegap.com/1.0/network"/>
     <access origin="*" />
     <access origin="http://mapbox.com" subdomains="true"/>
     <access origin="http://google.com" subdomains="true"/>
