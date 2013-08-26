@@ -26,7 +26,8 @@ Map = (options) ->
     @map = new L.Map(@options.id,
       center: new L.LatLng(@options.startLat, @options.startLng)
       zoom: @options.startZoom
-      layers: new L.TileLayer(@options.layerUrl)
+      layers: new L.TileLayer @options.layerUrl,
+        attribution: '<span>Built by <a href="http://albatrossdigital.com" title="Albatross Digital">Albatross Digital</a> | </span><a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
     )
     @markerLayer.addTo @map
     @homeMarkerLayer.addTo @map
