@@ -1,9 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.imgfave"
-    version="2.0.0"
-    versionCode="1"
-    xmlns="http://www.w3.org/ns/widgets"
-    xmlns:gap="http://phonegap.com/ns/1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.albatrossdigital.blueguide"
+        version   = "2.0.0">
 
     <name>Blue Guide</name>
 
@@ -15,48 +16,78 @@
         Albatross Digital
     </author>
 
-    <icon height="114" src="res/icon/imgfave_114.png" width="114" />
-    <icon height="512" src="res/icon/cordova_512.png" width="512" />
-    <icon gap:platform="android" height="96" src="res/icon/cordova_android_96.png" width="96" />
-    <icon gap:platform="android" height="96" src="res/icon/imgfave_114.png" width="96" />
-    <icon gap:platform="blackberry" height="80" src="res/icon/cordova_bb_80.png" width="80" />
-    <icon gap:platform="ios" height="144" src="res/icon/cordova_ios_144.png" width="144" />
-    <gap:splash src="splash.png" />
-    <gap:splash gap:platform="android" height="480" src="res/screen/android_hdpi_landscape.png" width="800" />
-    <gap:splash gap:platform="android" height="800" src="res/screen/android_hdpi_portrait.png" width="480" />
-    <gap:splash gap:platform="android" height="200" src="res/screen/android_ldpi_landscape.png" width="320" />
-    <gap:splash gap:platform="android" height="320" src="res/screen/android_ldpi_portrait.png" width="200" />
-    <gap:splash gap:platform="android" height="320" src="res/screen/android_mdpi_landscape.png" width="480" />
-    <gap:splash gap:platform="android" height="480" src="res/screen/android_mdpi_portrait.png" width="320" />
-    <gap:splash gap:platform="android" height="720" src="res/screen/android_xhdpi_landscape.png" width="1280" />
-    <gap:splash gap:platform="android" height="1280" src="res/screen/android_xhdpi_portrait.png" width="720" />
-    <gap:splash gap:platform="blackberry" height="300" src="res/screen/blackberry_transparent_300.png" width="300" />
-    <gap:splash gap:platform="blackberry" height="200" src="res/screen/blackberry_transparent_400.png" width="200" />
-    <gap:splash gap:platform="ios" height="748" src="res/screen/ipad_landscape.png" width="1024" />
-    <gap:splash gap:platform="ios" height="1004" src="res/screen/ipad_portrait.png" width="768" />
-    <gap:splash gap:platform="ios" height="1496" src="res/screen/ipad_retina_landscape.png" width="2048" />
-    <gap:splash gap:platform="ios" height="2008" src="res/screen/ipad_retina_portrait.png" width="1536" />
-    <gap:splash gap:platform="ios" height="320" src="res/screen/iphone_landscape.png" width="480" />
-    <gap:splash gap:platform="ios" height="480" src="res/screen/iphone_portrait.png" width="320" />
-    <gap:splash gap:platform="ios" height="640" src="res/screen/iphone_retina_landscape.png" width="960" />
-    <gap:splash gap:platform="ios" height="960" src="res/screen/iphone_retina_portrait.png" width="640" />
-    <gap:splash gap:platform="winphone" height="800" src="res/screen/windows_phone_portrait.jpg" width="480" />
+    <!--
+        Enable individual API permissions here.
+        The "device" permission is required for the 'deviceready' event.
+    -->
+    <feature name="http://api.phonegap.com/1.0/device" />
 
-    <!-- If you do not want any permissions to be added to your app, add the
+    <!--
+        If you do not want any permissions to be added to your app, add the
         following tag to your config.xml; you will still have the INTERNET
-        permission on your app, which PhoneGap requires. -->
-    <preference name="permissions" value="none"/>
+        permission on your app, which PhoneGap requires.
+    -->
+    <preference name="permissions"                value="none"/>
 
-    <!-- to enable individual permissions use the following examples -->
-    <feature name="http://api.phonegap.com/1.0/network"/> 
-    <feature name="http://api.phonegap.com/1.0/geolocation"/>
-    <feature name="http://api.phonegap.com/1.0/network"/>
+    <!-- Customize your app and platform with the preference element. -->
+    <preference name="phonegap-version"           value="2.9.0" />          <!-- all: current version of PhoneGap -->
+    <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
+    <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
+    <preference name="webviewbounce"              value="true" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
+    <preference name="prerendered-icon"           value="false" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
+    <preference name="stay-in-webview"            value="false" />          <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
+    <preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
+    <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
+    <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
+    <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+    <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
+    <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
+    <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+    <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 
-    <preference name="phonegap-version" value="2.5.0" />
-    <preference name="orientation" value="default" />
-    <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
-    <preference name="load-url-timeout" value="35000" />
+    <!-- Plugins can also be added here. -->
+    <!--
+        <gap:plugin name="Example" />
+        A list of available plugins are available at https://build.phonegap.com/docs/plugins
+    -->
+
+    <!-- Define app icon for each platform. -->
+    <icon src="icon.png" />
+    <icon src="res/icon/cordova_andorid_36.png"   gap:platform="android"    gap:density="ldpi" />
+    <icon src="res/icon/cordova_andorid_48.png"   gap:platform="android"    gap:density="mdpi" />
+    <icon src="res/icon/cordova_andorid_72.png"   gap:platform="android"    gap:density="hdpi" />
+    <icon src="res/icon/cordova_andorid_96.png"  gap:platform="android"    gap:density="xhdpi" />
+    <icon src="res/icon/cordova_ios_57.png"            gap:platform="ios"        width="57" height="57" />
+    <icon src="res/icon/cordova_ios_72.png"            gap:platform="ios"        width="72" height="72" />
+    <icon src="res/icon/cordova_ios_114.png"         gap:platform="ios"        width="114" height="114" />
+    <icon src="res/icon/cordova_ios_144.png"         gap:platform="ios"        width="144" height="144" />
+
+    <!-- Define app splash screen for each platform. -->
+    <gap:splash src="res/screen/android_ldpi_portrait.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="res/screen/android_mdpi_portrait.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="res/screen/android_hdpi_portrait.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="res/screen/android_xhdpi_portrait.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="res/screen/iphone_portrait.png"    gap:platform="ios"     width="320" height="480" />
+    <gap:splash src="res/screen/iphone_retina_portrait.png" gap:platform="ios"     width="640" height="960" />
+    <gap:splash src="res/screen/ipad_portrait.png"      gap:platform="ios"     width="768" height="1024" />
+    <gap:splash src="res/screen/ipad_landscape.png"     gap:platform="ios"     width="1024" height="768" />
+
+    <!--
+        Define access to external domains.
+
+        <access />            - a blank access tag denies access to all external resources.
+        <access origin="*" /> - a wildcard access tag allows access to all external resource.
+
+        Otherwise, you can specify specific domains:
+    -->
+    <access origin="http://127.0.0.1*"/>
     <access origin="http://mapbox.com" subdomains="true"/>
     <access origin="http://google.com" subdomains="true"/>
+    <!--
+        <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
+        <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
+        <access origin="http://phonegap.com" browserOnly="true" /> - only allows http://phonegap.com to be opened by the child browser.
+    -->
+
 </widget>
