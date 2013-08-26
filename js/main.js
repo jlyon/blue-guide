@@ -1,4 +1,4 @@
-var activeTab, query, rev, tab;
+var activeTab, app, query, rev, tab;
 
 query = void 0;
 
@@ -7,6 +7,19 @@ tab = void 0;
 rev = 0.14;
 
 activeTab = void 0;
+
+app = {
+  initialize: function() {
+    return this.bind();
+  },
+  bind: function() {
+    return document.addEventListener('deviceready', this.deviceready, false);
+  },
+  deviceready: function() {
+    app.report('deviceready');
+    return navigator.splashscreen.hide();
+  }
+};
 
 window.onload = function() {
   var $about, $search, activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;

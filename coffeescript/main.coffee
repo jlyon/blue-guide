@@ -2,6 +2,20 @@ query = undefined
 tab = undefined
 rev = 0.14
 activeTab = undefined
+
+# Phonegap-specific
+app =
+  initialize: ->
+    this.bind()
+  bind: ->
+    document.addEventListener 'deviceready', this.deviceready, false
+  deviceready: ->
+    app.report 'deviceready'
+    navigator.splashscreen.hide()
+
+
+
+
 window.onload = ->
 
   # Add responsive media queries
