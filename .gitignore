@@ -1,5 +1,3 @@
-dist/
-temp/
-
-.editorconfig
-.jshintrc
+.grunt/node_modules
+.sass-cache
+*.js.map
