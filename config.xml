@@ -40,8 +40,17 @@
     <gap:splash gap:platform="ios" height="640" src="res/screen/iphone_retina_landscape.png" width="960" />
     <gap:splash gap:platform="ios" height="960" src="res/screen/iphone_retina_portrait.png" width="640" />
     <gap:splash gap:platform="winphone" height="800" src="res/screen/windows_phone_portrait.jpg" width="480" />
+
+    <!-- If you do not want any permissions to be added to your app, add the
+        following tag to your config.xml; you will still have the INTERNET
+        permission on your app, which PhoneGap requires. -->
+    <preference name="permissions" value="none"/>
+
+    <!-- to enable individual permissions use the following examples -->
+    <feature name="http://api.phonegap.com/1.0/network"/> 
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
+
     <preference name="phonegap-version" value="2.5.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
