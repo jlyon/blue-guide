@@ -298,18 +298,26 @@
 }
 /* line 25, ../sass/components/_overlay.sass */
 .overlay-active #about {
-  padding: 5em 0 5em 7em;
+  padding: 3em 0 3em 7em;
   max-width: 800px;
 }
 /* line 29, ../sass/components/_overlay.sass */
 .overlay-active #about .summary {
-  margin-top: 10em;
+  margin-top: 8.5em;
 }
 /* line 32, ../sass/components/_overlay.sass */
+.overlay-active #about .summary p {
+  font-size: 13px;
+}
+/* line 35, ../sass/components/_overlay.sass */
+.overlay-active #about .summary .app-icons {
+  margin-bottom: 2em;
+}
+/* line 38, ../sass/components/_overlay.sass */
 .overlay-active #about .summary .logos {
   margin: 0;
 }
-/* line 35, ../sass/components/_overlay.sass */
+/* line 41, ../sass/components/_overlay.sass */
 .overlay-active #about .summary .logos li {
   float: left;
   list-style: none;
@@ -343,18 +351,18 @@
   width: 180px;
   background-position: -410px 0;
 }
-/* line 42, ../sass/components/_overlay.sass */
+/* line 48, ../sass/components/_overlay.sass */
 .overlay-active #map {
   border-right: none !important;
 }
-/* line 45, ../sass/components/_overlay.sass */
+/* line 51, ../sass/components/_overlay.sass */
 .overlay-active #map .leaflet-left {
   display: none;
 }
-/* line 48, ../sass/components/_overlay.sass */
+/* line 54, ../sass/components/_overlay.sass */
 .overlay-active #map .leaflet-top.leaflet-center {
   margin-left: 7em;
-  margin-top: 12em;
+  margin-top: 9em;
   width: 120%;
 }
 
