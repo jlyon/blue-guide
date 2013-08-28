@@ -145,6 +145,7 @@
 
   .right-sidebar
     left: -280px
+    top: 10px
     position: absolute
     width: 280px
     +transition(all, $trans-time)
@@ -168,7 +169,6 @@
 
     .right-sidebar
       left: 0
-      top: 10px
 
 
   .overlay-active
@@ -227,6 +227,5 @@
 // This is a bit of a hack, but it's the only thing that would work
 @media only screen and (device-width:320px) and (device-height:480px) 
   .left-sidebar-active .left-sidebar
-    position: static !important
     top: 0 !important
     margin-top: 250px

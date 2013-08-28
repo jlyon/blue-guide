@@ -464,6 +464,18 @@
     right: 0;
   }
 }
+@media screen and (min-width: 620px) and (max-width: 900px) {
+  /* line 79, ../sass/components/_responsive-desktop.sass */
+  #geocode {
+    clear: left !important;
+    margin-top: 0;
+  }
+
+  /* line 83, ../sass/components/_responsive-desktop.sass */
+  #about p {
+    font-size: 0.9em;
+  }
+}
 @media screen and (max-width: 620px) {
   /* line 3, ../sass/components/_responsive-mobile.sass */
   .no-mobile {
@@ -655,6 +667,7 @@
   /* line 146, ../sass/components/_responsive-mobile.sass */
   .right-sidebar {
     left: -280px;
+    top: 10px;
     position: absolute;
     width: 280px;
     -webkit-transition: all, 1s;
@@ -664,24 +677,23 @@
     background-color: white;
   }
 
-  /* line 155, ../sass/components/_responsive-mobile.sass */
+  /* line 156, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active:not(.loading) .left-sidebar {
     top: 70%;
   }
-  /* line 158, ../sass/components/_responsive-mobile.sass */
+  /* line 159, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active:not(.loading) .main-content {
     height: 70%;
   }
 
-  /* line 165, ../sass/components/_responsive-mobile.sass */
+  /* line 166, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .main-content,
   .right-sidebar-active .left-sidebar {
     left: 280px;
   }
-  /* line 169, ../sass/components/_responsive-mobile.sass */
+  /* line 170, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .right-sidebar {
     left: 0;
-    top: 10px;
   }
 
   /* line 176, ../sass/components/_responsive-mobile.sass */
@@ -770,7 +782,6 @@
 @media only screen and (device-width: 320px) and (device-height: 480px) {
   /* line 229, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
-    position: static !important;
     top: 0 !important;
     margin-top: 250px;
   }
