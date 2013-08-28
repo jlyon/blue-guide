@@ -43,7 +43,6 @@ window.onload = function() {
 
     jQuery.getJSON("json/data.json?rev=" + rev, {}, function(data) {
       locache.set("blueGuideData", data);
-      console.log(data);
       return query = new JsonQuery("body", data);
     });
   }
@@ -118,6 +117,9 @@ window.onload = function() {
     data = query.active(map.markerBounds(map.map.getBounds()));
     if ((map.forceZoom != null) && data.length < map.options.pagerSize * .8 && map.forceZoom < 4) {
       newZoom = map.map.getZoom() - 1;
+      if (newZoom < 0) {
+        newZoom = 13;
+      }
       map.map.setZoom(newZoom);
       return map.forceZoom = parseInt(map.forceZoom) + 1;
     } else {

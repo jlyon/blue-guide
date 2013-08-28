@@ -38,7 +38,6 @@ window.onload = ->
     ###
     jQuery.getJSON "json/data.json?rev="+rev, {}, (data) ->
       locache.set "blueGuideData", data
-      console.log data
       query = new JsonQuery "body", data
     
 
@@ -78,7 +77,6 @@ window.onload = ->
 
   map.map.on "dragend", ->
     if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))
-      #console.log "update"
       updateMarkers()
 
   map.map.on "zoomend", ->
@@ -122,6 +120,7 @@ window.onload = ->
     data = query.active(map.markerBounds(map.map.getBounds()))
     if map.forceZoom? and data.length < map.options.pagerSize*.8 and map.forceZoom < 4
       newZoom = map.map.getZoom()-1
+      newZoom = 13 if newZoom < 0
       map.map.setZoom newZoom
       map.forceZoom = parseInt(map.forceZoom) + 1
     else 
