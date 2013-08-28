@@ -771,7 +771,8 @@
   /* line 229, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
     position: static !important;
-    top: 336px;
+    top: 0 !important;
+    margin-top: 250px;
   }
 }
 /* line 1, ../sass/components/_results.sass */
