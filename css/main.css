@@ -925,7 +925,7 @@ h2 {
 #leaflet-control-geosearch-submit:focus,
 #leaflet-control-geosearch-submit:hover,
 #leaflet-control-geosearch-submit.active {
-  background-color: #73a3d2;
+  background-color: #4585c4;
   -webkit-box-shadow: #1f4066 2px -1px -1px;
   -moz-box-shadow: #1f4066 2px -1px -1px;
   box-shadow: #1f4066 2px -1px -1px;
@@ -933,6 +933,12 @@ h2 {
   outline: 0;
 }
 /* line 48, ../sass/components/_style.sass */
+.btn-normal.active,
+.btn-dark.active,
+#leaflet-control-geosearch-submit.active {
+  background-color: #73a3d2;
+}
+/* line 51, ../sass/components/_style.sass */
 .btn-normal i,
 .btn-dark i,
 #leaflet-control-geosearch-submit i {
@@ -940,13 +946,13 @@ h2 {
   margin-right: 5px;
   font-size: 16px;
 }
-/* line 53, ../sass/components/_style.sass */
+/* line 56, ../sass/components/_style.sass */
 .btn-normal.btn-search i,
 .btn-dark.btn-search i,
 #leaflet-control-geosearch-submit.btn-search i {
   margin-right: 0;
 }
-/* line 56, ../sass/components/_style.sass */
+/* line 59, ../sass/components/_style.sass */
 .btn-normal.btn-dark,
 .btn-dark.btn-dark,
 #leaflet-control-geosearch-submit.btn-dark {
@@ -956,7 +962,7 @@ h2 {
   background-image: -o-linear-gradient(#1f4066, #355375);
   background-image: linear-gradient(#1f4066, #355375);
 }
-/* line 59, ../sass/components/_style.sass */
+/* line 62, ../sass/components/_style.sass */
 .btn-normal.btn-dark:focus, .btn-normal.btn-dark:hover,
 .btn-dark.btn-dark:focus,
 .btn-dark.btn-dark:hover,
@@ -965,7 +971,7 @@ h2 {
   background-color: #2e4d70;
 }
 
-/* line 64, ../sass/components/_style.sass */
+/* line 67, ../sass/components/_style.sass */
 input[type="text"] {
   height: 38px !important;
   border: 1px solid #f59630 !important;
@@ -973,21 +979,21 @@ input[type="text"] {
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
-/* line 69, ../sass/components/_style.sass */
+/* line 72, ../sass/components/_style.sass */
 input[type="text"]:focus {
   -webkit-box-shadow: inset 0 1px 4px #cccccc;
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
 
-/* line 72, ../sass/components/_style.sass */
+/* line 75, ../sass/components/_style.sass */
 label {
   font-weight: bold;
   margin-top: 1em;
   clear: left;
 }
 
-/* line 78, ../sass/components/_style.sass */
+/* line 81, ../sass/components/_style.sass */
 .icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
@@ -1056,19 +1062,19 @@ label {
 
 }
 
-/* line 82, ../sass/components/_style.sass */
+/* line 85, ../sass/components/_style.sass */
 ::-webkit-scrollbar-track {
   border-radius: 3px;
   background-color: #cccccc;
 }
 
-/* line 86, ../sass/components/_style.sass */
+/* line 89, ../sass/components/_style.sass */
 ::-webkit-scrollbar {
   width: 10px;
   background-color: #cccccc;
 }
 
-/* line 90, ../sass/components/_style.sass */
+/* line 93, ../sass/components/_style.sass */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #265288;

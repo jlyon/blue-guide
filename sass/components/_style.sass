@@ -40,10 +40,13 @@ h2
   &:focus,
   &:hover,
   &.active
-    background-color: tint($btn-blue, 30)
+    background-color: tint($btn-blue, 7)
     +box-shadow($btn-blue-shadow 2px -1px -1px)
     color: $white
     outline: 0
+
+  &.active
+    background-color: tint($btn-blue, 30)
 
   i
     margin-top: 2px
