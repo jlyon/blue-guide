@@ -148,6 +148,7 @@
     position: absolute
     width: 280px
     +transition(all, $trans-time)
+    background-color: $white
 
   .left-sidebar-active:not(.loading)
 
@@ -227,3 +228,4 @@
 @media only screen and (device-width:320px) and (device-height:480px) 
   .left-sidebar-active .left-sidebar
     position: static !important
+    top: 480px * .7
