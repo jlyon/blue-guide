@@ -54,24 +54,24 @@
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
-    <icon src="res/icon/cordova_andorid_36.png"   gap:platform="android"    gap:density="ldpi" />
-    <icon src="res/icon/cordova_andorid_48.png"   gap:platform="android"    gap:density="mdpi" />
-    <icon src="res/icon/cordova_andorid_72.png"   gap:platform="android"    gap:density="hdpi" />
-    <icon src="res/icon/cordova_andorid_96.png"  gap:platform="android"    gap:density="xhdpi" />
-    <icon src="res/icon/cordova_ios_57.png"            gap:platform="ios"        width="57" height="57" />
-    <icon src="res/icon/cordova_ios_72.png"            gap:platform="ios"        width="72" height="72" />
-    <icon src="res/icon/cordova_ios_114.png"         gap:platform="ios"        width="114" height="114" />
-    <icon src="res/icon/cordova_ios_144.png"         gap:platform="ios"        width="144" height="144" />
+    <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
+    <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
+    <icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon-72-hdpi.png" />
+    <icon gap:density="xhdpi" gap:platform="android" src="res/icon/android/icon-96-xhdpi.png" />
+    <icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />
+    <icon gap:platform="ios" height="72" src="res/icon/ios/icon-72.png" width="72" />
+    <icon gap:platform="ios" height="114" src="res/icon/ios/icon-57-2x.png" width="114" />
+    <icon gap:platform="ios" height="144" src="res/icon/ios/icon-72-2x.png" width="144" />
 
     <!-- Define app splash screen for each platform. -->
-    <gap:splash src="res/screen/android_ldpi_portrait.png"  gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="res/screen/android_mdpi_portrait.png"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="res/screen/android_hdpi_portrait.png"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="res/screen/android_xhdpi_portrait.png" gap:platform="android" gap:density="xhdpi" />
-    <gap:splash src="res/screen/iphone_portrait.png"    gap:platform="ios"     width="320" height="480" />
-    <gap:splash src="res/screen/iphone_retina_portrait.png" gap:platform="ios"     width="640" height="960" />
-    <gap:splash src="res/screen/ipad_portrait.png"      gap:platform="ios"     width="768" height="1024" />
-    <gap:splash src="res/screen/ipad_landscape.png"     gap:platform="ios"     width="1024" height="768" />
+    <gap:splash gap:density="ldpi" gap:platform="android" src="res/screen/android/screen-ldpi-portrait.png" />
+    <gap:splash gap:density="mdpi" gap:platform="android" src="res/screen/android/screen-mdpi-portrait.png" />
+    <gap:splash gap:density="hdpi" gap:platform="android" src="res/screen/android/screen-hdpi-portrait.png" />
+    <gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/screen-xhdpi-portrait.png" />
+    <gap:splash gap:platform="ios" height="480" src="res/screen/ios/screen-iphone-portrait.png" width="320" />
+    <gap:splash gap:platform="ios" height="960" src="res/screen/ios/screen-iphone-portrait-2x.png" width="640" />
+    <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
+    <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
 
     <!--
         Define access to external domains.
