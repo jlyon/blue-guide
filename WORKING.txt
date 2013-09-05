@@ -1,4 +1,0 @@
-key: AIzaSyBkpY07SAQb2K0qZIFBsoPy9E4EIWH4DE8
-
-select count() from 1SlzdILvycqmxW6BpkEs7aDsIslOcR8ffbGONU34 where 'Community-funded Safety Net Clinic (CSNC)' = 'X' limit 10
-
