@@ -28,7 +28,7 @@ Open your new spreadsheet and start filling in content.  The Example sheet (tab 
 * Columns `A-J`, `O-Q` are text fields that should be self-explanitory.
 * Column `K` (Full Address) is a formula and will automatically be completed from the other address columns.
 * Columns `L`, `M`, `N` will be completed during the geocoding process (below).
-* Columns `R-T`, `U-X` are either `Y`/`N` fields or text fields.  See the Example sheet.
+* Columns `R-T`, `U-X` are either Y/N fields or text fields.  See the Example sheet.
 * Columns `Y-DA` are binary on/off columns.  If the clinic provides the service, enter an `X`. If not, leave it blank.  There can be multiple entries per category. See the Example sheet.
 
 Staff members from the Colorado Health Initiative are available for assistance. Contact @todo.
@@ -63,14 +63,30 @@ The Colorado Blue Guide uses Github to host the entire map app.  [Github's hosti
 Copy the file that you created in the Export step above into the json dir such that `json/data.json` exists.  If everything went right, you should be able to see your points and filter based on your categories right out of the box.
 
 ###Customizing the map
-The map was built using [Leaflet.js](http://leafletjs.com/), and uses many web technologies, including [incanhaz.js](http://icanhazjs.com/) for templates, [CoffeeScript](http://coffeescript.org/) to preprocess javascript and [SASS](http://sass-lang.com/)/[Compass](http://compass-style.org/) to preprocess CSS styles.  Everything can be compiled and watched at once using [Grunt]():
-`
+The map was built using [Leaflet.js](http://leafletjs.com/), and uses many web technologies, including [incanhaz.js](http://icanhazjs.com/) for templates, [CoffeeScript](http://coffeescript.org/) to preprocess javascript and [SASS](http://sass-lang.com/)/[Compass](http://compass-style.org/) to preprocess CSS styles.  Everything can be compiled and watched at once using [Grunt](http://gruntjs.com/) (requires node.js):
+```
 cd .grunt
 sudo bash install.sh
 grunt
-`
+```
 
+[Albatross Digital](http://albatrossdigital.com) is available for paid support. Email contact@albatrossdigital.com for more information.
 
+####Customizing the text and HTML
+All of the text can be edited in index.html. The top of the file has the generate page structure, including the header and logo. Below there are `<script>` tags that have templates for different page elements (the splash page, the sidebar results, the popups, etc).
+
+####Customizing the map tiles
+By default, the open-source Colorado Blue Guide ships with map tiles from Open Street Map, which are admmittedly not very pretty.  There are many different layers possible.  We recommend [MapBox](http://mapbox.com), which will allow you to customize the tiles in an easy-to-use web interface. [See additional providers](https://github.com/leaflet-extras/leaflet-providers).
+
+To switch out the map tiles, edit the `layerUrl` attribute in `coffeescript/main.coffee`, line 57.  To use mapbox (MAP_ID) will be something like `albatrossdigital.map-********`:
+```
+layerUrl: "http://a.tiles.mapbox.com/v3/MAP_ID/{z}/{x}/{y}.png"
+```
+####Customizing the styles
+You should edit files in `sass/`, not the CSS files. Most of the spreadsheets are broken out into various components in `sass/components/`.
+
+####Customizing the filters
+The filters can be customized by editing the `@tabs` and `@fields` arrays in `coffeescript/filters.coffee`.
 
 
 
