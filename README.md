@@ -6,7 +6,7 @@ A complete system to visualize healthcare providers on a standalone searchable, 
 This documentation was prepared by [Albatross Digital](http://albatrossdigital.com), who worked with the [Colorado Health Initiative](http:// cohealthinitiative.org) to build the inital Colorado Blue Guide.
 
 Overview
---------
+========
 
 This document walks you through the process of setting up your map. The process of creating the clinic map is separated into two parts:
 
@@ -16,7 +16,7 @@ This document walks you through the process of setting up your map. The process 
 The [Colorado Health Initiative](http:// cohealthinitiative.org) is available to assist in Step 1. [Albatross Digital](http://albatrossdigital.com) can help you geocode, set up and customize your map (for a fee).
 
 1. Data collection, geocoding and formatting
---------------------------------------------
+============================================
 
 ###Copy the Google Doc
 We have created a Google Doc template to help you collect, geocode, and export your data in a format that the map application can read.
@@ -48,7 +48,7 @@ The final step is to export the Google Spreadsheet into compact format that the 
 @todo
 
 2. Setting up the map app
--------------------------
+=========================
 
 We are open-sourcing the entire Blue Guide application.  The application uses the Leaflet HTML5 mapping library.  The look and feel of the map can be cusomtized by tweaking the CSS stylesheets and customizing the map tiles.  See the Customizing section below for details.
 
@@ -72,24 +72,23 @@ grunt
 
 [Albatross Digital](http://albatrossdigital.com) is available for paid support. Email contact@albatrossdigital.com for more information.
 
-####Customizing the text and HTML
+#####Customizing the text and HTML
 All of the text can be edited in index.html. The top of the file has the generate page structure, including the header and logo. Below there are `<script>` tags that have templates for different page elements (the splash page, the sidebar results, the popups, etc).
 
-####Customizing the map tiles
+#####Customizing the map tiles
 By default, the open-source Colorado Blue Guide ships with map tiles from Open Street Map, which are admmittedly not very pretty.  There are many different layers possible.  We recommend [MapBox](http://mapbox.com), which will allow you to customize the tiles in an easy-to-use web interface. [See additional providers](https://github.com/leaflet-extras/leaflet-providers).
 
 To switch out the map tiles, edit the `layerUrl` attribute in `coffeescript/main.coffee`, line 57.  To use mapbox (MAP_ID) will be something like `albatrossdigital.map-********`:
 ```
 layerUrl: "http://a.tiles.mapbox.com/v3/MAP_ID/{z}/{x}/{y}.png"
 ```
-####Customizing the styles
+#####Customizing the styles
 You should edit files in `sass/`, not the CSS files. Most of the spreadsheets are broken out into various components in `sass/components/`.
 
-####Customizing the filters
+#####Customizing the filters
 The filters can be customized by editing the `@tabs` and `@fields` arrays in `coffeescript/filters.coffee`.
 
-
-####Packaging as an iOS/Android app
+#####Packaging as an iOS/Android app
 The repository has all of the necessary files to be built as a [Phonegap](http://phonegap.com/) app. Specifically, the configuration, permissions and splash screen images are all defined in `config.xml`. You can easily build the app by pointing to your Github repo in [Adobe's Phonegap Build](http://build.phonegap.com/).
 
 
