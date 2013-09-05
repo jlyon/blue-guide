@@ -1,7 +1,7 @@
 Blue Guide
 ==========
 
-A complete system to visualize healthcare providers for ___. For a live demo, go to http://blueguide.cohealthinitiative.org.
+A complete system to visualize healthcare providers on a standalone searchable, filterable map. Includes mobile responsive version. For a live demo, go to http://blueguide.cohealthinitiative.org.
 
 This documentation was prepared by [Albatross Digital](http://albatrossdigital.com), who worked with the [Colorado Health Initiative](http:// cohealthinitiative.org) to build the inital Colorado Blue Guide.
 
@@ -20,7 +20,7 @@ The [Colorado Health Initiative](http:// cohealthinitiative.org) is available to
 
 ###Copy the Google Doc
 We have created a Google Doc template to help you collect, geocode, and export your data in a format that the map application can read.
-* [Open the Blue Guide Template spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AlaP5UvLJD2wdG1JdFBxbHl5YTVxb0RYOUZBYlhYNUE*gid=0).
+* [Open the Blue Guide Template spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0Alw0s_pQVmyXdDFUbEtjaVBUYU5TRVgtX1dVNGdNb2c&usp=sharing).
 * Go to File -> Make a copy and enter a new file name.
 
 ###Enter your data
@@ -88,6 +88,9 @@ You should edit files in `sass/`, not the CSS files. Most of the spreadsheets ar
 ####Customizing the filters
 The filters can be customized by editing the `@tabs` and `@fields` arrays in `coffeescript/filters.coffee`.
 
+
+####Packaging as an iOS/Android app
+The repository has all of the necessary files to be built as a [Phonegap](http://phonegap.com/) app. Specifically, the configuration, permissions and splash screen images are all defined in `config.xml`. You can easily build the app by pointing to your Github repo in [Adobe's Phonegap Build](http://build.phonegap.com/).
 
 
 
