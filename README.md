@@ -3,7 +3,7 @@ Blue Guide
 
 A complete system to visualize healthcare providers on a standalone searchable, filterable map. Includes mobile responsive version. For a live demo, go to http://blueguide.cohealthinitiative.org.
 
-This documentation was prepared by [Albatross Digital](http://albatrossdigital.com), who worked with the [Colorado Health Initiative](http:// cohealthinitiative.org) to build the inital Colorado Blue Guide.
+This documentation was prepared by [Albatross Digital](http://albatrossdigital.com), who worked with the [Colorado Consumer Health Initiative](http:// cohealthinitiative.org) to build the inital Colorado Blue Guide.
 
 Overview
 ========
@@ -13,7 +13,7 @@ This document walks you through the process of setting up your map. The process 
 I. [Data collection, geocoding and formatting](#i-data-collection-geocoding-export) <br/>
 II. [Setting up and customizing the map](#ii-setting-up-the-map-app)
 
-The [Colorado Health Initiative](http:// cohealthinitiative.org) is available to assist in Step 1. [Albatross Digital](http://albatrossdigital.com) can help you geocode, set up and customize your map (for a fee).
+The [Colorado Consumer Health Initiative](http:// cohealthinitiative.org) is available to assist in Step 1. [Albatross Digital](http://albatrossdigital.com) can help you geocode, set up and customize your map (for a fee).
 
 I. Data collection, geocoding, export
 =====================================
@@ -31,7 +31,7 @@ Open your new spreadsheet and start filling in content.  The Example sheet (tab 
 * Columns `R-T`, `U-X` are either Y/N fields or text fields.  See the Example sheet.
 * Columns `Y-DA` are binary on/off columns.  If the clinic provides the service, enter an `X`. If not, leave it blank.  There can be multiple entries per category. See the Example sheet.
 
-Staff members from the Colorado Health Initiative are available for assistance. Contact @todo.
+Staff members from the Colorado Consumer Health Initiative are available for assistance. Contact @todo.
 
 ###3. Geocode your data
 We need latitudes and longitudes for each address in order to plot them on the map. This process is called geocoding. The Google Spreadsheet has Mapbox's [Geo for Google Docs](https://github.com/mapbox/geo-googledocs) plugin installed for easy geocoding. Geocode addresses after they have been entered:
