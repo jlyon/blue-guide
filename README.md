@@ -10,12 +10,12 @@ Overview
 
 This document walks you through the process of setting up your map. The process of creating the clinic map is separated into two parts:
 
-I. [Data collection, geocoding and formatting](#i)
+I. [Data collection, geocoding and formatting](#i) 
 II. [Setting up and customizing the map](#ii)
 
 The [Colorado Health Initiative](http:// cohealthinitiative.org) is available to assist in Step 1. [Albatross Digital](http://albatrossdigital.com) can help you geocode, set up and customize your map (for a fee).
 
-<a id="i"></a>I. Data collection, geocoding, export
+I. Data collection, geocoding, export
 =====================================
 
 ###1. Copy the Google Doc
@@ -47,7 +47,7 @@ We need latitudes and longitudes for each address in order to plot them on the m
 The final step is to export the Google Spreadsheet into compact format that the map app can read.  We use [JSON](http://en.wikipedia.org/wiki/JSON).
 @todo
 
-<a id="ii"></a>II. Setting up the map app
+II. Setting up the map app
 ==========================
 
 We are open-sourcing the entire Blue Guide application.  The application uses the Leaflet HTML5 mapping library.  The look and feel of the map can be cusomtized by tweaking the CSS stylesheets and customizing the map tiles.  See the Customizing section below for details.
