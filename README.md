@@ -15,8 +15,8 @@ This document walks you through the process of setting up your map. The process 
 
 The [Colorado Health Initiative](http:// cohealthinitiative.org) is available to assist in Step 1. [Albatross Digital](http://albatrossdigital.com) can help you geocode, set up and customize your map (for a fee).
 
-1. Data collection, geocoding and formatting
-============================================
+1. Data collection, geocoding, export
+=====================================
 
 ###Copy the Google Doc
 We have created a Google Doc template to help you collect, geocode, and export your data in a format that the map application can read.
