@@ -10,8 +10,8 @@ Overview
 
 This document walks you through the process of setting up your map. The process of creating the clinic map is separated into two parts:
 
-I. [Data collection, geocoding and formatting](#i) 
-II. [Setting up and customizing the map](#ii)
+I. [Data collection, geocoding and formatting](#i-data-collection-geocoding-export) 
+II. [Setting up and customizing the map](#ii-setting-up-the-map-app)
 
 The [Colorado Health Initiative](http:// cohealthinitiative.org) is available to assist in Step 1. [Albatross Digital](http://albatrossdigital.com) can help you geocode, set up and customize your map (for a fee).
 
