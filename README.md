@@ -36,10 +36,10 @@ Staff members from the Colorado Health Initiative are available for assistance. 
 ###3. Geocode your data
 We need latitudes and longitudes for each address in order to plot them on the map. This process is called geocoding. The Google Spreadsheet has Mapbox's [Geo for Google Docs](https://github.com/mapbox/geo-googledocs) plugin installed for easy geocoding. Geocode addresses after they have been entered:
 * Highlight the Full Address column (`K`)
-* In the document menu, click on `Geo` (right after `Help`). Go to Geo -> Geocode addresses.
+* In the document menu, click on Geo (right after Help). Go to Geo -> Geocode addresses.
 * You will be asked to verify the app.  Give it permission by connecting it to your Google account.
 * Go to Geo -> Geocode addresses again.
-* Select a geocoding server. We recommend `mapquest`, and filling in with `google`.
+* Select a geocoding server. We recommend starting with mapquest, and filling in with google.
 * The script will run through each row, generating values for Columns `L`, `M`, `N`.
 * After the script has run, ensure that there are values in each columns `L`, `M`, `N`, and that Column `O` is Email. You may need to cut/paste data as the Geocoding script can move columns around.
 
