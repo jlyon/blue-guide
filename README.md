@@ -8,7 +8,7 @@ This documentation was prepared by [Albatross Digital](http://albatrossdigital.c
 Overview
 ========
 
-This document walks you through the process of setting up your map. The process of creating the clinic map is separated into two parts:
+This document walks you through the process of setting up your map using free tools, and free hosting with [Github Pages](http://pages.github.com/). The process of creating the clinic map is separated into two parts:
 
 I. [Data collection, geocoding and formatting](#i-data-collection-geocoding-export) <br/>
 II. [Setting up and customizing the map](#ii-setting-up-the-map-app)
@@ -43,9 +43,8 @@ We need latitudes and longitudes for each address in order to plot them on the m
 * The script will run through each row, generating values for Columns `L`, `M`, `N`.
 * After the script has run, ensure that there are values in each columns `L`, `M`, `N`, and that Column `O` is Email. You may need to cut/paste data as the Geocoding script can move columns around.
 
-###4. Export your data to JSON for the map app
-The final step is to export the Google Spreadsheet into compact format that the map app can read.  We use [JSON](http://en.wikipedia.org/wiki/JSON).
-@todo
+Keep this Google Spreadsheet open, we will need it shortly.
+
 
 II. Setting up the map app
 ==========================
@@ -60,7 +59,11 @@ The Colorado Blue Guide uses Github to host the entire map app.  [Github's hosti
 * [Set up your custom (.com/.org) domain](https://help.github.com/articles/setting-up-a-custom-domain-with-pages).
 
 ###2. Load in your data
-Copy the file that you created in the Export step above into the json dir such that `json/data.json` exists.  If everything went right, you should be able to see your points and filter based on your categories right out of the box.
+Now we need to go back to the Google Spreadsheet and export the data to a [JSON](http://en.wikipedia.org/wiki/JSON) data.json.
+
+@todo: This portion of the documentation needs to be completed.  Contact contact@albatrossdigital.com in the meantime.
+
+  Copy the file that you created in the Export step above into the json dir such that `json/data.json` exists.  If everything went right, you should be able to see your points and filter based on your categories right out of the box.
 
 ###3. Customize the map
 The map was built using [Leaflet.js](http://leafletjs.com/), and uses many web technologies, including [incanhaz.js](http://icanhazjs.com/) for templates, [CoffeeScript](http://coffeescript.org/) to preprocess javascript and [SASS](http://sass-lang.com/)/[Compass](http://compass-style.org/) to preprocess CSS styles.  Everything can be compiled and watched at once using [Grunt](http://gruntjs.com/) (requires node.js):
