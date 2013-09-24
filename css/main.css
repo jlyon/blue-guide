@@ -5,7 +5,7 @@
 }
 /* line 7, ../sass/components/_filters.sass */
 #filters .accordion-heading {
-  font-family: adelle, serif;
+  font-family: adelle, Baskerville, "Droid Serif", serif;
   font-weight: bold;
   background-color: #eef5fb;
   margin: 5px;
@@ -196,7 +196,7 @@
 }
 /* line 19, ../sass/components/_header.sass */
 .navbar .links .nav a {
-  font-family: adelle, serif;
+  font-family: adelle, Baskerville, "Droid Serif", serif;
   font-weight: bold;
   color: white !important;
   text-shadow: none;
@@ -208,45 +208,84 @@
 }
 /* line 4, ../sass/components/_map.sass */
 #map #geocode {
-  z-index: 10;
+  z-index: 3;
 }
 
 /* line 7, ../sass/components/_map.sass */
-.leaflet-top.leaflet-center {
+.leaflet-top.leaflet-left {
   width: 100%;
   margin-left: 50px;
 }
 /* line 11, ../sass/components/_map.sass */
-.leaflet-top.leaflet-center .leaflet-control-geosearch {
-  background: none;
+.leaflet-top.leaflet-left div.leaflet-control-geosearch {
+  background-color: white;
   float: left;
   width: auto;
   padding: 0;
   margin-right: 1em;
   width: 350px;
+  height: 38px;
+  border: 1px solid #f59630 !important;
+  -webkit-box-shadow: inset 0 1px 4px #cccccc;
+  -moz-box-shadow: inset 0 1px 4px #cccccc;
+  box-shadow: inset 0 1px 4px #cccccc;
+  z-index: 4;
 }
-/* line 19, ../sass/components/_map.sass */
-.leaflet-top.leaflet-center .leaflet-control-geosearch input {
-  background: white;
+/* line 23, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch a:hover {
+  background-color: white;
+}
+/* line 26, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch form.displayNone {
+  display: block;
+}
+/* line 29, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch form {
+  background: transparent;
+}
+/* line 32, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch form input {
+  height: 26px;
+  margin-top: 2px;
+  background: transparent;
   width: 290px;
   float: left;
   margin-right: 10px;
+  width: 90%;
 }
-/* line 26, ../sass/components/_map.sass */
-.leaflet-top.leaflet-center .leaflet-control-geosearch #leaflet-control-geosearch-submit i {
+/* line 41, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch .leaflet-geosearch-autocomplete {
+  position: absolute;
+}
+/* line 44, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch .leaflet-geosearch-message {
+  top: 38px;
+}
+/* line 47, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch a.leaflet-bar-part {
+  top: 6px;
+  background-color: transparent;
+}
+/* line 52, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left div.leaflet-control-geosearch #leaflet-control-geosearch-submit i {
   margin: 0;
 }
-/* line 29, ../sass/components/_map.sass */
-.leaflet-top.leaflet-center .leaflet-control-locate {
+/* line 55, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left .leaflet-control-locate {
   clear: none;
 }
+/* line 58, ../sass/components/_map.sass */
+.leaflet-top.leaflet-left .leaflet-control-zoom {
+  position: absolute;
+  left: -45px;
+}
 
-/* line 33, ../sass/components/_map.sass */
+/* line 63, ../sass/components/_map.sass */
 .leaflet-container {
-  font-family: "open-sans", sans-serif;
+  font-family: "open-sans", Helvetica, "Droid Sans", sans-serif;
   font-size: 14px;
 }
-/* line 37, ../sass/components/_map.sass */
+/* line 67, ../sass/components/_map.sass */
 .leaflet-container .leaflet-popup-content-wrapper {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -254,11 +293,11 @@
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 41, ../sass/components/_map.sass */
+/* line 71, ../sass/components/_map.sass */
 .leaflet-container .leaflet-popup-content-wrapper .fields .title {
   width: 4.5em;
 }
-/* line 44, ../sass/components/_map.sass */
+/* line 74, ../sass/components/_map.sass */
 .leaflet-container .leaflet-popup-content-wrapper .fields .value {
   margin-left: 5.5em;
 }
@@ -298,18 +337,26 @@
 }
 /* line 25, ../sass/components/_overlay.sass */
 .overlay-active #about {
-  padding: 5em 0 5em 7em;
+  padding: 3em 0 3em 7em;
   max-width: 800px;
 }
 /* line 29, ../sass/components/_overlay.sass */
 .overlay-active #about .summary {
-  margin-top: 10em;
+  margin-top: 8.5em;
 }
 /* line 32, ../sass/components/_overlay.sass */
+.overlay-active #about .summary p {
+  font-size: 13px;
+}
+/* line 35, ../sass/components/_overlay.sass */
+.overlay-active #about .summary .app-icons {
+  margin-bottom: 2em;
+}
+/* line 38, ../sass/components/_overlay.sass */
 .overlay-active #about .summary .logos {
   margin: 0;
 }
-/* line 35, ../sass/components/_overlay.sass */
+/* line 41, ../sass/components/_overlay.sass */
 .overlay-active #about .summary .logos li {
   float: left;
   list-style: none;
@@ -343,19 +390,19 @@
   width: 180px;
   background-position: -410px 0;
 }
-/* line 42, ../sass/components/_overlay.sass */
+/* line 48, ../sass/components/_overlay.sass */
 .overlay-active #map {
   border-right: none !important;
 }
-/* line 45, ../sass/components/_overlay.sass */
-.overlay-active #map .leaflet-left {
-  display: none;
-}
-/* line 48, ../sass/components/_overlay.sass */
-.overlay-active #map .leaflet-top.leaflet-center {
+/* line 51, ../sass/components/_overlay.sass */
+.overlay-active #map .leaflet-top.leaflet-left {
   margin-left: 7em;
-  margin-top: 12em;
+  margin-top: 9em;
   width: 120%;
+}
+/* line 56, ../sass/components/_overlay.sass */
+.overlay-active #map .leaflet-top.leaflet-left .leaflet-control-zoom {
+  display: none;
 }
 
 @media screen and (min-width: 620px) {
@@ -400,7 +447,7 @@
   }
 
   /* line 29, ../sass/components/_responsive-desktop.sass */
-  .left-sidebar #results,
+  .left-sidebar,
   .right-sidebar {
     height: 100%;
     overflow-x: hidden;
@@ -454,6 +501,18 @@
   /* line 74, ../sass/components/_responsive-desktop.sass */
   .right-sidebar-active .right-sidebar {
     right: 0;
+  }
+}
+@media screen and (min-width: 620px) and (max-width: 900px) {
+  /* line 79, ../sass/components/_responsive-desktop.sass */
+  #geocode {
+    clear: left !important;
+    margin-top: 0;
+  }
+
+  /* line 83, ../sass/components/_responsive-desktop.sass */
+  #about p {
+    font-size: 0.9em;
   }
 }
 @media screen and (max-width: 620px) {
@@ -574,49 +633,29 @@
     height: 100%;
   }
   /* line 92, ../sass/components/_responsive-mobile.sass */
-  .main-content .leaflet-top.leaflet-center {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0px;
-    padding-left: 60px;
-    padding-right: 10px;
-    width: 100%;
-    display: none;
+  .main-content .leaflet-top.leaflet-left {
+    width: 80%;
   }
-  /* line 100, ../sass/components/_responsive-mobile.sass */
-  .locate-active .main-content .leaflet-top.leaflet-center {
+  /* line 95, ../sass/components/_responsive-mobile.sass */
+  .locate-active .main-content .leaflet-top.leaflet-left {
     display: block;
   }
-  /* line 103, ../sass/components/_responsive-mobile.sass */
-  .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    position: relative;
-    margin-right: 0;
-    padding-right: 48px;
+  /* line 98, ../sass/components/_responsive-mobile.sass */
+  .main-content .leaflet-top.leaflet-left div.leaflet-control-geosearch {
     width: 100%;
   }
-  /* line 110, ../sass/components/_responsive-mobile.sass */
-  .main-content .leaflet-top.leaflet-center .leaflet-control-geosearch input {
-    max-width: 100%;
-    width: 100%;
-    margin-right: 0;
-    float: left;
-  }
-  /* line 117, ../sass/components/_responsive-mobile.sass */
-  .main-content .leaflet-top.leaflet-center #leaflet-control-geosearch-submit {
+  /* line 101, ../sass/components/_responsive-mobile.sass */
+  .main-content .leaflet-top.leaflet-left #leaflet-control-geosearch-submit {
     position: absolute;
     top: 0;
     right: 0;
   }
-  /* line 122, ../sass/components/_responsive-mobile.sass */
-  .main-content .leaflet-top.leaflet-center .leaflet-control-locate {
+  /* line 106, ../sass/components/_responsive-mobile.sass */
+  .main-content .leaflet-top.leaflet-left .leaflet-control-locate {
     width: 100%;
   }
 
-  /* line 126, ../sass/components/_responsive-mobile.sass */
+  /* line 110, ../sass/components/_responsive-mobile.sass */
   .left-sidebar {
     position: relative;
     top: 100%;
@@ -627,76 +666,86 @@
     -o-transition: all, 1s;
     transition: all, 1s;
   }
-  /* line 133, ../sass/components/_responsive-mobile.sass */
+  /* line 117, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results {
     padding-bottom: 4em;
   }
-  /* line 136, ../sass/components/_responsive-mobile.sass */
+  /* line 120, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination {
     margin: 0.5em 0 0 0;
   }
-  /* line 140, ../sass/components/_responsive-mobile.sass */
+  /* line 124, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination:first-child + .item {
     padding-top: 0;
   }
-  /* line 143, ../sass/components/_responsive-mobile.sass */
+  /* line 127, ../sass/components/_responsive-mobile.sass */
   .left-sidebar #results .pagination:first-child ul {
     display: none;
   }
 
-  /* line 146, ../sass/components/_responsive-mobile.sass */
+  /* line 130, ../sass/components/_responsive-mobile.sass */
   .right-sidebar {
     left: -280px;
+    top: 10px;
     position: absolute;
     width: 280px;
     -webkit-transition: all, 1s;
     -moz-transition: all, 1s;
     -o-transition: all, 1s;
     transition: all, 1s;
+    background-color: white;
   }
 
-  /* line 154, ../sass/components/_responsive-mobile.sass */
+  /* line 140, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active:not(.loading) .left-sidebar {
-    top: 70%;
+    top: 80%;
   }
-  /* line 157, ../sass/components/_responsive-mobile.sass */
+  /* line 143, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active:not(.loading) .main-content {
-    height: 70%;
+    height: 80%;
   }
 
-  /* line 164, ../sass/components/_responsive-mobile.sass */
+  /* line 150, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .main-content,
   .right-sidebar-active .left-sidebar {
     left: 280px;
   }
-  /* line 168, ../sass/components/_responsive-mobile.sass */
+  /* line 154, ../sass/components/_responsive-mobile.sass */
   .right-sidebar-active .right-sidebar {
     left: 0;
-    top: 10px;
   }
 
-  /* line 175, ../sass/components/_responsive-mobile.sass */
+  /* line 160, ../sass/components/_responsive-mobile.sass */
   .overlay-active .main-content {
     height: auto;
   }
-  /* line 178, ../sass/components/_responsive-mobile.sass */
+  /* line 163, ../sass/components/_responsive-mobile.sass */
   .overlay-active #map {
+    position: static !important;
+  }
+  /* line 166, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #map .leaflet-map-pane {
     display: none;
   }
-  /* line 181, ../sass/components/_responsive-mobile.sass */
+  /* line 169, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #map .leaflet-top.leaflet-left {
+    margin-left: 1.8em;
+    width: 80%;
+  }
+  /* line 173, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about {
     padding: 1em 2em;
     height: auto;
   }
-  /* line 185, ../sass/components/_responsive-mobile.sass */
+  /* line 177, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about h2 {
     font-size: 24px;
   }
-  /* line 188, ../sass/components/_responsive-mobile.sass */
+  /* line 180, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos {
     margin: 0 -1em;
   }
-  /* line 191, ../sass/components/_responsive-mobile.sass */
+  /* line 183, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li {
     margin-right: 5px;
     width: 45%;
@@ -729,18 +778,18 @@
     width: 126.0px;
     background-position: -287px 0;
   }
-  /* line 196, ../sass/components/_responsive-mobile.sass */
+  /* line 188, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .summary .logos li a {
     margin: 0 auto;
   }
-  /* line 199, ../sass/components/_responsive-mobile.sass */
+  /* line 191, ../sass/components/_responsive-mobile.sass */
   .overlay-active #about .supported {
     text-align: center;
     font-style: italic;
     padding-top: 2em;
   }
-  /* line 204, ../sass/components/_responsive-mobile.sass */
-  .overlay-active #about .leaflet-top.leaflet-center {
+  /* line 196, ../sass/components/_responsive-mobile.sass */
+  .overlay-active #about .leaflet-top.leaflet-left {
     margin-left: 0;
     top: 9em;
     display: block;
@@ -751,17 +800,57 @@
     padding-left: 0;
     padding-right: 0;
   }
-  /* line 215, ../sass/components/_responsive-mobile.sass */
+  /* line 207, ../sass/components/_responsive-mobile.sass */
   .overlay-active #showLocate,
   .overlay-active #mapOverlay,
   .overlay-active .left-sidebar {
     display: none;
   }
+
+  /* line 213, ../sass/components/_responsive-mobile.sass */
+  .leaflet-top.leaflet-left div.leaflet-control-geosearch,
+  .leaflet-top.leaflet-left #geocode {
+    display: none;
+  }
+
+  /* line 220, ../sass/components/_responsive-mobile.sass */
+  .locate-active .leaflet-top.leaflet-left div.leaflet-control-geosearch,
+  .locate-active .leaflet-top.leaflet-left #geocode,
+  .overlay-active .leaflet-top.leaflet-left div.leaflet-control-geosearch,
+  .overlay-active .leaflet-top.leaflet-left #geocode {
+    display: block;
+  }
 }
 @media only screen and (device-width: 320px) and (device-height: 480px) {
-  /* line 228, ../sass/components/_responsive-mobile.sass */
+  /* line 233, ../sass/components/_responsive-mobile.sass */
   .left-sidebar-active .left-sidebar {
-    position: static !important;
+    top: 0 !important;
+    margin-top: 280px;
+  }
+
+  /* line 239, ../sass/components/_responsive-mobile.sass */
+  .leaflet-top.leaflet-left div.leaflet-control-geosearch form input {
+    margin-top: 0;
+  }
+  /* line 242, ../sass/components/_responsive-mobile.sass */
+  .leaflet-top.leaflet-left div.leaflet-control-geosearch a.leaflet-bar-part {
+    top: 4px;
+  }
+}
+@media only screen and (device-width: 320px) and (device-height: 568px) {
+  /* line 246, ../sass/components/_responsive-mobile.sass */
+  .left-sidebar-active .left-sidebar {
+    top: 0 !important;
+    margin-top: 340px;
+  }
+
+  /* line 252, ../sass/components/_responsive-mobile.sass */
+  .leaflet-top.leaflet-left div.leaflet-control-geosearch form input {
+    margin-top: 0;
+  }
+  /* line 255, ../sass/components/_responsive-mobile.sass */
+  .leaflet-top.leaflet-left div.leaflet-control-geosearch a.leaflet-bar-part {
+    top: 4px;
   }
 }
 /* line 1, ../sass/components/_results.sass */
@@ -796,7 +885,7 @@
 /* line 26, ../sass/components/_results.sass */
 #results .item h3 span {
   color: #cccccc;
-  font-family: "open-sans", sans-serif;
+  font-family: "open-sans", Helvetica, "Droid Sans", sans-serif;
   font-size: 0.8em;
 }
 /* line 31, ../sass/components/_results.sass */
@@ -852,14 +941,14 @@ input,
 button,
 select,
 textarea {
-  font-family: "open-sans", sans-serif;
+  font-family: "open-sans", Helvetica, "Droid Sans", sans-serif;
 }
 
 /* line 9, ../sass/components/_style.sass */
 h1,
 h2,
 h3 {
-  font-family: adelle, serif;
+  font-family: adelle, Baskerville, "Droid Serif", serif;
   font-weight: bold;
   font-size: 18px;
   line-height: 1.2em;
@@ -916,13 +1005,19 @@ h2 {
 #leaflet-control-geosearch-submit:hover,
 #leaflet-control-geosearch-submit.active {
   background-color: #4585c4;
-  -webkit-box-shadow: #1f4066 0 1px 1px;
-  -moz-box-shadow: #1f4066 0 1px 1px;
-  box-shadow: #1f4066 0 1px 1px;
+  -webkit-box-shadow: #1f4066 2px -1px -1px;
+  -moz-box-shadow: #1f4066 2px -1px -1px;
+  box-shadow: #1f4066 2px -1px -1px;
   color: white;
   outline: 0;
 }
 /* line 48, ../sass/components/_style.sass */
+.btn-normal.active,
+.btn-dark.active,
+#leaflet-control-geosearch-submit.active {
+  background-color: #73a3d2;
+}
+/* line 51, ../sass/components/_style.sass */
 .btn-normal i,
 .btn-dark i,
 #leaflet-control-geosearch-submit i {
@@ -930,13 +1025,13 @@ h2 {
   margin-right: 5px;
   font-size: 16px;
 }
-/* line 53, ../sass/components/_style.sass */
+/* line 56, ../sass/components/_style.sass */
 .btn-normal.btn-search i,
 .btn-dark.btn-search i,
 #leaflet-control-geosearch-submit.btn-search i {
   margin-right: 0;
 }
-/* line 56, ../sass/components/_style.sass */
+/* line 59, ../sass/components/_style.sass */
 .btn-normal.btn-dark,
 .btn-dark.btn-dark,
 #leaflet-control-geosearch-submit.btn-dark {
@@ -946,7 +1041,7 @@ h2 {
   background-image: -o-linear-gradient(#1f4066, #355375);
   background-image: linear-gradient(#1f4066, #355375);
 }
-/* line 59, ../sass/components/_style.sass */
+/* line 62, ../sass/components/_style.sass */
 .btn-normal.btn-dark:focus, .btn-normal.btn-dark:hover,
 .btn-dark.btn-dark:focus,
 .btn-dark.btn-dark:hover,
@@ -955,7 +1050,7 @@ h2 {
   background-color: #2e4d70;
 }
 
-/* line 64, ../sass/components/_style.sass */
+/* line 67, ../sass/components/_style.sass */
 input[type="text"] {
   height: 38px !important;
   border: 1px solid #f59630 !important;
@@ -963,21 +1058,21 @@ input[type="text"] {
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
-/* line 69, ../sass/components/_style.sass */
+/* line 72, ../sass/components/_style.sass */
 input[type="text"]:focus {
   -webkit-box-shadow: inset 0 1px 4px #cccccc;
   -moz-box-shadow: inset 0 1px 4px #cccccc;
   box-shadow: inset 0 1px 4px #cccccc;
 }
 
-/* line 72, ../sass/components/_style.sass */
+/* line 75, ../sass/components/_style.sass */
 label {
   font-weight: bold;
   margin-top: 1em;
   clear: left;
 }
 
-/* line 78, ../sass/components/_style.sass */
+/* line 81, ../sass/components/_style.sass */
 .icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
@@ -1046,22 +1141,33 @@ label {
 
 }
 
-/* line 82, ../sass/components/_style.sass */
+/* line 85, ../sass/components/_style.sass */
 ::-webkit-scrollbar-track {
   border-radius: 3px;
   background-color: #cccccc;
 }
 
-/* line 86, ../sass/components/_style.sass */
+/* line 89, ../sass/components/_style.sass */
 ::-webkit-scrollbar {
   width: 10px;
   background-color: #cccccc;
 }
 
-/* line 90, ../sass/components/_style.sass */
+/* line 93, ../sass/components/_style.sass */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #265288;
+}
+
+/* line 97, ../sass/components/_style.sass */
+.attribution {
+  font-size: 0.9em;
+  margin: 2em 0 1em 45px;
+  line-height: 1.5em;
+}
+/* line 102, ../sass/components/_style.sass */
+.attribution .small {
+  font-size: 0.9em;
 }
 
 /* No files to import found in includes/* */

@@ -1,9 +1,12 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:og="http://ogp.me/ns#">
   <head>
     <meta charset="utf-8">
     <title>The Blue Guide - A resource from the Colorado Consumer Health Initiative</title>
+    <meta content="http://blueguide.cohealthinitiative.org/images/thumbnail.png" property="og:image" />
+    <meta content="The Blue Guide" property="og:title" />
+    <meta content="Find medical professionals near you with this helpful map and guide from the Colorado Consumer Health Initiative" property="og:description" />
+    <meta name="description" content="Find medical professionals near you with this helpful map and guide from the Colorado Consumer Health Initiative"> 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, target-densitydpi=160dpi initial-scale=1, user-scalable=no">
@@ -31,14 +34,14 @@
 
     <link href="assets/bootstrap-select/bootstrap-select.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/leaflet/leaflet.css" />
-    <link href="assets/L.GeoSearch/src/css/l.geosearch.css" rel="stylesheet" />
+    <link href="assets/L.GeoSearch/src/css/leaflet-control-geosearch.css" rel="stylesheet" />
     <link href="assets/icomoon/style.css" rel="stylesheet" />
     <link href="assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css" rel="stylesheet" />
     <link href="assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css" rel="stylesheet" />
 
     <script src="assets/leaflet/leaflet.js"></script>
-    <script src="assets/L.GeoSearch/src/js/l.control.geosearch.js"></script>
-    <script src="assets/L.GeoSearch/src/js/l.geosearch.provider.google.js"></script>
+    <script src="assets/L.GeoSearch/src/js/leaflet.control.geosearch.js"></script>
+    <script src="assets/L.GeoSearch/src/js/leaflet.geosearch.provider.google.js"></script>
 
     <script src="assets/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
     <script src="assets/locache/locache.min.js"></script>
@@ -95,6 +98,10 @@
 
       <div class="left-sidebar">
         <div class="" id="results"></div>
+        <div class="attribution">
+          Built by <a href="http://albatrossdigital.com" title="Albatross Digital" target="_blank">Albatross Digital</a>
+          <div class="small"><a href="http://mapbox.com/about/maps" target="_blank">Map Terms &amp; Feedback</a></div>
+        </div>
       </div>
 
       <div class="main-content" id="main">
@@ -107,6 +114,18 @@
       </div>
 
     </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-7613889-39']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
 
   </body>
 </html>
@@ -126,6 +145,11 @@
       health care providers and health care access assistance sites that can help Coloradans apply for
       and enroll in Medicaid, CHP+, and private insurance through the new online insurance marketplace,
       Connect for Health Colorado.</p>
+      <p class="no-mobile">Easily access this guide on your mobile device with our apps (iPhone app coming soon):</p>
+      <p class="no-mobile app-icons">
+        <a href="https://play.google.com/store/apps/details?id=com.albatrossdigital.blueguide" target="_blank"><img src="/images/google_play.png" alt="Get it on Google Play" width="119" height="44" /></a>
+      </p>
+      </p>
       <p class="no-mobile">This guide was prepared by the <a class="cchi" href="http://www.cohealthinitiative.org/" target="_blank">Colorado Consumer Health Initiative</a> with support from the
       <a class="caring" href="http://www.caringforcolorado.org/" target="_blank">Caring for Colorado Foundation</a>, <a class="piton" href="http://www.piton.org/" target="_blank">the Piton Foundation</a>, and <a class="connect" href="http://www.connectforhealthco.com/" target="_blank">Connect for Health Colorado.</a> </p>
       <p class="no-desktop supported">Supported by:</p>

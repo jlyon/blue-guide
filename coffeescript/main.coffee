@@ -2,20 +2,6 @@ query = undefined
 tab = undefined
 rev = 0.14
 activeTab = undefined
-
-# Phonegap-specific
-app =
-  initialize: ->
-    this.bind()
-  bind: ->
-    document.addEventListener 'deviceready', this.deviceready, false
-  deviceready: ->
-    app.report 'deviceready'
-    navigator.splashscreen.hide()
-
-
-
-
 window.onload = ->
 
   # Add responsive media queries
@@ -52,9 +38,10 @@ window.onload = ->
     ###
     jQuery.getJSON "json/data.json?rev="+rev, {}, (data) ->
       locache.set "blueGuideData", data
-      console.log data
       query = new JsonQuery "body", data
-    
+  
+  # Manually set the map height with JS (couldn't make this work with CSS)
+  if window.responsive isnt "mobile" then $('.row-fluid>div').height $(window).height() - $('.navbar').height()
 
   params = 
     id: "map"
@@ -68,7 +55,10 @@ window.onload = ->
     geosearch:
       provider: "Google"
       settings:
+        searchLabel: "Search for address..."
         zoomLevel: 13 
+        showMarker: false
+        open: true
     locate: {html: ich.locateBtn()}   
     layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-i5m0mag7/{z}/{x}/{y}.png"
     fields: filters.displayFields
@@ -92,7 +82,6 @@ window.onload = ->
 
   map.map.on "dragend", ->
     if !map.lastBounds? or !query.withinBounds(map.map.getCenter(), map.markerBounds(map.lastBounds, 1))
-      #console.log "update"
       updateMarkers()
 
   map.map.on "zoomend", ->
@@ -109,17 +98,18 @@ window.onload = ->
 
 
   # Add overlay (for start page)
+  
   if window.responsive is "mobile"
     $about = ich.about()
-    $search = $("#map .leaflet-top.leaflet-center").clone()
+    ###$search = $("#map .leaflet-top.leaflet-left").clone()
     #$search.find('.leaflet-control-geosearch').removeClass "leaflet-control-geosearch"
     $search.find('#leaflet-control-geosearch-submit').bind "click", ->
       $("#map #leaflet-control-geosearch-qry").val $(this).parent().find("#leaflet-control-geosearch-qry").val()
       $("#map #leaflet-control-geosearch-submit").trigger "click"
     $search.find('#geocode').bind "click", ->
-      $("#map #geocode").trigger "click"
+      $("#map #geocode").trigger "click"###
     $("#main").append $about
-    $("#main #about").append $search
+    #$("#main #about").append $search
   else
     $("#map .leaflet-control-container").prepend ich.about()
 
@@ -136,6 +126,7 @@ window.onload = ->
     data = query.active(map.markerBounds(map.map.getBounds()))
     if map.forceZoom? and data.length < map.options.pagerSize*.8 and map.forceZoom < 4
       newZoom = map.map.getZoom()-1
+      newZoom = 13 if newZoom < 0
       map.map.setZoom newZoom
       map.forceZoom = parseInt(map.forceZoom) + 1
     else 

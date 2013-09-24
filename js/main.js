@@ -1,4 +1,4 @@
-var activeTab, app, query, rev, tab;
+var activeTab, query, rev, tab;
 
 query = void 0;
 
@@ -8,21 +8,8 @@ rev = 0.14;
 
 activeTab = void 0;
 
-app = {
-  initialize: function() {
-    return this.bind();
-  },
-  bind: function() {
-    return document.addEventListener('deviceready', this.deviceready, false);
-  },
-  deviceready: function() {
-    app.report('deviceready');
-    return navigator.splashscreen.hide();
-  }
-};
-
 window.onload = function() {
-  var $about, $search, activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
+  var $about, activate, data, filters, locationUpdated, map, params, queries, resizeMap, updateMarkers;
   queries = [
     {
       context: "mobile",
@@ -56,9 +43,11 @@ window.onload = function() {
 
     jQuery.getJSON("json/data.json?rev=" + rev, {}, function(data) {
       locache.set("blueGuideData", data);
-      console.log(data);
       return query = new JsonQuery("body", data);
     });
+  }
+  if (window.responsive !== "mobile") {
+    $('.row-fluid>div').height($(window).height() - $('.navbar').height());
   }
   params = {
     id: "map",
@@ -72,7 +61,10 @@ window.onload = function() {
     geosearch: {
       provider: "Google",
       settings: {
-        zoomLevel: 13
+        searchLabel: "Search for address...",
+        zoomLevel: 13,
+        showMarker: false,
+        open: true
       }
     },
     locate: {
@@ -112,16 +104,16 @@ window.onload = function() {
   });
   if (window.responsive === "mobile") {
     $about = ich.about();
-    $search = $("#map .leaflet-top.leaflet-center").clone();
-    $search.find('#leaflet-control-geosearch-submit').bind("click", function() {
-      $("#map #leaflet-control-geosearch-qry").val($(this).parent().find("#leaflet-control-geosearch-qry").val());
-      return $("#map #leaflet-control-geosearch-submit").trigger("click");
-    });
-    $search.find('#geocode').bind("click", function() {
-      return $("#map #geocode").trigger("click");
-    });
+    /*$search = $("#map .leaflet-top.leaflet-left").clone()
+    #$search.find('.leaflet-control-geosearch').removeClass "leaflet-control-geosearch"
+    $search.find('#leaflet-control-geosearch-submit').bind "click", ->
+      $("#map #leaflet-control-geosearch-qry").val $(this).parent().find("#leaflet-control-geosearch-qry").val()
+      $("#map #leaflet-control-geosearch-submit").trigger "click"
+    $search.find('#geocode').bind "click", ->
+      $("#map #geocode").trigger "click"
+    */
+
     $("#main").append($about);
-    $("#main #about").append($search);
   } else {
     $("#map .leaflet-control-container").prepend(ich.about());
   }
@@ -131,6 +123,9 @@ window.onload = function() {
     data = query.active(map.markerBounds(map.map.getBounds()));
     if ((map.forceZoom != null) && data.length < map.options.pagerSize * .8 && map.forceZoom < 4) {
       newZoom = map.map.getZoom() - 1;
+      if (newZoom < 0) {
+        newZoom = 13;
+      }
       map.map.setZoom(newZoom);
       return map.forceZoom = parseInt(map.forceZoom) + 1;
     } else {

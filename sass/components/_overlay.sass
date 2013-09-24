@@ -23,11 +23,17 @@
     width: 100%
 
   #about
-    padding: 5em 0 5em 7em
+    padding: 3em 0 3em 7em
     max-width: 800px
 
     .summary
-      margin-top: 10em
+      margin-top: 8.5em
+      
+      p
+        font-size: 13px
+
+      .app-icons
+        margin-bottom: 2em
 
       .logos
         margin: 0
@@ -42,10 +48,10 @@
   #map
     border-right: none !important
 
-    .leaflet-left
-      display: none
-
-    .leaflet-top.leaflet-center
+    .leaflet-top.leaflet-left
       margin-left: 7em
-      margin-top: 12em
+      margin-top: 9em
       width: 120%
+
+      .leaflet-control-zoom
+        display: none

@@ -89,30 +89,14 @@
       width: 100%
       height: 100%
 
-    .leaflet-top.leaflet-center
-      +box()
-      margin: 0px
-      padding-left: 60px
-      padding-right: 10px
-      width: 100%
-      display: none
+    .leaflet-top.leaflet-left
+      width: 80%
 
       .locate-active &
         display: block
 
-      .leaflet-control-geosearch
-        +box()
-        position: relative
-        margin-right: 0
-        padding-right: 48px
+      div.leaflet-control-geosearch
         width: 100%
-
-        input
-
-          max-width: 100%
-          width: 100%
-          margin-right: 0
-          float: left
 
       #leaflet-control-geosearch-submit
         position: absolute
@@ -145,17 +129,19 @@
 
   .right-sidebar
     left: -280px
+    top: 10px
     position: absolute
     width: 280px
     +transition(all, $trans-time)
+    background-color: $white
 
   .left-sidebar-active:not(.loading)
 
     .left-sidebar
-      top: 70%
+      top: 80%
 
     .main-content
-      height: 70%
+      height: 80%
 
 
 
@@ -167,7 +153,6 @@
 
     .right-sidebar
       left: 0
-      top: 10px
 
 
   .overlay-active
@@ -176,7 +161,14 @@
       height: auto
 
     #map
-      display: none
+      position: static !important
+
+      .leaflet-map-pane
+        display: none
+
+      .leaflet-top.leaflet-left
+        margin-left: 1.8em
+        width: 80%
 
     #about
       padding: 1em 2em
@@ -201,7 +193,7 @@
         font-style: italic
         padding-top: 2em
 
-      .leaflet-top.leaflet-center
+      .leaflet-top.leaflet-left
         margin-left: 0
         top: 9em
         display: block
@@ -217,6 +209,17 @@
     .left-sidebar
       display: none
 
+  .leaflet-top.leaflet-left
+    div.leaflet-control-geosearch,
+    #geocode
+      display: none
+
+  .locate-active,
+  .overlay-active
+    .leaflet-top.leaflet-left
+      div.leaflet-control-geosearch,
+      #geocode
+        display: block
 
 
 
@@ -224,6 +227,30 @@
 
 // I was really having issues with the padding on iOS
 // This is a bit of a hack, but it's the only thing that would work
-@media only screen and (device-width:320px) and (device-height:480px) 
-  .left-sidebar-active .left-sidebar
-    position: static !important
+@media only screen and (device-width:320px)
+
+  @media (device-height:480px)
+    .left-sidebar-active .left-sidebar
+      top: 0 !important
+      margin-top: 280px
+
+    .leaflet-top.leaflet-left div.leaflet-control-geosearch
+    
+      form input
+        margin-top: 0
+
+      a.leaflet-bar-part
+        top: 4px
+
+  @media (device-height:568px)
+    .left-sidebar-active .left-sidebar
+      top: 0 !important
+      margin-top: 340px
+
+    .leaflet-top.leaflet-left div.leaflet-control-geosearch
+    
+      form input
+        margin-top: 0
+
+      a.leaflet-bar-part
+        top: 4px
