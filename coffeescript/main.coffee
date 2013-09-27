@@ -61,6 +61,7 @@ window.onload = ->
         open: true
     locate: {html: ich.locateBtn()}   
     layerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-i5m0mag7/{z}/{x}/{y}.png"
+    retinaLayerUrl: "http://a.tiles.mapbox.com/v3/albatrossdigital.map-bqcirtj9/{z}/{x}/{y}.png"
     fields: filters.displayFields
     tabs: filters.tabs
     pagerSize: if window.responsive isnt "mobile" then 25 else 10

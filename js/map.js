@@ -23,9 +23,18 @@ Map = function(options) {
     this.map = new L.Map(this.options.id, {
       center: new L.LatLng(this.options.startLat, this.options.startLng),
       zoom: this.options.startZoom,
-      attributionControl: false,
-      layers: new L.TileLayer(this.options.layerUrl)
+      attributionControl: false
     });
+    this.retina = window.devicePixelRatio >= 2;
+    if (this.retina && (this.options.retinaLayerUrl != null)) {
+      this.map.tileSize = {
+        x: 128,
+        y: 128
+      };
+      this.map.addLayer(new L.TileLayer(this.options.retinaLayerUrl));
+    } else {
+      this.map.addLayer(new L.TileLayer(this.options.layerUrl));
+    }
     this.markerLayer.addTo(this.map);
     this.homeMarkerLayer.addTo(this.map);
     if (this.options.geosearch != null) {
