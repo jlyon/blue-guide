@@ -27,7 +27,7 @@ window.onload = ->
   if data? and data.rev? and data.rev is rev
     query = new JsonQuery("body", data)
   else
-    
+    ###
     `googleQuery = new GoogleSpreadsheetsQuery(filters, function(data) {
       locache.set("blueGuideData", data);
       query = new JsonQuery("body", data);
@@ -39,7 +39,6 @@ window.onload = ->
     jQuery.getJSON "json/data.json?rev="+rev, {}, (data) ->
       locache.set "blueGuideData", data
       query = new JsonQuery "body", data
-    ###
     
 
   params = 
