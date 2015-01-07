@@ -64,6 +64,7 @@ Now we need to go back to the Google Spreadsheet and export the data to a [JSON]
 We want to export the Google Spreadsheet data into its own local file to decrease load and processing time, and ensure that we don't run up against Google quota limits.
 
 Unfortunately the current method requires some trickery.  If you are interested in helping clean this process up, either with development help or financial contributions, please create in issue in the issue queue.  Here are the steps:
+
 1) On your computer, install [node.js](http://nodejs.org/), run `npm install`, and start `grunt`:
 ```
 cd ./blue-guide/.grunt
