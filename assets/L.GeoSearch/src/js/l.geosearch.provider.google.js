@@ -17,7 +17,7 @@ L.GeoSearch.Provider.Google = L.Class.extend({
         options = L.Util.setOptions(this, options);
 
         $.ajax({
-            url: "https://maps.googleapis.com/maps/api/js?v=3&callback=onLoadGoogleApiCallback&sensor=false",
+            url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDE4qIKTKzwKSXHaXXCQvtPcQijAdgzzEQ&v=3&callback=onLoadGoogleApiCallback&sensor=false",
             dataType: "script"
         });
     },
